@@ -63,6 +63,7 @@ graph TB
 ## Variables
 
 ### Required
+
 `arubacloud_client_id`, `arubacloud_client_secret`, `ssh_public_key`
 
 ### Optional

@@ -19,8 +19,8 @@ module "network" {
   billing_period = var.billing_period
 
   vm_ingress_ports = {
-    ssh  = { port = "22",                     cidr = var.ssh_cidr }
-    kuma = { port = tostring(var.kuma_port),  cidr = var.admin_cidr }
+    ssh  = { port = "22", cidr = var.ssh_cidr }
+    kuma = { port = tostring(var.kuma_port), cidr = var.admin_cidr }
   }
 }
 

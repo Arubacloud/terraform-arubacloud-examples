@@ -11,6 +11,7 @@ Deploy a production-ready [WireGuard](https://www.wireguard.com/) VPN server on 
 WireGuard is a modern, high-performance VPN protocol built into the Linux kernel. It is simpler, faster, and more secure than OpenVPN or IPsec. This example deploys a WireGuard server that your devices can connect to for encrypted internet access or private network tunneling.
 
 Common use cases:
+
 - Secure remote access to your Aruba Cloud VMs without exposing extra ports
 - Route all device traffic through a trusted Aruba Cloud IP
 - Split-tunnel access to private VPC resources

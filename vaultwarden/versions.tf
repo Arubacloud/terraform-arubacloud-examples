@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "arubacloud" {
-  client_id     = var.arubacloud_client_id
-  client_secret = var.arubacloud_client_secret
+  client_id        = var.arubacloud_client_id
+  client_secret    = var.arubacloud_client_secret
   resource_timeout = "20m"
 }

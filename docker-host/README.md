@@ -11,6 +11,7 @@ Provision a CloudServer VM with Docker CE and Docker Compose ready to use. This 
 This example creates a clean Ubuntu 22.04 VM with Docker Engine installed from the official Docker APT repository. You can immediately pull images, run containers, and use Docker Compose — all via SSH or a remote Docker context.
 
 Use this as the starting point for:
+
 - Running Docker Compose stacks not covered by other examples
 - Testing container images in an isolated Aruba Cloud environment
 - Setting up a private Docker build agent

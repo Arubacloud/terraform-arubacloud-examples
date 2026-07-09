@@ -8,5 +8,12 @@ output "admin_url" {
   value       = var.domain != "" ? "https://${var.domain}/admin" : "http://${module.network.vm_elastic_ip_address}/admin"
 }
 
-output "public_ip"   { value = module.network.vm_elastic_ip_address; description = "VM public IP." }
-output "ssh_command" { value = "ssh ubuntu@${module.network.vm_elastic_ip_address}"; description = "SSH command." }
+output "public_ip" {
+  value       = module.network.vm_elastic_ip_address
+  description = "VM public IP."
+}
+
+output "ssh_command" {
+  value       = "ssh ubuntu@${module.network.vm_elastic_ip_address}"
+  description = "SSH command."
+}

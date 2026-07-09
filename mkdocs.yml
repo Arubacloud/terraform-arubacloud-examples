@@ -1,0 +1,129 @@
+site_name: ArubaCloud Terraform Examples
+site_description: Production-ready Terraform examples for deploying open-source applications on Aruba Cloud
+site_author: Aruba Cloud
+site_url: https://arubacloud.github.io/terraform-arubacloud-examples/
+repo_name: arubacloud/terraform-arubacloud-examples
+repo_url: https://github.com/arubacloud/terraform-arubacloud-examples
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  favicon: assets/favicon.ico
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search:
+      lang: en
+  - include-markdown:
+      opening_tag: "{%"
+      closing_tag: "%}"
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+  - footnotes
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/arubacloud
+    - icon: fontawesome/solid/globe
+      link: https://www.cloud.it
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - getting-started.md
+      - Architecture: architecture.md
+      - Best Practices: best-practices.md
+      - Security: security.md
+  - Examples:
+      - CMS:
+          - WordPress: examples/wordpress.md
+          - Nextcloud: examples/nextcloud.md
+      - DevOps:
+          - Gitea: examples/gitea.md
+          - Forgejo: examples/forgejo.md
+          - GitLab CE: examples/gitlab-ce.md
+          - Jenkins: examples/jenkins.md
+      - Networking:
+          - WireGuard: examples/wireguard.md
+          - Traefik: examples/traefik.md
+          - Pi-hole: examples/pi-hole.md
+      - Containers:
+          - Docker Host: examples/docker-host.md
+          - k3s Single Node: examples/k3s-single.md
+      - Storage:
+          - MinIO: examples/minio.md
+      - Identity:
+          - Keycloak: examples/keycloak.md
+          - Vault: examples/vault.md
+      - Observability:
+          - Grafana + Prometheus: examples/grafana-prometheus.md
+          - Uptime Kuma: examples/uptime-kuma.md
+      - Collaboration:
+          - Mattermost: examples/mattermost.md
+          - Wiki.js: examples/wiki-js.md
+      - Security:
+          - Vaultwarden: examples/vaultwarden.md
+  - Modules:
+      - Network: modules/network.md
+  - Reference:
+      - FAQ: faq.md
+      - Contributing: contributing.md
+      - Changelog: changelog.md
