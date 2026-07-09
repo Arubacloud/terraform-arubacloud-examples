@@ -1,0 +1,16 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+ssh_public_key           = "ssh-ed25519 AAAA... user@host"
+
+# Required: email for Let's Encrypt certificate registration
+acme_email = "admin@example.com"
+
+# Restrict dashboard to your IP in production
+# dashboard_cidr = "203.0.113.42/32"
+# ssh_cidr       = "203.0.113.42/32"
+
+# enable_dashboard = true
+# traefik_version  = "v3.2"
+# app_name         = "traefik"
+# environment      = "prod"
+# vm_flavor        = "CSO1A2"
