@@ -1,0 +1,19 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+ssh_public_key           = "ssh-ed25519 AAAA... user@host"
+
+db_password       = "change-me-strong-database-password-16chars"
+nc_admin_password = "change-me-strong-admin-password-16chars"
+nc_admin_email    = "admin@example.com"
+
+# Optional HTTPS (recommended for production):
+# domain = "cloud.example.com"
+
+# ssh_cidr        = "203.0.113.42/32"
+# nc_admin_user   = "ncadmin"
+# app_name        = "nc"
+# environment     = "prod"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 80
+# dbaas_flavor    = "DBO2A8"
+# db_storage_gb   = 20
