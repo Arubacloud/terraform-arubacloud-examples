@@ -67,6 +67,7 @@ Set `vm_disk_size_gb` to your expected data volume. MinIO stores all objects on 
 ## Variables
 
 ### Required
+
 `arubacloud_client_id`, `arubacloud_client_secret`, `ssh_public_key`, `minio_root_password`
 
 ### Optional

@@ -77,7 +77,7 @@ graph TB
 | Development / test | 2 | 4 GB | 20 GB | `CSO2A4` |
 | Small site (< 5k visits/day) | 4 | 8 GB | 40 GB | `CSO4A8` *(default)* |
 | Medium site (< 50k visits/day) | 8 | 16 GB | 80 GB | `CSO8A16` |
-| High-traffic | Add a caching layer (Redis, Varnish) before scaling the VM |
+| High-traffic | — | — | — | Add a caching layer (Redis, Varnish) before scaling |
 
 For the DBaaS: `DBO2A8` (2 vCPU / 8 GB) covers most WordPress sites. Add read replicas for high-read workloads.
 
@@ -159,10 +159,11 @@ cp terraform.tfvars.example terraform.tfvars
 Edit `terraform.tfvars` with your credentials and passwords.
 
 > **Tip:** Store credentials as environment variables to avoid writing them to disk:
-> ```bash
-> export TF_VAR_arubacloud_client_id="your-id"
-> export TF_VAR_arubacloud_client_secret="your-secret"
-> ```
+
+```bash
+export TF_VAR_arubacloud_client_id="your-id"
+export TF_VAR_arubacloud_client_secret="your-secret"
+```
 
 ### 3. Initialize and deploy
 

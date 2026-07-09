@@ -65,6 +65,7 @@ A `CSO1A2` (1 vCPU / 2 GB) VM is sufficient for hundreds of monitors. Scale up o
 ## Variables
 
 ### Required
+
 `arubacloud_client_id`, `arubacloud_client_secret`, `ssh_public_key`
 
 ### Optional
