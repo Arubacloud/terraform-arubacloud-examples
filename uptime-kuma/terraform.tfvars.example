@@ -1,0 +1,13 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+ssh_public_key           = "ssh-ed25519 AAAA... user@host"
+
+# Restrict both SSH and UI to your IP in production
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "203.0.113.42/32"
+
+# kuma_port      = 3001
+# app_name       = "kuma"
+# environment    = "prod"
+# vm_flavor      = "CSO1A2"
+# vm_disk_size_gb = 20
