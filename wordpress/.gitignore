@@ -1,0 +1,4 @@
+# Inherits root .gitignore — this file adds WordPress-specific exclusions
+
+# Rendered cloud-init (if you test templatefile() locally)
+cloud-init.yaml
