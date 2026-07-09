@@ -1,0 +1,16 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+ssh_public_key           = "ssh-ed25519 AAAA... user@host"
+
+minio_root_user     = "minioadmin"
+minio_root_password = "change-me-strong-password"
+
+# Restrict console to your IP in production
+# console_cidr = "203.0.113.42/32"
+# api_cidr     = "10.0.0.0/8"    # if accessed from private network only
+# ssh_cidr     = "203.0.113.42/32"
+
+# vm_disk_size_gb = 100   # size this for your expected storage needs
+# app_name        = "minio"
+# environment     = "prod"
+# vm_flavor       = "CSO2A4"
