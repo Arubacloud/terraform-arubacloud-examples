@@ -1,0 +1,18 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict SSH to your IP in production
+# ssh_cidr = "203.0.113.42/32"
+
+# Optional: extra Linux users to add to the docker group
+# docker_users = ["myuser"]
+
+# app_name       = "docker"
+# environment    = "prod"
+# location       = "ITBG-Bergamo"
+# zone           = "ITBG-1"
+# vm_flavor      = "CSO2A4"
+# vm_disk_size_gb = 50
+# billing_period = "Hour"
