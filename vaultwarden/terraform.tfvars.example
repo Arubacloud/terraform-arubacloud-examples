@@ -1,0 +1,16 @@
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+ssh_public_key           = "ssh-ed25519 AAAA... user@host"
+
+# Required for mobile Bitwarden/Vaultwarden clients:
+# domain      = "vault.example.com"
+# admin_email = "admin@example.com"
+
+# Optional: enable the /admin panel (use a strong random token)
+# admin_token = "your-strong-random-token"
+
+# ssh_cidr            = "203.0.113.42/32"
+# vaultwarden_version = "latest"
+# app_name            = "vw"
+# environment         = "prod"
+# vm_flavor           = "CSO1A2"
