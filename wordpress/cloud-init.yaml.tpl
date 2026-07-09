@@ -1,7 +1,7 @@
 #cloud-config
 # WordPress bootstrap template for Aruba Cloud.
 # Rendered by Terraform templatefile() — do not use this file directly.
-# Variables (${...}) are replaced by Terraform at plan time.
+# Variables ($${...}) are replaced by Terraform at plan time.
 
 package_update: true
 package_upgrade: true

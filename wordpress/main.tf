@@ -29,8 +29,8 @@ module "network" {
   create_dbaas_network = true
 
   vm_ingress_ports = {
-    ssh   = { port = "22",  cidr = var.ssh_cidr }
-    http  = { port = "80",  cidr = "0.0.0.0/0" }
+    ssh   = { port = "22", cidr = var.ssh_cidr }
+    http  = { port = "80", cidr = "0.0.0.0/0" }
     https = { port = "443", cidr = "0.0.0.0/0" }
   }
 }
@@ -164,24 +164,24 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      db_host          = module.network.dbaas_elastic_ip_address
-      db_name          = arubacloud_database.wordpress.name
-      db_user          = arubacloud_dbaasuser.wordpress.username
-      db_password_php  = local.db_password_php
-      wp_admin_user    = var.wp_admin_user
+      db_host           = module.network.dbaas_elastic_ip_address
+      db_name           = arubacloud_database.wordpress.name
+      db_user           = arubacloud_dbaasuser.wordpress.username
+      db_password_php   = local.db_password_php
+      wp_admin_user     = var.wp_admin_user
       wp_admin_pass_b64 = base64encode(var.wp_admin_password)
-      wp_admin_email   = var.wp_admin_email
-      wp_title         = var.wp_title
-      wp_url           = local.site_url
-      domain           = var.domain
-      auth_key         = random_password.wp_keys["auth_key"].result
-      secure_auth_key  = random_password.wp_keys["secure_auth_key"].result
-      logged_in_key    = random_password.wp_keys["logged_in_key"].result
-      nonce_key        = random_password.wp_keys["nonce_key"].result
-      auth_salt        = random_password.wp_keys["auth_salt"].result
-      secure_auth_salt = random_password.wp_keys["secure_auth_salt"].result
-      logged_in_salt   = random_password.wp_keys["logged_in_salt"].result
-      nonce_salt       = random_password.wp_keys["nonce_salt"].result
+      wp_admin_email    = var.wp_admin_email
+      wp_title          = var.wp_title
+      wp_url            = local.site_url
+      domain            = var.domain
+      auth_key          = random_password.wp_keys["auth_key"].result
+      secure_auth_key   = random_password.wp_keys["secure_auth_key"].result
+      logged_in_key     = random_password.wp_keys["logged_in_key"].result
+      nonce_key         = random_password.wp_keys["nonce_key"].result
+      auth_salt         = random_password.wp_keys["auth_salt"].result
+      secure_auth_salt  = random_password.wp_keys["secure_auth_salt"].result
+      logged_in_salt    = random_password.wp_keys["logged_in_salt"].result
+      nonce_salt        = random_password.wp_keys["nonce_salt"].result
     })
   }
 

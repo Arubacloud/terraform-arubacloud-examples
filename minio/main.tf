@@ -19,7 +19,7 @@ module "network" {
   billing_period = var.billing_period
 
   vm_ingress_ports = {
-    ssh     = { port = "22",   cidr = var.ssh_cidr }
+    ssh     = { port = "22", cidr = var.ssh_cidr }
     s3api   = { port = "9000", cidr = var.api_cidr }
     console = { port = "9001", cidr = var.console_cidr }
   }

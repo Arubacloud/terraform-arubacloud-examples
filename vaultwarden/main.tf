@@ -20,8 +20,8 @@ module "network" {
   billing_period = var.billing_period
 
   vm_ingress_ports = {
-    ssh   = { port = "22",  cidr = var.ssh_cidr }
-    http  = { port = "80",  cidr = "0.0.0.0/0" }
+    ssh   = { port = "22", cidr = var.ssh_cidr }
+    http  = { port = "80", cidr = "0.0.0.0/0" }
     https = { port = "443", cidr = "0.0.0.0/0" }
   }
 }

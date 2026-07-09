@@ -31,15 +31,15 @@ jobs:
       fail-fast: false
       matrix:
         example:
-          # Phase 1
+          # Phase 1 — add each example to this list when its PR is merged to main
           - wordpress
           - wireguard
           - docker-host
           - uptime-kuma
           - vaultwarden
           - minio
-          - traefik
-          - nextcloud
+          # traefik: added when PR #60 is merged
+          # nextcloud: added when PR #61 is merged
           # Add Phase 2 examples here as they are implemented
     steps:
       - uses: actions/checkout@v4

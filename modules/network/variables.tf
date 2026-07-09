@@ -49,8 +49,8 @@ variable "vm_ingress_ports" {
     cidr = string
   }))
   default = {
-    ssh   = { port = "22",  cidr = "0.0.0.0/0" }
-    http  = { port = "80",  cidr = "0.0.0.0/0" }
+    ssh   = { port = "22", cidr = "0.0.0.0/0" }
+    http  = { port = "80", cidr = "0.0.0.0/0" }
     https = { port = "443", cidr = "0.0.0.0/0" }
   }
 }

@@ -19,7 +19,7 @@ mkdir myapp
 
 Every example must contain exactly these files:
 
-```
+```text
 myapp/
 ├── README.md
 ├── main.tf
