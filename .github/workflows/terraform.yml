@@ -49,6 +49,7 @@ jobs:
           - jenkins
           - grafana
           - vault
+          - keycloak
     steps:
       - uses: actions/checkout@v4
 
