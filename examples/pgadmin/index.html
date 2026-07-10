@@ -12,13 +12,13 @@
         <meta name="author" content="Aruba Cloud">
       
       
-        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/mattermost/">
+        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/pgadmin/">
       
       
-        <link rel="prev" href="../uptime-kuma/">
+        <link rel="prev" href="../adminer/">
       
       
-        <link rel="next" href="../vaultwarden/">
+        <link rel="next" href="../docker-host/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Mattermost - ArubaCloud Terraform Examples</title>
+        <title>pgAdmin - ArubaCloud Terraform Examples</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mattermost-on-aruba-cloud" class="md-skip">
+        <a href="#pgadmin-on-aruba-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mattermost
+              pgAdmin
             
           </span>
         </div>
@@ -1160,6 +1160,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1181,11 +1183,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -1201,7 +1203,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Database Admin
@@ -1235,10 +1237,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../pgadmin/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    pgAdmin
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1249,6 +1273,224 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Created
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimated-monthly-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimated Monthly Cost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-and-navigate" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone and navigate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-open-pgadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Open pgAdmin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-add-a-postgresql-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Add a PostgreSQL server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pgadmin-page-not-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      pgAdmin page not loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cannot-connect-to-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot connect to PostgreSQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1665,8 +1907,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1686,11 +1926,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
         
           
           <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
@@ -1706,7 +1946,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_9">
             <span class="md-nav__icon md-icon"></span>
             Collaboration
@@ -1717,32 +1957,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Mattermost
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../mattermost/" class="md-nav__link">
         
   
   
@@ -1753,257 +1971,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Architecture Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#infrastructure-created" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure Created
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estimated-monthly-cost" class="md-nav__link">
-    <span class="md-ellipsis">
-      Estimated Monthly Cost
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Outputs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deployment-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deployment Instructions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-clone-and-navigate" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Clone and navigate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configure-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Configure variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Deploy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-access-mattermost" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Access Mattermost
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-monitor-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Monitor progress
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-recommendations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Security Recommendations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mattermost-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mattermost-not-reachable" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost not reachable
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#websocket-connection-failed" class="md-nav__link">
-    <span class="md-ellipsis">
-      WebSocket connection failed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mysql-connection-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      MySQL connection error
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2460,18 +2427,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-mattermost" class="md-nav__link">
+  <a href="#4-open-pgadmin" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access Mattermost
+      4. Open pgAdmin
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-monitor-progress" class="md-nav__link">
+  <a href="#5-add-a-postgresql-server" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Monitor progress
+      5. Add a PostgreSQL server
     </span>
   </a>
   
@@ -2492,30 +2459,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mattermost-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting
@@ -2526,27 +2469,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mattermost-not-reachable" class="md-nav__link">
+  <a href="#pgadmin-page-not-loading" class="md-nav__link">
     <span class="md-ellipsis">
-      Mattermost not reachable
+      pgAdmin page not loading
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#websocket-connection-failed" class="md-nav__link">
+  <a href="#cannot-connect-to-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      WebSocket connection failed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mysql-connection-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      MySQL connection error
+      Cannot connect to PostgreSQL
     </span>
   </a>
   
@@ -2585,43 +2519,39 @@
   
 
 
-<h1 id="mattermost-on-aruba-cloud">Mattermost on Aruba Cloud<a class="headerlink" href="#mattermost-on-aruba-cloud" title="Permanent link">&para;</a></h1>
-<p>Deploy <a href="https://mattermost.com">Mattermost</a> Team Edition — open-source team messaging — on Aruba Cloud using Terraform and cloud-init. Mattermost binary service + Managed MySQL 8.0 + nginx reverse proxy.</p>
+<h1 id="pgadmin-on-aruba-cloud">pgAdmin on Aruba Cloud<a class="headerlink" href="#pgadmin-on-aruba-cloud" title="Permanent link">&para;</a></h1>
+<p>Deploy <a href="https://www.pgadmin.org">pgAdmin 4</a> — the leading open-source PostgreSQL administration tool — on Aruba Cloud using Terraform and cloud-init. pgAdmin is installed from the official pgAdmin apt repository in web mode, served by Apache on port 80.</p>
 <blockquote>
 <p><strong>Provider version:</strong> arubacloud/arubacloud <code>~&gt; 0.5</code> | <strong>Terraform:</strong> ≥ 1.9</p>
 </blockquote>
 <hr />
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Mattermost is a self-hosted, Slack-compatible open-source messaging platform written in Go and React. This example provisions a production-ready Mattermost Team Edition stack with:</p>
+<p>pgAdmin 4 is a comprehensive GUI for managing PostgreSQL databases. This example provisions a dedicated pgAdmin instance on Aruba Cloud with:</p>
 <ul>
-<li>A <strong>CloudServer VM</strong> (CSO4A8 — 4 vCPU / 8 GB) running the Mattermost Go binary as a systemd service behind nginx, fully bootstrapped by cloud-init</li>
-<li>A <strong>Managed MySQL 8.0 DBaaS</strong> instance with autoscaling storage</li>
-<li>A dedicated <strong>VPC, subnet, and security groups</strong> via the shared network module</li>
-<li><strong>Elastic IPs</strong> for the VM and DBaaS</li>
-<li>Correct nginx <strong>WebSocket proxying</strong> for real-time messaging</li>
-<li>Optional <strong>Let's Encrypt HTTPS</strong> when a custom domain is provided</li>
+<li>pgAdmin 4 installed from the <strong>official pgAdmin apt repository</strong> (web mode)</li>
+<li><strong>Apache</strong> configured automatically by the pgAdmin setup script</li>
+<li>Port 80 restricted to <code>admin_cidr</code> — pgAdmin must never be exposed to the public internet</li>
+<li>Admin email and password configured at bootstrap time</li>
 </ul>
-<p>The first user to register on the instance automatically becomes the System Administrator.</p>
+<blockquote>
+<p><strong>Security note:</strong> pgAdmin has access to all PostgreSQL databases you add to it. Always restrict <code>admin_cidr</code> to your specific management IP and use a strong password. Consider pairing this example with the <a href="../../pgadmin/wireguard.md">WireGuard</a> VPN so pgAdmin is only reachable from your VPN tunnel.</p>
+</blockquote>
 <hr />
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
-    User((User)) --&gt;|HTTP :80 / HTTPS :443| EIP_VM[Elastic IP — VM]
-    Admin((Admin)) --&gt;|SSH :22 restricted CIDR| EIP_VM
+    Admin((Admin / DBA)) --&gt;|HTTP :80 — admin_cidr| EIP[Elastic IP]
+    Admin --&gt;|SSH :22 — ssh_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
         subgraph VPC["VPC / Subnet"]
-            VM["CloudServer VM\nnginx + Mattermost\n50 GB disk"]
-            DB[("Managed MySQL 8.0\nDBaaS")]
+            VM["CSO1A2 — 1 vCPU / 2 GB\nApache + pgAdmin 4\n20 GB disk"]
         end
-        EIP_VM --&gt; VM
-        EIP_DB[Elastic IP — DBaaS] --&gt; DB
-        SG_VM["VM Security Group\nIN: 22 · 80 · 443\nOUT: all"]
-        SG_DB["DBaaS Security Group\nIN: 3306 from VM IP\nOUT: all"]
+        EIP --&gt; VM
+        SG["Security Group\nIN: 22 · 80\nOUT: all"]
     end
 
-    VM --&gt;|MySQL :3306| DB
-    SG_VM -.-&gt; VM
-    SG_DB -.-&gt; DB</code></pre>
+    VM --&gt;|TCP :5432| DB[(PostgreSQL servers)]
+    SG -.-&gt; VM</code></pre>
 <hr />
 <h2 id="infrastructure-created">Infrastructure Created<a class="headerlink" href="#infrastructure-created" title="Permanent link">&para;</a></h2>
 <table>
@@ -2635,101 +2565,58 @@
 <tbody>
 <tr>
 <td><code>arubacloud_project</code></td>
-<td><code>mm-prod</code></td>
+<td><code>pgadmin-prod</code></td>
 <td>Project container</td>
 </tr>
 <tr>
 <td><code>arubacloud_vpc</code></td>
-<td><code>mm-prod-vpc</code></td>
+<td><code>pgadmin-prod-vpc</code></td>
 <td>Virtual Private Cloud</td>
 </tr>
 <tr>
 <td><code>arubacloud_subnet</code></td>
-<td><code>mm-prod-subnet</code></td>
+<td><code>pgadmin-prod-subnet</code></td>
 <td>Basic subnet</td>
 </tr>
 <tr>
 <td><code>arubacloud_securitygroup</code></td>
-<td><code>mm-prod-vm-sg</code></td>
-<td>VM security group</td>
-</tr>
-<tr>
-<td><code>arubacloud_securitygroup</code></td>
-<td><code>mm-prod-db-sg</code></td>
-<td>DBaaS security group</td>
+<td><code>pgadmin-prod-vm-sg</code></td>
+<td>Security group</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-ssh</code></td>
+<td><code>pgadmin-prod-vm-ssh</code></td>
 <td>SSH ingress</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-http</code></td>
-<td>HTTP ingress</td>
-</tr>
-<tr>
-<td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-https</code></td>
-<td>HTTPS ingress</td>
-</tr>
-<tr>
-<td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-db-mysql</code></td>
-<td>MySQL ingress from VM IP</td>
+<td><code>pgadmin-prod-vm-admin-ui</code></td>
+<td>Admin UI ingress TCP 80</td>
 </tr>
 <tr>
 <td><code>arubacloud_elasticip</code></td>
-<td><code>mm-prod-vm-eip</code></td>
+<td><code>pgadmin-prod-vm-eip</code></td>
 <td>VM public IP</td>
 </tr>
 <tr>
-<td><code>arubacloud_elasticip</code></td>
-<td><code>mm-prod-db-eip</code></td>
-<td>DBaaS public IP</td>
-</tr>
-<tr>
 <td><code>arubacloud_blockstorage</code></td>
-<td><code>mm-prod-boot</code></td>
-<td>50 GB boot disk (Performance)</td>
+<td><code>pgadmin-prod-boot</code></td>
+<td>20 GB boot disk (Performance)</td>
 </tr>
 <tr>
 <td><code>arubacloud_keypair</code></td>
-<td><code>mm-prod-keypair</code></td>
+<td><code>pgadmin-prod-keypair</code></td>
 <td>SSH public key</td>
 </tr>
 <tr>
-<td><code>arubacloud_dbaas</code></td>
-<td><code>mm-prod-dbaas</code></td>
-<td>Managed MySQL 8.0</td>
-</tr>
-<tr>
-<td><code>arubacloud_database</code></td>
-<td><code>mattermost</code></td>
-<td>Mattermost logical database</td>
-</tr>
-<tr>
-<td><code>arubacloud_dbaasuser</code></td>
-<td><code>mattermost</code></td>
-<td>MySQL application user</td>
-</tr>
-<tr>
-<td><code>arubacloud_databasegrant</code></td>
-<td>—</td>
-<td>liteadmin grant</td>
-</tr>
-<tr>
 <td><code>arubacloud_cloudserver</code></td>
-<td><code>mm-prod-vm</code></td>
+<td><code>pgadmin-prod-vm</code></td>
 <td>CloudServer VM</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="estimated-monthly-cost">Estimated Monthly Cost<a class="headerlink" href="#estimated-monthly-cost" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Approximate prices for ITBG-Bergamo, hourly billing.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -2741,33 +2628,23 @@
 <tbody>
 <tr>
 <td>CloudServer VM</td>
-<td>CSO4A8 — 4 vCPU / 8 GB</td>
-<td>~€36</td>
+<td>CSO1A2 — 1 vCPU / 2 GB</td>
+<td>~€9</td>
 </tr>
 <tr>
 <td>Boot disk</td>
-<td>50 GB Performance</td>
-<td>~€6</td>
-</tr>
-<tr>
-<td>Managed MySQL</td>
-<td>DBO2A8 — 2 vCPU / 8 GB</td>
-<td>~€35</td>
-</tr>
-<tr>
-<td>DBaaS storage</td>
-<td>20 GB</td>
+<td>20 GB Performance</td>
 <td>~€3</td>
 </tr>
 <tr>
-<td>Elastic IP × 2</td>
+<td>Elastic IP</td>
 <td>—</td>
-<td>~€5</td>
+<td>~€3</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>~€85/mo</strong></td>
+<td><strong>~€15/mo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2778,6 +2655,7 @@
 <li>ArubaCloud Terraform Provider <code>~&gt; 0.5</code></li>
 <li>An ArubaCloud account with OAuth2 API credentials</li>
 <li>An SSH key pair</li>
+<li>One or more PostgreSQL servers reachable from the VM</li>
 </ul>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
@@ -2803,8 +2681,12 @@
 <td>SSH public key content</td>
 </tr>
 <tr>
-<td><code>db_password</code></td>
-<td>MySQL password for the Mattermost user (min 16 chars, no newlines)</td>
+<td><code>pgadmin_email</code></td>
+<td>Login email address for pgAdmin</td>
+</tr>
+<tr>
+<td><code>pgadmin_password</code></td>
+<td>Login password for pgAdmin (min 8 chars)</td>
 </tr>
 </tbody>
 </table>
@@ -2820,7 +2702,7 @@
 <tbody>
 <tr>
 <td><code>app_name</code></td>
-<td><code>"mm"</code></td>
+<td><code>"pgadmin"</code></td>
 <td>Short name used in all resource names</td>
 </tr>
 <tr>
@@ -2845,7 +2727,7 @@
 </tr>
 <tr>
 <td><code>vm_flavor</code></td>
-<td><code>"CSO4A8"</code></td>
+<td><code>"CSO1A2"</code></td>
 <td>CloudServer flavor</td>
 </tr>
 <tr>
@@ -2855,33 +2737,18 @@
 </tr>
 <tr>
 <td><code>vm_disk_size_gb</code></td>
-<td><code>50</code></td>
+<td><code>20</code></td>
 <td>Boot disk size in GB</td>
 </tr>
 <tr>
 <td><code>ssh_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for SSH — <strong>restrict to your IP</strong></td>
+<td>CIDR for SSH — restrict in production</td>
 </tr>
 <tr>
-<td><code>dbaas_flavor</code></td>
-<td><code>"DBO2A8"</code></td>
-<td>DBaaS flavor</td>
-</tr>
-<tr>
-<td><code>db_storage_gb</code></td>
-<td><code>20</code></td>
-<td>DBaaS initial storage in GB</td>
-</tr>
-<tr>
-<td><code>mattermost_version</code></td>
-<td><code>"10.4.2"</code></td>
-<td>Mattermost Team Edition version</td>
-</tr>
-<tr>
-<td><code>domain</code></td>
-<td><code>""</code></td>
-<td>Custom domain for HTTPS</td>
+<td><code>admin_cidr</code></td>
+<td><code>"0.0.0.0/0"</code></td>
+<td>CIDR for web UI — <strong>always restrict</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2896,8 +2763,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>site_url</code></td>
-<td>Mattermost URL</td>
+<td><code>pgadmin_url</code></td>
+<td>pgAdmin web interface URL</td>
+</tr>
+<tr>
+<td><code>pgadmin_email</code></td>
+<td>Login email address</td>
 </tr>
 <tr>
 <td><code>vm_public_ip</code></td>
@@ -2907,102 +2778,75 @@
 <td><code>ssh_command</code></td>
 <td>SSH command to connect to the VM</td>
 </tr>
-<tr>
-<td><code>dbaas_host</code></td>
-<td>DBaaS endpoint</td>
-</tr>
-<tr>
-<td><code>db_name</code></td>
-<td>Database name</td>
-</tr>
-<tr>
-<td><code>db_user</code></td>
-<td>Database username</td>
-</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="deployment-instructions">Deployment Instructions<a class="headerlink" href="#deployment-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="1-clone-and-navigate">1. Clone and navigate<a class="headerlink" href="#1-clone-and-navigate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arubacloud/terraform-arubacloud-examples.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/mattermost
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/pgadmin
 </span></code></pre></div>
 <h3 id="2-configure-variables">2. Configure variables<a class="headerlink" href="#2-configure-variables" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>terraform.tfvars.example<span class="w"> </span>terraform.tfvars
 </span></code></pre></div>
-<p>Set <code>db_password</code> and your credentials.</p>
+<p>Set credentials, email, password, and <strong>restrict CIDRs</strong>:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">pgadmin_email</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin@example.com&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">pgadmin_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your-strong-password&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">admin_cidr</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">ssh_cidr</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
+</span></code></pre></div>
 <h3 id="3-deploy">3. Deploy<a class="headerlink" href="#3-deploy" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>terraform<span class="w"> </span>init
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>terraform<span class="w"> </span>plan
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>terraform<span class="w"> </span>apply
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>init
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<p>Bootstrap takes approximately <strong>15–20 minutes</strong> — cloud-init waits up to 15 minutes for the DBaaS to become reachable before starting Mattermost.</p>
-<h3 id="4-access-mattermost">4. Access Mattermost<a class="headerlink" href="#4-access-mattermost" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>site_url
+<p>Bootstrap takes approximately <strong>5–8 minutes</strong> (pgAdmin package download + Apache setup).</p>
+<h3 id="4-open-pgadmin">4. Open pgAdmin<a class="headerlink" href="#4-open-pgadmin" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>pgadmin_url
 </span></code></pre></div>
-<p>Open the URL and <strong>register the first account</strong> — that user becomes System Administrator.</p>
-<h3 id="5-monitor-progress">5. Monitor progress<a class="headerlink" href="#5-monitor-progress" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/cloud-init-output.log
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-f
-</span></code></pre></div>
+<p>Log in with <code>pgadmin_email</code> and <code>pgadmin_password</code>. pgAdmin 4 opens at <code>/pgadmin4</code>.</p>
+<h3 id="5-add-a-postgresql-server">5. Add a PostgreSQL server<a class="headerlink" href="#5-add-a-postgresql-server" title="Permanent link">&para;</a></h3>
+<p>In the pgAdmin UI: <strong>Object → Register → Server</strong></p>
+<ul>
+<li><strong>General → Name:</strong> any friendly name</li>
+<li><strong>Connection → Host:</strong> IP or hostname of your PostgreSQL server</li>
+<li><strong>Connection → Port:</strong> 5432</li>
+<li><strong>Connection → Username / Password:</strong> your PostgreSQL credentials</li>
+</ul>
+<p>The pgAdmin VM must be able to reach the PostgreSQL server on TCP port 5432. Ensure the PostgreSQL server's security group or firewall allows inbound connections from the pgAdmin VM IP.</p>
 <hr />
 <h2 id="security-recommendations">Security Recommendations<a class="headerlink" href="#security-recommendations" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Restrict SSH to your IP.</strong> Set <code>ssh_cidr = "your.ip/32"</code>.</p>
+<p><strong>Always restrict <code>admin_cidr</code>.</strong> pgAdmin stores PostgreSQL credentials — never expose it to <code>0.0.0.0/0</code> in production.</p>
 </li>
 <li>
-<p><strong>Use HTTPS.</strong> Set <code>domain</code> to enable Let's Encrypt TLS. Without TLS, session tokens and messages are transmitted in cleartext.</p>
+<p><strong>Use VPN access.</strong> The most secure setup is to keep <code>admin_cidr</code> set to your WireGuard VPN tunnel CIDR and access pgAdmin only from within the VPN. See the <a href="../../pgadmin/wireguard.md">WireGuard example</a>.</p>
 </li>
 <li>
-<p><strong>Register the admin account first.</strong> The first registered user becomes System Administrator. Register immediately after deployment before sharing the URL.</p>
-</li>
-<li>
-<p><strong>Restrict Team invitations.</strong> In System Console → Authentication → Email, configure invite-only registration once your team is set up.</p>
-</li>
-<li>
-<p><strong>Enable MFA.</strong> In System Console → Authentication → MFA, require multi-factor authentication for all users.</p>
+<p><strong>Use SSH tunnelling as an alternative.</strong> If you prefer not to expose port 80 at all, set <code>admin_cidr = "127.0.0.1/32"</code> and access pgAdmin via an SSH tunnel:</p>
 </li>
 </ol>
-<hr />
-<h2 id="upgrade-considerations">Upgrade Considerations<a class="headerlink" href="#upgrade-considerations" title="Permanent link">&para;</a></h2>
-<h3 id="mattermost-upgrade">Mattermost upgrade<a class="headerlink" href="#mattermost-upgrade" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">MM_VERSION</span><span class="o">=</span>X.Y.Z
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>mattermost
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/opt/mattermost<span class="w"> </span>/opt/mattermost-backup
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>curl<span class="w"> </span>-sSfL<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="s2">&quot;https://releases.mattermost.com/</span><span class="nv">$MM_VERSION</span><span class="s2">/mattermost-team-</span><span class="nv">$MM_VERSION</span><span class="s2">-linux-amd64.tar.gz&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>-xz<span class="w"> </span>-C<span class="w"> </span>/opt
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># Restore config and data</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/opt/mattermost-backup/config/config.json<span class="w"> </span>/opt/mattermost/config/<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>mattermost:mattermost<span class="w"> </span>/opt/mattermost
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mattermost
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">5050</span>:localhost:80<span class="w"> </span>ubuntu@&lt;vm-ip&gt;
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Then open http://localhost:5050/pgadmin4 in your browser</span>
 </span></code></pre></div>
-<p>Review the <a href="https://docs.mattermost.com/about/mattermost-changelog.html">Mattermost changelog</a> before upgrading.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="mattermost-not-reachable">Mattermost not reachable<a class="headerlink" href="#mattermost-not-reachable" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mattermost
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-100<span class="w"> </span>/var/log/cloud-init-output.log
+<h3 id="pgadmin-page-not-loading">pgAdmin page not loading<a class="headerlink" href="#pgadmin-page-not-loading" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>apache2
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/var/log/apache2/error.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/var/log/cloud-init-output.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-30
 </span></code></pre></div>
-<h3 id="websocket-connection-failed">WebSocket connection failed<a class="headerlink" href="#websocket-connection-failed" title="Permanent link">&para;</a></h3>
-<p>Verify the nginx config includes the WebSocket location block for <code>/api/v[0-9]+/(users/)?websocket</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/nginx/sites-enabled/mattermost.conf
+<h3 id="cannot-connect-to-postgresql">Cannot connect to PostgreSQL<a class="headerlink" href="#cannot-connect-to-postgresql" title="Permanent link">&para;</a></h3>
+<p>From the pgAdmin VM, verify TCP connectivity:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>nc<span class="w"> </span>-zv<span class="w"> </span>&lt;postgres-host&gt;<span class="w"> </span><span class="m">5432</span>
 </span></code></pre></div>
-<h3 id="mysql-connection-error">MySQL connection error<a class="headerlink" href="#mysql-connection-error" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mysql<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-p<span class="w"> </span>-h<span class="w"> </span><span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>dbaas_host<span class="k">)</span><span class="w"> </span>mattermost
-</span></code></pre></div>
+<p>Check that the PostgreSQL <code>pg_hba.conf</code> allows connections from the pgAdmin VM IP, and that any security group or firewall on the PostgreSQL server permits port 5432.</p>
 <hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://docs.mattermost.com/install/install-ubuntu.html">Mattermost Installation Guide</a></li>
-<li><a href="https://github.com/mattermost/mattermost/releases">Mattermost Releases</a></li>
-<li><a href="https://docs.mattermost.com/configure/environment-variables.html">Mattermost Environment Variables</a></li>
+<li><a href="https://www.pgadmin.org/docs/">pgAdmin Documentation</a></li>
+<li><a href="https://www.pgadmin.org/download/pgadmin-4-apt/">pgAdmin apt Repository</a></li>
 <li><a href="https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs">ArubaCloud Terraform Provider</a></li>
 </ul>
 
@@ -3027,7 +2871,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:22:20 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:54:37 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3037,7 +2881,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:22:20 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:54:37 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3074,7 +2918,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../uptime-kuma/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Uptime Kuma">
+          <a href="../adminer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adminer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3084,20 +2928,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Uptime Kuma
+                Adminer
               </div>
             </div>
           </a>
         
         
           
-          <a href="../vaultwarden/" class="md-footer__link md-footer__link--next" aria-label="Next: Vaultwarden">
+          <a href="../docker-host/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker Host">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Vaultwarden
+                Docker Host
               </div>
             </div>
             <div class="md-footer__button md-icon">
