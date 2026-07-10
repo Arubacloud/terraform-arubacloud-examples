@@ -12,13 +12,13 @@
         <meta name="author" content="Aruba Cloud">
       
       
-        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/mattermost/">
+        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/discourse/">
       
       
-        <link rel="prev" href="../openclaw/">
+        <link rel="prev" href="../rocketchat/">
       
       
-        <link rel="next" href="../mailcow/">
+        <link rel="next" href="../vaultwarden/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Mattermost - ArubaCloud Terraform Examples</title>
+        <title>Discourse - ArubaCloud Terraform Examples</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mattermost-on-aruba-cloud" class="md-skip">
+        <a href="#discourse-on-aruba-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mattermost
+              Discourse
             
           </span>
         </div>
@@ -2208,6 +2208,75 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../mattermost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mattermost
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mailcow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mailcow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rocketchat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rocket.Chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2225,7 +2294,7 @@
   
   
   <span class="md-ellipsis">
-    Mattermost
+    Discourse
     
   </span>
   
@@ -2238,7 +2307,7 @@
   
   
   <span class="md-ellipsis">
-    Mattermost
+    Discourse
     
   </span>
   
@@ -2385,18 +2454,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-mattermost" class="md-nav__link">
+  <a href="#4-create-the-admin-account" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access Mattermost
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-monitor-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Monitor progress
+      4. Create the admin account
     </span>
   </a>
   
@@ -2408,35 +2468,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#security-recommendations" class="md-nav__link">
+  <a href="#enabling-https-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      Security Recommendations
+      Enabling HTTPS (Let's Encrypt)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
+  <a href="#upgrading-discourse" class="md-nav__link">
     <span class="md-ellipsis">
-      Upgrade Considerations
+      Upgrading Discourse
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mattermost-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2451,27 +2496,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mattermost-not-reachable" class="md-nav__link">
+  <a href="#forum-not-loading-after-30-minutes" class="md-nav__link">
     <span class="md-ellipsis">
-      Mattermost not reachable
+      Forum not loading after 30 minutes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#websocket-connection-failed" class="md-nav__link">
+  <a href="#emails-not-being-sent" class="md-nav__link">
     <span class="md-ellipsis">
-      WebSocket connection failed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mysql-connection-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      MySQL connection error
+      Emails not being sent
     </span>
   </a>
   
@@ -2495,75 +2531,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mailcow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Mailcow
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rocketchat/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Rocket.Chat
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../discourse/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Discourse
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -3126,18 +3093,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-mattermost" class="md-nav__link">
+  <a href="#4-create-the-admin-account" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access Mattermost
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-monitor-progress" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Monitor progress
+      4. Create the admin account
     </span>
   </a>
   
@@ -3149,35 +3107,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#security-recommendations" class="md-nav__link">
+  <a href="#enabling-https-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      Security Recommendations
+      Enabling HTTPS (Let's Encrypt)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
+  <a href="#upgrading-discourse" class="md-nav__link">
     <span class="md-ellipsis">
-      Upgrade Considerations
+      Upgrading Discourse
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mattermost-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3192,27 +3135,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mattermost-not-reachable" class="md-nav__link">
+  <a href="#forum-not-loading-after-30-minutes" class="md-nav__link">
     <span class="md-ellipsis">
-      Mattermost not reachable
+      Forum not loading after 30 minutes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#websocket-connection-failed" class="md-nav__link">
+  <a href="#emails-not-being-sent" class="md-nav__link">
     <span class="md-ellipsis">
-      WebSocket connection failed
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mysql-connection-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      MySQL connection error
+      Emails not being sent
     </span>
   </a>
   
@@ -3251,43 +3185,43 @@
   
 
 
-<h1 id="mattermost-on-aruba-cloud">Mattermost on Aruba Cloud<a class="headerlink" href="#mattermost-on-aruba-cloud" title="Permanent link">&para;</a></h1>
-<p>Deploy <a href="https://mattermost.com">Mattermost</a> Team Edition — open-source team messaging — on Aruba Cloud using Terraform and cloud-init. Mattermost binary service + Managed MySQL 8.0 + nginx reverse proxy.</p>
+<h1 id="discourse-on-aruba-cloud">Discourse on Aruba Cloud<a class="headerlink" href="#discourse-on-aruba-cloud" title="Permanent link">&para;</a></h1>
+<p>Deploy <a href="https://www.discourse.org">Discourse</a> — the leading open-source community forum platform — on Aruba Cloud using Terraform and cloud-init. Discourse is installed via the official <code>discourse_docker</code> launcher, which bundles PostgreSQL, Redis, and NGINX inside a single managed container.</p>
 <blockquote>
 <p><strong>Provider version:</strong> arubacloud/arubacloud <code>~&gt; 0.5</code> | <strong>Terraform:</strong> ≥ 1.9</p>
 </blockquote>
 <hr />
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Mattermost is a self-hosted, Slack-compatible open-source messaging platform written in Go and React. This example provisions a production-ready Mattermost Team Edition stack with:</p>
+<p>Discourse is a modern, mobile-friendly discussion platform used by thousands of open-source projects and communities. This example uses the <strong>official Docker-based installation</strong> — the only method supported by the Discourse team for production — which provisions:</p>
 <ul>
-<li>A <strong>CloudServer VM</strong> (CSO4A8 — 4 vCPU / 8 GB) running the Mattermost Go binary as a systemd service behind nginx, fully bootstrapped by cloud-init</li>
-<li>A <strong>Managed MySQL 8.0 DBaaS</strong> instance with autoscaling storage</li>
-<li>A dedicated <strong>VPC, subnet, and security groups</strong> via the shared network module</li>
-<li><strong>Elastic IPs</strong> for the VM and DBaaS</li>
-<li>Correct nginx <strong>WebSocket proxying</strong> for real-time messaging</li>
-<li>Optional <strong>Let's Encrypt HTTPS</strong> when a custom domain is provided</li>
+<li><strong>discourse_docker</strong> launcher cloned from the official GitHub repository</li>
+<li><strong>PostgreSQL, Redis, NGINX, and Sidekiq</strong> bundled inside the Discourse container</li>
+<li>SMTP configuration for outbound email (required for user registration)</li>
+<li>Ports 80 and 443 open to the internet</li>
+<li>Optional domain with SSL via Let's Encrypt (automatic inside the container when <code>hostname</code> is a real domain)</li>
 </ul>
-<p>The first user to register on the instance automatically becomes the System Administrator.</p>
+<blockquote>
+<p><strong>Bootstrap time:</strong> The launcher builds a Docker image from source the first time. Expect <strong>20–30 minutes</strong> before the forum is accessible.</p>
+<p><strong>Email is required.</strong> Discourse uses email for account confirmation. Configure SMTP before deploying — registrations without working email will fail.</p>
+</blockquote>
 <hr />
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
-    User((User)) --&gt;|HTTP :80 / HTTPS :443| EIP_VM[Elastic IP — VM]
-    Admin((Admin)) --&gt;|SSH :22 restricted CIDR| EIP_VM
+    User((User)) --&gt;|HTTP :80| EIP[Elastic IP]
+    User --&gt;|HTTPS :443| EIP
+    Admin((Admin)) --&gt;|SSH :22 — ssh_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
         subgraph VPC["VPC / Subnet"]
-            VM["CloudServer VM\nnginx + Mattermost\n50 GB disk"]
-            DB[("Managed MySQL 8.0\nDBaaS")]
+            VM["CSO4A8 — 4 vCPU / 8 GB\ndiscourse_docker container\n(NGINX · PostgreSQL · Redis · Sidekiq)\n100 GB disk"]
         end
-        EIP_VM --&gt; VM
-        EIP_DB[Elastic IP — DBaaS] --&gt; DB
-        SG_VM["VM Security Group\nIN: 22 · 80 · 443\nOUT: all"]
-        SG_DB["DBaaS Security Group\nIN: 3306 from VM IP\nOUT: all"]
+        EIP --&gt; VM
+        SG["Security Group\nIN: 22 · 80 · 443\nOUT: all"]
     end
 
-    VM --&gt;|MySQL :3306| DB
-    SG_VM -.-&gt; VM
-    SG_DB -.-&gt; DB</code></pre>
+    VM --&gt;|SMTP| Mail[(Mail server)]
+    VM --&gt;|ACME| LE[(Let's Encrypt)]
+    SG -.-&gt; VM</code></pre>
 <hr />
 <h2 id="infrastructure-created">Infrastructure Created<a class="headerlink" href="#infrastructure-created" title="Permanent link">&para;</a></h2>
 <table>
@@ -3301,101 +3235,63 @@
 <tbody>
 <tr>
 <td><code>arubacloud_project</code></td>
-<td><code>mm-prod</code></td>
+<td><code>discourse-prod</code></td>
 <td>Project container</td>
 </tr>
 <tr>
 <td><code>arubacloud_vpc</code></td>
-<td><code>mm-prod-vpc</code></td>
+<td><code>discourse-prod-vpc</code></td>
 <td>Virtual Private Cloud</td>
 </tr>
 <tr>
 <td><code>arubacloud_subnet</code></td>
-<td><code>mm-prod-subnet</code></td>
+<td><code>discourse-prod-subnet</code></td>
 <td>Basic subnet</td>
 </tr>
 <tr>
 <td><code>arubacloud_securitygroup</code></td>
-<td><code>mm-prod-vm-sg</code></td>
-<td>VM security group</td>
-</tr>
-<tr>
-<td><code>arubacloud_securitygroup</code></td>
-<td><code>mm-prod-db-sg</code></td>
-<td>DBaaS security group</td>
+<td><code>discourse-prod-vm-sg</code></td>
+<td>Security group</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-ssh</code></td>
+<td><code>discourse-prod-vm-ssh</code></td>
 <td>SSH ingress</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-http</code></td>
-<td>HTTP ingress</td>
+<td><code>discourse-prod-vm-http</code></td>
+<td>HTTP ingress TCP 80</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-vm-https</code></td>
-<td>HTTPS ingress</td>
-</tr>
-<tr>
-<td><code>arubacloud_securityrule</code></td>
-<td><code>mm-prod-db-mysql</code></td>
-<td>MySQL ingress from VM IP</td>
+<td><code>discourse-prod-vm-https</code></td>
+<td>HTTPS ingress TCP 443</td>
 </tr>
 <tr>
 <td><code>arubacloud_elasticip</code></td>
-<td><code>mm-prod-vm-eip</code></td>
+<td><code>discourse-prod-vm-eip</code></td>
 <td>VM public IP</td>
 </tr>
 <tr>
-<td><code>arubacloud_elasticip</code></td>
-<td><code>mm-prod-db-eip</code></td>
-<td>DBaaS public IP</td>
-</tr>
-<tr>
 <td><code>arubacloud_blockstorage</code></td>
-<td><code>mm-prod-boot</code></td>
-<td>50 GB boot disk (Performance)</td>
+<td><code>discourse-prod-boot</code></td>
+<td>100 GB boot disk (Performance)</td>
 </tr>
 <tr>
 <td><code>arubacloud_keypair</code></td>
-<td><code>mm-prod-keypair</code></td>
+<td><code>discourse-prod-keypair</code></td>
 <td>SSH public key</td>
 </tr>
 <tr>
-<td><code>arubacloud_dbaas</code></td>
-<td><code>mm-prod-dbaas</code></td>
-<td>Managed MySQL 8.0</td>
-</tr>
-<tr>
-<td><code>arubacloud_database</code></td>
-<td><code>mattermost</code></td>
-<td>Mattermost logical database</td>
-</tr>
-<tr>
-<td><code>arubacloud_dbaasuser</code></td>
-<td><code>mattermost</code></td>
-<td>MySQL application user</td>
-</tr>
-<tr>
-<td><code>arubacloud_databasegrant</code></td>
-<td>—</td>
-<td>liteadmin grant</td>
-</tr>
-<tr>
 <td><code>arubacloud_cloudserver</code></td>
-<td><code>mm-prod-vm</code></td>
+<td><code>discourse-prod-vm</code></td>
 <td>CloudServer VM</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="estimated-monthly-cost">Estimated Monthly Cost<a class="headerlink" href="#estimated-monthly-cost" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Approximate prices for ITBG-Bergamo, hourly billing.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -3408,32 +3304,22 @@
 <tr>
 <td>CloudServer VM</td>
 <td>CSO4A8 — 4 vCPU / 8 GB</td>
-<td>~€36</td>
-</tr>
-<tr>
-<td>Boot disk</td>
-<td>50 GB Performance</td>
-<td>~€6</td>
-</tr>
-<tr>
-<td>Managed MySQL</td>
-<td>DBO2A8 — 2 vCPU / 8 GB</td>
 <td>~€35</td>
 </tr>
 <tr>
-<td>DBaaS storage</td>
-<td>20 GB</td>
-<td>~€3</td>
+<td>Boot disk</td>
+<td>100 GB Performance</td>
+<td>~€15</td>
 </tr>
 <tr>
-<td>Elastic IP × 2</td>
+<td>Elastic IP</td>
 <td>—</td>
-<td>~€5</td>
+<td>~€3</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>~€85/mo</strong></td>
+<td><strong>~€53/mo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3444,6 +3330,8 @@
 <li>ArubaCloud Terraform Provider <code>~&gt; 0.5</code></li>
 <li>An ArubaCloud account with OAuth2 API credentials</li>
 <li>An SSH key pair</li>
+<li>An SMTP server for outbound email (Gmail App Password, Mailgun, etc.)</li>
+<li>(Recommended) A domain name with an A record pointing to the VM's Elastic IP</li>
 </ul>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
@@ -3469,8 +3357,20 @@
 <td>SSH public key content</td>
 </tr>
 <tr>
-<td><code>db_password</code></td>
-<td>MySQL password for the Mattermost user (min 16 chars, no newlines)</td>
+<td><code>admin_email</code></td>
+<td>Email for the initial Discourse admin account</td>
+</tr>
+<tr>
+<td><code>smtp_host</code></td>
+<td>SMTP server hostname</td>
+</tr>
+<tr>
+<td><code>smtp_user</code></td>
+<td>SMTP login username</td>
+</tr>
+<tr>
+<td><code>smtp_password</code></td>
+<td>SMTP login password</td>
 </tr>
 </tbody>
 </table>
@@ -3486,7 +3386,7 @@
 <tbody>
 <tr>
 <td><code>app_name</code></td>
-<td><code>"mm"</code></td>
+<td><code>"discourse"</code></td>
 <td>Short name used in all resource names</td>
 </tr>
 <tr>
@@ -3521,33 +3421,28 @@
 </tr>
 <tr>
 <td><code>vm_disk_size_gb</code></td>
-<td><code>50</code></td>
-<td>Boot disk size in GB</td>
+<td><code>100</code></td>
+<td>Boot disk size in GB (min 40 GB)</td>
 </tr>
 <tr>
 <td><code>ssh_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for SSH — <strong>restrict to your IP</strong></td>
+<td>CIDR for SSH</td>
 </tr>
 <tr>
-<td><code>dbaas_flavor</code></td>
-<td><code>"DBO2A8"</code></td>
-<td>DBaaS flavor</td>
+<td><code>web_cidr</code></td>
+<td><code>"0.0.0.0/0"</code></td>
+<td>CIDR for HTTP/HTTPS</td>
 </tr>
 <tr>
-<td><code>db_storage_gb</code></td>
-<td><code>20</code></td>
-<td>DBaaS initial storage in GB</td>
+<td><code>hostname</code></td>
+<td>auto</td>
+<td>Domain name (defaults to VM Elastic IP)</td>
 </tr>
 <tr>
-<td><code>mattermost_version</code></td>
-<td><code>"10.4.2"</code></td>
-<td>Mattermost Team Edition version</td>
-</tr>
-<tr>
-<td><code>domain</code></td>
-<td><code>""</code></td>
-<td>Custom domain for HTTPS</td>
+<td><code>smtp_port</code></td>
+<td><code>587</code></td>
+<td>SMTP port</td>
 </tr>
 </tbody>
 </table>
@@ -3563,7 +3458,7 @@
 <tbody>
 <tr>
 <td><code>site_url</code></td>
-<td>Mattermost URL</td>
+<td>Discourse site URL</td>
 </tr>
 <tr>
 <td><code>vm_public_ip</code></td>
@@ -3573,102 +3468,79 @@
 <td><code>ssh_command</code></td>
 <td>SSH command to connect to the VM</td>
 </tr>
-<tr>
-<td><code>dbaas_host</code></td>
-<td>DBaaS endpoint</td>
-</tr>
-<tr>
-<td><code>db_name</code></td>
-<td>Database name</td>
-</tr>
-<tr>
-<td><code>db_user</code></td>
-<td>Database username</td>
-</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="deployment-instructions">Deployment Instructions<a class="headerlink" href="#deployment-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="1-clone-and-navigate">1. Clone and navigate<a class="headerlink" href="#1-clone-and-navigate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arubacloud/terraform-arubacloud-examples.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/mattermost
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/discourse
 </span></code></pre></div>
 <h3 id="2-configure-variables">2. Configure variables<a class="headerlink" href="#2-configure-variables" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>terraform.tfvars.example<span class="w"> </span>terraform.tfvars
 </span></code></pre></div>
-<p>Set <code>db_password</code> and your credentials.</p>
+<p>Set credentials, admin email, SMTP settings, and optionally a domain:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">admin_email</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin@example.com&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">hostname</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;forum.example.com&quot;</span><span class="c1">   # omit to use the Elastic IP</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">smtp_host</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;smtp.gmail.com&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">smtp_port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">587</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">smtp_user</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;you@gmail.com&quot;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">smtp_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your-app-password&quot;</span>
+</span></code></pre></div>
+<blockquote>
+<p>For Gmail, create an <strong>App Password</strong> (not your account password) at <a href="https://myaccount.google.com/apppasswords">https://myaccount.google.com/apppasswords</a>.</p>
+</blockquote>
 <h3 id="3-deploy">3. Deploy<a class="headerlink" href="#3-deploy" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>terraform<span class="w"> </span>init
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>terraform<span class="w"> </span>plan
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>terraform<span class="w"> </span>apply
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>init
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<p>Bootstrap takes approximately <strong>15–20 minutes</strong> — cloud-init waits up to 15 minutes for the DBaaS to become reachable before starting Mattermost.</p>
-<h3 id="4-access-mattermost">4. Access Mattermost<a class="headerlink" href="#4-access-mattermost" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>site_url
-</span></code></pre></div>
-<p>Open the URL and <strong>register the first account</strong> — that user becomes System Administrator.</p>
-<h3 id="5-monitor-progress">5. Monitor progress<a class="headerlink" href="#5-monitor-progress" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><code>terraform apply</code> returns quickly (VM provisioned in ~2 min). The Discourse bootstrap continues in the background for 20–30 minutes. Monitor progress:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/cloud-init-output.log
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-f
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/discourse-bootstrap.log
 </span></code></pre></div>
+</blockquote>
+<h3 id="4-create-the-admin-account">4. Create the admin account<a class="headerlink" href="#4-create-the-admin-account" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>site_url
+</span></code></pre></div>
+<p>Visit the URL and <strong>register with the same email address</strong> set in <code>admin_email</code>. Discourse automatically grants admin rights to the first user who registers with that email.</p>
 <hr />
-<h2 id="security-recommendations">Security Recommendations<a class="headerlink" href="#security-recommendations" title="Permanent link">&para;</a></h2>
+<h2 id="enabling-https-lets-encrypt">Enabling HTTPS (Let's Encrypt)<a class="headerlink" href="#enabling-https-lets-encrypt" title="Permanent link">&para;</a></h2>
+<p>When <code>hostname</code> is set to a real domain:</p>
 <ol>
-<li>
-<p><strong>Restrict SSH to your IP.</strong> Set <code>ssh_cidr = "your.ip/32"</code>.</p>
-</li>
-<li>
-<p><strong>Use HTTPS.</strong> Set <code>domain</code> to enable Let's Encrypt TLS. Without TLS, session tokens and messages are transmitted in cleartext.</p>
-</li>
-<li>
-<p><strong>Register the admin account first.</strong> The first registered user becomes System Administrator. Register immediately after deployment before sharing the URL.</p>
-</li>
-<li>
-<p><strong>Restrict Team invitations.</strong> In System Console → Authentication → Email, configure invite-only registration once your team is set up.</p>
-</li>
-<li>
-<p><strong>Enable MFA.</strong> In System Console → Authentication → MFA, require multi-factor authentication for all users.</p>
-</li>
+<li>Create a DNS A record: <code>forum.example.com → &lt;vm_public_ip&gt;</code></li>
+<li>Set <code>hostname = "forum.example.com"</code> in <code>terraform.tfvars</code></li>
+<li>Re-apply — Discourse auto-obtains a Let's Encrypt certificate on bootstrap</li>
 </ol>
+<p>No additional configuration is needed; the discourse_docker launcher handles ACME automatically.</p>
 <hr />
-<h2 id="upgrade-considerations">Upgrade Considerations<a class="headerlink" href="#upgrade-considerations" title="Permanent link">&para;</a></h2>
-<h3 id="mattermost-upgrade">Mattermost upgrade<a class="headerlink" href="#mattermost-upgrade" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">MM_VERSION</span><span class="o">=</span>X.Y.Z
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>mattermost
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/opt/mattermost<span class="w"> </span>/opt/mattermost-backup
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>curl<span class="w"> </span>-sSfL<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="s2">&quot;https://releases.mattermost.com/</span><span class="nv">$MM_VERSION</span><span class="s2">/mattermost-team-</span><span class="nv">$MM_VERSION</span><span class="s2">-linux-amd64.tar.gz&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tar<span class="w"> </span>-xz<span class="w"> </span>-C<span class="w"> </span>/opt
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># Restore config and data</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/opt/mattermost-backup/config/config.json<span class="w"> </span>/opt/mattermost/config/<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>mattermost:mattermost<span class="w"> </span>/opt/mattermost
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mattermost
+<h2 id="upgrading-discourse">Upgrading Discourse<a class="headerlink" href="#upgrading-discourse" title="Permanent link">&para;</a></h2>
+<p>Discourse ships frequent updates. To upgrade:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>/var/discourse
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>pull
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>./launcher<span class="w"> </span>rebuild<span class="w"> </span>app
 </span></code></pre></div>
-<p>Review the <a href="https://docs.mattermost.com/about/mattermost-changelog.html">Mattermost changelog</a> before upgrading.</p>
+<p>The <code>rebuild</code> command pulls the latest image and restarts the container with zero downtime for the database.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="mattermost-not-reachable">Mattermost not reachable<a class="headerlink" href="#mattermost-not-reachable" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mattermost
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-100<span class="w"> </span>/var/log/cloud-init-output.log
+<h3 id="forum-not-loading-after-30-minutes">Forum not loading after 30 minutes<a class="headerlink" href="#forum-not-loading-after-30-minutes" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/discourse-bootstrap.log
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">cd</span><span class="w"> </span>/var/discourse<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./launcher<span class="w"> </span>logs<span class="w"> </span>app
 </span></code></pre></div>
-<h3 id="websocket-connection-failed">WebSocket connection failed<a class="headerlink" href="#websocket-connection-failed" title="Permanent link">&para;</a></h3>
-<p>Verify the nginx config includes the WebSocket location block for <code>/api/v[0-9]+/(users/)?websocket</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/nginx/sites-enabled/mattermost.conf
+<h3 id="emails-not-being-sent">Emails not being sent<a class="headerlink" href="#emails-not-being-sent" title="Permanent link">&para;</a></h3>
+<p>Check SMTP connectivity from the VM:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>nc<span class="w"> </span>-zv<span class="w"> </span>smtp.gmail.com<span class="w"> </span><span class="m">587</span>
 </span></code></pre></div>
-<h3 id="mysql-connection-error">MySQL connection error<a class="headerlink" href="#mysql-connection-error" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mysql<span class="w"> </span>-u<span class="w"> </span>mattermost<span class="w"> </span>-p<span class="w"> </span>-h<span class="w"> </span><span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>dbaas_host<span class="k">)</span><span class="w"> </span>mattermost
-</span></code></pre></div>
+<p>Then from the Discourse admin panel: <strong>Admin → Email → Test Email</strong>.</p>
 <hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://docs.mattermost.com/install/install-ubuntu.html">Mattermost Installation Guide</a></li>
-<li><a href="https://github.com/mattermost/mattermost/releases">Mattermost Releases</a></li>
-<li><a href="https://docs.mattermost.com/configure/environment-variables.html">Mattermost Environment Variables</a></li>
+<li><a href="https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md">Discourse Official Install Guide</a></li>
+<li><a href="https://github.com/discourse/discourse_docker">discourse_docker Repository</a></li>
+<li><a href="https://meta.discourse.org">Discourse Documentation</a></li>
 <li><a href="https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs">ArubaCloud Terraform Provider</a></li>
 </ul>
 
@@ -3693,7 +3565,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:22:20 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 14:01:31 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3703,7 +3575,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:22:20 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 14:01:31 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3740,7 +3612,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../openclaw/" class="md-footer__link md-footer__link--prev" aria-label="Previous: OpenClaw">
+          <a href="../rocketchat/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Rocket.Chat">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3750,20 +3622,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                OpenClaw
+                Rocket.Chat
               </div>
             </div>
           </a>
         
         
           
-          <a href="../mailcow/" class="md-footer__link md-footer__link--next" aria-label="Next: Mailcow">
+          <a href="../vaultwarden/" class="md-footer__link md-footer__link--next" aria-label="Next: Vaultwarden">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Mailcow
+                Vaultwarden
               </div>
             </div>
             <div class="md-footer__button md-icon">
