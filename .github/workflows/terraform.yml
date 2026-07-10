@@ -38,9 +38,10 @@ jobs:
           - uptime-kuma
           - vaultwarden
           - minio
-          # traefik: added when PR #60 is merged
-          # nextcloud: added when PR #61 is merged
-          # Add Phase 2 examples here as they are implemented
+          - traefik
+          - nextcloud
+          # Phase 3 examples
+          - ghost
     steps:
       - uses: actions/checkout@v4
 

@@ -1,0 +1,4 @@
+# Inherits root .gitignore — this file adds Ghost-specific exclusions
+
+# Rendered cloud-init (if you test templatefile() locally)
+cloud-init.yaml
