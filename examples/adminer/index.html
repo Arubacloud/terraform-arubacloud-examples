@@ -12,13 +12,13 @@
         <meta name="author" content="Aruba Cloud">
       
       
-        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/wordpress/">
+        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/adminer/">
       
       
-        <link rel="prev" href="../../security/">
+        <link rel="prev" href="../nginx/">
       
       
-        <link rel="next" href="../nextcloud/">
+        <link rel="next" href="../docker-host/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>WordPress - ArubaCloud Terraform Examples</title>
+        <title>Adminer - ArubaCloud Terraform Examples</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wordpress-on-aruba-cloud" class="md-skip">
+        <a href="#adminer-on-aruba-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WordPress
+              Adminer
             
           </span>
         </div>
@@ -282,7 +282,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../wordpress/" class="md-tabs__link">
           
   
   
@@ -642,8 +642,6 @@
                 
   
   
-    
-  
   
   
     
@@ -667,11 +665,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
@@ -687,7 +685,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             CMS
@@ -698,32 +696,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    WordPress
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../wordpress/" class="md-nav__link">
         
   
   
@@ -734,320 +710,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Architecture Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#infrastructure-created" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure Created
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vm-sizing-recommendation" class="md-nav__link">
-    <span class="md-ellipsis">
-      VM Sizing Recommendation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#estimated-monthly-cost" class="md-nav__link">
-    <span class="md-ellipsis">
-      Estimated Monthly Cost
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Variables
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#required" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optional
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deployment-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deployment Instructions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deployment Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-clone-and-navigate" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Clone and navigate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-configure-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Configure variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-initialize-and-deploy" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Initialize and deploy
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-access-wordpress" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Access WordPress
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-follow-cloud-init-progress-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Follow cloud-init progress (optional)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#destroy-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy Instructions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-recommendations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Security Recommendations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#wordpress-core-plugin-updates" class="md-nav__link">
-    <span class="md-ellipsis">
-      WordPress core / plugin updates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php-version-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHP version upgrade
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#provider-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Provider upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#screenshots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Screenshots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#login-credentials-after-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Login Credentials After Deployment
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#error-establishing-a-database-connection" class="md-nav__link">
-    <span class="md-ellipsis">
-      "Error establishing a database connection"
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apache-serves-it-works-instead-of-wordpress" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apache serves "It works!" instead of WordPress
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#certbot-fails-to-issue-a-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Certbot fails to issue a certificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-init-bootstrap-did-not-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      cloud-init bootstrap did not complete
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plan-errors-resource-name-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plan errors: "resource name already exists"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1448,6 +1110,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1467,11 +1131,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
@@ -1487,7 +1151,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Database Admin
@@ -1498,10 +1162,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../adminer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Adminer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1512,6 +1198,215 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Created
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimated-monthly-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estimated Monthly Cost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clone-and-navigate" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Clone and navigate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configure-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configure variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Deploy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-connect-to-a-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Connect to a database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adminer-page-not-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adminer page not loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cannot-connect-to-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot connect to database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2351,15 +2246,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vm-sizing-recommendation" class="md-nav__link">
-    <span class="md-ellipsis">
-      VM Sizing Recommendation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#estimated-monthly-cost" class="md-nav__link">
     <span class="md-ellipsis">
       Estimated Monthly Cost
@@ -2411,6 +2297,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deployment-instructions" class="md-nav__link">
     <span class="md-ellipsis">
       Deployment Instructions
@@ -2439,27 +2334,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-initialize-and-deploy" class="md-nav__link">
+  <a href="#3-deploy" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Initialize and deploy
+      3. Deploy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-wordpress" class="md-nav__link">
+  <a href="#4-connect-to-a-database" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access WordPress
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-follow-cloud-init-progress-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Follow cloud-init progress (optional)
+      4. Connect to a database
     </span>
   </a>
   
@@ -2467,15 +2353,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#destroy-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy Instructions
-    </span>
-  </a>
   
 </li>
       
@@ -2483,66 +2360,6 @@
   <a href="#security-recommendations" class="md-nav__link">
     <span class="md-ellipsis">
       Security Recommendations
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#wordpress-core-plugin-updates" class="md-nav__link">
-    <span class="md-ellipsis">
-      WordPress core / plugin updates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#php-version-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHP version upgrade
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#provider-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Provider upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#screenshots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Screenshots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#login-credentials-after-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      Login Credentials After Deployment
     </span>
   </a>
   
@@ -2559,45 +2376,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#error-establishing-a-database-connection" class="md-nav__link">
+  <a href="#adminer-page-not-loading" class="md-nav__link">
     <span class="md-ellipsis">
-      "Error establishing a database connection"
+      Adminer page not loading
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#apache-serves-it-works-instead-of-wordpress" class="md-nav__link">
+  <a href="#cannot-connect-to-database" class="md-nav__link">
     <span class="md-ellipsis">
-      Apache serves "It works!" instead of WordPress
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#certbot-fails-to-issue-a-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Certbot fails to issue a certificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-init-bootstrap-did-not-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      cloud-init bootstrap did not complete
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plan-errors-resource-name-already-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plan errors: "resource name already exists"
+      Cannot connect to database
     </span>
   </a>
   
@@ -2636,42 +2426,39 @@
   
 
 
-<h1 id="wordpress-on-aruba-cloud">WordPress on Aruba Cloud<a class="headerlink" href="#wordpress-on-aruba-cloud" title="Permanent link">&para;</a></h1>
-<p>Deploy a production-ready <a href="https://wordpress.org">WordPress</a> site on Aruba Cloud using Terraform and cloud-init. No manual server configuration required.</p>
+<h1 id="adminer-on-aruba-cloud">Adminer on Aruba Cloud<a class="headerlink" href="#adminer-on-aruba-cloud" title="Permanent link">&para;</a></h1>
+<p>Deploy <a href="https://www.adminer.org">Adminer</a> — a lightweight, single-file PHP database administration tool — on Aruba Cloud using Terraform and cloud-init. Adminer supports MySQL, MariaDB, PostgreSQL, and SQLite from a single PHP file served by Apache.</p>
 <blockquote>
 <p><strong>Provider version:</strong> arubacloud/arubacloud <code>~&gt; 0.5</code> | <strong>Terraform:</strong> ≥ 1.9</p>
 </blockquote>
 <hr />
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>WordPress is the world's most popular content management system, powering over 40% of all websites. This example provisions a complete WordPress stack on Aruba Cloud with:</p>
+<p>Adminer is a full-featured database management tool contained in a single PHP file. Compared to phpMyAdmin it is lighter, faster to deploy, and just as capable for day-to-day DB administration tasks. This example provisions a minimal VM with:</p>
 <ul>
-<li>A <strong>CloudServer VM</strong> running Apache 2.4 and PHP 8.x, fully bootstrapped by cloud-init</li>
-<li>A <strong>Managed MySQL 8.0 DBaaS</strong> instance — no self-managed database server</li>
-<li>A dedicated <strong>VPC, subnet, and security groups</strong> via the shared network module</li>
-<li><strong>Elastic IPs</strong> for the VM and DBaaS</li>
-<li>Optional <strong>Let's Encrypt HTTPS</strong> when a custom domain is provided</li>
+<li><strong>Apache2 + PHP 8.1</strong> — the smallest viable stack for Adminer</li>
+<li><strong>Adminer.php</strong> downloaded directly from the official GitHub release</li>
+<li><strong>PHP database drivers</strong> for MySQL (<code>php-mysql</code>), PostgreSQL (<code>php-pgsql</code>), and SQLite (<code>php-sqlite3</code>)</li>
+<li>Port 80 restricted to <code>admin_cidr</code> — Adminer is never exposed to the public internet</li>
 </ul>
+<blockquote>
+<p><strong>Security note:</strong> Adminer has no built-in rate limiting or IP restriction. Always set <code>admin_cidr</code> to your specific management IP (e.g. <code>203.0.113.42/32</code>) and never deploy with the default <code>0.0.0.0/0</code> in production.</p>
+</blockquote>
 <hr />
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
-<p>The VM hosts WordPress behind Apache. The database runs on a separate managed DBaaS instance in the same VPC. The MySQL security group allows inbound connections only from the VM's Elastic IP.</p>
 <pre class="mermaid"><code>graph TB
-    User((Internet)) --&gt;|HTTP :80 / HTTPS :443| EIP_VM[Elastic IP — VM]
-    Admin((Admin)) --&gt;|SSH :22 restricted CIDR| EIP_VM
+    Admin((Admin / DBA)) --&gt;|HTTP :80 — admin_cidr| EIP[Elastic IP]
+    Admin --&gt;|SSH :22 — ssh_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
         subgraph VPC["VPC / Subnet"]
-            VM["CloudServer VM\nApache 2.4 + PHP 8.x\nWordPress 6.x"]
-            DB[("Managed MySQL 8.0\nDBaaS")]
+            VM["CSO1A2 — 1 vCPU / 2 GB\nApache2 + PHP + Adminer\n20 GB disk"]
         end
-        EIP_VM --&gt; VM
-        EIP_DB[Elastic IP — DBaaS] --&gt; DB
-        SG_VM["VM Security Group\nIN: 22 · 80 · 443\nOUT: all"]
-        SG_DB["DBaaS Security Group\nIN: 3306 from VM IP\nOUT: all"]
+        EIP --&gt; VM
+        SG["Security Group\nIN: 22 · 80\nOUT: all"]
     end
 
-    VM --&gt;|MySQL :3306| DB
-    SG_VM -.-&gt; VM
-    SG_DB -.-&gt; DB</code></pre>
+    VM --&gt;|TCP connections| DB[(External Database\nMySQL · PostgreSQL · SQLite)]
+    SG -.-&gt; VM</code></pre>
 <hr />
 <h2 id="infrastructure-created">Infrastructure Created<a class="headerlink" href="#infrastructure-created" title="Permanent link">&para;</a></h2>
 <table>
@@ -2685,145 +2472,58 @@
 <tbody>
 <tr>
 <td><code>arubacloud_project</code></td>
-<td><code>wp-prod</code></td>
+<td><code>adminer-prod</code></td>
 <td>Project container</td>
 </tr>
 <tr>
 <td><code>arubacloud_vpc</code></td>
-<td><code>wp-prod-vpc</code></td>
+<td><code>adminer-prod-vpc</code></td>
 <td>Virtual Private Cloud</td>
 </tr>
 <tr>
 <td><code>arubacloud_subnet</code></td>
-<td><code>wp-prod-subnet</code></td>
+<td><code>adminer-prod-subnet</code></td>
 <td>Basic subnet</td>
 </tr>
 <tr>
 <td><code>arubacloud_securitygroup</code></td>
-<td><code>wp-prod-vm-sg</code></td>
-<td>VM security group</td>
-</tr>
-<tr>
-<td><code>arubacloud_securitygroup</code></td>
-<td><code>wp-prod-db-sg</code></td>
-<td>DBaaS security group</td>
+<td><code>adminer-prod-vm-sg</code></td>
+<td>Security group</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>wp-prod-vm-ssh</code></td>
-<td>SSH ingress (restricted CIDR)</td>
+<td><code>adminer-prod-vm-ssh</code></td>
+<td>SSH ingress</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>wp-prod-vm-http</code></td>
-<td>HTTP ingress (0.0.0.0/0)</td>
-</tr>
-<tr>
-<td><code>arubacloud_securityrule</code></td>
-<td><code>wp-prod-vm-https</code></td>
-<td>HTTPS ingress (0.0.0.0/0)</td>
-</tr>
-<tr>
-<td><code>arubacloud_securityrule</code></td>
-<td><code>wp-prod-db-mysql</code></td>
-<td>MySQL ingress from VM IP only</td>
+<td><code>adminer-prod-vm-admin-ui</code></td>
+<td>Admin UI ingress TCP 80</td>
 </tr>
 <tr>
 <td><code>arubacloud_elasticip</code></td>
-<td><code>wp-prod-vm-eip</code></td>
+<td><code>adminer-prod-vm-eip</code></td>
 <td>VM public IP</td>
 </tr>
 <tr>
-<td><code>arubacloud_elasticip</code></td>
-<td><code>wp-prod-db-eip</code></td>
-<td>DBaaS public IP</td>
-</tr>
-<tr>
 <td><code>arubacloud_blockstorage</code></td>
-<td><code>wp-prod-boot</code></td>
-<td>40 GB boot disk (Performance)</td>
+<td><code>adminer-prod-boot</code></td>
+<td>20 GB boot disk (Performance)</td>
 </tr>
 <tr>
 <td><code>arubacloud_keypair</code></td>
-<td><code>wp-prod-keypair</code></td>
+<td><code>adminer-prod-keypair</code></td>
 <td>SSH public key</td>
 </tr>
 <tr>
-<td><code>arubacloud_dbaas</code></td>
-<td><code>wp-prod-dbaas</code></td>
-<td>Managed MySQL 8.0</td>
-</tr>
-<tr>
-<td><code>arubacloud_database</code></td>
-<td><code>wordpress</code></td>
-<td>WordPress logical database</td>
-</tr>
-<tr>
-<td><code>arubacloud_dbaasuser</code></td>
-<td><code>wordpress</code></td>
-<td>MySQL application user</td>
-</tr>
-<tr>
-<td><code>arubacloud_databasegrant</code></td>
-<td>—</td>
-<td>liteadmin grant</td>
-</tr>
-<tr>
 <td><code>arubacloud_cloudserver</code></td>
-<td><code>wp-prod-vm</code></td>
+<td><code>adminer-prod-vm</code></td>
 <td>CloudServer VM</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="vm-sizing-recommendation">VM Sizing Recommendation<a class="headerlink" href="#vm-sizing-recommendation" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Workload</th>
-<th>vCPU</th>
-<th>RAM</th>
-<th>Disk</th>
-<th>Flavor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Development / test</td>
-<td>2</td>
-<td>4 GB</td>
-<td>20 GB</td>
-<td><code>CSO2A4</code></td>
-</tr>
-<tr>
-<td>Small site (&lt; 5k visits/day)</td>
-<td>4</td>
-<td>8 GB</td>
-<td>40 GB</td>
-<td><code>CSO4A8</code> <em>(default)</em></td>
-</tr>
-<tr>
-<td>Medium site (&lt; 50k visits/day)</td>
-<td>8</td>
-<td>16 GB</td>
-<td>80 GB</td>
-<td><code>CSO8A16</code></td>
-</tr>
-<tr>
-<td>High-traffic</td>
-<td>—</td>
-<td>—</td>
-<td>—</td>
-<td>Add a caching layer (Redis, Varnish) before scaling</td>
-</tr>
-</tbody>
-</table>
-<p>For the DBaaS: <code>DBO2A8</code> (2 vCPU / 8 GB) covers most WordPress sites. Add read replicas for high-read workloads.</p>
-<hr />
 <h2 id="estimated-monthly-cost">Estimated Monthly Cost<a class="headerlink" href="#estimated-monthly-cost" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Approximate prices for ITBG-Bergamo, hourly billing. Actual prices may vary — verify in the <a href="https://www.cloud.it">ArubaCloud console</a>.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -2835,33 +2535,23 @@
 <tbody>
 <tr>
 <td>CloudServer VM</td>
-<td>CSO4A8 — 4 vCPU / 8 GB</td>
-<td>~€35</td>
+<td>CSO1A2 — 1 vCPU / 2 GB</td>
+<td>~€9</td>
 </tr>
 <tr>
 <td>Boot disk</td>
-<td>40 GB Performance</td>
-<td>~€5</td>
-</tr>
-<tr>
-<td>Managed MySQL</td>
-<td>DBO2A8 — 2 vCPU / 8 GB</td>
-<td>~€40</td>
-</tr>
-<tr>
-<td>DBaaS storage</td>
-<td>20 GB</td>
+<td>20 GB Performance</td>
 <td>~€3</td>
 </tr>
 <tr>
-<td>Elastic IP × 2</td>
+<td>Elastic IP</td>
 <td>—</td>
-<td>~€10</td>
+<td>~€3</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>~€93/mo</strong></td>
+<td><strong>~€15/mo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2872,6 +2562,7 @@
 <li>ArubaCloud Terraform Provider <code>~&gt; 0.5</code></li>
 <li>An ArubaCloud account with OAuth2 API credentials</li>
 <li>An SSH key pair</li>
+<li>A database server reachable from the VM (on the same VPC or via public IP)</li>
 </ul>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
@@ -2894,19 +2585,7 @@
 </tr>
 <tr>
 <td><code>ssh_public_key</code></td>
-<td>SSH public key content (e.g. contents of <code>~/.ssh/id_ed25519.pub</code>)</td>
-</tr>
-<tr>
-<td><code>db_password</code></td>
-<td>MySQL password for the WordPress user (min 16 chars, no newlines)</td>
-</tr>
-<tr>
-<td><code>wp_admin_password</code></td>
-<td>WordPress admin password (min 16 chars, no newlines)</td>
-</tr>
-<tr>
-<td><code>wp_admin_email</code></td>
-<td>WordPress admin email (also used for Let's Encrypt registration)</td>
+<td>SSH public key content</td>
 </tr>
 </tbody>
 </table>
@@ -2922,13 +2601,13 @@
 <tbody>
 <tr>
 <td><code>app_name</code></td>
-<td><code>"wp"</code></td>
+<td><code>"adminer"</code></td>
 <td>Short name used in all resource names</td>
 </tr>
 <tr>
 <td><code>environment</code></td>
 <td><code>"prod"</code></td>
-<td>Environment label (<code>prod</code>, <code>staging</code>, <code>dev</code>)</td>
+<td>Environment label</td>
 </tr>
 <tr>
 <td><code>location</code></td>
@@ -2947,7 +2626,7 @@
 </tr>
 <tr>
 <td><code>vm_flavor</code></td>
-<td><code>"CSO4A8"</code></td>
+<td><code>"CSO1A2"</code></td>
 <td>CloudServer flavor</td>
 </tr>
 <tr>
@@ -2957,38 +2636,47 @@
 </tr>
 <tr>
 <td><code>vm_disk_size_gb</code></td>
-<td><code>40</code></td>
+<td><code>20</code></td>
 <td>Boot disk size in GB</td>
 </tr>
 <tr>
 <td><code>ssh_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for SSH access — <strong>restrict to your IP in production</strong></td>
+<td>CIDR for SSH — restrict in production</td>
 </tr>
 <tr>
-<td><code>dbaas_flavor</code></td>
-<td><code>"DBO2A8"</code></td>
-<td>DBaaS flavor</td>
+<td><code>admin_cidr</code></td>
+<td><code>"0.0.0.0/0"</code></td>
+<td>CIDR for web UI — <strong>always restrict</strong></td>
 </tr>
 <tr>
-<td><code>db_storage_gb</code></td>
-<td><code>20</code></td>
-<td>DBaaS initial storage in GB</td>
+<td><code>adminer_version</code></td>
+<td><code>"4.8.1"</code></td>
+<td>Adminer release version</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>adminer_url</code></td>
+<td>Adminer web interface URL</td>
 </tr>
 <tr>
-<td><code>wp_admin_user</code></td>
-<td><code>"admin"</code></td>
-<td>WordPress admin username</td>
+<td><code>vm_public_ip</code></td>
+<td>Public IP address of the VM</td>
 </tr>
 <tr>
-<td><code>wp_title</code></td>
-<td><code>"My WordPress Site"</code></td>
-<td>Site title</td>
-</tr>
-<tr>
-<td><code>domain</code></td>
-<td><code>""</code></td>
-<td>Custom domain for HTTPS — leave empty to use the Elastic IP</td>
+<td><code>ssh_command</code></td>
+<td>SSH command to connect to the VM</td>
 </tr>
 </tbody>
 </table>
@@ -2996,163 +2684,87 @@
 <h2 id="deployment-instructions">Deployment Instructions<a class="headerlink" href="#deployment-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="1-clone-and-navigate">1. Clone and navigate<a class="headerlink" href="#1-clone-and-navigate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arubacloud/terraform-arubacloud-examples.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/wordpress
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/adminer
 </span></code></pre></div>
 <h3 id="2-configure-variables">2. Configure variables<a class="headerlink" href="#2-configure-variables" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>terraform.tfvars.example<span class="w"> </span>terraform.tfvars
 </span></code></pre></div>
-<p>Edit <code>terraform.tfvars</code> with your credentials and passwords.</p>
-<blockquote>
-<p><strong>Tip:</strong> Store credentials as environment variables to avoid writing them to disk:</p>
-</blockquote>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_arubacloud_client_id</span><span class="o">=</span><span class="s2">&quot;your-id&quot;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TF_VAR_arubacloud_client_secret</span><span class="o">=</span><span class="s2">&quot;your-secret&quot;</span>
+<p>Set your credentials and <strong>restrict CIDRs to your management IP</strong>:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">arubacloud_client_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your-client-id&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">arubacloud_client_secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your-client-secret&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">ssh_public_key</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ssh-ed25519 AAAA...&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">ssh_cidr</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">admin_cidr</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
 </span></code></pre></div>
-<h3 id="3-initialize-and-deploy">3. Initialize and deploy<a class="headerlink" href="#3-initialize-and-deploy" title="Permanent link">&para;</a></h3>
+<h3 id="3-deploy">3. Deploy<a class="headerlink" href="#3-deploy" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>init
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan<span class="w">   </span><span class="c1"># review the execution plan</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<h3 id="4-access-wordpress">4. Access WordPress<a class="headerlink" href="#4-access-wordpress" title="Permanent link">&para;</a></h3>
-<p>After apply completes (typically 10–15 minutes):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>site_url<span class="w">          </span><span class="c1"># e.g. http://203.0.113.10</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>terraform<span class="w"> </span>output<span class="w"> </span>wp_admin_url<span class="w">      </span><span class="c1"># e.g. http://203.0.113.10/wp-admin</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>wp_admin_password
+<p>Bootstrap takes approximately <strong>2–3 minutes</strong>.</p>
+<h3 id="4-connect-to-a-database">4. Connect to a database<a class="headerlink" href="#4-connect-to-a-database" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>adminer_url
 </span></code></pre></div>
-<p>Open the admin URL in your browser and log in.</p>
-<h3 id="5-follow-cloud-init-progress-optional">5. Follow cloud-init progress (optional)<a class="headerlink" href="#5-follow-cloud-init-progress-optional" title="Permanent link">&para;</a></h3>
-<p>While cloud-init runs, you can tail the bootstrap log:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/cloud-init-output.log
-</span></code></pre></div>
-<hr />
-<h2 id="destroy-instructions">Destroy Instructions<a class="headerlink" href="#destroy-instructions" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>terraform<span class="w"> </span>destroy
-</span></code></pre></div>
-<p>This removes all created resources. The DBaaS data <strong>is destroyed</strong> — take a snapshot first if you need to preserve data:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Take a DBaaS backup before destroying (manual step via console or API)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>terraform<span class="w"> </span>destroy
-</span></code></pre></div>
+<p>Open the URL in your browser and enter:</p>
+<ul>
+<li><strong>Server:</strong> hostname or IP of your database server</li>
+<li><strong>Username / Password:</strong> your database credentials</li>
+<li><strong>Database:</strong> database name (optional — leave blank to list all)</li>
+</ul>
 <hr />
 <h2 id="security-recommendations">Security Recommendations<a class="headerlink" href="#security-recommendations" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Restrict SSH to your IP.</strong> Set <code>ssh_cidr = "your.ip.address/32"</code> in <code>terraform.tfvars</code>. The default <code>0.0.0.0/0</code> is for getting-started convenience only.</p>
+<p><strong>Always restrict <code>admin_cidr</code> to your management IP.</strong> Adminer exposes database credentials in the browser and has no built-in brute-force protection. Default <code>0.0.0.0/0</code> is acceptable only for initial testing on a disposable VM.</p>
 </li>
 <li>
-<p><strong>Use a custom domain with HTTPS.</strong> Set the <code>domain</code> variable. Certbot will automatically provision and renew a Let's Encrypt certificate. WordPress stores the site URL in the database — changing from HTTP to HTTPS after deployment requires a database URL update.</p>
+<p><strong>Do not store sensitive DB credentials in <code>terraform.tfvars</code>.</strong> Use environment variables (<code>TF_VAR_*</code>) or a secrets manager when automating deployments.</p>
 </li>
 <li>
-<p><strong>Change the default admin username.</strong> Set <code>wp_admin_user</code> to something other than <code>"admin"</code> to reduce brute-force exposure.</p>
-</li>
-<li>
-<p><strong>Keep WordPress and plugins updated.</strong> Enable automatic updates via the WordPress dashboard or <code>wp-cron</code>.</p>
-</li>
-<li>
-<p><strong>Install a security plugin.</strong> Consider Wordfence or iThemes Security after deployment.</p>
-</li>
-<li>
-<p><strong>Do not expose MySQL publicly.</strong> The DBaaS security group already restricts MySQL to the VM's IP. Do not add <code>0.0.0.0/0</code> ingress rules to the DBaaS security group.</p>
+<p><strong>Consider adding HTTP Basic Auth.</strong> For an additional authentication layer before Adminer loads, enable Apache Basic Auth:</p>
 </li>
 </ol>
-<hr />
-<h2 id="upgrade-considerations">Upgrade Considerations<a class="headerlink" href="#upgrade-considerations" title="Permanent link">&para;</a></h2>
-<h3 id="wordpress-core-plugin-updates">WordPress core / plugin updates<a class="headerlink" href="#wordpress-core-plugin-updates" title="Permanent link">&para;</a></h3>
-<p>Update through the WordPress admin dashboard or via WP-CLI:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>wp<span class="w"> </span>--path<span class="o">=</span>/var/www/html<span class="w"> </span>core<span class="w"> </span>update
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>-u<span class="w"> </span>www-data<span class="w"> </span>wp<span class="w"> </span>--path<span class="o">=</span>/var/www/html<span class="w"> </span>plugin<span class="w"> </span>update<span class="w"> </span>--all
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-c<span class="w"> </span>/etc/apache2/.htpasswd<span class="w"> </span>admin
 </span></code></pre></div>
-<h3 id="php-version-upgrade">PHP version upgrade<a class="headerlink" href="#php-version-upgrade" title="Permanent link">&para;</a></h3>
-<p>Change the PHP packages in <code>cloud-init.yaml.tpl</code> and trigger a VM replacement by modifying <code>user_data</code> (e.g. add a timestamp comment). Run <code>terraform apply</code> to replace the instance with a fresh bootstrap.</p>
-<h3 id="provider-upgrade">Provider upgrade<a class="headerlink" href="#provider-upgrade" title="Permanent link">&para;</a></h3>
-<p>When the provider releases a new minor version, update the constraint in <code>versions.tf</code> and run <code>terraform init -upgrade</code>. Always review the provider CHANGELOG before upgrading.</p>
-<hr />
-<h2 id="screenshots">Screenshots<a class="headerlink" href="#screenshots" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>Screenshot placeholder.</strong> After deployment, add screenshots of the WordPress front page and admin dashboard here.</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Admin dashboard</th>
-<th>Front page</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>(screenshot)</em></td>
-<td><em>(screenshot)</em></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="login-credentials-after-deployment">Login Credentials After Deployment<a class="headerlink" href="#login-credentials-after-deployment" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th>URL</th>
-<th>Username</th>
-<th>Password</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WordPress Admin</td>
-<td><code>$(terraform output wp_admin_url)</code></td>
-<td><code>$(terraform output wp_admin_user)</code></td>
-<td><code>$(terraform output -raw wp_admin_password)</code></td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td><code>$(terraform output dbaas_host):3306</code></td>
-<td><code>wordpress</code></td>
-<td><code>$(terraform output -raw db_password)</code></td>
-</tr>
-<tr>
-<td>SSH</td>
-<td><code>$(terraform output ssh_command)</code></td>
-<td><code>ubuntu</code></td>
-<td>SSH key</td>
-</tr>
-</tbody>
-</table>
+<p>Then add the following to <code>/etc/apache2/sites-enabled/000-default.conf</code> inside the <code>&lt;VirtualHost&gt;</code> block:</p>
+<div class="language-apache highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">/var/www/html</span><span class="nt">&gt;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nb">AuthType</span><span class="w"> </span>Basic
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nb">AuthName</span><span class="w"> </span><span class="s2">&quot;Restricted&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nb">AuthUserFile</span><span class="w"> </span><span class="sx">/etc/apache2/.htpasswd</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nb">Require</span><span class="w"> </span>valid-user
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">&lt;/Directory&gt;</span>
+</span></code></pre></div>
+<p>Reload Apache: <code>sudo systemctl reload apache2</code></p>
+<ol>
+<li><strong>Use a VPN.</strong> The most secure approach is to keep <code>admin_cidr</code> locked to your WireGuard or other VPN tunnel CIDR, and access Adminer only over VPN.</li>
+</ol>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="error-establishing-a-database-connection">"Error establishing a database connection"<a class="headerlink" href="#error-establishing-a-database-connection" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>DBaaS not ready yet.</strong> cloud-init waits up to 15 minutes for MySQL. If the VM booted before the DBaaS was ready, SSH in and check <code>/var/log/cloud-init-output.log</code>.</li>
-<li><strong>Missing database grant.</strong> Verify that <code>arubacloud_databasegrant.wordpress</code> was created successfully (<code>terraform state show arubacloud_databasegrant.wordpress</code>).</li>
-<li><strong>Firewall.</strong> Confirm the DBaaS security group has a MySQL ingress rule (<code>arubacloud_securityrule.dbaas_mysql</code>) with the correct source IP.</li>
-</ol>
-<h3 id="apache-serves-it-works-instead-of-wordpress">Apache serves "It works!" instead of WordPress<a class="headerlink" href="#apache-serves-it-works-instead-of-wordpress" title="Permanent link">&para;</a></h3>
-<p>The cloud-init script removes <code>/var/www/html/index.html</code> after deploying WordPress. If you applied an older version, SSH in and run:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/var/www/html/index.html
+<h3 id="adminer-page-not-loading">Adminer page not loading<a class="headerlink" href="#adminer-page-not-loading" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Check Apache is running</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>apache2
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Check Adminer PHP file exists</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>ls<span class="w"> </span>-la<span class="w"> </span>/var/www/html/adminer.php
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Check cloud-init completed successfully</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/var/log/cloud-init-output.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-30
 </span></code></pre></div>
-<h3 id="certbot-fails-to-issue-a-certificate">Certbot fails to issue a certificate<a class="headerlink" href="#certbot-fails-to-issue-a-certificate" title="Permanent link">&para;</a></h3>
-<ul>
-<li>DNS must resolve the domain to the VM's Elastic IP <strong>before</strong> <code>terraform apply</code>.</li>
-<li>Certbot requires ports 80 and 443 to be reachable. Verify your security group rules.</li>
-<li>Check <code>/var/log/letsencrypt/letsencrypt.log</code> for details.</li>
-</ul>
-<h3 id="cloud-init-bootstrap-did-not-complete">cloud-init bootstrap did not complete<a class="headerlink" href="#cloud-init-bootstrap-did-not-complete" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>cloud-init
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/var/log/cloud-init-output.log
+<h3 id="cannot-connect-to-database">Cannot connect to database<a class="headerlink" href="#cannot-connect-to-database" title="Permanent link">&para;</a></h3>
+<p>Verify the database host is reachable from the VM:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># For MySQL:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>nc<span class="w"> </span>-zv<span class="w"> </span>&lt;db-host&gt;<span class="w"> </span><span class="m">3306</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># For PostgreSQL:</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>nc<span class="w"> </span>-zv<span class="w"> </span>&lt;db-host&gt;<span class="w"> </span><span class="m">5432</span>
 </span></code></pre></div>
-<p>Look for the <code>final_message</code> near the end of the log. If missing, scroll up to find the error.</p>
-<h3 id="plan-errors-resource-name-already-exists">Plan errors: "resource name already exists"<a class="headerlink" href="#plan-errors-resource-name-already-exists" title="Permanent link">&para;</a></h3>
-<p>A previous <code>terraform destroy</code> may not have completed. Either finish destroying or change <code>app_name</code> / <code>environment</code> to use a different resource name prefix.</p>
+<p>Check the security group on your database server allows inbound connections from the Adminer VM's IP.</p>
 <hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://wordpress.org/documentation/">WordPress Documentation</a></li>
-<li><a href="https://developer.wordpress.org/cli/commands/">WP-CLI Commands</a></li>
+<li><a href="https://www.adminer.org/en/plugins/">Adminer Documentation</a></li>
+<li><a href="https://github.com/vrana/adminer/releases">Adminer GitHub Releases</a></li>
 <li><a href="https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs">ArubaCloud Terraform Provider</a></li>
-<li><a href="https://api.arubacloud.com/docs/">ArubaCloud API Documentation</a></li>
-<li><a href="https://cloudinit.readthedocs.io/">cloud-init Reference</a></li>
-<li><a href="https://certbot.eff.org/docs/">Certbot Documentation</a></li>
 </ul>
 
 
@@ -3176,7 +2788,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 9, 2026 14:21:54 UTC">July 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:42:51 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3186,7 +2798,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 9, 2026 14:21:54 UTC">July 9, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:42:51 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3223,7 +2835,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../security/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Security">
+          <a href="../nginx/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NGINX">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3233,20 +2845,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Security
+                NGINX
               </div>
             </div>
           </a>
         
         
           
-          <a href="../nextcloud/" class="md-footer__link md-footer__link--next" aria-label="Next: Nextcloud">
+          <a href="../docker-host/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker Host">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Nextcloud
+                Docker Host
               </div>
             </div>
             <div class="md-footer__button md-icon">
