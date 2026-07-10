@@ -1,0 +1,69 @@
+name: New Example Request
+description: Request a new Terraform example for deploying an application on Aruba Cloud
+title: "Example: "
+labels: ["example"]
+body:
+  - type: input
+    id: app_name
+    attributes:
+      label: Application name
+      placeholder: e.g. Gitea, Nextcloud, MinIO
+    validations:
+      required: true
+
+  - type: textarea
+    id: overview
+    attributes:
+      label: Overview
+      description: What does this application do? Why would someone deploy it on Aruba Cloud?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: vm_size
+    attributes:
+      label: Suggested VM size
+      options:
+        - CSO1A2 (1 vCPU / 2 GB)
+        - CSO2A4 (2 vCPU / 4 GB)
+        - CSO4A8 (4 vCPU / 8 GB)
+        - CSO8A16 (8 vCPU / 16 GB)
+        - CSO16A32 (16 vCPU / 32 GB)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requires_dbaas
+    attributes:
+      label: Requires managed database?
+      options:
+        - label: "Yes — MySQL 8.0"
+        - label: "Yes — PostgreSQL"
+        - label: "No — self-contained"
+
+  - type: textarea
+    id: ports
+    attributes:
+      label: Ports needed
+      placeholder: |
+        TCP 80 (HTTP)
+        TCP 443 (HTTPS)
+        TCP 22 (SSH)
+    validations:
+      required: true
+
+  - type: input
+    id: docs_link
+    attributes:
+      label: Official documentation URL
+      placeholder: https://docs.example.com/
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License
+      placeholder: e.g. MIT, Apache-2.0, AGPL-3.0
+    validations:
+      required: true

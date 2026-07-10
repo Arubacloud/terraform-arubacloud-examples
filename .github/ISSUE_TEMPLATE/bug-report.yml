@@ -1,0 +1,63 @@
+name: Bug Report
+description: Report a bug or incorrect behavior in an existing example
+title: "bug(<example>): "
+labels: ["bug"]
+body:
+  - type: input
+    id: example
+    attributes:
+      label: Affected example
+      placeholder: e.g. nextcloud, wordpress, k3s-ha
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What went wrong?
+      description: Describe the problem clearly. Include any error messages.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Copy terraform.tfvars.example to terraform.tfvars
+        2. Run `terraform apply`
+        3. SSH into the VM
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: input
+    id: terraform_version
+    attributes:
+      label: Terraform version
+      placeholder: "e.g. 1.9.8 (run: terraform version)"
+    validations:
+      required: true
+
+  - type: input
+    id: provider_version
+    attributes:
+      label: Provider version (arubacloud/arubacloud)
+      placeholder: "e.g. 0.5.0 (run: terraform providers)"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: e.g. Ubuntu 22.04, macOS 14, Windows 11
+    validations:
+      required: false
