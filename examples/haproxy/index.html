@@ -12,13 +12,13 @@
         <meta name="author" content="Aruba Cloud">
       
       
-        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/nginx/">
+        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/haproxy/">
       
       
-        <link rel="prev" href="../adguard-home/">
+        <link rel="prev" href="../coredns/">
       
       
-        <link rel="next" href="../caddy/">
+        <link rel="next" href="../adminer/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>NGINX - ArubaCloud Terraform Examples</title>
+        <title>HAProxy - ArubaCloud Terraform Examples</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#nginx-on-aruba-cloud" class="md-skip">
+        <a href="#haproxy-on-aruba-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NGINX
+              HAProxy
             
           </span>
         </div>
@@ -1137,6 +1137,75 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NGINX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caddy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caddy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../coredns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CoreDNS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1154,7 +1223,7 @@
   
   
   <span class="md-ellipsis">
-    NGINX
+    HAProxy
     
   </span>
   
@@ -1167,7 +1236,7 @@
   
   
   <span class="md-ellipsis">
-    NGINX
+    HAProxy
     
   </span>
   
@@ -1314,51 +1383,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-the-site" class="md-nav__link">
+  <a href="#4-access-the-stats-page" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access the site
+      4. Access the stats page
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-deploy-your-content" class="md-nav__link">
+  <a href="#5-add-or-remove-backends" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Deploy your content
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customisation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Customisation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customisation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#serving-a-second-site-virtual-hosting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Serving a second site (virtual hosting)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reverse-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverse proxy
+      5. Add or remove backends
     </span>
   </a>
   
@@ -1389,18 +1425,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nginx-not-starting" class="md-nav__link">
+  <a href="#haproxy-not-starting" class="md-nav__link">
     <span class="md-ellipsis">
-      NGINX not starting
+      HAProxy not starting
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#lets-encrypt-certificate-not-issued" class="md-nav__link">
+  <a href="#backend-servers-showing-down-in-stats" class="md-nav__link">
     <span class="md-ellipsis">
-      Let's Encrypt certificate not issued
+      Backend servers showing DOWN in stats
     </span>
   </a>
   
@@ -1424,75 +1460,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../caddy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Caddy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../coredns/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    CoreDNS
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../haproxy/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    HAProxy
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2535,51 +2502,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-access-the-site" class="md-nav__link">
+  <a href="#4-access-the-stats-page" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Access the site
+      4. Access the stats page
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-deploy-your-content" class="md-nav__link">
+  <a href="#5-add-or-remove-backends" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Deploy your content
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#customisation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Customisation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Customisation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#serving-a-second-site-virtual-hosting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Serving a second site (virtual hosting)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reverse-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reverse proxy
+      5. Add or remove backends
     </span>
   </a>
   
@@ -2610,18 +2544,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nginx-not-starting" class="md-nav__link">
+  <a href="#haproxy-not-starting" class="md-nav__link">
     <span class="md-ellipsis">
-      NGINX not starting
+      HAProxy not starting
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#lets-encrypt-certificate-not-issued" class="md-nav__link">
+  <a href="#backend-servers-showing-down-in-stats" class="md-nav__link">
     <span class="md-ellipsis">
-      Let's Encrypt certificate not issued
+      Backend servers showing DOWN in stats
     </span>
   </a>
   
@@ -2660,38 +2594,41 @@
   
 
 
-<h1 id="nginx-on-aruba-cloud">NGINX on Aruba Cloud<a class="headerlink" href="#nginx-on-aruba-cloud" title="Permanent link">&para;</a></h1>
-<p>Deploy <a href="https://nginx.org">NGINX</a> as a web server or reverse proxy on Aruba Cloud using Terraform and cloud-init. This example provisions a production-ready NGINX instance with a default static site and optional automatic HTTPS via Let's Encrypt.</p>
+<h1 id="haproxy-on-aruba-cloud">HAProxy on Aruba Cloud<a class="headerlink" href="#haproxy-on-aruba-cloud" title="Permanent link">&para;</a></h1>
+<p>Deploy <a href="https://www.haproxy.org">HAProxy</a> — a high-performance TCP/HTTP load balancer and proxy — on Aruba Cloud using Terraform and cloud-init. Backend servers are configured directly as a Terraform variable, making it easy to wire HAProxy in front of other examples in this repository.</p>
 <blockquote>
 <p><strong>Provider version:</strong> arubacloud/arubacloud <code>~&gt; 0.5</code> | <strong>Terraform:</strong> ≥ 1.9</p>
 </blockquote>
 <hr />
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>NGINX is a high-performance HTTP server, reverse proxy, and load balancer. This example provisions a minimal VM running NGINX with:</p>
+<p>HAProxy is the de-facto standard open-source load balancer for high-availability web applications. This example provisions:</p>
 <ul>
-<li>NGINX installed from <strong>Ubuntu 22.04 official packages</strong></li>
-<li>A default <strong>static HTML site</strong> served from <code>/var/www/html</code></li>
-<li>Ports 80 (HTTP) and 443 (HTTPS) open to <code>web_cidr</code></li>
-<li><strong>Optional automatic HTTPS</strong> via Let's Encrypt / Certbot when <code>domain</code> and <code>certbot_email</code> are set</li>
+<li><strong>HAProxy</strong> installed from Ubuntu 22.04 packages</li>
+<li><strong>HTTP frontend</strong> on port 80 with configurable round-robin backends</li>
+<li><strong>Stats page</strong> on port 8404 (restricted to <code>admin_cidr</code>) with password auth</li>
+<li>Backend servers supplied via the <code>backends</code> Terraform variable — add or remove servers with <code>terraform apply</code></li>
 </ul>
-<p>After deployment, replace the default site with your own content or additional <code>server {}</code> blocks for virtual hosting or reverse proxying.</p>
+<blockquote>
+<p><strong>No backends?</strong> Deploy without backends and HAProxy will return 503 on port 80. Add backend IPs later by updating <code>backends</code> and re-applying.</p>
+</blockquote>
 <hr />
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
     Internet((Internet)) --&gt;|HTTP :80 — web_cidr| EIP[Elastic IP]
-    Internet --&gt;|HTTPS :443 — web_cidr| EIP
-    Admin((Admin)) --&gt;|SSH :22 — ssh_cidr| EIP
+    Admin((Admin)) --&gt;|Stats :8404 — admin_cidr| EIP
+    Admin --&gt;|SSH :22 — ssh_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
         subgraph VPC["VPC / Subnet"]
-            VM["CSO1A2 — 1 vCPU / 2 GB\nNGINX\n20 GB disk"]
+            LB["CSO2A4 — 2 vCPU / 4 GB\nHAProxy\n20 GB disk"]
         end
-        EIP --&gt; VM
-        SG["Security Group\nIN: 22 · 80 · 443\nOUT: all"]
+        EIP --&gt; LB
+        SG["Security Group\nIN: 22 · 80 · 8404\nOUT: all"]
     end
 
-    VM --&gt;|ACME challenge| LE[(Let's Encrypt)]
-    SG -.-&gt; VM</code></pre>
+    LB --&gt;|round-robin| B1[Backend web1]
+    LB --&gt;|round-robin| B2[Backend web2]
+    SG -.-&gt; LB</code></pre>
 <hr />
 <h2 id="infrastructure-created">Infrastructure Created<a class="headerlink" href="#infrastructure-created" title="Permanent link">&para;</a></h2>
 <table>
@@ -2705,57 +2642,57 @@
 <tbody>
 <tr>
 <td><code>arubacloud_project</code></td>
-<td><code>nginx-prod</code></td>
+<td><code>haproxy-prod</code></td>
 <td>Project container</td>
 </tr>
 <tr>
 <td><code>arubacloud_vpc</code></td>
-<td><code>nginx-prod-vpc</code></td>
+<td><code>haproxy-prod-vpc</code></td>
 <td>Virtual Private Cloud</td>
 </tr>
 <tr>
 <td><code>arubacloud_subnet</code></td>
-<td><code>nginx-prod-subnet</code></td>
+<td><code>haproxy-prod-subnet</code></td>
 <td>Basic subnet</td>
 </tr>
 <tr>
 <td><code>arubacloud_securitygroup</code></td>
-<td><code>nginx-prod-vm-sg</code></td>
+<td><code>haproxy-prod-vm-sg</code></td>
 <td>Security group</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>nginx-prod-vm-ssh</code></td>
+<td><code>haproxy-prod-vm-ssh</code></td>
 <td>SSH ingress</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>nginx-prod-vm-http</code></td>
+<td><code>haproxy-prod-vm-http</code></td>
 <td>HTTP ingress TCP 80</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>nginx-prod-vm-https</code></td>
-<td>HTTPS ingress TCP 443</td>
+<td><code>haproxy-prod-vm-stats</code></td>
+<td>Stats page TCP 8404</td>
 </tr>
 <tr>
 <td><code>arubacloud_elasticip</code></td>
-<td><code>nginx-prod-vm-eip</code></td>
+<td><code>haproxy-prod-vm-eip</code></td>
 <td>VM public IP</td>
 </tr>
 <tr>
 <td><code>arubacloud_blockstorage</code></td>
-<td><code>nginx-prod-boot</code></td>
+<td><code>haproxy-prod-boot</code></td>
 <td>20 GB boot disk (Performance)</td>
 </tr>
 <tr>
 <td><code>arubacloud_keypair</code></td>
-<td><code>nginx-prod-keypair</code></td>
+<td><code>haproxy-prod-keypair</code></td>
 <td>SSH public key</td>
 </tr>
 <tr>
 <td><code>arubacloud_cloudserver</code></td>
-<td><code>nginx-prod-vm</code></td>
+<td><code>haproxy-prod-vm</code></td>
 <td>CloudServer VM</td>
 </tr>
 </tbody>
@@ -2773,8 +2710,8 @@
 <tbody>
 <tr>
 <td>CloudServer VM</td>
-<td>CSO1A2 — 1 vCPU / 2 GB</td>
-<td>~€9</td>
+<td>CSO2A4 — 2 vCPU / 4 GB</td>
+<td>~€18</td>
 </tr>
 <tr>
 <td>Boot disk</td>
@@ -2789,7 +2726,7 @@
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>~€15/mo</strong></td>
+<td><strong>~€24/mo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2800,7 +2737,6 @@
 <li>ArubaCloud Terraform Provider <code>~&gt; 0.5</code></li>
 <li>An ArubaCloud account with OAuth2 API credentials</li>
 <li>An SSH key pair</li>
-<li>(For HTTPS) A domain name with an A record pointing to the VM's Elastic IP</li>
 </ul>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
@@ -2825,6 +2761,10 @@
 <td><code>ssh_public_key</code></td>
 <td>SSH public key content</td>
 </tr>
+<tr>
+<td><code>stats_password</code></td>
+<td>Password for HAProxy stats page (username: <code>admin</code>)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h3>
@@ -2839,7 +2779,7 @@
 <tbody>
 <tr>
 <td><code>app_name</code></td>
-<td><code>"nginx"</code></td>
+<td><code>"haproxy"</code></td>
 <td>Short name used in all resource names</td>
 </tr>
 <tr>
@@ -2864,7 +2804,7 @@
 </tr>
 <tr>
 <td><code>vm_flavor</code></td>
-<td><code>"CSO1A2"</code></td>
+<td><code>"CSO2A4"</code></td>
 <td>CloudServer flavor</td>
 </tr>
 <tr>
@@ -2880,22 +2820,22 @@
 <tr>
 <td><code>ssh_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for SSH — restrict in production</td>
+<td>CIDR for SSH</td>
 </tr>
 <tr>
 <td><code>web_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for HTTP/HTTPS — typically <code>0.0.0.0/0</code> for public sites</td>
+<td>CIDR for HTTP frontend port 80</td>
 </tr>
 <tr>
-<td><code>domain</code></td>
-<td><code>""</code></td>
-<td>Domain name for Let's Encrypt HTTPS (DNS must point to VM first)</td>
+<td><code>admin_cidr</code></td>
+<td><code>"0.0.0.0/0"</code></td>
+<td>CIDR for stats page port 8404 — restrict in production</td>
 </tr>
 <tr>
-<td><code>certbot_email</code></td>
-<td><code>""</code></td>
-<td>Email for Let's Encrypt notifications (required with <code>domain</code>)</td>
+<td><code>backends</code></td>
+<td><code>[]</code></td>
+<td>Backend server list in <code>host:port</code> format</td>
 </tr>
 </tbody>
 </table>
@@ -2910,12 +2850,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>http_url</code></td>
-<td>HTTP URL of the web server</td>
+<td><code>proxy_url</code></td>
+<td>HAProxy HTTP frontend URL</td>
 </tr>
 <tr>
-<td><code>https_url</code></td>
-<td>HTTPS URL (only valid when <code>domain</code> and certificate are configured)</td>
+<td><code>stats_url</code></td>
+<td>HAProxy stats page URL</td>
 </tr>
 <tr>
 <td><code>vm_public_ip</code></td>
@@ -2931,92 +2871,64 @@
 <h2 id="deployment-instructions">Deployment Instructions<a class="headerlink" href="#deployment-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="1-clone-and-navigate">1. Clone and navigate<a class="headerlink" href="#1-clone-and-navigate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arubacloud/terraform-arubacloud-examples.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/nginx
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/haproxy
 </span></code></pre></div>
 <h3 id="2-configure-variables">2. Configure variables<a class="headerlink" href="#2-configure-variables" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>terraform.tfvars.example<span class="w"> </span>terraform.tfvars
 </span></code></pre></div>
-<p>For HTTP-only deployment, only credentials and SSH key are required. For HTTPS:</p>
-<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">domain</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example.com&quot;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">certbot_email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;admin@example.com&quot;</span>
+<p>Set the stats password and optionally your backend servers:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">stats_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;your-stats-password&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">backends</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;10.0.0.1:80&quot;, &quot;10.0.0.2:80&quot;</span><span class="p">]</span>
 </span></code></pre></div>
-<blockquote>
-<p><strong>Important:</strong> The DNS A record for <code>domain</code> must already point to the VM's Elastic IP before you apply. To get the IP first, run <code>terraform apply</code> without <code>domain</code>, note the <code>vm_public_ip</code> output, set your DNS record, then re-apply with <code>domain</code> set.</p>
-</blockquote>
 <h3 id="3-deploy">3. Deploy<a class="headerlink" href="#3-deploy" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>init
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<p>Bootstrap takes approximately <strong>1–2 minutes</strong> (3–5 minutes with Let's Encrypt).</p>
-<h3 id="4-access-the-site">4. Access the site<a class="headerlink" href="#4-access-the-site" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>http_url
+<p>Bootstrap takes approximately <strong>1–2 minutes</strong>.</p>
+<h3 id="4-access-the-stats-page">4. Access the stats page<a class="headerlink" href="#4-access-the-stats-page" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>stats_url
 </span></code></pre></div>
-<h3 id="5-deploy-your-content">5. Deploy your content<a class="headerlink" href="#5-deploy-your-content" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># Replace the default page:</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>cp<span class="w"> </span>my-site/*<span class="w"> </span>/var/www/html/
+<p>Log in with <code>admin</code> / <code>stats_password</code> to view live connection counts, traffic rates, and backend health.</p>
+<h3 id="5-add-or-remove-backends">5. Add or remove backends<a class="headerlink" href="#5-add-or-remove-backends" title="Permanent link">&para;</a></h3>
+<p>Update the <code>backends</code> variable and re-apply — no VM restart needed:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># terraform.tfvars</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">backends</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;10.0.0.1:80&quot;</span>,<span class="w"> </span><span class="s2">&quot;10.0.0.2:80&quot;</span>,<span class="w"> </span><span class="s2">&quot;10.0.0.3:80&quot;</span><span class="o">]</span>
 </span></code></pre></div>
-<hr />
-<h2 id="customisation">Customisation<a class="headerlink" href="#customisation" title="Permanent link">&para;</a></h2>
-<h3 id="serving-a-second-site-virtual-hosting">Serving a second site (virtual hosting)<a class="headerlink" href="#serving-a-second-site-virtual-hosting" title="Permanent link">&para;</a></h3>
-<p>Create a new site config and enable it:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/nginx/sites-available/mysite.conf<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="s">server {</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">    listen 80;</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s">    server_name mysite.example.com;</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">    root /var/www/mysite;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">    index index.html;</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">    location / { try_files $uri $uri/ =404; }</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">}</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">EOF</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/mysite.conf<span class="w"> </span>/etc/nginx/sites-enabled/
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<h3 id="reverse-proxy">Reverse proxy<a class="headerlink" href="#reverse-proxy" title="Permanent link">&para;</a></h3>
-<p>Replace the <code>location /</code> block:</p>
-<div class="language-nginx highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kn">proxy_pass</span><span class="w">         </span><span class="s">http://127.0.0.1:8080</span><span class="p">;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">}</span>
-</span></code></pre></div>
+<p>HAProxy reloads gracefully without dropping active connections.</p>
 <hr />
 <h2 id="security-recommendations">Security Recommendations<a class="headerlink" href="#security-recommendations" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Restrict <code>ssh_cidr</code> to your management IP.</strong> SSH on <code>0.0.0.0/0</code> is acceptable for a quick start, but exposes the VM to brute-force attacks.</p>
+<p><strong>Restrict <code>admin_cidr</code></strong> to your management IP. The stats page exposes server IPs, connection counts, and configuration details.</p>
 </li>
 <li>
-<p><strong>Enable HTTPS for any production site.</strong> Set <code>domain</code> and <code>certbot_email</code> to get a free Let's Encrypt certificate. HTTP-only should only be used for internal or development sites.</p>
-</li>
-<li>
-<p><strong>Keep NGINX updated.</strong> Ubuntu's unattended-upgrades handles security patches automatically if enabled. Check with <code>sudo unattended-upgrades --dry-run</code>.</p>
+<p><strong>Use HTTPS for production.</strong> Pair HAProxy with a TLS terminator (e.g., Caddy or NGINX in front) or configure HAProxy to terminate SSL directly using a certificate in <code>/etc/ssl/</code>.</p>
 </li>
 </ol>
 <hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="nginx-not-starting">NGINX not starting<a class="headerlink" href="#nginx-not-starting" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span>
+<h3 id="haproxy-not-starting">HAProxy not starting<a class="headerlink" href="#haproxy-not-starting" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>haproxy<span class="w"> </span>-c<span class="w"> </span>-f<span class="w"> </span>/etc/haproxy/haproxy.cfg<span class="w">   </span><span class="c1"># config check</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>haproxy
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>haproxy<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span>
 </span></code></pre></div>
-<h3 id="lets-encrypt-certificate-not-issued">Let's Encrypt certificate not issued<a class="headerlink" href="#lets-encrypt-certificate-not-issued" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check DNS propagation first:</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dig<span class="w"> </span>+short<span class="w"> </span>A<span class="w"> </span>example.com
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Re-run certbot manually:</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>example.com<span class="w"> </span>-m<span class="w"> </span>admin@example.com<span class="w"> </span>--non-interactive<span class="w"> </span>--agree-tos<span class="w"> </span>--redirect
+<h3 id="backend-servers-showing-down-in-stats">Backend servers showing DOWN in stats<a class="headerlink" href="#backend-servers-showing-down-in-stats" title="Permanent link">&para;</a></h3>
+<p>HAProxy performs <code>GET /</code> health checks on each backend. Ensure:</p>
+<ul>
+<li>Backends are reachable from the HAProxy VM on the configured port</li>
+<li>The backend HTTP server returns 2xx on <code>GET /</code></li>
+</ul>
+<p>Check connectivity:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>curl<span class="w"> </span>-sv<span class="w"> </span>http://&lt;backend-ip&gt;:&lt;port&gt;/
 </span></code></pre></div>
-<p>Common causes: DNS A record not yet propagated, port 80 blocked by <code>web_cidr</code>, or <code>domain</code> mistyped.</p>
 <hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://nginx.org/en/docs/">NGINX Documentation</a></li>
-<li><a href="https://nginx.org/en/docs/beginners_guide.html">NGINX Beginner's Guide</a></li>
-<li><a href="https://certbot.eff.org/instructions">Certbot Documentation</a></li>
+<li><a href="https://docs.haproxy.org">HAProxy Documentation</a></li>
+<li><a href="https://docs.haproxy.org/2.8/configuration.html">HAProxy Configuration Manual</a></li>
 <li><a href="https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs">ArubaCloud Terraform Provider</a></li>
 </ul>
 
@@ -3041,7 +2953,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:42:51 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 13:11:51 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3051,7 +2963,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 12:42:51 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 13:11:51 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3088,7 +3000,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../adguard-home/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AdGuard Home">
+          <a href="../coredns/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CoreDNS">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3098,20 +3010,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                AdGuard Home
+                CoreDNS
               </div>
             </div>
           </a>
         
         
           
-          <a href="../caddy/" class="md-footer__link md-footer__link--next" aria-label="Next: Caddy">
+          <a href="../adminer/" class="md-footer__link md-footer__link--next" aria-label="Next: Adminer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Caddy
+                Adminer
               </div>
             </div>
             <div class="md-footer__button md-icon">
