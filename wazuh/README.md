@@ -15,7 +15,7 @@ Wazuh is a unified security platform that combines a SIEM (Security Information 
 - **Wazuh Dashboard** — Kibana-based web UI for alerts, compliance, and investigation
 
 > **Resource requirements:** Wazuh is resource-intensive. The minimum for a usable all-in-one deployment is **8 vCPU / 16 GB RAM** and **200 GB disk**. Do not attempt to deploy on a smaller VM — the OpenSearch indexer will OOM and fail.
-
+>
 > **Bootstrap time:** The installer downloads and configures multiple components. Expect **20–30 minutes** before the dashboard is accessible.
 
 ---

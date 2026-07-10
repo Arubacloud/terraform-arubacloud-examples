@@ -81,6 +81,7 @@ Config is in `.markdownlint.json`. Rules in effect (all others default to enable
 | MD013 (line length) | disabled | Long lines are fine |
 | MD022 (blanks around headings) | **enabled** | Must have a blank line above AND below every heading |
 | MD024 (duplicate headings) | siblings only | Duplicates allowed if not siblings |
+| MD028 (blank in blockquote) | **enabled** | No bare blank lines between consecutive blockquote lines |
 | MD033 (inline HTML) | disabled | |
 | MD036 (emphasis as heading) | **enabled** | Bold/italic text on its own line is not a heading |
 | MD040 (fenced code language) | **enabled** | Every fenced code block must declare a language |
@@ -120,6 +121,18 @@ some code here
 ````
 
 Use `bash`, `hcl`, `yaml`, `text`, `caddyfile`, `nginx`, `ini`, `sql`, `python`, etc. When no syntax highlighting applies, use `text`.
+
+**Common pitfall — MD028:** two separate `>` blockquotes with a bare blank line between them:
+
+```markdown
+> First note.
+
+> Second note.    ← fails MD028 — bare blank line splits the blockquote
+
+> First note.
+>
+> Second note.    ← correct — use `>` on the blank separator line
+```
 
 ---
 
