@@ -46,6 +46,7 @@ jobs:
           - forgejo
           - gitea
           - k3s-single
+          - jenkins
     steps:
       - uses: actions/checkout@v4
 
