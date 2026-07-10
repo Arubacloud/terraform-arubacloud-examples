@@ -47,6 +47,7 @@ jobs:
           - gitea
           - k3s-single
           - jenkins
+          - grafana
     steps:
       - uses: actions/checkout@v4
 

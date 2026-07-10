@@ -1,0 +1,31 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict SSH to your IP in production (recommended)
+# ssh_cidr = "203.0.113.42/32"
+
+# ── Grafana ───────────────────────────────────────────────────────────────────
+# Grafana admin password (min 8 chars). You will use this to log in.
+grafana_admin_password = "change-me-strong-password"
+
+# Optional: set a domain to enable automatic HTTPS via Let's Encrypt.
+# The domain must point to the VM's Elastic IP before terraform apply.
+# domain = "metrics.example.com"
+
+# ── Component versions (optional overrides) ───────────────────────────────────
+# prometheus_version    = "3.0.1"
+# loki_version          = "3.4.2"
+# node_exporter_version = "1.8.2"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "grafana"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 80
+# billing_period  = "Hour"
