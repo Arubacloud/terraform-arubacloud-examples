@@ -1,0 +1,338 @@
+version: 2
+updates:
+  - package-ecosystem: terraform
+    directory: /modules/network
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /adguard-home
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /adminer
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /authentik
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /bind-dns
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /caddy
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /coredns
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /crowdsec
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /discourse
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /docker-host
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /drone-ci
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /drupal
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /elasticsearch
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /forgejo
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /ghost
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /gitea
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /gitlab
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /grafana
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /graylog
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /haproxy
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /home-assistant
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /jenkins
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /joomla
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /k3s-ha
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /k3s-single
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /keycloak
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /litellm
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /mailcow
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /mattermost
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /minio
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /nextcloud
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /nginx
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /ollama
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /open-webui
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /openclaw
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /opensearch
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /pgadmin
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /pi-hole
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /rocketchat
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /rundeck
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /sonarqube
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /traefik
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /uptime-kuma
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /vault
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /vaultwarden
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /wazuh
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /wireguard
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
+  - package-ecosystem: terraform
+    directory: /wordpress
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+
