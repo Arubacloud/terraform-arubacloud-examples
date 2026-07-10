@@ -59,7 +59,6 @@ const config = {
           versions: process.env.DISABLE_VERSIONING === 'true' ? {} : {
             current: {
               label: 'Next',
-              path: 'next',
             },
           },
           showLastUpdateTime: true,
@@ -134,15 +133,11 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: process.env.DISABLE_VERSIONING === 'true'
-                  ? '/getting-started'
-                  : '/next/getting-started',
+                to: '/getting-started',
               },
               {
                 label: 'Examples',
-                to: process.env.DISABLE_VERSIONING === 'true'
-                  ? '/examples/wordpress'
-                  : '/next/examples/wordpress',
+                to: '/examples/wordpress',
               },
             ],
           },

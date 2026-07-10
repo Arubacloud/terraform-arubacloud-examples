@@ -43,6 +43,26 @@ function resolveIncludes(content, filePath) {
   }).join('');
 }
 
+function rewriteReadmeLinks(content, targetRelPath) {
+  // README files cross-link to sibling apps via ../appname/README.md.
+  // After inlining, those paths are invalid in the Docusaurus docs tree.
+  // Rewrite them to the correct doc page path relative to the current file.
+  //
+  // e.g. in examples/authentik.md: ../keycloak/README.md -> ./keycloak
+  const dir = path.dirname(targetRelPath); // e.g. "examples"
+  const parts = content.split(/(```[\s\S]*?```|~~~[\s\S]*?~~~)/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) return part;
+    return part.replace(
+      /\[([^\]]+)\]\(\.\.\/([^/]+)\/README\.md\)/g,
+      (match, text, appName) => {
+        const docPath = path.join(dir, appName).replace(/\\/g, '/');
+        return `[${text}](/${docPath})`;
+      }
+    );
+  }).join('');
+}
+
 function convertAutolinks(content) {
   // MDX treats <https://...> as JSX and chokes on slashes in URL paths.
   // Convert to standard markdown links so MDX can parse them cleanly.
@@ -96,6 +116,7 @@ walkDir(SOURCE_DIR, (relPath, sourceFile) => {
 
   let content = fs.readFileSync(sourceFile, 'utf8');
   content = resolveIncludes(content, sourceFile);
+  content = rewriteReadmeLinks(content, targetRelPath);
   content = convertAutolinks(content);
   content = convertAdmonitions(content);
 

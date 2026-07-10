@@ -180,6 +180,6 @@ curl -H "Authorization: Bearer sk-my-master-key" \
 
 - [LiteLLM Documentation](https://docs.litellm.ai/)
 - [LiteLLM Supported Providers](https://docs.litellm.ai/docs/providers)
-- [Ollama Example](../ollama/README.md)
+- [Ollama Example](/examples/ollama)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 

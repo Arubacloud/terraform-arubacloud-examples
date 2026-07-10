@@ -4,7 +4,7 @@ title: Open WebUI
 
 # Open WebUI on Aruba Cloud
 
-Deploy [Open WebUI](https://openwebui.com/) — a self-hosted web interface for interacting with LLMs — on Aruba Cloud using Terraform and cloud-init. Connects to [Ollama](../ollama/README.md) for local models, OpenAI, Anthropic, or any OpenAI-compatible endpoint.
+Deploy [Open WebUI](https://openwebui.com/) — a self-hosted web interface for interacting with LLMs — on Aruba Cloud using Terraform and cloud-init. Connects to [Ollama](/examples/ollama) for local models, OpenAI, Anthropic, or any OpenAI-compatible endpoint.
 
 > **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
 
@@ -173,6 +173,6 @@ Navigate to `http://<IP>` and register the first admin account.
 
 - [Open WebUI Documentation](https://docs.openwebui.com/)
 - [Open WebUI GitHub](https://github.com/open-webui/open-webui)
-- [Ollama Example](../ollama/README.md)
+- [Ollama Example](/examples/ollama)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 

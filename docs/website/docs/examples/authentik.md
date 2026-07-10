@@ -20,7 +20,7 @@ Authentik is a lighter-weight alternative to Keycloak, providing a polished admi
 - Web UI on HTTP port 9000 and HTTPS port 9443 (self-signed cert)
 - Setup wizard on first access
 
-> **Keycloak comparison:** See the [Keycloak example](../keycloak/README.md) for an alternative identity provider. Authentik excels at lightweight deployments and has a more modern UI; Keycloak is better for enterprise-grade federation and standards compliance.
+> **Keycloak comparison:** See the [Keycloak example](/examples/keycloak) for an alternative identity provider. Authentik excels at lightweight deployments and has a more modern UI; Keycloak is better for enterprise-grade federation and standards compliance.
 
 ---
 
@@ -162,6 +162,6 @@ Navigate to `http://<IP>:9000/if/flow/initial-setup/` and create the admin accou
 
 - [Authentik Documentation](https://docs.goauthentik.io/)
 - [Authentik Docker Install Guide](https://docs.goauthentik.io/docs/installation/docker-compose)
-- [Keycloak Example](../keycloak/README.md)
+- [Keycloak Example](/examples/keycloak)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 

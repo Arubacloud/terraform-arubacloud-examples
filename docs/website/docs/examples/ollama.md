@@ -188,7 +188,7 @@ ollama pull gemma2            # Google Gemma 2 9B
 
 1. **Always restrict `api_cidr`.** Ollama has no built-in authentication. An open port 11434 allows anyone to run models and exhaust your server resources.
 
-2. **Use Open WebUI for user-facing access.** Deploy [Open WebUI](../open-webui/README.md) as a frontend with authentication, and point it at this Ollama instance.
+2. **Use Open WebUI for user-facing access.** Deploy [Open WebUI](/examples/open-webui) as a frontend with authentication, and point it at this Ollama instance.
 
 ---
 
@@ -196,6 +196,6 @@ ollama pull gemma2            # Google Gemma 2 9B
 
 - [Ollama Documentation](https://ollama.ai/docs)
 - [Ollama Model Library](https://ollama.ai/library)
-- [Open WebUI Example](../open-webui/README.md)
+- [Open WebUI Example](/examples/open-webui)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 
