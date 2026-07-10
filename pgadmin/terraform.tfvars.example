@@ -1,0 +1,24 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# IMPORTANT: Restrict both CIDRs to your management IP — pgAdmin must never be
+# accessible from the public internet.
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "203.0.113.42/32"
+
+# ── pgAdmin ───────────────────────────────────────────────────────────────────
+pgadmin_email    = "admin@example.com"
+pgadmin_password = "change-me-strong-password"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "pgadmin"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO1A2"
+# vm_disk_size_gb = 20
+# billing_period  = "Hour"

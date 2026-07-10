@@ -110,8 +110,11 @@ nav:
           - Pi-hole: examples/pi-hole.md
           - AdGuard Home: examples/adguard-home.md
           - NGINX: examples/nginx.md
+          - Caddy: examples/caddy.md
+          - CoreDNS: examples/coredns.md
       - Database Admin:
           - Adminer: examples/adminer.md
+          - pgAdmin: examples/pgadmin.md
       - Containers:
           - Docker Host: examples/docker-host.md
           - k3s Single Node: examples/k3s-single.md
