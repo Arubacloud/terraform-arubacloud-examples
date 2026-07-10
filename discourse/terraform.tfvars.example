@@ -1,0 +1,28 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr = "203.0.113.42/32"
+
+# ── Discourse ─────────────────────────────────────────────────────────────────
+# A real domain is strongly recommended for email delivery and HTTPS.
+# Leave hostname empty to use the VM's Elastic IP (HTTP only, no SSL).
+hostname    = "forum.example.com"
+admin_email = "admin@example.com"
+
+# SMTP is required for user registration emails.
+smtp_host     = "smtp.gmail.com"
+smtp_port     = 587
+smtp_user     = "your-email@gmail.com"
+smtp_password = "your-app-password"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "discourse"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 100
+# billing_period  = "Hour"

@@ -81,6 +81,8 @@ jobs:
           - mailcow
           - gitlab
           - k3s-ha
+          - discourse
+          - rocketchat
     steps:
       - uses: actions/checkout@v4
 

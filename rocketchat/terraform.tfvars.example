@@ -1,0 +1,23 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "0.0.0.0/0"   # keep open for team access
+
+# ── Rocket.Chat ───────────────────────────────────────────────────────────────
+admin_email    = "admin@example.com"
+admin_password = "change-me-strong"
+# admin_username = "admin"
+# admin_fullname = "Administrator"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "rc"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 40
+# billing_period  = "Hour"

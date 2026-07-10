@@ -147,6 +147,8 @@ nav:
       - Collaboration:
           - Mattermost: examples/mattermost.md
           - Mailcow: examples/mailcow.md
+          - Rocket.Chat: examples/rocketchat.md
+          - Discourse: examples/discourse.md
       - Security:
           - Vaultwarden: examples/vaultwarden.md
           - CrowdSec: examples/crowdsec.md
