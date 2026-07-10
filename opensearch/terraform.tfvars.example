@@ -1,0 +1,25 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict to your application/management CIDR — never expose OpenSearch to the internet
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "10.0.0.0/8"    # e.g. your VPN or app server CIDR
+
+# ── OpenSearch ────────────────────────────────────────────────────────────────
+# Password must be 8+ chars with uppercase, lowercase, digit, and special char
+admin_password = "Change-Me-1!"
+# cluster_name       = "opensearch"
+# opensearch_version = "2"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "os"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO8A16"    # 8 vCPU / 16 GB recommended
+# vm_disk_size_gb = 100
+# billing_period  = "Hour"

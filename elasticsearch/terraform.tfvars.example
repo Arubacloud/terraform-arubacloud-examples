@@ -1,0 +1,23 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict to your application/management CIDR — never expose ES to the internet
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "10.0.0.0/8"    # e.g. your VPN or app server CIDR
+
+# ── Elasticsearch ─────────────────────────────────────────────────────────────
+elastic_password = "change-me-strong"
+# cluster_name   = "elasticsearch"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "es"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"    # CSO8A16 recommended for production
+# vm_disk_size_gb = 100
+# billing_period  = "Hour"

@@ -1,0 +1,22 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr     = "203.0.113.42/32"
+
+# ── GitLab ────────────────────────────────────────────────────────────────────
+# DNS must resolve to the VM public IP BEFORE deploying with an HTTPS external_url.
+gitlab_hostname      = "gitlab.example.com"
+gitlab_root_password = "change-me-min-8-chars"
+# letsencrypt_email = "you@example.com"   # enables auto-TLS via Let's Encrypt
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "gitlab"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO8A16"
+# vm_disk_size_gb = 100
+# billing_period  = "Hour"
