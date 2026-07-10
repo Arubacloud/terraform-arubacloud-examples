@@ -43,6 +43,17 @@ function resolveIncludes(content, filePath) {
   }).join('');
 }
 
+function convertAutolinks(content) {
+  // MDX treats <https://...> as JSX and chokes on slashes in URL paths.
+  // Convert to standard markdown links so MDX can parse them cleanly.
+  // Only touch text outside fenced code blocks (same split trick as resolveIncludes).
+  const parts = content.split(/(```[\s\S]*?```|~~~[\s\S]*?~~~)/g);
+  return parts.map((part, i) => {
+    if (i % 2 === 1) return part;
+    return part.replace(/<(https?:\/\/[^\s>]+)>/g, '[$1]($1)');
+  }).join('');
+}
+
 function convertAdmonitions(content) {
   // Convert MkDocs admonitions to Docusaurus admonitions.
   // Input:  !!! warning "Title"\n    indented content\n
@@ -85,6 +96,7 @@ walkDir(SOURCE_DIR, (relPath, sourceFile) => {
 
   let content = fs.readFileSync(sourceFile, 'utf8');
   content = resolveIncludes(content, sourceFile);
+  content = convertAutolinks(content);
   content = convertAdmonitions(content);
 
   ensureDir(path.dirname(targetFile));

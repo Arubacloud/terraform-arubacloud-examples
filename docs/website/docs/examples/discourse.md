@@ -158,7 +158,7 @@ smtp_user     = "you@gmail.com"
 smtp_password = "your-app-password"
 ```
 
-> For Gmail, create an **App Password** (not your account password) at <https://myaccount.google.com/apppasswords>.
+> For Gmail, create an **App Password** (not your account password) at [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
 
 ### 3. Deploy
 
