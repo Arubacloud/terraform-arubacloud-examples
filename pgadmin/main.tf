@@ -72,8 +72,8 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      pgadmin_email      = var.pgadmin_email
-      pgadmin_pass_b64   = base64encode(var.pgadmin_password)
+      pgadmin_email    = var.pgadmin_email
+      pgadmin_pass_b64 = base64encode(var.pgadmin_password)
     })
   }
 

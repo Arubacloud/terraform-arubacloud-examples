@@ -172,7 +172,7 @@ sudo systemctl reload coredns
 
 ### Add a local DNS zone
 
-```
+```caddyfile
 example.internal {
     file /etc/coredns/db.example.internal
     log
@@ -189,7 +189,7 @@ example.internal {
 
 ### Enable DNSSEC validation
 
-```
+```caddyfile
 . {
     forward . 1.1.1.1 1.0.0.1 {
         policy sequential
@@ -203,7 +203,7 @@ example.internal {
 
 ### Enable DNS-over-TLS upstream
 
-```
+```caddyfile
 . {
     forward . tls://1.1.1.1 tls://1.0.0.1 {
         tls_servername cloudflare-dns.com
