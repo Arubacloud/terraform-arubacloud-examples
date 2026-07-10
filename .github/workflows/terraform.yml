@@ -60,6 +60,9 @@ jobs:
           - caddy
           - pgadmin
           - coredns
+          - drupal
+          - joomla
+          - haproxy
     steps:
       - uses: actions/checkout@v4
 

@@ -1,0 +1,32 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr = "203.0.113.42/32"
+
+# ── Database ──────────────────────────────────────────────────────────────────
+db_password = "change-me-at-least-16-chars"
+
+# ── Joomla ────────────────────────────────────────────────────────────────────
+admin_email    = "admin@example.com"
+admin_password = "change-me-at-least-12-chars"
+# admin_user     = "admin"
+# admin_fullname = "Site Administrator"
+# site_name      = "My Joomla Site"
+# joomla_version = "5.3.2"
+
+# Optional: set for automatic HTTPS via Let's Encrypt
+# domain = "joomla.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "joomla"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO2A4"
+# vm_disk_size_gb = 30
+# billing_period  = "Hour"
+# dbaas_flavor    = "DBO2A8"
+# db_storage_gb   = 20
