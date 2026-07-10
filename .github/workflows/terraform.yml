@@ -50,6 +50,7 @@ jobs:
           - grafana
           - vault
           - keycloak
+          - mattermost
     steps:
       - uses: actions/checkout@v4
 
