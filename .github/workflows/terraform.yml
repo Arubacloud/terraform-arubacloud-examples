@@ -66,6 +66,8 @@ jobs:
           - bind-dns
           - rundeck
           - drone-ci
+          - home-assistant
+          - wazuh
     steps:
       - uses: actions/checkout@v4
 

@@ -132,10 +132,13 @@ nav:
       - Observability:
           - Grafana + Prometheus: examples/grafana-prometheus.md
           - Uptime Kuma: examples/uptime-kuma.md
+          - Wazuh: examples/wazuh.md
       - Collaboration:
           - Mattermost: examples/mattermost.md
       - Security:
           - Vaultwarden: examples/vaultwarden.md
+      - Homelab:
+          - Home Assistant: examples/home-assistant.md
   - Modules:
       - Network: modules/network.md
   - Reference:
