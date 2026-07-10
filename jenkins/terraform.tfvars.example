@@ -1,0 +1,24 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict SSH and JNLP to your IP/network in production (recommended)
+# ssh_cidr   = "203.0.113.42/32"
+# agent_cidr = "10.0.0.0/8"
+
+# ── Jenkins ───────────────────────────────────────────────────────────────────
+# Optional: set a domain to enable automatic HTTPS via Let's Encrypt.
+# The domain must point to the VM's Elastic IP before terraform apply.
+# domain = "ci.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "jenkins"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 50
+# billing_period  = "Hour"
