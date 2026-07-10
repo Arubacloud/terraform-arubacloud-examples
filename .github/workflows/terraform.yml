@@ -57,6 +57,9 @@ jobs:
           - adminer
           - adguard-home
           - nginx
+          - caddy
+          - pgadmin
+          - coredns
     steps:
       - uses: actions/checkout@v4
 
