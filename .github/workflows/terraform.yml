@@ -45,6 +45,7 @@ jobs:
           # Phase 2 examples
           - forgejo
           - gitea
+          - k3s-single
     steps:
       - uses: actions/checkout@v4
 

@@ -1,0 +1,28 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+# Obtain from the ArubaCloud console → API → OAuth2 Clients
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+# Paste the full content of your ~/.ssh/id_rsa.pub or ~/.ssh/id_ed25519.pub
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict SSH and Kubernetes API to your IP in production (recommended)
+# ssh_cidr = "203.0.113.42/32"
+# api_cidr  = "203.0.113.42/32"
+
+# ── k3s ───────────────────────────────────────────────────────────────────────
+# Check https://github.com/k3s-io/k3s/releases for the latest stable version.
+# k3s_version = "v1.32.3+k3s1"
+
+# Optional: add a DNS name as a TLS SAN for the API server certificate.
+# cluster_domain = "k8s.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "k3s"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 80
+# billing_period  = "Hour"
