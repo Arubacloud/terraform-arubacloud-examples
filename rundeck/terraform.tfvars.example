@@ -1,0 +1,25 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict to your management IP — Rundeck must not be publicly accessible
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "203.0.113.42/32"
+
+# ── Rundeck ───────────────────────────────────────────────────────────────────
+admin_password = "change-me-strong"
+
+# Optional: override if you have a domain or use a load balancer in front
+# rundeck_url = "http://rundeck.example.com:4440"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "rundeck"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO2A4"
+# vm_disk_size_gb = 30
+# billing_period  = "Hour"

@@ -63,6 +63,9 @@ jobs:
           - drupal
           - joomla
           - haproxy
+          - bind-dns
+          - rundeck
+          - drone-ci
     steps:
       - uses: actions/checkout@v4
 

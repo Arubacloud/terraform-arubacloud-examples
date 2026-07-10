@@ -106,6 +106,8 @@ nav:
           - Forgejo: examples/forgejo.md
           - Jenkins: examples/jenkins.md
           - SonarQube: examples/sonarqube.md
+          - Rundeck: examples/rundeck.md
+          - Drone CI: examples/drone-ci.md
       - Networking:
           - WireGuard: examples/wireguard.md
           - Traefik: examples/traefik.md
@@ -115,6 +117,7 @@ nav:
           - Caddy: examples/caddy.md
           - CoreDNS: examples/coredns.md
           - HAProxy: examples/haproxy.md
+          - Bind DNS: examples/bind-dns.md
       - Database Admin:
           - Adminer: examples/adminer.md
           - pgAdmin: examples/pgadmin.md

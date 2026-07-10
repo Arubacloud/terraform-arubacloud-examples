@@ -82,6 +82,8 @@ Config is in `.markdownlint.json`. Rules in effect (all others default to enable
 | MD022 (blanks around headings) | **enabled** | Must have a blank line above AND below every heading |
 | MD024 (duplicate headings) | siblings only | Duplicates allowed if not siblings |
 | MD033 (inline HTML) | disabled | |
+| MD036 (emphasis as heading) | **enabled** | Bold/italic text on its own line is not a heading |
+| MD040 (fenced code language) | **enabled** | Every fenced code block must declare a language |
 | MD041 (first line h1) | disabled | |
 
 **Common pitfall — MD022:** a heading immediately followed by content with no blank line in between:
@@ -94,6 +96,30 @@ Config is in `.markdownlint.json`. Rules in effect (all others default to enable
 
 `var1`, `var2`   ← correct
 ```
+
+**Common pitfall — MD036:** a bold or italic line used as a standalone paragraph heading:
+
+```markdown
+**Navigate to Settings**        ← fails MD036 (looks like a heading to the linter)
+
+Go to **Settings** and click…   ← correct (bold mid-sentence is fine)
+
+### Settings                    ← correct (use a real heading)
+```
+
+**Common pitfall — MD040:** a fenced code block with no language tag:
+
+````markdown
+```                 ← fails MD040
+some code here
+```
+
+```bash            ← correct
+some code here
+```
+````
+
+Use `bash`, `hcl`, `yaml`, `text`, `caddyfile`, `nginx`, `ini`, `sql`, `python`, etc. When no syntax highlighting applies, use `text`.
 
 ---
 
