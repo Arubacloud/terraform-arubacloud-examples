@@ -51,6 +51,7 @@ jobs:
           - vault
           - keycloak
           - mattermost
+          - sonarqube
           - pi-hole
     steps:
       - uses: actions/checkout@v4

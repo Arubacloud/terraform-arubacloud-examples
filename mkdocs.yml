@@ -101,6 +101,7 @@ nav:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
           - Jenkins: examples/jenkins.md
+          - SonarQube: examples/sonarqube.md
       - Networking:
           - WireGuard: examples/wireguard.md
           - Traefik: examples/traefik.md

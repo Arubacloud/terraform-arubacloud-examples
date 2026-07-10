@@ -1,0 +1,2 @@
+# Rendered cloud-init (if you test templatefile() locally)
+cloud-init.yaml
