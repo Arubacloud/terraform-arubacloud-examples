@@ -53,6 +53,10 @@ jobs:
           - mattermost
           - sonarqube
           - pi-hole
+          # Phase 3 examples
+          - adminer
+          - adguard-home
+          - nginx
     steps:
       - uses: actions/checkout@v4
 

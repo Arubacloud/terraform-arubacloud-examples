@@ -1,0 +1,21 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# IMPORTANT: Restrict both CIDRs to your management IP — Adminer must never be
+# accessible from the public internet.
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "203.0.113.42/32"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "adminer"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO1A2"
+# vm_disk_size_gb = 20
+# billing_period  = "Hour"
+# adminer_version = "4.8.1"
