@@ -99,6 +99,8 @@ nav:
           - WordPress: examples/wordpress.md
           - Nextcloud: examples/nextcloud.md
           - Ghost: examples/ghost.md
+          - Drupal: examples/drupal.md
+          - Joomla: examples/joomla.md
       - DevOps:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
@@ -112,6 +114,7 @@ nav:
           - NGINX: examples/nginx.md
           - Caddy: examples/caddy.md
           - CoreDNS: examples/coredns.md
+          - HAProxy: examples/haproxy.md
       - Database Admin:
           - Adminer: examples/adminer.md
           - pgAdmin: examples/pgadmin.md

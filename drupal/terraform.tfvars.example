@@ -1,0 +1,30 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr = "203.0.113.42/32"
+
+# ── Database ──────────────────────────────────────────────────────────────────
+db_password = "change-me-at-least-16-chars"
+
+# ── Drupal ────────────────────────────────────────────────────────────────────
+admin_email    = "admin@example.com"
+admin_password = "change-me-at-least-16-chars"
+# admin_user  = "admin"
+# site_name   = "My Drupal Site"
+
+# Optional: set both for automatic HTTPS via Let's Encrypt
+# domain = "drupal.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "drupal"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 40
+# billing_period  = "Hour"
+# dbaas_flavor    = "DBO2A8"
+# db_storage_gb   = 20
