@@ -1,0 +1,22 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr     = "203.0.113.42/32"
+
+# ── Mailcow ────────────────────────────────────────────────────────────────────
+# IMPORTANT: DNS must resolve to the VM public IP BEFORE running terraform apply.
+# Mailcow generates its own admin password (shown as 'moohoo' on first login).
+mail_hostname = "mail.example.com"
+# mailcow_branch = "master"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "mail"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 80
+# billing_period  = "Hour"

@@ -1,0 +1,23 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr     = "203.0.113.42/32"
+
+# Restrict to your app server CIDR — Ollama has no built-in authentication
+# api_cidr   = "10.0.0.0/8"
+
+# ── Ollama ────────────────────────────────────────────────────────────────────
+# Pull these models at bootstrap time (each may take several minutes)
+# preload_models = ["llama3.2", "nomic-embed-text"]
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "ollama"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO8A16"    # 16 GB RAM minimum for 7B models
+# vm_disk_size_gb = 100          # 100 GB allows several models
+# billing_period  = "Hour"

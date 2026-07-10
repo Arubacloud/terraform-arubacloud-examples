@@ -1,0 +1,29 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr  = "203.0.113.42/32"   # restrict SSH to your IP
+# api_cidr  = "203.0.113.42/32"   # restrict k3s API server (port 6443) to your IP
+
+# ── k3s ───────────────────────────────────────────────────────────────────────
+# Generate a strong token with: openssl rand -hex 32
+k3s_token = "change-me-cluster-token-min-16-chars"
+# k3s_version = "v1.32.0+k3s1"   # pin a version, or omit for "latest"
+
+# ── External MySQL datastore ──────────────────────────────────────────────────
+db_host     = "your-mysql-host.example.com"
+db_password = "change-me-db-password"
+# db_port   = 3306
+# db_name   = "k3s"
+# db_user   = "k3s"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "k3sha"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 40
+# billing_period  = "Hour"

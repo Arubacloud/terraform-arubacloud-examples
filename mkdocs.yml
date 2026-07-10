@@ -104,6 +104,7 @@ nav:
       - DevOps:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
+          - GitLab CE: examples/gitlab.md
           - Jenkins: examples/jenkins.md
           - SonarQube: examples/sonarqube.md
           - Rundeck: examples/rundeck.md
@@ -124,19 +125,31 @@ nav:
       - Containers:
           - Docker Host: examples/docker-host.md
           - k3s Single Node: examples/k3s-single.md
+          - k3s HA Cluster: examples/k3s-ha.md
       - Storage:
           - MinIO: examples/minio.md
       - Identity:
           - Keycloak: examples/keycloak.md
+          - Authentik: examples/authentik.md
           - Vault: examples/vault.md
       - Observability:
           - Grafana + Prometheus: examples/grafana-prometheus.md
           - Uptime Kuma: examples/uptime-kuma.md
+          - Elasticsearch: examples/elasticsearch.md
+          - OpenSearch: examples/opensearch.md
+          - Graylog: examples/graylog.md
           - Wazuh: examples/wazuh.md
+      - AI / ML:
+          - Ollama: examples/ollama.md
+          - Open WebUI: examples/open-webui.md
+          - LiteLLM: examples/litellm.md
+          - OpenClaw: examples/openclaw.md
       - Collaboration:
           - Mattermost: examples/mattermost.md
+          - Mailcow: examples/mailcow.md
       - Security:
           - Vaultwarden: examples/vaultwarden.md
+          - CrowdSec: examples/crowdsec.md
       - Homelab:
           - Home Assistant: examples/home-assistant.md
   - Modules:

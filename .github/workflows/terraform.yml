@@ -68,6 +68,19 @@ jobs:
           - drone-ci
           - home-assistant
           - wazuh
+          - elasticsearch
+          # Phase 3 — Enterprise & Specialized (issues #25–#36)
+          - opensearch
+          - crowdsec
+          - open-webui
+          - ollama
+          - litellm
+          - openclaw
+          - authentik
+          - graylog
+          - mailcow
+          - gitlab
+          - k3s-ha
     steps:
       - uses: actions/checkout@v4
 
