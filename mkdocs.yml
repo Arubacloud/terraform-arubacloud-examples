@@ -108,6 +108,10 @@ nav:
           - WireGuard: examples/wireguard.md
           - Traefik: examples/traefik.md
           - Pi-hole: examples/pi-hole.md
+          - AdGuard Home: examples/adguard-home.md
+          - NGINX: examples/nginx.md
+      - Database Admin:
+          - Adminer: examples/adminer.md
       - Containers:
           - Docker Host: examples/docker-host.md
           - k3s Single Node: examples/k3s-single.md
