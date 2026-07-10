@@ -1,0 +1,27 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict all access to your VPN tunnel CIDR and management IP
+# ssh_cidr   = "203.0.113.42/32"
+# dns_cidr   = "10.0.0.0/8"     # WireGuard tunnel network
+# admin_cidr = "10.0.0.0/8"     # WireGuard tunnel network
+
+# ── Pi-hole ───────────────────────────────────────────────────────────────────
+pihole_password = "change-me-strong-password"
+
+# Upstream DNS resolvers (Cloudflare defaults)
+# upstream_dns_1 = "1.1.1.1"
+# upstream_dns_2 = "1.0.0.1"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "pihole"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO1A2"
+# vm_disk_size_gb = 20
+# billing_period  = "Hour"
