@@ -1,0 +1,20 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+# ssh_cidr     = "203.0.113.42/32"
+
+# ── Nexus ─────────────────────────────────────────────────────────────────────
+# nexus_version          = "latest"   # or e.g. "3.79.0"
+# enable_docker_registry = false      # set true to also open port 8082
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "nexus"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO4A8"
+# vm_disk_size_gb = 100
+# billing_period  = "Hour"

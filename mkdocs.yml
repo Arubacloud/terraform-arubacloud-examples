@@ -107,6 +107,7 @@ nav:
           - GitLab CE: examples/gitlab.md
           - Jenkins: examples/jenkins.md
           - SonarQube: examples/sonarqube.md
+          - Nexus Repository: examples/nexus.md
           - Rundeck: examples/rundeck.md
           - Drone CI: examples/drone-ci.md
       - Networking:
@@ -147,6 +148,7 @@ nav:
       - Collaboration:
           - Mattermost: examples/mattermost.md
           - Mailcow: examples/mailcow.md
+          - Wiki.js: examples/wikijs.md
           - Rocket.Chat: examples/rocketchat.md
           - Discourse: examples/discourse.md
       - Security:

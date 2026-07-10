@@ -83,6 +83,9 @@ jobs:
           - k3s-ha
           - discourse
           - rocketchat
+          # Phase 2 — Collaboration & DevOps (issues #23, #24)
+          - wikijs
+          - nexus
     steps:
       - uses: actions/checkout@v4
 
