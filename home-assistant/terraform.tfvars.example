@@ -1,0 +1,22 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict access to your management IP or VPN tunnel CIDR
+# ssh_cidr   = "203.0.113.42/32"
+# admin_cidr = "10.8.0.0/24"   # e.g. WireGuard tunnel
+
+# ── Home Assistant ────────────────────────────────────────────────────────────
+timezone = "Europe/Rome"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "ha"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO2A4"
+# vm_disk_size_gb = 32
+# billing_period  = "Hour"
