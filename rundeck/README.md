@@ -170,7 +170,7 @@ Add the Aruba Cloud VM or any SSH-accessible server as a node. Rundeck will use 
 
 ### Create your first job
 
-**Jobs → Create Job**
+Navigate to **Jobs → Create Job** in the Rundeck UI.
 
 Example: a job that runs `df -h` on all nodes to check disk usage:
 
