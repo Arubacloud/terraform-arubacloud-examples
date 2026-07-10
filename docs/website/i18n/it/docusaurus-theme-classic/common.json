@@ -1,0 +1,14 @@
+{
+  "theme.NotFound.title": {
+    "message": "Pagina non trovata",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "Non riusciamo a trovare quello che stai cercando.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Contatta il proprietario del sito che ti ha inviato a questo URL per informarlo che il link è non funzionante.",
+    "description": "The 2nd paragraph of the 404 page"
+  }
+}
