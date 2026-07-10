@@ -48,6 +48,7 @@ jobs:
           - k3s-single
           - jenkins
           - grafana
+          - vault
     steps:
       - uses: actions/checkout@v4
 

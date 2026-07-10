@@ -1,0 +1,26 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict both SSH and the Vault API to your IP in production (highly recommended)
+# ssh_cidr   = "203.0.113.42/32"
+# vault_cidr = "203.0.113.42/32"
+
+# ── Vault ─────────────────────────────────────────────────────────────────────
+# Check https://releases.hashicorp.com/vault/ for the latest version.
+# vault_version = "1.18.4"
+
+# Optional: add a DNS name to the self-signed TLS certificate.
+# tls_san = "vault.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "vault"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO2A4"
+# vm_disk_size_gb = 30
+# billing_period  = "Hour"
