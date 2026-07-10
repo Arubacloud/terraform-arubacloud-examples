@@ -24,8 +24,8 @@ module "network" {
   create_dbaas_network = true
 
   vm_ingress_ports = {
-    ssh   = { port = "22",  cidr = var.ssh_cidr }
-    http  = { port = "80",  cidr = "0.0.0.0/0" }
+    ssh   = { port = "22", cidr = var.ssh_cidr }
+    http  = { port = "80", cidr = "0.0.0.0/0" }
     https = { port = "443", cidr = "0.0.0.0/0" }
   }
 }
@@ -141,16 +141,17 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      db_host               = module.network.dbaas_elastic_ip_address
-      db_name               = arubacloud_database.nextcloud.name
-      db_user               = arubacloud_dbaasuser.nextcloud.username
-      db_password_php       = local.db_password_php
-      nc_admin_user         = var.nc_admin_user
-      nc_admin_password_b64 = base64encode(var.nc_admin_password)
-      nc_admin_email        = var.nc_admin_email
-      nc_secret             = random_password.nc_secret.result
-      site_url              = local.site_url
-      domain                = var.domain
+      db_host                      = module.network.dbaas_elastic_ip_address
+      db_name                      = arubacloud_database.nextcloud.name
+      db_user                      = arubacloud_dbaasuser.nextcloud.username
+      db_password_php              = local.db_password_php
+      nc_admin_user                = var.nc_admin_user
+      nc_admin_password_b64        = base64encode(var.nc_admin_password)
+      nc_admin_email               = var.nc_admin_email
+      nc_secret                    = random_password.nc_secret.result
+      site_url                     = local.site_url
+      domain                       = var.domain
+      module_network_vm_elastic_ip = module.network.vm_elastic_ip_address
     })
   }
 
