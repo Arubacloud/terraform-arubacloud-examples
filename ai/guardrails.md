@@ -41,7 +41,7 @@ terraform validate
 
 - `templatefile()` — every variable referenced inside the `.tpl` file must appear in the vars map. The error surfaces at `terraform validate` time:
 
-  ```
+  ```text
   Invalid value for "vars" parameter: vars map does not contain key "foo"
   ```
 
