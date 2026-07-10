@@ -97,8 +97,40 @@ Config is in `.markdownlint.json`. Rules in effect (all others default to enable
 
 ---
 
+## 5. Docs build (mkdocs nav vs. file consistency)
+
+Every entry in the `nav:` section of `mkdocs.yml` must have a corresponding file in `docs/`. Missing files cause `mkdocs gh-deploy` to fail silently with exit code 1 — the CI "Deploy to GitHub Pages" job will be red.
+
+**Before adding a new example to mkdocs.yml nav, the matching `docs/examples/<name>.md` stub must exist.** The stub is a one-liner:
+
+```markdown
+---
+title: My Example
+---
+
+{%
+  include-markdown "../../my-example/README.md"
+%}
+```
+
+**Quick consistency check:**
+
+```bash
+# List nav entries (rough grep)
+grep 'examples/' mkdocs.yml | sed "s|.*examples/||;s|'||g" | sort
+
+# List actual docs files
+ls docs/examples/ | sort
+```
+
+The two lists must match. If a future example is referenced in nav but not yet implemented, **remove it from `mkdocs.yml`** and add it back when the PR lands.
+
+---
+
 ## Adding a new example
 
 1. Create the directory with the standard file set: `versions.tf`, `variables.tf`, `main.tf`, `outputs.tf`, `cloud-init.yaml.tpl`, `terraform.tfvars.example`, `README.md`, `.gitignore`.
 2. Add the example name to the matrix in `.github/workflows/terraform.yml` under the appropriate phase comment.
-3. Run all four checks above from the new example directory before opening the PR.
+3. Create `docs/examples/<name>.md` with the `include-markdown` stub.
+4. Add the example to the appropriate section of `mkdocs.yml` nav.
+5. Run all four checks above from the new example directory before opening the PR.

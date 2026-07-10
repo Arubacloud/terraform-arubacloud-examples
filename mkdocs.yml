@@ -100,7 +100,6 @@ nav:
       - DevOps:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
-          - GitLab CE: examples/gitlab-ce.md
           - Jenkins: examples/jenkins.md
       - Networking:
           - WireGuard: examples/wireguard.md
@@ -119,7 +118,6 @@ nav:
           - Uptime Kuma: examples/uptime-kuma.md
       - Collaboration:
           - Mattermost: examples/mattermost.md
-          - Wiki.js: examples/wiki-js.md
       - Security:
           - Vaultwarden: examples/vaultwarden.md
   - Modules:
