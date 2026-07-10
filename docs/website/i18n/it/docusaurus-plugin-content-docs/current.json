@@ -1,0 +1,78 @@
+{
+  "sidebar.mainSidebar.category.Architecture & Best Practices": {
+    "message": "Architettura e Best Practice",
+    "description": "The label for category Architecture & Best Practices in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Examples": {
+    "message": "Esempi",
+    "description": "The label for category Examples in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.CMS": {
+    "message": "CMS",
+    "description": "The label for category CMS in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.DevOps": {
+    "message": "DevOps",
+    "description": "The label for category DevOps in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Networking": {
+    "message": "Reti",
+    "description": "The label for category Networking in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Database Admin": {
+    "message": "Amministrazione Database",
+    "description": "The label for category Database Admin in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Containers": {
+    "message": "Container",
+    "description": "The label for category Containers in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Storage": {
+    "message": "Storage",
+    "description": "The label for category Storage in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Identity": {
+    "message": "Identità",
+    "description": "The label for category Identity in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Observability": {
+    "message": "Osservabilità",
+    "description": "The label for category Observability in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.AI / ML": {
+    "message": "AI / ML",
+    "description": "The label for category AI / ML in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Collaboration": {
+    "message": "Collaborazione",
+    "description": "The label for category Collaboration in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Security": {
+    "message": "Sicurezza",
+    "description": "The label for category Security in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Homelab": {
+    "message": "Homelab",
+    "description": "The label for category Homelab in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Modules": {
+    "message": "Moduli",
+    "description": "The label for category Modules in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.category.Reference": {
+    "message": "Riferimento",
+    "description": "The label for category Reference in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.link.Introduction": {
+    "message": "Introduzione",
+    "description": "The label for link Introduction in sidebar mainSidebar"
+  },
+  "sidebar.mainSidebar.link.Getting Started": {
+    "message": "Guida Rapida",
+    "description": "The label for link Getting Started in sidebar mainSidebar"
+  },
+  "version.label": {
+    "message": "Next",
+    "description": "The label for the current version in the version dropdown"
+  }
+}

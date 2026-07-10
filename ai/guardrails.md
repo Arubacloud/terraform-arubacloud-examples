@@ -136,11 +136,13 @@ Use `bash`, `hcl`, `yaml`, `text`, `caddyfile`, `nginx`, `ini`, `sql`, `python`,
 
 ---
 
-## 5. Docs build (mkdocs nav vs. file consistency)
+## 5. Docs build (Docusaurus sidebar vs. file consistency)
 
-Every entry in the `nav:` section of `mkdocs.yml` must have a corresponding file in `docs/`. Missing files cause `mkdocs gh-deploy` to fail silently with exit code 1 — the CI "Deploy to GitHub Pages" job will be red.
+The documentation site uses Docusaurus (in `docs/website/`). Content is pre-processed from `docs/` at build time by `docs/website/scripts/preprocess-docs.js`.
 
-**Before adding a new example to mkdocs.yml nav, the matching `docs/examples/<name>.md` stub must exist.** The stub is a one-liner:
+Every entry in `docs/website/sidebars.js` must have a corresponding file in `docs/`. Missing files cause the Docusaurus build to fail.
+
+**Before adding a new example to `sidebars.js`, the matching `docs/examples/<name>.md` stub must exist.** The stub uses an `include-markdown` directive:
 
 ```markdown
 ---
@@ -152,17 +154,28 @@ title: My Example
 %}
 ```
 
+The preprocess script resolves this directive at build time, inlining the `README.md` content.
+
 **Quick consistency check:**
 
 ```bash
-# List nav entries (rough grep)
-grep 'examples/' mkdocs.yml | sed "s|.*examples/||;s|'||g" | sort
+# List sidebar entries
+grep "examples/" docs/website/sidebars.js | sort
 
-# List actual docs files
+# List actual docs stubs
 ls docs/examples/ | sort
 ```
 
-The two lists must match. If a future example is referenced in nav but not yet implemented, **remove it from `mkdocs.yml`** and add it back when the PR lands.
+The two lists must match. If a future example is referenced in the sidebar but not yet implemented, **remove it from `sidebars.js`** and add it back when the PR lands.
+
+**Local docs development:**
+
+```bash
+cd docs/website
+npm install
+npm run start       # preprocesses docs then starts dev server
+npm run build       # preprocesses docs then builds
+```
 
 ---
 
@@ -171,5 +184,5 @@ The two lists must match. If a future example is referenced in nav but not yet i
 1. Create the directory with the standard file set: `versions.tf`, `variables.tf`, `main.tf`, `outputs.tf`, `cloud-init.yaml.tpl`, `terraform.tfvars.example`, `README.md`, `.gitignore`.
 2. Add the example name to the matrix in `.github/workflows/terraform.yml` under the appropriate phase comment.
 3. Create `docs/examples/<name>.md` with the `include-markdown` stub.
-4. Add the example to the appropriate section of `mkdocs.yml` nav.
+4. Add the example to the appropriate category in `docs/website/sidebars.js`.
 5. Run all four checks above from the new example directory before opening the PR.

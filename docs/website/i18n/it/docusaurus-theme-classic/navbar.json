@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Terraform Examples"
+  },
+  "logo.alt": {
+    "message": "Logo Terraform Examples Aruba Cloud"
+  },
+  "item.label.Documentation": {
+    "message": "Documentazione"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub"
+  }
+}

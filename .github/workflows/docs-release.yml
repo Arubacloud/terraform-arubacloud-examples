@@ -1,0 +1,82 @@
+name: Deploy Documentation (Release)
+
+on:
+  release:
+    types: [published, edited]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy (e.g., 0.5.0)'
+        required: true
+        type: string
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: docs/website/package-lock.json
+
+      - name: Install dependencies
+        working-directory: docs/website
+        run: npm ci
+
+      - name: Extract version from release
+        id: extract_version
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            VERSION=${VERSION#v}
+          else
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Deploying documentation for version: $VERSION"
+
+      - name: Clean up and prepare for versioning
+        working-directory: docs/website
+        run: |
+          echo "[]" > versions.json
+          rm -rf versioned_docs versioned_sidebars
+          find i18n -type d -name "version-*" -exec rm -rf {} + 2>/dev/null || true
+          find i18n -type f -name "version-*.json" -delete 2>/dev/null || true
+
+      - name: Create versioned docs
+        working-directory: docs/website
+        run: npm run version ${{ steps.extract_version.outputs.version }}
+
+      - name: Sync version translations
+        working-directory: docs/website
+        run: npm run sync-version-translations
+
+      - name: Build documentation
+        working-directory: docs/website
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/website/build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
