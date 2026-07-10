@@ -1,17 +1,19 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["nextcloud", var.environment, "cloud-storage"]
+  tags        = ["ghost", var.environment, "cms"]
   site_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
-
-  # Escape passwords for PHP single-quoted string literals
-  db_password_php = replace(replace(var.db_password, "\\", "\\\\"), "'", "\\'")
+  server_name = var.domain != "" ? var.domain : "_"
 }
+
+# ── Project ───────────────────────────────────────────────────────────────────
 
 resource "arubacloud_project" "this" {
   name        = local.name_prefix
-  description = "Nextcloud file sync (${var.environment})"
+  description = "Ghost blog (${var.environment})"
   tags        = local.tags
 }
+
+# ── Networking ────────────────────────────────────────────────────────────────
 
 module "network" {
   source = "../modules/network"
@@ -30,6 +32,7 @@ module "network" {
   }
 }
 
+# Restrict MySQL access to the VM's IP only
 resource "arubacloud_securityrule" "dbaas_mysql" {
   name              = "${local.name_prefix}-db-mysql"
   location          = var.location
@@ -48,6 +51,8 @@ resource "arubacloud_securityrule" "dbaas_mysql" {
   }
 }
 
+# ── Storage ───────────────────────────────────────────────────────────────────
+
 resource "arubacloud_blockstorage" "boot" {
   name           = "${local.name_prefix}-boot"
   location       = var.location
@@ -61,12 +66,16 @@ resource "arubacloud_blockstorage" "boot" {
   tags           = local.tags
 }
 
+# ── SSH key pair ──────────────────────────────────────────────────────────────
+
 resource "arubacloud_keypair" "this" {
   name       = "${local.name_prefix}-keypair"
   location   = var.location
   project_id = arubacloud_project.this.id
   value      = var.ssh_public_key
 }
+
+# ── Managed MySQL ─────────────────────────────────────────────────────────────
 
 resource "arubacloud_dbaas" "this" {
   name       = "${local.name_prefix}-dbaas"
@@ -96,32 +105,28 @@ resource "arubacloud_dbaas" "this" {
   billing_period = var.billing_period
 }
 
-resource "arubacloud_database" "nextcloud" {
+resource "arubacloud_database" "ghost" {
   project_id = arubacloud_project.this.id
   dbaas_id   = arubacloud_dbaas.this.id
-  name       = "nextcloud"
+  name       = "ghost"
 }
 
-resource "arubacloud_dbaasuser" "nextcloud" {
+resource "arubacloud_dbaasuser" "ghost" {
   project_id = arubacloud_project.this.id
   dbaas_id   = arubacloud_dbaas.this.id
-  username   = "nextcloud"
+  username   = "ghost"
   password   = var.db_password
 }
 
-resource "arubacloud_databasegrant" "nextcloud" {
+resource "arubacloud_databasegrant" "ghost" {
   project_id = arubacloud_project.this.id
   dbaas_id   = arubacloud_dbaas.this.id
-  database   = arubacloud_database.nextcloud.id
-  user_id    = arubacloud_dbaasuser.nextcloud.id
+  database   = arubacloud_database.ghost.id
+  user_id    = arubacloud_dbaasuser.ghost.id
   role       = "liteadmin"
 }
 
-# Random secret for Nextcloud's config.php
-resource "random_password" "nc_secret" {
-  length  = 32
-  special = false
-}
+# ── Cloud Server ──────────────────────────────────────────────────────────────
 
 resource "arubacloud_cloudserver" "this" {
   name       = "${local.name_prefix}-vm"
@@ -141,17 +146,13 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      db_host                      = module.network.dbaas_elastic_ip_address
-      db_name                      = arubacloud_database.nextcloud.name
-      db_user                      = arubacloud_dbaasuser.nextcloud.username
-      db_password_php              = local.db_password_php
-      nc_admin_user                = var.nc_admin_user
-      nc_admin_password_b64        = base64encode(var.nc_admin_password)
-      nc_admin_email               = var.nc_admin_email
-      nc_secret                    = random_password.nc_secret.result
-      site_url                     = local.site_url
-      domain                       = var.domain
-      module_network_vm_elastic_ip = module.network.vm_elastic_ip_address
+      db_host     = module.network.dbaas_elastic_ip_address
+      db_name     = arubacloud_database.ghost.name
+      db_user     = arubacloud_dbaasuser.ghost.username
+      db_pass_b64 = base64encode(var.db_password)
+      site_url    = local.site_url
+      server_name = local.server_name
+      domain      = var.domain
     })
   }
 
@@ -161,6 +162,6 @@ resource "arubacloud_cloudserver" "this" {
 
   depends_on = [
     arubacloud_securityrule.dbaas_mysql,
-    arubacloud_databasegrant.nextcloud,
+    arubacloud_databasegrant.ghost,
   ]
 }

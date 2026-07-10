@@ -96,6 +96,7 @@ nav:
       - CMS:
           - WordPress: examples/wordpress.md
           - Nextcloud: examples/nextcloud.md
+          - Ghost: examples/ghost.md
       - DevOps:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
