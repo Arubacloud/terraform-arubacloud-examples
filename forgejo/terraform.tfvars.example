@@ -1,0 +1,35 @@
+# ── ArubaCloud credentials ────────────────────────────────────────────────────
+# Obtain from the ArubaCloud console → API → OAuth2 Clients
+arubacloud_client_id     = "your-oauth2-client-id"
+arubacloud_client_secret = "your-oauth2-client-secret"
+
+# ── SSH access ────────────────────────────────────────────────────────────────
+# Paste the full content of your ~/.ssh/id_rsa.pub or ~/.ssh/id_ed25519.pub
+ssh_public_key = "ssh-ed25519 AAAA... user@host"
+
+# Restrict SSH to your IP in production (recommended)
+# ssh_cidr = "203.0.113.42/32"
+
+# ── Database ──────────────────────────────────────────────────────────────────
+# Default: SQLite (~€25/mo, no db_password required).
+# Set enable_mysql = true to use Managed MySQL (~€45/mo).
+
+# enable_mysql = true
+# db_password  = "change-me-use-a-strong-password-here"
+
+# ── Forgejo ───────────────────────────────────────────────────────────────────
+# Check https://forgejo.org/releases/ for the latest version.
+# forgejo_version = "9.0.3"
+
+# Optional: set a domain to enable automatic HTTPS via Let's Encrypt.
+# The domain must point to the VM's Elastic IP before terraform apply.
+# domain = "git.example.com"
+
+# ── Infrastructure (optional overrides) ───────────────────────────────────────
+# app_name        = "forgejo"
+# environment     = "prod"
+# location        = "ITBG-Bergamo"
+# zone            = "ITBG-1"
+# vm_flavor       = "CSO2A4"
+# vm_disk_size_gb = 30
+# billing_period  = "Hour"
