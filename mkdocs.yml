@@ -45,6 +45,8 @@ plugins:
   - include-markdown:
       opening_tag: "{%"
       closing_tag: "%}"
+      exclude:
+        - contributing.md
   - git-revision-date-localized:
       enable_creation_date: true
       type: date
