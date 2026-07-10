@@ -100,8 +100,8 @@ nav:
       - DevOps:
           - Gitea: examples/gitea.md
           - Forgejo: examples/forgejo.md
-          - GitLab CE: examples/gitlab-ce.md
           - Jenkins: examples/jenkins.md
+          - SonarQube: examples/sonarqube.md
       - Networking:
           - WireGuard: examples/wireguard.md
           - Traefik: examples/traefik.md
