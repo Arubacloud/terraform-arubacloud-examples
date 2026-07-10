@@ -12,13 +12,13 @@
         <meta name="author" content="Aruba Cloud">
       
       
-        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/vault/">
+        <link rel="canonical" href="https://arubacloud.github.io/terraform-arubacloud-examples/examples/wazuh/">
       
       
-        <link rel="prev" href="../keycloak/">
+        <link rel="prev" href="../uptime-kuma/">
       
       
-        <link rel="next" href="../grafana-prometheus/">
+        <link rel="next" href="../mattermost/">
       
       
       <link rel="icon" href="../../assets/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Vault (HashiCorp) - ArubaCloud Terraform Examples</title>
+        <title>Wazuh - ArubaCloud Terraform Examples</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hashicorp-vault-on-aruba-cloud" class="md-skip">
+        <a href="#wazuh-on-aruba-cloud" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vault (HashiCorp)
+              Wazuh
             
           </span>
         </div>
@@ -1605,8 +1605,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1628,11 +1626,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
         
           
           <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
@@ -1648,7 +1646,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_7">
             <span class="md-nav__icon md-icon"></span>
             Identity
@@ -1682,6 +1680,139 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../vault/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vault
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Observability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../grafana-prometheus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grafana + Prometheus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uptime-kuma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uptime Kuma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1699,7 +1830,7 @@
   
   
   <span class="md-ellipsis">
-    Vault
+    Wazuh
     
   </span>
   
@@ -1712,7 +1843,7 @@
   
   
   <span class="md-ellipsis">
-    Vault
+    Wazuh
     
   </span>
   
@@ -1859,36 +1990,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-set-environment-variables" class="md-nav__link">
+  <a href="#4-access-the-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Set environment variables
+      4. Access the dashboard
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-retrieve-the-init-output" class="md-nav__link">
+  <a href="#5-install-agents-on-monitored-hosts" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Retrieve the init output
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-verify-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Verify Vault
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-access-the-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Access the UI
+      5. Install agents on monitored hosts
     </span>
   </a>
   
@@ -1896,15 +2009,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#destroy-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy Instructions
-    </span>
-  </a>
   
 </li>
       
@@ -1914,30 +2018,6 @@
       Security Recommendations
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vault-version-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vault version upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1952,27 +2032,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vault-is-sealed-after-a-reboot" class="md-nav__link">
+  <a href="#dashboard-not-loading-after-30-minutes" class="md-nav__link">
     <span class="md-ellipsis">
-      Vault is sealed after a reboot
+      Dashboard not loading after 30 minutes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tls-certificate-errors" class="md-nav__link">
+  <a href="#login-fails-after-deploy" class="md-nav__link">
     <span class="md-ellipsis">
-      TLS certificate errors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-init-did-not-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      cloud-init did not complete
+      Login fails after deploy
     </span>
   </a>
   
@@ -1996,137 +2067,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Observability
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_8">
-            <span class="md-nav__icon md-icon"></span>
-            Observability
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../grafana-prometheus/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Grafana + Prometheus
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../uptime-kuma/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Uptime Kuma
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../wazuh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Wazuh
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2745,36 +2685,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-set-environment-variables" class="md-nav__link">
+  <a href="#4-access-the-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Set environment variables
+      4. Access the dashboard
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-retrieve-the-init-output" class="md-nav__link">
+  <a href="#5-install-agents-on-monitored-hosts" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Retrieve the init output
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-verify-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Verify Vault
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-access-the-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Access the UI
+      5. Install agents on monitored hosts
     </span>
   </a>
   
@@ -2782,15 +2704,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#destroy-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy Instructions
-    </span>
-  </a>
   
 </li>
       
@@ -2800,30 +2713,6 @@
       Security Recommendations
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upgrade-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Upgrade Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Upgrade Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vault-version-upgrade" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vault version upgrade
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2838,27 +2727,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vault-is-sealed-after-a-reboot" class="md-nav__link">
+  <a href="#dashboard-not-loading-after-30-minutes" class="md-nav__link">
     <span class="md-ellipsis">
-      Vault is sealed after a reboot
+      Dashboard not loading after 30 minutes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tls-certificate-errors" class="md-nav__link">
+  <a href="#login-fails-after-deploy" class="md-nav__link">
     <span class="md-ellipsis">
-      TLS certificate errors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-init-did-not-complete" class="md-nav__link">
-    <span class="md-ellipsis">
-      cloud-init did not complete
+      Login fails after deploy
     </span>
   </a>
   
@@ -2897,36 +2777,36 @@
   
 
 
-<h1 id="hashicorp-vault-on-aruba-cloud">HashiCorp Vault on Aruba Cloud<a class="headerlink" href="#hashicorp-vault-on-aruba-cloud" title="Permanent link">&para;</a></h1>
-<p>Deploy <a href="https://www.vaultproject.io">HashiCorp Vault</a> Community Edition in production mode on Aruba Cloud using Terraform and cloud-init. Raft integrated storage — no external database required.</p>
+<h1 id="wazuh-on-aruba-cloud">Wazuh on Aruba Cloud<a class="headerlink" href="#wazuh-on-aruba-cloud" title="Permanent link">&para;</a></h1>
+<p>Deploy <a href="https://wazuh.com">Wazuh</a> — an open-source SIEM, XDR, and CSPM platform — on Aruba Cloud using Terraform and cloud-init. This example provisions a <strong>single-node all-in-one</strong> deployment using the official Wazuh quick-install script.</p>
 <blockquote>
 <p><strong>Provider version:</strong> arubacloud/arubacloud <code>~&gt; 0.5</code> | <strong>Terraform:</strong> ≥ 1.9</p>
 </blockquote>
 <hr />
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>HashiCorp Vault is an identity-based secrets and encryption management system. It provides a unified interface to any secret — API keys, passwords, certificates, encryption keys — while providing tight access control and recording a detailed audit log. This example deploys Vault in <strong>production server mode</strong> with:</p>
+<p>Wazuh is a unified security platform that combines a SIEM (Security Information and Event Management) system, XDR (Extended Detection and Response), and CSPM (Cloud Security Posture Management) into a single solution. The all-in-one deployment bundles:</p>
 <ul>
-<li><strong>Raft integrated storage</strong> — Vault's built-in consensus store; no external database or Consul cluster needed</li>
-<li><strong>TLS on port 8200</strong> — a self-signed certificate is generated at boot; an optional <code>tls_san</code> adds a DNS name as a Subject Alternative Name</li>
-<li><strong>Automatic initialisation</strong> — <code>vault operator init</code> runs on first boot, saving unseal keys and root token to <code>/root/vault-init.json</code></li>
-<li><strong>Automatic unseal</strong> — 3 of 5 Shamir unseal keys are applied after init so Vault is ready immediately</li>
-<li>Port 8200 <strong>restricted by <code>vault_cidr</code></strong> — never expose Vault to <code>0.0.0.0/0</code> in production</li>
+<li><strong>Wazuh Indexer</strong> — OpenSearch-based log indexing and alerting engine</li>
+<li><strong>Wazuh Manager</strong> — Agent management, rule correlation, and threat detection</li>
+<li><strong>Wazuh Dashboard</strong> — Kibana-based web UI for alerts, compliance, and investigation</li>
 </ul>
 <blockquote>
-<p><strong>Important:</strong> This example automates initialisation for getting-started convenience. In production, remove the init output from the server immediately and use <a href="https://developer.hashicorp.com/vault/docs/concepts/seal#auto-unseal">Vault Auto-unseal</a> with a cloud KMS.</p>
+<p><strong>Resource requirements:</strong> Wazuh is resource-intensive. The minimum for a usable all-in-one deployment is <strong>8 vCPU / 16 GB RAM</strong> and <strong>200 GB disk</strong>. Do not attempt to deploy on a smaller VM — the OpenSearch indexer will OOM and fail.</p>
+<p><strong>Bootstrap time:</strong> The installer downloads and configures multiple components. Expect <strong>20–30 minutes</strong> before the dashboard is accessible.</p>
 </blockquote>
 <hr />
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TB
-    Ops((Operator)) --&gt;|HTTPS :8200 restricted CIDR| EIP[Elastic IP]
-    Admin((Admin)) --&gt;|SSH :22 restricted CIDR| EIP
+    Admin((Admin)) --&gt;|HTTPS :443 — admin_cidr| EIP[Elastic IP]
+    Admin --&gt;|SSH :22 — ssh_cidr| EIP
+    Agents((Wazuh Agents)) --&gt;|TCP :1514/:1515 — agent_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
         subgraph VPC["VPC / Subnet"]
-            VM["CloudServer VM\nCSO2A4 — 2 vCPU / 4 GB\nVault Community Edition\nRaft storage · TLS · 30 GB disk"]
+            VM["CSO8A16 — 8 vCPU / 16 GB\nWazuh Indexer + Manager + Dashboard\n200 GB disk"]
         end
         EIP --&gt; VM
-        SG["Security Group\nIN: 22 · 8200 (vault_cidr)\nOUT: all"]
+        SG["Security Group\nIN: 22 · 443 · 1514 · 1515\nOUT: all"]
     end
 
     SG -.-&gt; VM</code></pre>
@@ -2943,61 +2823,68 @@
 <tbody>
 <tr>
 <td><code>arubacloud_project</code></td>
-<td><code>vault-prod</code></td>
+<td><code>wazuh-prod</code></td>
 <td>Project container</td>
 </tr>
 <tr>
 <td><code>arubacloud_vpc</code></td>
-<td><code>vault-prod-vpc</code></td>
+<td><code>wazuh-prod-vpc</code></td>
 <td>Virtual Private Cloud</td>
 </tr>
 <tr>
 <td><code>arubacloud_subnet</code></td>
-<td><code>vault-prod-subnet</code></td>
+<td><code>wazuh-prod-subnet</code></td>
 <td>Basic subnet</td>
 </tr>
 <tr>
 <td><code>arubacloud_securitygroup</code></td>
-<td><code>vault-prod-vm-sg</code></td>
+<td><code>wazuh-prod-vm-sg</code></td>
 <td>Security group</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>vault-prod-vm-ssh</code></td>
-<td>SSH ingress (restricted CIDR)</td>
+<td><code>wazuh-prod-vm-ssh</code></td>
+<td>SSH ingress</td>
 </tr>
 <tr>
 <td><code>arubacloud_securityrule</code></td>
-<td><code>vault-prod-vm-vault</code></td>
-<td>Vault API + UI (port 8200, restricted CIDR)</td>
+<td><code>wazuh-prod-vm-dashboard</code></td>
+<td>HTTPS dashboard TCP 443</td>
+</tr>
+<tr>
+<td><code>arubacloud_securityrule</code></td>
+<td><code>wazuh-prod-vm-agent-events</code></td>
+<td>Agent events TCP 1514</td>
+</tr>
+<tr>
+<td><code>arubacloud_securityrule</code></td>
+<td><code>wazuh-prod-vm-agent-enroll</code></td>
+<td>Agent enrollment TCP 1515</td>
 </tr>
 <tr>
 <td><code>arubacloud_elasticip</code></td>
-<td><code>vault-prod-vm-eip</code></td>
+<td><code>wazuh-prod-vm-eip</code></td>
 <td>VM public IP</td>
 </tr>
 <tr>
 <td><code>arubacloud_blockstorage</code></td>
-<td><code>vault-prod-boot</code></td>
-<td>30 GB boot disk (Performance)</td>
+<td><code>wazuh-prod-boot</code></td>
+<td>200 GB boot disk (Performance)</td>
 </tr>
 <tr>
 <td><code>arubacloud_keypair</code></td>
-<td><code>vault-prod-keypair</code></td>
+<td><code>wazuh-prod-keypair</code></td>
 <td>SSH public key</td>
 </tr>
 <tr>
 <td><code>arubacloud_cloudserver</code></td>
-<td><code>vault-prod-vm</code></td>
+<td><code>wazuh-prod-vm</code></td>
 <td>CloudServer VM</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="estimated-monthly-cost">Estimated Monthly Cost<a class="headerlink" href="#estimated-monthly-cost" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Approximate prices for ITBG-Bergamo, hourly billing.</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -3009,13 +2896,13 @@
 <tbody>
 <tr>
 <td>CloudServer VM</td>
-<td>CSO2A4 — 2 vCPU / 4 GB</td>
-<td>~€18</td>
+<td>CSO8A16 — 8 vCPU / 16 GB</td>
+<td>~€95</td>
 </tr>
 <tr>
 <td>Boot disk</td>
-<td>30 GB Performance</td>
-<td>~€4</td>
+<td>200 GB Performance</td>
+<td>~€30</td>
 </tr>
 <tr>
 <td>Elastic IP</td>
@@ -3025,7 +2912,7 @@
 <tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>~€25/mo</strong></td>
+<td><strong>~€128/mo</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3036,7 +2923,6 @@
 <li>ArubaCloud Terraform Provider <code>~&gt; 0.5</code></li>
 <li>An ArubaCloud account with OAuth2 API credentials</li>
 <li>An SSH key pair</li>
-<li><code>vault</code> CLI installed locally (optional, for interacting with Vault)</li>
 </ul>
 <hr />
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
@@ -3061,6 +2947,10 @@
 <td><code>ssh_public_key</code></td>
 <td>SSH public key content</td>
 </tr>
+<tr>
+<td><code>admin_password</code></td>
+<td>Wazuh dashboard admin password (min 8 chars, must include upper, lower, digit, special)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h3>
@@ -3075,7 +2965,7 @@
 <tbody>
 <tr>
 <td><code>app_name</code></td>
-<td><code>"vault"</code></td>
+<td><code>"wazuh"</code></td>
 <td>Short name used in all resource names</td>
 </tr>
 <tr>
@@ -3100,8 +2990,8 @@
 </tr>
 <tr>
 <td><code>vm_flavor</code></td>
-<td><code>"CSO2A4"</code></td>
-<td>CloudServer flavor</td>
+<td><code>"CSO8A16"</code></td>
+<td>CloudServer flavor (8 vCPU / 16 GB minimum)</td>
 </tr>
 <tr>
 <td><code>vm_image</code></td>
@@ -3110,28 +3000,23 @@
 </tr>
 <tr>
 <td><code>vm_disk_size_gb</code></td>
-<td><code>30</code></td>
-<td>Boot disk size in GB</td>
+<td><code>200</code></td>
+<td>Boot disk size in GB (min 50 GB)</td>
 </tr>
 <tr>
 <td><code>ssh_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for SSH — <strong>restrict to your IP</strong></td>
+<td>CIDR for SSH — restrict in production</td>
 </tr>
 <tr>
-<td><code>vault_cidr</code></td>
+<td><code>admin_cidr</code></td>
 <td><code>"0.0.0.0/0"</code></td>
-<td>CIDR for Vault API/UI (port 8200) — <strong>restrict to your IP</strong></td>
+<td>CIDR for HTTPS dashboard — <strong>always restrict</strong></td>
 </tr>
 <tr>
-<td><code>vault_version</code></td>
-<td><code>"1.18.4"</code></td>
-<td>Vault version from HashiCorp APT repo</td>
-</tr>
-<tr>
-<td><code>tls_san</code></td>
-<td><code>""</code></td>
-<td>Extra DNS SAN for the self-signed TLS cert</td>
+<td><code>agent_cidr</code></td>
+<td><code>"0.0.0.0/0"</code></td>
+<td>CIDR for agent ports 1514/1515</td>
 </tr>
 </tbody>
 </table>
@@ -3146,8 +3031,8 @@
 </thead>
 <tbody>
 <tr>
-<td><code>vault_url</code></td>
-<td>Vault API and UI endpoint</td>
+<td><code>dashboard_url</code></td>
+<td>Wazuh dashboard HTTPS URL</td>
 </tr>
 <tr>
 <td><code>vm_public_ip</code></td>
@@ -3158,12 +3043,8 @@
 <td>SSH command to connect to the VM</td>
 </tr>
 <tr>
-<td><code>init_output_cmd</code></td>
-<td>SSH command to retrieve unseal keys + root token</td>
-</tr>
-<tr>
-<td><code>env_hint</code></td>
-<td><code>VAULT_ADDR</code> and <code>VAULT_SKIP_VERIFY</code> environment variables</td>
+<td><code>agent_manager_ip</code></td>
+<td>Manager IP to configure in agent <code>ossec.conf</code></td>
 </tr>
 </tbody>
 </table>
@@ -3171,112 +3052,83 @@
 <h2 id="deployment-instructions">Deployment Instructions<a class="headerlink" href="#deployment-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="1-clone-and-navigate">1. Clone and navigate<a class="headerlink" href="#1-clone-and-navigate" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arubacloud/terraform-arubacloud-examples.git
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/vault
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>terraform-arubacloud-examples/wazuh
 </span></code></pre></div>
 <h3 id="2-configure-variables">2. Configure variables<a class="headerlink" href="#2-configure-variables" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>terraform.tfvars.example<span class="w"> </span>terraform.tfvars
 </span></code></pre></div>
-<p><strong>Always</strong> restrict <code>vault_cidr</code> to your IP before deploying to production:</p>
-<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">vault_cidr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">ssh_cidr</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
+<p>Set credentials, a strong admin password, and restrict CIDRs:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">admin_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Ch@ngeMe2024!&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">admin_cidr</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">agent_cidr</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10.0.0.0/8&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">ssh_cidr</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;203.0.113.42/32&quot;</span>
 </span></code></pre></div>
 <h3 id="3-deploy">3. Deploy<a class="headerlink" href="#3-deploy" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>terraform<span class="w"> </span>init
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>terraform<span class="w"> </span>plan
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>terraform<span class="w"> </span>apply
 </span></code></pre></div>
-<p>Bootstrap takes approximately <strong>3–5 minutes</strong>.</p>
-<h3 id="4-set-environment-variables">4. Set environment variables<a class="headerlink" href="#4-set-environment-variables" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>env_hint<span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># Equivalent to:</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># export VAULT_ADDR=https://&lt;IP&gt;:8200</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># export VAULT_SKIP_VERIFY=true</span>
-</span></code></pre></div>
-<h3 id="5-retrieve-the-init-output">5. Retrieve the init output<a class="headerlink" href="#5-retrieve-the-init-output" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>init_output_cmd<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>vault-init-KEEP-SAFE.json
-</span></code></pre></div>
 <blockquote>
-<p><strong>Warning:</strong> <code>/root/vault-init.json</code> on the server contains your Shamir unseal keys and root token in plaintext. Copy it to a secure offline location and delete the server copy:</p>
+<p>Terraform <code>apply</code> completes in ~2 minutes (VM provisioned). The Wazuh bootstrap continues in the background for <strong>20–30 minutes</strong>. Monitor progress:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/wazuh-install.log
+</span></code></pre></div>
 </blockquote>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="s1">&#39;sudo shred -u /root/vault-init.json&#39;</span>
+<h3 id="4-access-the-dashboard">4. Access the dashboard<a class="headerlink" href="#4-access-the-dashboard" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>terraform<span class="w"> </span>output<span class="w"> </span>dashboard_url
 </span></code></pre></div>
-<h3 id="6-verify-vault">6. Verify Vault<a class="headerlink" href="#6-verify-vault" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>vault<span class="w"> </span>status
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>vault<span class="w"> </span>login<span class="w">   </span><span class="c1"># use the root_token from vault-init.json</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>vault<span class="w"> </span>secrets<span class="w"> </span>list
+<p>Log in with <code>admin</code> / <code>admin_password</code>. Accept the self-signed certificate warning (or install a trusted certificate later).</p>
+<h3 id="5-install-agents-on-monitored-hosts">5. Install agents on monitored hosts<a class="headerlink" href="#5-install-agents-on-monitored-hosts" title="Permanent link">&para;</a></h3>
+<p>On each host you want to monitor:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://packages.wazuh.com/key/GPG-KEY-WAZUH<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://packages.wazuh.com/4.x/apt/ stable main&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/wazuh.list
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wazuh-agent
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Configure the manager address</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">WAZUH_MANAGER</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>agent_manager_ip<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>systemctl<span class="w"> </span>start<span class="w"> </span>wazuh-agent
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>wazuh-agent
 </span></code></pre></div>
-<h3 id="7-access-the-ui">7. Access the UI<a class="headerlink" href="#7-access-the-ui" title="Permanent link">&para;</a></h3>
-<p>Open <code>$(terraform output -raw vault_url)/ui</code> in your browser and log in with the root token. Accept the TLS warning (self-signed certificate).</p>
-<hr />
-<h2 id="destroy-instructions">Destroy Instructions<a class="headerlink" href="#destroy-instructions" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>terraform<span class="w"> </span>destroy
-</span></code></pre></div>
-<p>All resources and Vault data are permanently deleted.</p>
 <hr />
 <h2 id="security-recommendations">Security Recommendations<a class="headerlink" href="#security-recommendations" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p><strong>Restrict <code>vault_cidr</code> immediately.</strong> Vault holds your secrets — never leave port 8200 open to <code>0.0.0.0/0</code>.</p>
+<p><strong>Always restrict <code>admin_cidr</code></strong> to your management IP. The Wazuh dashboard contains full security event data for your infrastructure.</p>
 </li>
 <li>
-<p><strong>Remove the init output from the server.</strong> After copying <code>vault-init.json</code> to a secure location, shred it on the VM (<code>sudo shred -u /root/vault-init.json</code>).</p>
+<p><strong>Restrict <code>agent_cidr</code></strong> to the CIDR of your monitored infrastructure, not <code>0.0.0.0/0</code>. This prevents arbitrary agents from enrolling.</p>
 </li>
 <li>
-<p><strong>Replace the root token.</strong> After initial setup, create a properly-scoped token, revoke the root token, and store the unseal keys in separate secure locations (password manager, sealed envelope, HSM).</p>
-</li>
-<li>
-<p><strong>Enable audit logging.</strong> After login: <code>vault audit enable file file_path=/var/log/vault/audit.log</code>.</p>
-</li>
-<li>
-<p><strong>Use Auto-unseal in production.</strong> Manual unseal requires human intervention after every restart. Integrate with a cloud KMS (AWS KMS, GCP KMS, Azure Key Vault) for automatic unsealing. See <a href="https://developer.hashicorp.com/vault/docs/concepts/seal#auto-unseal">Vault Auto-unseal docs</a>.</p>
-</li>
-<li>
-<p><strong>Enable TLS verification.</strong> Replace the self-signed certificate with one signed by a trusted CA, then remove <code>VAULT_SKIP_VERIFY=true</code>.</p>
+<p><strong>Replace the self-signed certificate.</strong> The quick-install generates a self-signed cert. For production, use a proper certificate — either via Let's Encrypt (requires a domain) or your own CA.</p>
 </li>
 </ol>
 <hr />
-<h2 id="upgrade-considerations">Upgrade Considerations<a class="headerlink" href="#upgrade-considerations" title="Permanent link">&para;</a></h2>
-<h3 id="vault-version-upgrade">Vault version upgrade<a class="headerlink" href="#vault-version-upgrade" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>--only-upgrade<span class="w"> </span>vault
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>vault
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Re-unseal if needed:</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key1&gt;
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key2&gt;
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key3&gt;
-</span></code></pre></div>
-<p>Review the <a href="https://developer.hashicorp.com/vault/docs/upgrading">Vault upgrade guide</a> before upgrading across major versions.</p>
-<hr />
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="vault-is-sealed-after-a-reboot">Vault is sealed after a reboot<a class="headerlink" href="#vault-is-sealed-after-a-reboot" title="Permanent link">&para;</a></h3>
-<p>Manual unseal is required on every restart (unless Auto-unseal is configured):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>env_hint<span class="k">)</span><span class="s2">&quot;</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key1&gt;
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key2&gt;
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>vault<span class="w"> </span>operator<span class="w"> </span>unseal<span class="w"> </span>&lt;key3&gt;
+<h3 id="dashboard-not-loading-after-30-minutes">Dashboard not loading after 30 minutes<a class="headerlink" href="#dashboard-not-loading-after-30-minutes" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/wazuh-install.log
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>wazuh-indexer<span class="w"> </span>wazuh-manager<span class="w"> </span>wazuh-dashboard
 </span></code></pre></div>
-<h3 id="tls-certificate-errors">TLS certificate errors<a class="headerlink" href="#tls-certificate-errors" title="Permanent link">&para;</a></h3>
-<p>The self-signed certificate causes browser warnings and CLI errors. Either:</p>
-<ul>
-<li>Set <code>VAULT_SKIP_VERIFY=true</code> for testing</li>
-<li>Trust the certificate: <code>sudo cp /etc/vault.d/tls/vault.crt /usr/local/share/ca-certificates/ &amp;&amp; sudo update-ca-certificates</code></li>
-<li>Replace with a valid certificate signed by a trusted CA</li>
-</ul>
-<h3 id="cloud-init-did-not-complete">cloud-init did not complete<a class="headerlink" href="#cloud-init-did-not-complete" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ssh<span class="w"> </span>ubuntu@<span class="k">$(</span>terraform<span class="w"> </span>output<span class="w"> </span>-raw<span class="w"> </span>vm_public_ip<span class="k">)</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-100<span class="w"> </span>/var/log/cloud-init-output.log
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>vault
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>vault<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span>
+<p>The most common cause is insufficient RAM — verify the VM has at least 16 GB and that OpenSearch is not OOM-killed:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>wazuh-indexer<span class="w"> </span>-n<span class="w"> </span><span class="m">50</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;killed process&quot;</span>
+</span></code></pre></div>
+<h3 id="login-fails-after-deploy">Login fails after deploy<a class="headerlink" href="#login-fails-after-deploy" title="Permanent link">&para;</a></h3>
+<p>The password change may have failed. Check the log:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/var/log/wazuh-password-change.log
+</span></code></pre></div>
+<p>If needed, SSH into the VM and re-run the password tool manually:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>bash<span class="w"> </span>/root/wazuh-install-files/wazuh-passwords-tool.sh<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>-u<span class="w"> </span>admin<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;YourNewPassword&quot;</span><span class="w"> </span>-A
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wazuh-indexer<span class="w"> </span>wazuh-manager<span class="w"> </span>wazuh-dashboard
 </span></code></pre></div>
 <hr />
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://developer.hashicorp.com/vault/docs">Vault Documentation</a></li>
-<li><a href="https://developer.hashicorp.com/vault/docs/configuration/storage/raft">Vault Raft Storage</a></li>
-<li><a href="https://developer.hashicorp.com/vault/tutorials/operations/production-hardening">Vault Production Hardening</a></li>
-<li><a href="https://developer.hashicorp.com/vault/docs/concepts/seal#auto-unseal">Vault Auto-unseal</a></li>
+<li><a href="https://documentation.wazuh.com">Wazuh Documentation</a></li>
+<li><a href="https://documentation.wazuh.com/current/quickstart.html">Wazuh Quick-Start Guide</a></li>
+<li><a href="https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html">Wazuh Agent Installation</a></li>
 <li><a href="https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs">ArubaCloud Terraform Provider</a></li>
 </ul>
 
@@ -3301,7 +3153,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:09:38 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 13:47:06 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3311,7 +3163,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 09:09:38 UTC">July 10, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 10, 2026 13:47:06 UTC">July 10, 2026</span>
   </span>
 
     
@@ -3348,7 +3200,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../keycloak/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Keycloak">
+          <a href="../uptime-kuma/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Uptime Kuma">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3358,20 +3210,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Keycloak
+                Uptime Kuma
               </div>
             </div>
           </a>
         
         
           
-          <a href="../grafana-prometheus/" class="md-footer__link md-footer__link--next" aria-label="Next: Grafana + Prometheus">
+          <a href="../mattermost/" class="md-footer__link md-footer__link--next" aria-label="Next: Mattermost">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Grafana + Prometheus
+                Mattermost
               </div>
             </div>
             <div class="md-footer__button md-icon">
