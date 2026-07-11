@@ -16,7 +16,7 @@ OpenSearch è il fork con licenza Apache 2.0 di Elasticsearch mantenuto da AWS e
 - Tuning del kernel `vm.max_map_count=262144` applicato persistentemente
 - API REST sulla porta HTTPS 9200, limitata a `admin_cidr`
 
-> **Nota su Elasticsearch:** Se la licenza SSPL di Elastic non è un problema per il tuo caso d'uso, vedi l'[esempio Elasticsearch](../elasticsearch/README.md) in questo repository.
+> **Nota su Elasticsearch:** Se la licenza SSPL di Elastic non è un problema per il tuo caso d'uso, vedi l'[esempio Elasticsearch](/examples/elasticsearch) in questo repository.
 
 ---
 
