@@ -29,7 +29,7 @@ resource "arubacloud_securitygroup" "vm" {
 resource "arubacloud_securityrule" "vm_ingress" {
   for_each = var.vm_ingress_ports
 
-  name              = "${var.name_prefix}-vm-${each.key}"
+  name              = "${var.name_prefix}-vm-${replace(each.key, "_", "-")}"
   location          = var.location
   project_id        = var.project_id
   vpc_id            = arubacloud_vpc.this.id
