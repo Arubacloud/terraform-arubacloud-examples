@@ -20,7 +20,7 @@ runcmd:
 
   # ── Install collections ───────────────────────────────────────────────────────
 %{ for col in collections ~}
-  - cscli collections install ${col}
+  - /usr/bin/cscli collections install ${col}
 %{ endfor ~}
 
   # ── Reload CrowdSec to pick up new parsers/scenarios ─────────────────────────
@@ -34,7 +34,7 @@ runcmd:
   - |
     ENROLL_KEY="${enroll_key}"
     if [ -n "$ENROLL_KEY" ]; then
-      cscli console enroll "$ENROLL_KEY"
+      /usr/bin/cscli console enroll "$ENROLL_KEY"
       systemctl reload crowdsec
       echo "Enrolled with CrowdSec Console."
     else

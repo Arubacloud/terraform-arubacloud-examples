@@ -151,10 +151,12 @@ Bootstrap takes approximately **2–3 minutes**.
 
 ```bash
 ssh ubuntu@$(terraform output -raw vm_public_ip)
-sudo cscli version
-sudo cscli collections list
-sudo cscli decisions list
+sudo /usr/bin/cscli version
+sudo /usr/bin/cscli collections list
+sudo /usr/bin/cscli decisions list
 ```
+
+> **Note:** `cscli` requires the full path when called via `sudo` in an interactive shell because sudo's `secure_path` may not include the binary's location. Alternatively, add `alias cscli='sudo /usr/bin/cscli'` to your `~/.bashrc`.
 
 ---
 
@@ -163,7 +165,7 @@ sudo cscli decisions list
 CrowdSec is most powerful when deployed alongside the services it protects. To protect an Nginx server, add the collection:
 
 ```bash
-sudo cscli collections install crowdsecurity/nginx
+sudo /usr/bin/cscli collections install crowdsecurity/nginx
 sudo systemctl reload crowdsec
 ```
 
@@ -175,16 +177,16 @@ Then configure Nginx to write access logs to the path CrowdSec monitors (`/var/l
 
 ```bash
 # Search available collections
-sudo cscli hub list
-sudo cscli collections list -a
+sudo /usr/bin/cscli hub list
+sudo /usr/bin/cscli collections list -a
 
 # Common collections
-sudo cscli collections install crowdsecurity/linux          # base Linux scenarios
-sudo cscli collections install crowdsecurity/sshd           # SSH brute-force protection
-sudo cscli collections install crowdsecurity/nginx          # Nginx log parsing
-sudo cscli collections install crowdsecurity/apache2        # Apache log parsing
-sudo cscli collections install crowdsecurity/traefik        # Traefik log parsing
-sudo cscli collections install crowdsecurity/wordpress      # WordPress attack scenarios
+sudo /usr/bin/cscli collections install crowdsecurity/linux          # base Linux scenarios
+sudo /usr/bin/cscli collections install crowdsecurity/sshd           # SSH brute-force protection
+sudo /usr/bin/cscli collections install crowdsecurity/nginx          # Nginx log parsing
+sudo /usr/bin/cscli collections install crowdsecurity/apache2        # Apache log parsing
+sudo /usr/bin/cscli collections install crowdsecurity/traefik        # Traefik log parsing
+sudo /usr/bin/cscli collections install crowdsecurity/wordpress      # WordPress attack scenarios
 ```
 
 ---
@@ -194,7 +196,7 @@ sudo cscli collections install crowdsecurity/wordpress      # WordPress attack s
 ### CrowdSec not detecting attacks
 
 ```bash
-sudo cscli metrics
+sudo /usr/bin/cscli metrics
 # Check that the relevant acquisition sources are configured
 cat /etc/crowdsec/acquis.yaml
 # Tail logs
