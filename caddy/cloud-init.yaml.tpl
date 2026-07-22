@@ -64,7 +64,7 @@ runcmd:
     curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \
       | tee /etc/apt/sources.list.d/caddy-stable.list
     apt-get update -qq
-    apt-get install -y caddy
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confold" caddy
 
   # ── Set web root ownership and reload Caddy ───────────────────────────────────
   - chown -R caddy:caddy /var/www/html
