@@ -20,8 +20,23 @@ write_files:
     permissions: "0600"
     content: "${smtp_pass_b64}"
 
+  # Python script to inject SMTP password — kept as a file to avoid YAML parsing
+  # issues with unindented Python code inside a runcmd heredoc.
+  - path: /root/inject-smtp-pass.py
+    permissions: "0700"
+    content: |
+      import base64, os
+      smtp_pass = base64.b64decode(open('/root/discourse-smtp.b64').read().strip()).decode()
+      os.unlink('/root/discourse-smtp.b64')
+      with open('/var/discourse/containers/app.yml') as f:
+          config = f.read()
+      config = config.replace('PLACEHOLDER_SMTP_PASS', smtp_pass)
+      with open('/var/discourse/containers/app.yml', 'w') as f:
+          f.write(config)
+
   # Discourse app.yml — SMTP password injected at runtime via Python
-  - path: /var/discourse/containers/app.yml
+  # Written to /tmp first; copied into /var/discourse after git clone.
+  - path: /tmp/discourse-app.yml
     content: |
       templates:
         - "templates/postgres.template.yml"
@@ -76,27 +91,16 @@ runcmd:
     systemctl enable docker
     systemctl start docker
 
-  # ── Clone discourse_docker ────────────────────────────────────────────────────
+  # ── Clone discourse_docker and install app.yml ────────────────────────────────
   - |
-    mkdir -p /var/discourse
-    git clone https://github.com/discourse/discourse_docker.git /var/discourse
+    git clone --depth 1 https://github.com/discourse/discourse_docker.git /var/discourse
+    mkdir -p /var/discourse/containers
+    cp /tmp/discourse-app.yml /var/discourse/containers/app.yml
+    rm -f /tmp/discourse-app.yml
 
   # ── Inject SMTP password into app.yml ─────────────────────────────────────────
-  - |
-    python3 - << 'PYEOF'
-import base64
-
-smtp_pass = base64.b64decode(open('/root/discourse-smtp.b64').read().strip()).decode()
-import os; os.unlink('/root/discourse-smtp.b64')
-
-with open('/var/discourse/containers/app.yml') as f:
-    config = f.read()
-
-config = config.replace('PLACEHOLDER_SMTP_PASS', smtp_pass)
-
-with open('/var/discourse/containers/app.yml', 'w') as f:
-    f.write(config)
-PYEOF
+  - python3 /root/inject-smtp-pass.py
+  - rm -f /root/inject-smtp-pass.py
 
   # ── Bootstrap and start Discourse (20-30 minutes) ────────────────────────────
   - |

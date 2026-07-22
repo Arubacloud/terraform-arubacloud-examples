@@ -12,11 +12,29 @@ packages:
   - ca-certificates
   - gnupg
 
+bootcmd:
+  # Create the directory before write_files runs
+  - mkdir -p /opt/rocketchat
+
 write_files:
   # Admin password stored base64-encoded
   - path: /root/rc-admin.b64
     permissions: "0600"
     content: "${admin_pass_b64}"
+
+  # Python script to inject admin password — kept as a file to avoid YAML parsing
+  # issues with unindented Python code inside a runcmd heredoc.
+  - path: /root/inject-admin-pass.py
+    permissions: "0700"
+    content: |
+      import base64, os
+      admin_pass = base64.b64decode(open('/root/rc-admin.b64').read().strip()).decode()
+      os.unlink('/root/rc-admin.b64')
+      with open('/opt/rocketchat/docker-compose.yml') as f:
+          config = f.read()
+      config = config.replace('PLACEHOLDER_ADMIN_PASS', admin_pass)
+      with open('/opt/rocketchat/docker-compose.yml', 'w') as f:
+          f.write(config)
 
   # Docker Compose — admin credentials injected at runtime
   - path: /opt/rocketchat/docker-compose.yml
@@ -68,21 +86,8 @@ runcmd:
     systemctl start docker
 
   # ── Inject admin password into compose file ───────────────────────────────────
-  - |
-    python3 - << 'PYEOF'
-import base64, os
-
-admin_pass = base64.b64decode(open('/root/rc-admin.b64').read().strip()).decode()
-os.unlink('/root/rc-admin.b64')
-
-with open('/opt/rocketchat/docker-compose.yml') as f:
-    config = f.read()
-
-config = config.replace('PLACEHOLDER_ADMIN_PASS', admin_pass)
-
-with open('/opt/rocketchat/docker-compose.yml', 'w') as f:
-    f.write(config)
-PYEOF
+  - python3 /root/inject-admin-pass.py
+  - rm -f /root/inject-admin-pass.py
 
   # ── Start MongoDB and initialise replica set ──────────────────────────────────
   - |

@@ -10,6 +10,10 @@ packages:
   - curl
   - python3-bcrypt
 
+bootcmd:
+  # Create the AdGuard Home directory before write_files runs
+  - mkdir -p /opt/AdGuardHome
+
 write_files:
   # Admin password stored base64-encoded to avoid shell special-character issues
   - path: /root/adguard-pass.b64
@@ -54,6 +58,22 @@ write_files:
         enabled: true
         interval: 24h
 
+  # Python script to bcrypt-hash the password and inject it into the config.
+  # Kept as a separate file to avoid YAML parsing issues with unindented Python code
+  # inside a runcmd heredoc.
+  - path: /root/hash-adguard-password.py
+    permissions: "0700"
+    content: |
+      import bcrypt, base64
+      with open('/root/adguard-pass.b64') as f:
+          pw = base64.b64decode(f.read().strip())
+      hashed = bcrypt.hashpw(pw, bcrypt.gensalt(10)).decode()
+      with open('/opt/AdGuardHome/AdGuardHome.yaml') as f:
+          config = f.read()
+      config = config.replace('PLACEHOLDER_PASSWORD_HASH', hashed)
+      with open('/opt/AdGuardHome/AdGuardHome.yaml', 'w') as f:
+          f.write(config)
+
 runcmd:
   # ── Disable systemd-resolved stub listener (conflicts with AdGuard Home on :53) ─
   - |
@@ -73,24 +93,8 @@ runcmd:
     rm -rf /tmp/AdGuardHome
 
   # ── Generate bcrypt hash and inject into config ───────────────────────────────
-  - |
-    python3 - << 'PYEOF'
-import bcrypt, base64
-
-with open('/root/adguard-pass.b64') as f:
-    pw = base64.b64decode(f.read().strip())
-
-hashed = bcrypt.hashpw(pw, bcrypt.gensalt(10)).decode()
-
-with open('/opt/AdGuardHome/AdGuardHome.yaml') as f:
-    config = f.read()
-
-config = config.replace('PLACEHOLDER_PASSWORD_HASH', hashed)
-
-with open('/opt/AdGuardHome/AdGuardHome.yaml', 'w') as f:
-    f.write(config)
-PYEOF
-    rm -f /root/adguard-pass.b64
+  - python3 /root/hash-adguard-password.py
+  - rm -f /root/adguard-pass.b64 /root/hash-adguard-password.py
 
   # ── Install AdGuard Home as a systemd service and start it ────────────────────
   - /opt/AdGuardHome/AdGuardHome --no-check-update -s install
