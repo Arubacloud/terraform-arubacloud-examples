@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 variable "ssh_cidr" {
@@ -103,6 +104,7 @@ variable "grafana_admin_password" {
   description = "Initial password for the Grafana admin user. Must be at least 8 characters."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!"
 
   validation {
     condition     = length(var.grafana_admin_password) >= 8

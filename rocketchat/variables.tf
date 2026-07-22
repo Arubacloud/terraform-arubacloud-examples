@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -122,6 +123,7 @@ variable "admin_fullname" {
 variable "admin_email" {
   description = "Rocket.Chat admin email address."
   type        = string
+  default     = "admin@example.com"
 
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.admin_email))
@@ -133,6 +135,7 @@ variable "admin_password" {
   description = "Rocket.Chat admin password (min 8 characters)."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!"
 
   validation {
     condition     = length(var.admin_password) >= 8

@@ -13,6 +13,7 @@ variable "arubacloud_client_secret" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key content."
+  default     = ""
 }
 
 variable "app_name" {

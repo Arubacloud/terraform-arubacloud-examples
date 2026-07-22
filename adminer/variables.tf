@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -134,6 +135,7 @@ variable "db_admin_password" {
   description = "Password for the DBaaS admin user. Must not contain newlines."
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!DbPass"
 
   validation {
     condition     = length(var.db_admin_password) >= 16

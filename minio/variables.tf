@@ -13,6 +13,7 @@ variable "arubacloud_client_secret" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key content."
+  default     = ""
 }
 
 variable "app_name" {
@@ -99,6 +100,7 @@ variable "minio_root_password" {
   type        = string
   sensitive   = true
   description = "MinIO root secret key. Minimum 8 characters."
+  default     = "ChangeMe123!"
 
   validation {
     condition     = length(var.minio_root_password) >= 8

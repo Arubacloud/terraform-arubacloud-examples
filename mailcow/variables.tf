@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -104,6 +105,7 @@ variable "ssh_cidr" {
 variable "mail_hostname" {
   description = "Primary mail hostname (FQDN, e.g. 'mail.example.com'). Must resolve to the VM's public IP via DNS before deploying for Let's Encrypt TLS."
   type        = string
+  default     = "mail.example.com"
 }
 
 variable "mailcow_branch" {

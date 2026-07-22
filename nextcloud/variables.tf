@@ -13,6 +13,7 @@ variable "arubacloud_client_secret" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key content."
+  default     = ""
 }
 
 variable "app_name" {
@@ -93,6 +94,7 @@ variable "db_password" {
   type        = string
   sensitive   = true
   description = "MySQL password for the Nextcloud database user. Min 16 chars, no newlines."
+  default     = "ChangeMe1234!DbPass"
   validation {
     condition     = length(var.db_password) >= 16 && !can(regex("\n", var.db_password))
     error_message = "db_password must be at least 16 characters and must not contain newlines."
@@ -109,6 +111,7 @@ variable "nc_admin_password" {
   type        = string
   sensitive   = true
   description = "Nextcloud admin password. Min 16 chars, no newlines."
+  default     = "ChangeMe1234!NcAdmin"
   validation {
     condition     = length(var.nc_admin_password) >= 16 && !can(regex("\n", var.nc_admin_password))
     error_message = "nc_admin_password must be at least 16 characters and must not contain newlines."
@@ -118,6 +121,7 @@ variable "nc_admin_password" {
 variable "nc_admin_email" {
   type        = string
   description = "Nextcloud admin email."
+  default     = "admin@example.com"
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.nc_admin_email))
     error_message = "nc_admin_email must be a valid email address."

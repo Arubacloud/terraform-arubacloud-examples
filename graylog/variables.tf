@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -117,6 +118,7 @@ variable "graylog_admin_password" {
   description = "Password for the Graylog 'admin' user (min 8 characters)."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!"
 
   validation {
     condition     = length(var.graylog_admin_password) >= 8
@@ -128,6 +130,7 @@ variable "graylog_secret" {
   description = "Graylog password secret (min 16 characters). Generate with: pwgen -N 1 -s 96"
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!GraylogSecret"
 
   validation {
     condition     = length(var.graylog_secret) >= 16

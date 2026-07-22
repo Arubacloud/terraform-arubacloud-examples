@@ -81,6 +81,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key content."
   type        = string
+  default     = ""
 }
 
 variable "ssh_cidr" {

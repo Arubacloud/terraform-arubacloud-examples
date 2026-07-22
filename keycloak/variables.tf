@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 variable "ssh_cidr" {
@@ -115,6 +116,7 @@ variable "keycloak_admin_password" {
   description = "Keycloak initial admin password. Must be at least 12 characters."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!"
 
   validation {
     condition     = length(var.keycloak_admin_password) >= 12
@@ -128,6 +130,7 @@ variable "db_password" {
   description = "Password for the Keycloak PostgreSQL user. Must be at least 16 characters and must not contain newlines."
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!DbPass"
 
   validation {
     condition     = length(var.db_password) >= 16

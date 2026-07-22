@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -105,6 +106,7 @@ variable "pg_password" {
   description = "PostgreSQL database password for Authentik."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!PgPass"
 
   validation {
     condition     = length(var.pg_password) >= 12
@@ -116,6 +118,7 @@ variable "authentik_secret_key" {
   description = "Authentik secret key for signing (min 32 characters). Use: openssl rand -hex 32"
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!ChangeMe123!ChangeME!!"
 
   validation {
     condition     = length(var.authentik_secret_key) >= 32

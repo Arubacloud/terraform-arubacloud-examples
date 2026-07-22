@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -116,6 +117,7 @@ variable "hostname" {
 variable "admin_email" {
   description = "Email address for the initial Discourse admin account. Must match a valid mailbox for email confirmation."
   type        = string
+  default     = "admin@example.com"
 
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.admin_email))
@@ -126,6 +128,7 @@ variable "admin_email" {
 variable "smtp_host" {
   description = "SMTP server address for outbound email (e.g. 'smtp.gmail.com')."
   type        = string
+  default     = "smtp.example.com"
 }
 
 variable "smtp_port" {
@@ -137,10 +140,12 @@ variable "smtp_port" {
 variable "smtp_user" {
   description = "SMTP login username."
   type        = string
+  default     = "smtp@example.com"
 }
 
 variable "smtp_password" {
   description = "SMTP login password."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!"
 }

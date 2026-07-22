@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -110,6 +111,7 @@ variable "web_cidr" {
 variable "gitea_url" {
   description = "Base URL of the Gitea instance to integrate with (e.g. 'http://1.2.3.4:3000'). Must be reachable from the Drone VM."
   type        = string
+  default     = "http://localhost:3000"
 
   validation {
     condition     = can(regex("^https?://", var.gitea_url))
@@ -121,18 +123,21 @@ variable "gitea_client_id" {
   description = "OAuth2 client ID from the Gitea OAuth application. Create one at: Gitea → Settings → Applications → OAuth2 Applications."
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "gitea_client_secret" {
   description = "OAuth2 client secret from the Gitea OAuth application."
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "drone_rpc_secret" {
   description = "Shared secret between the Drone server and runner. Generate with: openssl rand -hex 16"
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!RpcSecret"
 
   validation {
     condition     = length(var.drone_rpc_secret) >= 16
@@ -143,4 +148,5 @@ variable "drone_rpc_secret" {
 variable "drone_admin_user" {
   description = "Gitea username to grant Drone admin privileges."
   type        = string
+  default     = "admin"
 }

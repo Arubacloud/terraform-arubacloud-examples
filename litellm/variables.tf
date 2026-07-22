@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -111,6 +112,7 @@ variable "master_key" {
   description = "LiteLLM master API key for authentication (prefix with 'sk-'). Used by applications to call the proxy."
   type        = string
   sensitive   = true
+  default     = "sk-ChangeMe123!"
 
   validation {
     condition     = length(var.master_key) >= 8

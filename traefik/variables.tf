@@ -13,6 +13,7 @@ variable "arubacloud_client_secret" {
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key content."
+  default     = ""
 }
 
 variable "app_name" {
@@ -86,6 +87,7 @@ variable "dashboard_cidr" {
 variable "acme_email" {
   type        = string
   description = "Email address for Let's Encrypt ACME registration."
+  default     = "admin@example.com"
 
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.acme_email))

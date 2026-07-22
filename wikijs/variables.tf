@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (content of id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -117,6 +118,7 @@ variable "db_password" {
   description = "MySQL password for the Wiki.js database user (min 16 chars, no newlines)."
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!DbPass"
 
   validation {
     condition     = length(var.db_password) >= 16 && !can(regex("\n", var.db_password))

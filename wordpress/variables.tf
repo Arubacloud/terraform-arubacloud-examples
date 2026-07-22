@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 variable "ssh_cidr" {
@@ -120,6 +121,7 @@ variable "db_password" {
   description = "Password for the WordPress MySQL user. Must not contain newlines."
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!DbPass"
 
   validation {
     condition     = length(var.db_password) >= 16
@@ -149,6 +151,7 @@ variable "wp_admin_password" {
   description = "WordPress admin password. Must not contain newlines."
   type        = string
   sensitive   = true
+  default     = "ChangeMe123!WpAdmin"
 
   validation {
     condition     = length(var.wp_admin_password) >= 16
@@ -164,6 +167,7 @@ variable "wp_admin_password" {
 variable "wp_admin_email" {
   description = "WordPress admin email address. Also used for Let's Encrypt registration."
   type        = string
+  default     = "admin@example.com"
 
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.wp_admin_email))

@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
+  default     = ""
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -117,6 +118,7 @@ variable "k3s_token" {
   description = "Shared cluster token for node authentication. Generate with: openssl rand -hex 32"
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!K3sToken"
 
   validation {
     condition     = length(var.k3s_token) >= 16
@@ -129,6 +131,7 @@ variable "k3s_token" {
 variable "db_host" {
   description = "MySQL 8.0 database host (DBaaS endpoint or external server)."
   type        = string
+  default     = "localhost"
 }
 
 variable "db_port" {
@@ -153,4 +156,5 @@ variable "db_password" {
   description = "MySQL database password."
   type        = string
   sensitive   = true
+  default     = "ChangeMe1234!DbPass"
 }
