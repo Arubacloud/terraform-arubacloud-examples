@@ -99,6 +99,7 @@ runcmd:
       | tee /etc/apt/sources.list.d/docker.list
     apt-get update -qq
     apt-get install -y docker-ce docker-ce-cli containerd.io
+    echo '{"mtu": 1300}' > /etc/docker/daemon.json
     systemctl enable docker
     systemctl start docker
 
