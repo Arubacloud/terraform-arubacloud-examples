@@ -152,6 +152,8 @@ resource "arubacloud_cloudserver" "this" {
       site_url                     = local.site_url
       domain                       = var.domain
       module_network_vm_elastic_ip = module.network.vm_elastic_ip_address
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

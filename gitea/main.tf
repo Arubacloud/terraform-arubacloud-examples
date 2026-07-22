@@ -167,6 +167,8 @@ resource "arubacloud_cloudserver" "this" {
       ssh_host      = local.ssh_host
       server_name   = local.server_name
       domain        = var.domain
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

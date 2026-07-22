@@ -182,6 +182,8 @@ resource "arubacloud_cloudserver" "this" {
       secure_auth_salt  = random_password.wp_keys["secure_auth_salt"].result
       logged_in_salt    = random_password.wp_keys["logged_in_salt"].result
       nonce_salt        = random_password.wp_keys["nonce_salt"].result
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

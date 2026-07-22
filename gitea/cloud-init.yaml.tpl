@@ -171,7 +171,13 @@ runcmd:
   # ── Optional HTTPS via Let's Encrypt ─────────────────────────────────────────
   - |
     DOMAIN="${domain}"
+    EAB_KID="${acme_eab_kid}"
+    EAB_HMAC="${acme_eab_hmac_key}"
     if [ -n "$DOMAIN" ]; then
+      CERTBOT_EAB=""
+      if [ -n "$EAB_KID" ] && [ -n "$EAB_HMAC" ]; then
+        CERTBOT_EAB="--server https://acme-api.actalis.com/acme/directory --eab-kid $EAB_KID --eab-hmac-key $EAB_HMAC"
+      fi
       for i in $(seq 1 24); do
         curl -sf http://127.0.0.1:3000 >/dev/null && break
         sleep 5
@@ -182,6 +188,7 @@ runcmd:
         --agree-tos \
         -m "admin@$DOMAIN" \
         --redirect \
+        $CERTBOT_EAB \
         && echo "HTTPS configured." \
         || echo "WARNING: Certbot failed. Ensure DNS points to this IP and retry."
     fi

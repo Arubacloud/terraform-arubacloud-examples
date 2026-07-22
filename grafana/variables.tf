@@ -135,3 +135,17 @@ variable "node_exporter_version" {
   type        = string
   default     = "1.8.2"
 }
+
+variable "acme_eab_kid" {
+  description = "Optional Actalis ACME External Account Binding key ID. Leave empty to use Let's Encrypt."
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "acme_eab_hmac_key" {
+  description = "Optional Actalis ACME External Account Binding HMAC key. Required when acme_eab_kid is set."
+  type        = string
+  default     = ""
+  sensitive   = true
+}

@@ -157,6 +157,8 @@ resource "arubacloud_cloudserver" "this" {
       admin_email    = var.admin_email
       joomla_version = var.joomla_version
       domain         = var.domain
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

@@ -83,6 +83,8 @@ resource "arubacloud_cloudserver" "this" {
       prometheus_version    = var.prometheus_version
       loki_version          = var.loki_version
       node_exporter_version = var.node_exporter_version
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

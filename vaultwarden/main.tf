@@ -69,6 +69,8 @@ resource "arubacloud_cloudserver" "this" {
       admin_email         = var.admin_email
       site_url            = local.site_url
       vaultwarden_version = var.vaultwarden_version
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

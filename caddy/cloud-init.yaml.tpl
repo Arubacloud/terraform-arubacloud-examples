@@ -17,6 +17,16 @@ write_files:
   # Caddyfile — serves static files; automatic HTTPS when domain is set
   - path: /etc/caddy/Caddyfile
     content: |
+%{ if acme_eab_kid != "" ~}
+      {
+        acme_ca https://acme-api.actalis.com/acme/directory
+        acme_eab {
+          key_id ${acme_eab_kid}
+          mac_key ${acme_eab_hmac_key}
+        }
+      }
+
+%{ endif ~}
       ${domain != "" ? domain : ":80"} {
           root * /var/www/html
           file_server

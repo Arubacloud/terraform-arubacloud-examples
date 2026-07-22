@@ -155,6 +155,8 @@ resource "arubacloud_cloudserver" "this" {
       admin_pass_b64 = base64encode(var.admin_password)
       admin_email    = var.admin_email
       domain         = var.domain
+      acme_eab_kid      = var.acme_eab_kid
+      acme_eab_hmac_key = var.acme_eab_hmac_key
     })
   }
 

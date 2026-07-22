@@ -61,13 +61,20 @@ runcmd:
   - |
     DOMAIN="${domain}"
     EMAIL="${certbot_email}"
+    EAB_KID="${acme_eab_kid}"
+    EAB_HMAC="${acme_eab_hmac_key}"
     if [ -n "$DOMAIN" ] && [ -n "$EMAIL" ]; then
+      CERTBOT_EAB=""
+      if [ -n "$EAB_KID" ] && [ -n "$EAB_HMAC" ]; then
+        CERTBOT_EAB="--server https://acme-api.actalis.com/acme/directory --eab-kid $EAB_KID --eab-hmac-key $EAB_HMAC"
+      fi
       certbot --nginx \
         -d "$DOMAIN" \
         --non-interactive \
         --agree-tos \
         -m "$EMAIL" \
         --redirect \
+        $CERTBOT_EAB \
         && echo "HTTPS configured successfully." \
         || echo "WARNING: Certbot failed. Ensure DNS A record points to this IP and retry."
     elif [ -n "$DOMAIN" ] && [ -z "$EMAIL" ]; then

@@ -133,7 +133,13 @@ runcmd:
   # ── Optional: HTTPS via Let's Encrypt ──────────────────────────────────────
   - |
     DOMAIN="${domain}"
+    EAB_KID="${acme_eab_kid}"
+    EAB_HMAC="${acme_eab_hmac_key}"
     if [ -n "$DOMAIN" ]; then
+      CERTBOT_EAB=""
+      if [ -n "$EAB_KID" ] && [ -n "$EAB_HMAC" ]; then
+        CERTBOT_EAB="--server https://acme-api.actalis.com/acme/directory --eab-kid $EAB_KID --eab-hmac-key $EAB_HMAC"
+      fi
       echo "Configuring HTTPS for $DOMAIN ..."
       certbot --apache \
         -d "$DOMAIN" \
@@ -141,6 +147,7 @@ runcmd:
         --agree-tos \
         -m "${wp_admin_email}" \
         --redirect \
+        $CERTBOT_EAB \
         && echo "HTTPS configured successfully." \
         || echo "WARNING: Certbot failed. Ensure DNS points to this IP and retry."
     fi

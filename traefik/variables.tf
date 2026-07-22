@@ -104,3 +104,17 @@ variable "enable_dashboard" {
   default     = true
   description = "Enable the Traefik dashboard on port 8080."
 }
+
+variable "acme_eab_kid" {
+  description = "Optional Actalis ACME External Account Binding key ID. Leave empty to use Let's Encrypt."
+  type        = string
+  default     = ""
+  sensitive   = true
+}
+
+variable "acme_eab_hmac_key" {
+  description = "Optional Actalis ACME External Account Binding HMAC key. Required when acme_eab_kid is set."
+  type        = string
+  default     = ""
+  sensitive   = true
+}

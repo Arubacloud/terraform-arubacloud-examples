@@ -32,6 +32,12 @@ write_files:
           acme:
             email: ${acme_email}
             storage: /letsencrypt/acme.json
+%{ if acme_eab_kid != "" ~}
+            caServer: https://acme-api.actalis.com/acme/directory
+            eab:
+              kid: ${acme_eab_kid}
+              hmacEncoded: ${acme_eab_hmac_key}
+%{ endif ~}
             httpChallenge:
               entryPoint: web
 
