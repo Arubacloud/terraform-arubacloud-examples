@@ -28,7 +28,13 @@ output "db_name" {
   value       = arubacloud_database.this.name
 }
 
+output "db_admin_password_mysql" {
+  description = "Actual MySQL password to enter in Adminer. The ArubaCloud DBaaS API stores the base64 of db_admin_password as the MySQL password."
+  value       = base64encode(var.db_admin_password)
+  sensitive   = true
+}
+
 output "adminer_connection_hint" {
-  description = "Values to enter in the Adminer login form."
-  value       = "Server: ${module.network.dbaas_elastic_ip_address} | User: ${var.db_admin_user} | Password: (from db_admin_password) | Database: ${var.db_name}"
+  description = "Values to enter in the Adminer login form. Retrieve the password with: terraform output -raw db_admin_password_mysql"
+  value       = "Server: ${module.network.dbaas_elastic_ip_address} | User: ${var.db_admin_user} | Password: run 'terraform output -raw db_admin_password_mysql' | Database: ${var.db_name}"
 }

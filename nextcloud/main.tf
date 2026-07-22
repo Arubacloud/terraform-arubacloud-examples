@@ -3,8 +3,8 @@ locals {
   tags        = ["nextcloud", var.environment, "cloud-storage"]
   site_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
 
-  # Escape passwords for PHP single-quoted string literals
-  db_password_php = replace(replace(var.db_password, "\\", "\\\\"), "'", "\\'")
+  # The ArubaCloud DBaaS API stores the base64 of the password as the MySQL password.
+  db_password_php = base64encode(var.db_password)
 }
 
 resource "arubacloud_project" "this" {
