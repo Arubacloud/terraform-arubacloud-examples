@@ -153,8 +153,8 @@ resource "arubacloud_cloudserver" "this" {
       site_url           = local.site_url
       server_name        = local.server_name
       domain             = var.domain
-      acme_eab_kid      = var.acme_eab_kid
-      acme_eab_hmac_key = var.acme_eab_hmac_key
+      acme_eab_kid       = var.acme_eab_kid
+      acme_eab_hmac_key  = var.acme_eab_hmac_key
     })
   }
 

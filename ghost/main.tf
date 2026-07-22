@@ -146,13 +146,13 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      db_host     = module.network.dbaas_elastic_ip_address
-      db_name     = arubacloud_database.ghost.name
-      db_user     = arubacloud_dbaasuser.ghost.username
-      db_pass_b64 = base64encode(var.db_password)
-      site_url    = local.site_url
-      server_name = local.server_name
-      domain      = var.domain
+      db_host           = module.network.dbaas_elastic_ip_address
+      db_name           = arubacloud_database.ghost.name
+      db_user           = arubacloud_dbaasuser.ghost.username
+      db_pass_b64       = base64encode(var.db_password)
+      site_url          = local.site_url
+      server_name       = local.server_name
+      domain            = var.domain
       acme_eab_kid      = var.acme_eab_kid
       acme_eab_hmac_key = var.acme_eab_hmac_key
     })

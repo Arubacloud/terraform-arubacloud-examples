@@ -70,9 +70,9 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      acme_email       = var.acme_email
-      traefik_version  = var.traefik_version
-      enable_dashboard = var.enable_dashboard
+      acme_email        = var.acme_email
+      traefik_version   = var.traefik_version
+      enable_dashboard  = var.enable_dashboard
       acme_eab_kid      = var.acme_eab_kid
       acme_eab_hmac_key = var.acme_eab_hmac_key
     })

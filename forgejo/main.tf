@@ -157,16 +157,16 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      enable_mysql    = var.enable_mysql
-      db_host         = var.enable_mysql ? module.network.dbaas_elastic_ip_address : ""
-      db_name         = var.enable_mysql ? arubacloud_database.forgejo[0].name : ""
-      db_user         = var.enable_mysql ? arubacloud_dbaasuser.forgejo[0].username : ""
-      db_pass_b64     = var.enable_mysql ? base64encode(var.db_password) : ""
-      forgejo_version = var.forgejo_version
-      base_url        = local.base_url
-      ssh_host        = local.ssh_host
-      server_name     = local.server_name
-      domain          = var.domain
+      enable_mysql      = var.enable_mysql
+      db_host           = var.enable_mysql ? module.network.dbaas_elastic_ip_address : ""
+      db_name           = var.enable_mysql ? arubacloud_database.forgejo[0].name : ""
+      db_user           = var.enable_mysql ? arubacloud_dbaasuser.forgejo[0].username : ""
+      db_pass_b64       = var.enable_mysql ? base64encode(var.db_password) : ""
+      forgejo_version   = var.forgejo_version
+      base_url          = local.base_url
+      ssh_host          = local.ssh_host
+      server_name       = local.server_name
+      domain            = var.domain
       acme_eab_kid      = var.acme_eab_kid
       acme_eab_hmac_key = var.acme_eab_hmac_key
     })
