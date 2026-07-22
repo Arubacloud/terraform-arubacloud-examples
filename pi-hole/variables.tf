@@ -118,7 +118,7 @@ variable "pihole_password" {
   description = "Password for the Pi-hole admin web interface."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.pihole_password) >= 8

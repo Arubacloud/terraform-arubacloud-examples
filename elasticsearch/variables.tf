@@ -112,7 +112,7 @@ variable "elastic_password" {
   description = "Password for the built-in 'elastic' superuser (min 6 characters)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.elastic_password) >= 6

@@ -118,7 +118,7 @@ variable "admin_password" {
   description = "Password for the Wazuh dashboard admin user (min 8 characters, must contain uppercase, lowercase, digit, and special character)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.admin_password) >= 8

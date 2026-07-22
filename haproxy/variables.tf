@@ -118,7 +118,7 @@ variable "stats_password" {
   description = "Password for the HAProxy stats page (username: admin). Use alphanumeric characters only."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.stats_password) >= 8

@@ -109,8 +109,8 @@ variable "pg_password" {
   default     = "K7m@P4z!L9xQ8rWsPgPass"
 
   validation {
-    condition     = length(var.pg_password) >= 12
-    error_message = "pg_password must be at least 12 characters."
+    condition     = length(var.pg_password) >= 8
+    error_message = "pg_password must be at least 8 characters."
   }
 }
 

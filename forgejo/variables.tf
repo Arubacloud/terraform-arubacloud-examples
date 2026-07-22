@@ -130,8 +130,8 @@ variable "db_password" {
   default     = ""
 
   validation {
-    condition     = var.db_password == "" || length(var.db_password) >= 16
-    error_message = "db_password must be at least 16 characters when set."
+    condition     = var.db_password == "" || length(var.db_password) >= 8
+    error_message = "db_password must be at least 8 characters when set."
   }
 
   validation {

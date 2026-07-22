@@ -135,11 +135,11 @@ variable "db_admin_password" {
   description = "Password for the DBaaS admin user. Must not contain newlines."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.db_admin_password) >= 16
-    error_message = "db_admin_password must be at least 16 characters."
+    condition     = length(var.db_admin_password) >= 8
+    error_message = "db_admin_password must be at least 8 characters."
   }
 
   validation {

@@ -112,7 +112,7 @@ variable "admin_password" {
   description = "Password for the built-in 'admin' user. Must be 8+ characters with uppercase, lowercase, digit, and special character."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.admin_password) >= 8

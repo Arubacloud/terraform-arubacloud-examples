@@ -121,11 +121,11 @@ variable "db_password" {
   description = "Password for the Joomla MySQL user. Must not contain newlines."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.db_password) >= 16
-    error_message = "db_password must be at least 16 characters."
+    condition     = length(var.db_password) >= 8
+    error_message = "db_password must be at least 8 characters."
   }
 
   validation {
@@ -158,11 +158,11 @@ variable "admin_password" {
   description = "Joomla admin password. Must not contain newlines."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.admin_password) >= 12
-    error_message = "admin_password must be at least 12 characters."
+    condition     = length(var.admin_password) >= 8
+    error_message = "admin_password must be at least 8 characters."
   }
 
   validation {

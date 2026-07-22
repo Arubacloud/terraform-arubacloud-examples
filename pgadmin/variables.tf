@@ -123,7 +123,7 @@ variable "pgadmin_password" {
   description = "Password for the pgAdmin web interface (min 8 characters)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.pgadmin_password) >= 8

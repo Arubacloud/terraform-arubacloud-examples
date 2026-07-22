@@ -94,10 +94,10 @@ variable "db_password" {
   type        = string
   sensitive   = true
   description = "MySQL password for the Nextcloud database user. Min 16 chars, no newlines."
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
   validation {
-    condition     = length(var.db_password) >= 16 && !can(regex("\n", var.db_password))
-    error_message = "db_password must be at least 16 characters and must not contain newlines."
+    condition     = length(var.db_password) >= 8 && !can(regex("\n", var.db_password))
+    error_message = "db_password must be at least 8 characters and must not contain newlines."
   }
 }
 
@@ -111,10 +111,10 @@ variable "nc_admin_password" {
   type        = string
   sensitive   = true
   description = "Nextcloud admin password. Min 16 chars, no newlines."
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
   validation {
-    condition     = length(var.nc_admin_password) >= 16 && !can(regex("\n", var.nc_admin_password))
-    error_message = "nc_admin_password must be at least 16 characters and must not contain newlines."
+    condition     = length(var.nc_admin_password) >= 8 && !can(regex("\n", var.nc_admin_password))
+    error_message = "nc_admin_password must be at least 8 characters and must not contain newlines."
   }
 }
 

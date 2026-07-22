@@ -100,7 +100,7 @@ variable "minio_root_password" {
   type        = string
   sensitive   = true
   description = "MinIO root secret key. Minimum 8 characters."
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.minio_root_password) >= 8

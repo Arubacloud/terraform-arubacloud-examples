@@ -112,7 +112,7 @@ variable "admin_password" {
   description = "Rundeck admin password (min 8 characters)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.admin_password) >= 8

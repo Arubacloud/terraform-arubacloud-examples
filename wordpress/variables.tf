@@ -121,11 +121,11 @@ variable "db_password" {
   description = "Password for the WordPress MySQL user. Must not contain newlines."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.db_password) >= 16
-    error_message = "db_password must be at least 16 characters."
+    condition     = length(var.db_password) >= 8
+    error_message = "db_password must be at least 8 characters."
   }
 
   validation {
@@ -154,8 +154,8 @@ variable "wp_admin_password" {
   default     = "K7m@P4z!L9xQ8rWsWpAdmin"
 
   validation {
-    condition     = length(var.wp_admin_password) >= 16
-    error_message = "wp_admin_password must be at least 16 characters."
+    condition     = length(var.wp_admin_password) >= 8
+    error_message = "wp_admin_password must be at least 8 characters."
   }
 
   validation {

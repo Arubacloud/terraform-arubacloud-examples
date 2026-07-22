@@ -104,7 +104,7 @@ variable "grafana_admin_password" {
   description = "Initial password for the Grafana admin user. Must be at least 8 characters."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.grafana_admin_password) >= 8

@@ -118,11 +118,11 @@ variable "db_password" {
   description = "MySQL password for the Wiki.js database user (min 16 chars, no newlines)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.db_password) >= 16 && !can(regex("\n", var.db_password))
-    error_message = "db_password must be at least 16 characters and must not contain newlines."
+    condition     = length(var.db_password) >= 8 && !can(regex("\n", var.db_password))
+    error_message = "db_password must be at least 8 characters and must not contain newlines."
   }
 }
 

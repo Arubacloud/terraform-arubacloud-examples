@@ -147,5 +147,5 @@ variable "smtp_password" {
   description = "SMTP login password."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 }

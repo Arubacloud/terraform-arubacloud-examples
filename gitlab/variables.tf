@@ -112,7 +112,7 @@ variable "gitlab_root_password" {
   description = "Initial password for the GitLab 'root' user (min 8 characters). Change after first login."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.gitlab_root_password) >= 8

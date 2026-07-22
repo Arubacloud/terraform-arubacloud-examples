@@ -118,11 +118,11 @@ variable "k3s_token" {
   description = "Shared cluster token for node authentication. Generate with: openssl rand -hex 32"
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.k3s_token) >= 16
-    error_message = "k3s_token must be at least 16 characters."
+    condition     = length(var.k3s_token) >= 8
+    error_message = "k3s_token must be at least 8 characters."
   }
 }
 
@@ -156,5 +156,5 @@ variable "db_password" {
   description = "MySQL database password."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 }

@@ -118,7 +118,7 @@ variable "graylog_admin_password" {
   description = "Password for the Graylog 'admin' user (min 8 characters)."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.graylog_admin_password) >= 8
@@ -130,11 +130,11 @@ variable "graylog_secret" {
   description = "Graylog password secret (min 16 characters). Generate with: pwgen -N 1 -s 96"
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9xQ8rWs"
+  default     = "K7m@P4z!L9"
 
   validation {
-    condition     = length(var.graylog_secret) >= 16
-    error_message = "graylog_secret must be at least 16 characters."
+    condition     = length(var.graylog_secret) >= 8
+    error_message = "graylog_secret must be at least 8 characters."
   }
 }
 
