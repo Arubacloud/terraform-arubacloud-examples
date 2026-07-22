@@ -73,12 +73,30 @@ runcmd:
     done
 
   # ── Set the elastic superuser password ───────────────────────────────────────
+  # elasticsearch-reset-password -p is not available in all 8.x builds; auto-reset
+  # to a temp password then change to the desired one via the REST API using Python
+  # for safe JSON encoding of passwords that contain special characters.
   - |
     ELASTIC_PASS=$(base64 -d /root/elastic-pass.b64)
     rm -f /root/elastic-pass.b64
-    /usr/share/elasticsearch/bin/elasticsearch-reset-password \
-      -u elastic -p "$ELASTIC_PASS" --batch 2>&1 \
+    TEMP_PASS=$(/usr/share/elasticsearch/bin/elasticsearch-reset-password \
+      -u elastic --auto --batch 2>&1 | awk '/New value:/ {print $NF}')
+    python3 - "$TEMP_PASS" "$ELASTIC_PASS" << 'PY' \
       | tee /var/log/elasticsearch-password-reset.log
+    import sys, json, urllib.request, base64
+    temp, desired = sys.argv[1], sys.argv[2]
+    req = urllib.request.Request(
+        'http://localhost:9200/_security/user/elastic/_password',
+        data=json.dumps({'password': desired}).encode(),
+        headers={
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + base64.b64encode(
+                ('elastic:' + temp).encode()).decode(),
+        },
+        method='POST',
+    )
+    print(urllib.request.urlopen(req).read().decode())
+    PY
 
 final_message: |
   Elasticsearch bootstrap complete.
