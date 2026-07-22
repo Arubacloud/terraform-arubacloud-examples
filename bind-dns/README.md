@@ -150,11 +150,59 @@ terraform apply
 
 Bootstrap takes approximately **1–2 minutes**.
 
-### 4. Test and point clients
+### 4. Test the deployment
+
+Run the checks below against the IP shown in `terraform output -raw dns_server`.
+
+**Port reachability** — confirm port 53 is open on both transport protocols:
 
 ```bash
-dig @$(terraform output -raw dns_server) google.com
+DNS=$(terraform output -raw dns_server)
+nc -zv  "$DNS" 53     # TCP
+nc -zvu "$DNS" 53     # UDP
 ```
+
+Expected output:
+
+```
+Connection to <ip> 53 port [tcp/domain] succeeded!
+Connection to <ip> 53 port [udp/domain] succeeded!
+```
+
+**DNS resolution** — send a real query and verify you get an answer:
+
+```bash
+dig @"$DNS" google.com
+```
+
+A healthy response looks like:
+
+```
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, ...
+;; ANSWER SECTION:
+google.com.   ...   IN   A   142.251.x.x
+...
+;; Query time: <low ms>
+;; SERVER: <ip>#53
+```
+
+Key things to check: `status: NOERROR`, at least one record in the ANSWER SECTION, and a low query time (< 200 ms on the first hit, < 20 ms on a cached repeat).
+
+**IPv6 resolution:**
+
+```bash
+dig @"$DNS" google.com AAAA
+```
+
+**Repeat query (cache hit):**
+
+```bash
+dig @"$DNS" google.com && dig @"$DNS" google.com
+```
+
+The second query time should drop significantly, confirming the cache is working.
+
+### 5. Point clients
 
 Set the output IP as the DNS server on your VPN clients or network devices.
 
@@ -223,10 +271,14 @@ sudo systemctl restart systemd-resolved && sudo systemctl restart bind9
 
 ### Test from client
 
+See the full test suite in [Deployment Instructions → Test the deployment](#4-test-the-deployment). Quick one-liners:
+
 ```bash
-dig @<vm-ip> google.com
-dig @<vm-ip> google.com AAAA
-nslookup google.com <vm-ip>
+dig @<vm-ip> google.com          # A record
+dig @<vm-ip> google.com AAAA     # IPv6
+nslookup google.com <vm-ip>      # alternative resolver
+nc -zv  <vm-ip> 53               # TCP port check
+nc -zvu <vm-ip> 53               # UDP port check
 ```
 
 ---
