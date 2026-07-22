@@ -20,18 +20,20 @@ write_files:
     permissions: "0600"
     content: "${adguard_pass_b64}"
 
-  # AdGuard Home config with upstream DNS pre-configured; password injected at runtime
+  # AdGuard Home config with upstream DNS pre-configured; password injected at runtime.
+  # schema_version: 28 matches the v0.107.52 on-disk format and skips all migrations.
+  # bind_host (singular string) replaced the old bind_hosts (list) in schema v8.
   - path: /opt/AdGuardHome/AdGuardHome.yaml
     permissions: "0600"
     content: |
+      schema_version: 28
       http:
         address: 0.0.0.0:80
       users:
         - name: admin
           password: "PLACEHOLDER_PASSWORD_HASH"
       dns:
-        bind_hosts:
-          - 0.0.0.0
+        bind_host: 0.0.0.0
         port: 53
         upstream_dns:
           - ${upstream_dns_1}
@@ -39,7 +41,6 @@ write_files:
         bootstrap_dns:
           - 9.9.9.10
           - 149.112.112.10
-        upstream_mode: parallel
         cache_size: 4194304
         enable_dnssec: false
       filters:
