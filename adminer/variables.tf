@@ -131,6 +131,12 @@ variable "db_admin_user" {
   default     = "dbadmin"
 }
 
+variable "db_name" {
+  description = "Name of the default database to create inside the DBaaS instance."
+  type        = string
+  default     = "adminer"
+}
+
 variable "db_admin_password" {
   description = "Password for the DBaaS admin user. Must not contain newlines."
   type        = string

@@ -102,11 +102,25 @@ resource "arubacloud_dbaas" "this" {
   billing_period = var.billing_period
 }
 
+resource "arubacloud_database" "this" {
+  project_id = arubacloud_project.this.id
+  dbaas_id   = arubacloud_dbaas.this.id
+  name       = var.db_name
+}
+
 resource "arubacloud_dbaasuser" "admin" {
   project_id = arubacloud_project.this.id
   dbaas_id   = arubacloud_dbaas.this.id
   username   = var.db_admin_user
   password   = var.db_admin_password
+}
+
+resource "arubacloud_databasegrant" "admin" {
+  project_id = arubacloud_project.this.id
+  dbaas_id   = arubacloud_dbaas.this.id
+  database   = arubacloud_database.this.id
+  user_id    = arubacloud_dbaasuser.admin.id
+  role       = "liteadmin"
 }
 
 # ── Cloud Server ──────────────────────────────────────────────────────────────
@@ -141,5 +155,6 @@ resource "arubacloud_cloudserver" "this" {
   depends_on = [
     arubacloud_securityrule.dbaas_mysql,
     arubacloud_dbaasuser.admin,
+    arubacloud_databasegrant.admin,
   ]
 }

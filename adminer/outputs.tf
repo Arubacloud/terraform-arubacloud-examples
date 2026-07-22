@@ -23,7 +23,12 @@ output "db_admin_user" {
   value       = arubacloud_dbaasuser.admin.username
 }
 
+output "db_name" {
+  description = "Default database created inside the DBaaS instance."
+  value       = arubacloud_database.this.name
+}
+
 output "adminer_connection_hint" {
   description = "Values to enter in the Adminer login form."
-  value       = "Server: ${module.network.dbaas_elastic_ip_address} | User: ${var.db_admin_user} | Password: (from db_admin_password)"
+  value       = "Server: ${module.network.dbaas_elastic_ip_address} | User: ${var.db_admin_user} | Password: (from db_admin_password) | Database: ${var.db_name}"
 }
