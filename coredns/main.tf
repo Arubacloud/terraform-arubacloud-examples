@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["coredns", var.environment, "dns"]
+  tags        = ["coredns", var.environment, "dns-server"]
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────

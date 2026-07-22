@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["k3s", var.environment, "kubernetes"]
+  tags        = ["k3s-cluster", var.environment, "kubernetes"]
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────

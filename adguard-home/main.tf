@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["adguard-home", var.environment, "dns"]
+  tags        = ["adguard-home", var.environment, "dns-server"]
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────

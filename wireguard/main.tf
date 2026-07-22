@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["wireguard", var.environment, "vpn"]
+  tags        = ["wireguard", var.environment, "vpn-server"]
 }
 
 resource "arubacloud_project" "this" {

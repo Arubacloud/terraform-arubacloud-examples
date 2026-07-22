@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["pi-hole", var.environment, "dns"]
+  tags        = ["pi-hole", var.environment, "dns-server"]
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────

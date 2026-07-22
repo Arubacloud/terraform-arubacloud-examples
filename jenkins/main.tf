@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["jenkins", var.environment, "ci"]
+  tags        = ["jenkins", var.environment, "ci-cd"]
   base_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
   server_name = var.domain != "" ? var.domain : "_"
 }

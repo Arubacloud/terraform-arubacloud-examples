@@ -1,6 +1,6 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
-  tags        = ["joomla", var.environment, "cms"]
+  tags        = ["joomla", var.environment, "cms-web"]
   site_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
 }
 
