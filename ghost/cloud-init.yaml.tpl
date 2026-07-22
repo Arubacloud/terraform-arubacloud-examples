@@ -1,6 +1,6 @@
 #cloud-config
 # Ghost bootstrap for Aruba Cloud.
-# Node.js 20 + nginx + Ghost CLI + Managed MySQL DBaaS.
+# Node.js 22 + nginx + Ghost CLI + Managed MySQL DBaaS.
 # Rendered by Terraform templatefile() — do not use this file directly.
 
 package_update: true
@@ -15,35 +15,14 @@ packages:
   - sudo
 
 write_files:
-  # nginx reverse-proxy config — routes all traffic to Ghost on port 2368
-  - path: /etc/nginx/sites-available/ghost.conf
-    content: |
-      server {
-          listen 80;
-          server_name ${server_name};
-          client_max_body_size 50m;
-
-          location / {
-              proxy_pass             http://127.0.0.1:2368;
-              proxy_http_version     1.1;
-              proxy_set_header       Upgrade $$http_upgrade;
-              proxy_set_header       Connection 'upgrade';
-              proxy_set_header       Host $$host;
-              proxy_set_header       X-Real-IP $$remote_addr;
-              proxy_set_header       X-Forwarded-For $$proxy_add_x_forwarded_for;
-              proxy_set_header       X-Forwarded-Proto $$scheme;
-              proxy_cache_bypass     $$http_upgrade;
-          }
-      }
-
   # DB password stored base64-encoded to avoid shell special-character issues
   - path: /root/ghost-db.b64
     permissions: '0600'
     content: "${db_pass_b64}"
 
 runcmd:
-  # ── Node.js 20 via NodeSource ────────────────────────────────────────────────
-  - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  # ── Node.js 22 via NodeSource ────────────────────────────────────────────────
+  - curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
   - apt-get install -y nodejs
 
   # ── Ghost CLI ────────────────────────────────────────────────────────────────
@@ -57,6 +36,28 @@ runcmd:
   # ── Ghost directory ──────────────────────────────────────────────────────────
   - mkdir -p /var/www/ghost
   - chown ghost:ghost /var/www/ghost
+
+  # ── nginx config (heredoc so nginx $vars need no Terraform $$ escaping) ──────
+  - |
+    cat > /etc/nginx/sites-available/ghost.conf << 'NGINX'
+    server {
+        listen 80;
+        server_name ${server_name};
+        client_max_body_size 50m;
+
+        location / {
+            proxy_pass             http://127.0.0.1:2368;
+            proxy_http_version     1.1;
+            proxy_set_header       Upgrade $http_upgrade;
+            proxy_set_header       Connection 'upgrade';
+            proxy_set_header       Host $host;
+            proxy_set_header       X-Real-IP $remote_addr;
+            proxy_set_header       X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header       X-Forwarded-Proto $scheme;
+            proxy_cache_bypass     $http_upgrade;
+        }
+    }
+    NGINX
 
   # ── nginx ────────────────────────────────────────────────────────────────────
   - ln -sf /etc/nginx/sites-available/ghost.conf /etc/nginx/sites-enabled/ghost.conf
