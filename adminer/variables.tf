@@ -105,6 +105,47 @@ variable "admin_cidr" {
   default     = "0.0.0.0/0"
 }
 
+# ── Database ──────────────────────────────────────────────────────────────────
+
+variable "dbaas_flavor" {
+  description = "Managed MySQL DBaaS flavor name."
+  type        = string
+  default     = "DBO2A8"
+}
+
+variable "db_storage_gb" {
+  description = "Initial DBaaS storage size in GB."
+  type        = number
+  default     = 20
+
+  validation {
+    condition     = var.db_storage_gb >= 10
+    error_message = "db_storage_gb must be at least 10 GB."
+  }
+}
+
+variable "db_admin_user" {
+  description = "Username for the DBaaS admin user."
+  type        = string
+  default     = "dbadmin"
+}
+
+variable "db_admin_password" {
+  description = "Password for the DBaaS admin user. Must not contain newlines."
+  type        = string
+  sensitive   = true
+
+  validation {
+    condition     = length(var.db_admin_password) >= 16
+    error_message = "db_admin_password must be at least 16 characters."
+  }
+
+  validation {
+    condition     = !can(regex("\n", var.db_admin_password))
+    error_message = "db_admin_password must not contain newline characters."
+  }
+}
+
 # ── Adminer ───────────────────────────────────────────────────────────────────
 
 variable "adminer_version" {

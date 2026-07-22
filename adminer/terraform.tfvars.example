@@ -10,6 +10,13 @@ ssh_public_key = "ssh-ed25519 AAAA... user@host"
 # ssh_cidr   = "203.0.113.42/32"
 # admin_cidr = "203.0.113.42/32"
 
+# ── Database ──────────────────────────────────────────────────────────────────
+db_admin_password = "change-me-use-a-strong-password"
+
+# db_admin_user  = "dbadmin"
+# dbaas_flavor   = "DBO2A8"
+# db_storage_gb  = 20
+
 # ── Infrastructure (optional overrides) ───────────────────────────────────────
 # app_name        = "adminer"
 # environment     = "prod"

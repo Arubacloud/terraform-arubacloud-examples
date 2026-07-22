@@ -32,7 +32,8 @@ runcmd:
 
 final_message: |
   Adminer bootstrap complete.
-  URL: http://<IP>/adminer.php  (accessible from admin_cidr only)
-  Enter your database server address, credentials, and database name to connect.
+  URL: http://<VM-IP>/adminer.php  (accessible from admin_cidr only)
+  DBaaS server: ${db_host}
+  Enter the DBaaS server address, your admin username, and password in the Adminer login form.
   Supported: MySQL/MariaDB, PostgreSQL, SQLite.
   Logs: /var/log/cloud-init-output.log
