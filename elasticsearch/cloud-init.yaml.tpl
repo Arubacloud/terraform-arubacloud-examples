@@ -45,6 +45,8 @@ runcmd:
     tee /etc/elasticsearch/elasticsearch.yml > /dev/null << 'EOF'
     cluster.name: ${cluster_name}
     node.name: node-1
+    path.data: /var/lib/elasticsearch
+    path.logs: /var/log/elasticsearch
     network.host: 0.0.0.0
     http.port: 9200
     discovery.type: single-node
