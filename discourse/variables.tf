@@ -17,7 +17,7 @@ variable "arubacloud_client_secret" {
 variable "app_name" {
   description = "Short name used as part of all resource names (e.g. 'discourse')."
   type        = string
-  default     = "discourse"
+  default     = "forum"
 
   validation {
     condition     = can(regex("^[a-z0-9-]{2,8}$", var.app_name))
