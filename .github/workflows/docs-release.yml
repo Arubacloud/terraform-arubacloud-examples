@@ -10,6 +10,10 @@ on:
         required: true
         type: string
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
