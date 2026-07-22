@@ -18,18 +18,6 @@ write_files:
     permissions: "0600"
     content: "${elastic_pass_b64}"
 
-  # Elasticsearch configuration
-  - path: /etc/elasticsearch/elasticsearch.yml
-    content: |
-      cluster.name: ${cluster_name}
-      node.name: node-1
-      network.host: 0.0.0.0
-      http.port: 9200
-      discovery.type: single-node
-      xpack.security.enabled: true
-      xpack.security.http.ssl.enabled: false
-      xpack.security.transport.ssl.enabled: false
-
   # Kernel parameters for Elasticsearch (applied at boot)
   - path: /etc/sysctl.d/99-elasticsearch.conf
     content: |
@@ -46,8 +34,26 @@ runcmd:
     echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] \
       https://artifacts.elastic.co/packages/8.x/apt stable main" \
       | tee /etc/apt/sources.list.d/elastic-8.x.list
-    apt-get update -qq
-    apt-get install -y elasticsearch
+    DEBIAN_FRONTEND=noninteractive apt-get update -qq
+    DEBIAN_FRONTEND=noninteractive apt-get install -y elasticsearch
+
+  # ── Write Elasticsearch configuration AFTER the package creates the directory ─
+  # Writing elasticsearch.yml via write_files (before package install) causes the
+  # 8.x postinstall to skip TLS auto-configuration inconsistently and may leave
+  # the config root:root with wrong ownership, so we write it here instead.
+  - |
+    tee /etc/elasticsearch/elasticsearch.yml > /dev/null << 'EOF'
+    cluster.name: ${cluster_name}
+    node.name: node-1
+    network.host: 0.0.0.0
+    http.port: 9200
+    discovery.type: single-node
+    xpack.security.enabled: true
+    xpack.security.http.ssl.enabled: false
+    xpack.security.transport.ssl.enabled: false
+    EOF
+    chown root:elasticsearch /etc/elasticsearch/elasticsearch.yml
+    chmod 660 /etc/elasticsearch/elasticsearch.yml
 
   # ── Start Elasticsearch ───────────────────────────────────────────────────────
   - systemctl daemon-reload
