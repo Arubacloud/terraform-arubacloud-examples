@@ -19,12 +19,11 @@ packages:
   - php-intl
   - php-opcache
   - php-apcu
-  - mysql-client
+  - default-mysql-client
   - curl
   - git
   - unzip
-  - certbot
-  - python3-certbot-apache
+  - snapd
 
 write_files:
   # DB and admin passwords base64-encoded to avoid shell special-character issues
@@ -59,7 +58,9 @@ runcmd:
   - systemctl enable --now apache2
 
   # ── Install Composer globally ─────────────────────────────────────────────────
+  # HOME must be set; cloud-init runcmd inherits a minimal environment with no HOME.
   - |
+    export HOME=/root
     curl -sS https://getcomposer.org/installer \
       | php -- --install-dir=/usr/local/bin --filename=composer
     chmod +x /usr/local/bin/composer
@@ -67,28 +68,45 @@ runcmd:
   # ── Create Drupal 10 project ──────────────────────────────────────────────────
   # Composer downloads ~80 MB of dependencies; allow up to 10 minutes.
   - |
-    COMPOSER_ALLOW_SUPERUSER=1 composer create-project \
+    export HOME=/root
+    COMPOSER_ALLOW_SUPERUSER=1 /usr/local/bin/composer create-project \
       drupal/recommended-project:^10 /var/www/drupal \
       --no-interaction --no-progress 2>&1
 
   # ── Add Drush ─────────────────────────────────────────────────────────────────
   - |
+    export HOME=/root
     cd /var/www/drupal
-    COMPOSER_ALLOW_SUPERUSER=1 composer require drush/drush --no-interaction 2>&1
+    COMPOSER_ALLOW_SUPERUSER=1 /usr/local/bin/composer require drush/drush --no-interaction 2>&1
 
   # ── Wait for DBaaS to be reachable (up to 15 min) ────────────────────────────
+  # Use python3 socket instead of /dev/tcp — the latter is bash-only; cloud-init
+  # runcmd runs under /bin/sh (dash on Ubuntu).
   - |
     DB_HOST="${db_host}"
     echo "Waiting for MySQL at $DB_HOST:3306 ..."
-    for i in $(seq 1 90); do
-      (echo > /dev/tcp/$DB_HOST/3306) 2>/dev/null && { echo "MySQL ready after $((i * 10))s"; break; }
-      [ "$i" = "90" ] && { echo "ERROR: MySQL did not become ready in 15 minutes"; exit 1; }
+    i=0
+    while [ "$i" -lt 90 ]; do
+      i=$((i + 1))
+      python3 -c "
+import socket, sys
+try:
+    s = socket.create_connection(('$DB_HOST', 3306), timeout=2)
+    s.close()
+    sys.exit(0)
+except Exception:
+    sys.exit(1)
+" 2>/dev/null && { echo "MySQL ready after $((i * 10))s"; break; }
+      if [ "$i" = "90" ]; then
+        echo "ERROR: MySQL did not become ready in 15 minutes"
+        exit 1
+      fi
       sleep 10
     done
 
   # ── Install Drupal via Drush ──────────────────────────────────────────────────
   - |
-    set -euo pipefail
+    set -eu
     DB_PASS=$(base64 -d /root/drupal-db.b64)
     ADMIN_PASS=$(base64 -d /root/drupal-admin.b64)
     cd /var/www/drupal
@@ -109,6 +127,9 @@ runcmd:
   - chmod 640 /var/www/drupal/web/sites/default/settings.php
 
   # ── Optional: HTTPS via Let's Encrypt ────────────────────────────────────────
+  # Install certbot via snap (EFF-recommended; avoids universe-repo dependency).
+  - snap install --classic certbot 2>&1 || true
+  - ln -sf /snap/bin/certbot /usr/bin/certbot
   - |
     DOMAIN="${domain}"
     EAB_KID="${acme_eab_kid}"
