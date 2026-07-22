@@ -89,7 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
-  default     = ""
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzZB11JRKjbPO/1wAtJ/9+/xQtndp61EWo1T2GhIVJO0eiBbUoufdhX989hAyE0JlyGjvDloe0c8S1sK8NAeLEx/jaKwsbHMQGxkusoBFUQDGWlREsHRHn7/78Wbra45ZJi6r9uizao7HDtoq0GCB6DfleOpKMLjOLHv9NaH0Hm119ZztHIqrmWmc25e27Evy3Nht9hX0Yb/OsEWcWBKhVv6SXGdB7SCXKYIPj7357bLpb4SdW9RxQA40bjlEFtPSqZ3HNXZ7yrUZXQWtrVkpia51nR088Jz0rMlmLgH+RPTDtj8CcI/E6QgsKXfrlxswbl3cT41qZVHi0+hNxE9vg+MSAVuYKgyWWFU7qlQCvmKmDPDjivBaFn7Aaz9qw71brpIeNXRwNiEbHy2+2+A0X8iIbc1Ca3RdVQ2rBLRXQDhNMi2syJkyty0ZTiLSNt+rhl4JgFZBz88q7b34MezNNNP7HX4oG+XpwjUe4KzDjk8EbBfxiPlLy7xkBioxRe+E="
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ variable "elastic_password" {
   description = "Password for the built-in 'elastic' superuser (min 6 characters)."
   type        = string
   sensitive   = true
-  default     = "ChangeMe123!"
+  default     = "K7m@P4z!L9xQ8rWs"
 
   validation {
     condition     = length(var.elastic_password) >= 6

@@ -89,7 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
-  default     = ""
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzZB11JRKjbPO/1wAtJ/9+/xQtndp61EWo1T2GhIVJO0eiBbUoufdhX989hAyE0JlyGjvDloe0c8S1sK8NAeLEx/jaKwsbHMQGxkusoBFUQDGWlREsHRHn7/78Wbra45ZJi6r9uizao7HDtoq0GCB6DfleOpKMLjOLHv9NaH0Hm119ZztHIqrmWmc25e27Evy3Nht9hX0Yb/OsEWcWBKhVv6SXGdB7SCXKYIPj7357bLpb4SdW9RxQA40bjlEFtPSqZ3HNXZ7yrUZXQWtrVkpia51nR088Jz0rMlmLgH+RPTDtj8CcI/E6QgsKXfrlxswbl3cT41qZVHi0+hNxE9vg+MSAVuYKgyWWFU7qlQCvmKmDPDjivBaFn7Aaz9qw71brpIeNXRwNiEbHy2+2+A0X8iIbc1Ca3RdVQ2rBLRXQDhNMi2syJkyty0ZTiLSNt+rhl4JgFZBz88q7b34MezNNNP7HX4oG+XpwjUe4KzDjk8EbBfxiPlLy7xkBioxRe+E="
 }
 
 # ── Network access ────────────────────────────────────────────────────────────
@@ -106,7 +106,7 @@ variable "pg_password" {
   description = "PostgreSQL database password for Authentik."
   type        = string
   sensitive   = true
-  default     = "ChangeMe123!PgPass"
+  default     = "K7m@P4z!L9xQ8rWsPgPass"
 
   validation {
     condition     = length(var.pg_password) >= 12
@@ -118,7 +118,7 @@ variable "authentik_secret_key" {
   description = "Authentik secret key for signing (min 32 characters). Use: openssl rand -hex 32"
   type        = string
   sensitive   = true
-  default     = "ChangeMe123!ChangeMe123!ChangeME!!"
+  default     = "K7m@P4z!L9xQ8rWsK7m@P4z!L9xQ8rWsChangeME!!"
 
   validation {
     condition     = length(var.authentik_secret_key) >= 32
