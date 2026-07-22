@@ -103,7 +103,7 @@ graph TB
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `app_name` | `"discourse"` | Short name used in all resource names |
+| `app_name` | `"forum"` | Short name used in all resource names |
 | `environment` | `"prod"` | Environment label |
 | `location` | `"ITBG-Bergamo"` | ArubaCloud region |
 | `zone` | `"ITBG-1"` | Availability zone |
@@ -115,6 +115,7 @@ graph TB
 | `web_cidr` | `"0.0.0.0/0"` | CIDR for HTTP/HTTPS |
 | `hostname` | auto | Domain name (defaults to VM Elastic IP) |
 | `smtp_port` | `587` | SMTP port |
+| `dev_smtp` | `false` | Deploy Mailpit instead of a real SMTP server (see [Testing without a mail server](#testing-without-a-mail-server)) |
 
 ---
 
@@ -178,6 +179,26 @@ terraform output site_url
 ```
 
 Visit the URL and **register with the same email address** set in `admin_email`. Discourse automatically grants admin rights to the first user who registers with that email.
+
+---
+
+## Testing without a mail server
+
+Set `dev_smtp = true` in `terraform.tfvars`. This deploys [Mailpit](https://github.com/axllent/mailpit) — a lightweight fake SMTP server — on the VM. Discourse is wired to it automatically; no `smtp_host`, `smtp_user`, or `smtp_password` are needed.
+
+```hcl
+# terraform.tfvars
+dev_smtp    = true
+admin_email = "you@example.com"
+```
+
+After bootstrap, open the Mailpit web UI to read captured emails (including the admin registration confirmation):
+
+```
+http://<vm_public_ip>:8025
+```
+
+> **Never use `dev_smtp = true` in production.** Emails are only visible in the Mailpit UI — nothing is delivered to real inboxes.
 
 ---
 

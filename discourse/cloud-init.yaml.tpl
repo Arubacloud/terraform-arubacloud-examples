@@ -15,6 +15,7 @@ packages:
   - ca-certificates
 
 write_files:
+%{ if !dev_smtp ~}
   # SMTP password stored base64-encoded
   - path: /root/discourse-smtp.b64
     permissions: "0600"
@@ -34,7 +35,8 @@ write_files:
       with open('/var/discourse/containers/app.yml', 'w') as f:
           f.write(config)
 
-  # Discourse app.yml — SMTP password injected at runtime via Python
+%{ endif ~}
+  # Discourse app.yml — SMTP password injected at runtime via Python (prod) or Mailpit used (dev)
   # Written to /tmp first; copied into /var/discourse after git clone.
   - path: /tmp/discourse-app.yml
     content: |
@@ -54,12 +56,21 @@ write_files:
         DISCOURSE_DEFAULT_LOCALE: en
         DISCOURSE_HOSTNAME: "${hostname}"
         DISCOURSE_DEVELOPER_EMAILS: "${admin_email}"
+%{ if dev_smtp ~}
+        DISCOURSE_SMTP_ADDRESS: "172.17.0.1"
+        DISCOURSE_SMTP_PORT: 1025
+        DISCOURSE_SMTP_USER_NAME: "mailpit"
+        DISCOURSE_SMTP_PASSWORD: "mailpit"
+        DISCOURSE_SMTP_ENABLE_START_TLS: false
+        DISCOURSE_SMTP_AUTHENTICATION: plain
+%{ else ~}
         DISCOURSE_SMTP_ADDRESS: "${smtp_host}"
         DISCOURSE_SMTP_PORT: ${smtp_port}
         DISCOURSE_SMTP_USER_NAME: "${smtp_user}"
         DISCOURSE_SMTP_PASSWORD: "PLACEHOLDER_SMTP_PASS"
         DISCOURSE_SMTP_ENABLE_START_TLS: true
         DISCOURSE_SMTP_AUTHENTICATION: plain
+%{ endif ~}
       volumes:
         - volume:
             host: /var/discourse/shared/standalone
@@ -98,9 +109,14 @@ runcmd:
     cp /tmp/discourse-app.yml /var/discourse/containers/app.yml
     rm -f /tmp/discourse-app.yml
 
+%{ if dev_smtp ~}
+  # ── Start Mailpit (fake SMTP — captures all outbound email) ──────────────────
+  - docker run -d --name mailpit --restart unless-stopped -p 1025:1025 -p 8025:8025 axllent/mailpit
+%{ else ~}
   # ── Inject SMTP password into app.yml ─────────────────────────────────────────
   - python3 /root/inject-smtp-pass.py
   - rm -f /root/inject-smtp-pass.py
+%{ endif ~}
 
   # ── Bootstrap and start Discourse (20-30 minutes) ────────────────────────────
   - |
@@ -114,3 +130,6 @@ final_message: |
   Visit the URL and register with ${admin_email} to activate the admin account.
   Bootstrap log: /var/log/discourse-bootstrap.log
   cloud-init log: /var/log/cloud-init-output.log
+%{ if dev_smtp ~}
+  Mailpit (captured emails): http://${hostname}:8025
+%{ endif ~}

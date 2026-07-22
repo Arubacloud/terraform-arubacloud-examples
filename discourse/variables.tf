@@ -117,7 +117,6 @@ variable "hostname" {
 variable "admin_email" {
   description = "Email address for the initial Discourse admin account. Must match a valid mailbox for email confirmation."
   type        = string
-  default     = "admin@example.com"
 
   validation {
     condition     = can(regex("^[^@]+@[^@]+\\.[^@]+$", var.admin_email))
@@ -126,9 +125,9 @@ variable "admin_email" {
 }
 
 variable "smtp_host" {
-  description = "SMTP server address for outbound email (e.g. 'smtp.gmail.com')."
+  description = "SMTP server address for outbound email (e.g. 'smtp.gmail.com'). Required when dev_smtp is false."
   type        = string
-  default     = "smtp.example.com"
+  default     = ""
 }
 
 variable "smtp_port" {
@@ -138,14 +137,20 @@ variable "smtp_port" {
 }
 
 variable "smtp_user" {
-  description = "SMTP login username."
+  description = "SMTP login username. Required when dev_smtp is false."
   type        = string
-  default     = "smtp@example.com"
+  default     = ""
 }
 
 variable "smtp_password" {
-  description = "SMTP login password."
+  description = "SMTP login password. Required when dev_smtp is false."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9"
+  default     = ""
+}
+
+variable "dev_smtp" {
+  description = "When true, deploys Mailpit on the VM as a fake SMTP server. Discourse emails are captured and visible at http://<ip>:8025. Use for testing only — no real email is delivered."
+  type        = bool
+  default     = false
 }

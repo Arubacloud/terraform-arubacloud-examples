@@ -23,11 +23,14 @@ module "network" {
   tags           = local.tags
   billing_period = var.billing_period
 
-  vm_ingress_ports = {
-    ssh   = { port = "22", cidr = var.ssh_cidr }
-    http  = { port = "80", cidr = var.web_cidr }
-    https = { port = "443", cidr = var.web_cidr }
-  }
+  vm_ingress_ports = merge(
+    {
+      ssh   = { port = "22", cidr = var.ssh_cidr }
+      http  = { port = "80", cidr = var.web_cidr }
+      https = { port = "443", cidr = var.web_cidr }
+    },
+    var.dev_smtp ? { mailpit = { port = "8025", cidr = var.ssh_cidr } } : {}
+  )
 }
 
 # ── Storage ───────────────────────────────────────────────────────────────────
@@ -76,6 +79,7 @@ resource "arubacloud_cloudserver" "this" {
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
       hostname      = local.hostname
       admin_email   = var.admin_email
+      dev_smtp      = var.dev_smtp
       smtp_host     = var.smtp_host
       smtp_port     = var.smtp_port
       smtp_user     = var.smtp_user
@@ -85,5 +89,12 @@ resource "arubacloud_cloudserver" "this" {
 
   storage = {
     boot_volume_uri_ref = arubacloud_blockstorage.boot.uri
+  }
+
+  lifecycle {
+    precondition {
+      condition     = var.dev_smtp || (var.smtp_host != "" && var.smtp_user != "" && var.smtp_password != "")
+      error_message = "smtp_host, smtp_user, and smtp_password are required when dev_smtp is false."
+    }
   }
 }
