@@ -78,6 +78,11 @@ write_files:
               prefix: index_
               period: 24h
 
+      compactor:
+        working_directory: /var/lib/loki/compactor
+        retention_enabled: true
+        delete_request_store: filesystem
+
       limits_config:
         retention_period: 744h
 
@@ -242,12 +247,13 @@ runcmd:
   # ── Grafana admin password ────────────────────────────────────────────────
   - |
     ADMIN_PASS=$(base64 -d /root/grafana-admin.b64)
-    sed -i \
-      "s|^;admin_password.*|admin_password = $ADMIN_PASS|" \
-      /etc/grafana/grafana.ini || \
-    grep -q '^\[security\]' /etc/grafana/grafana.ini && \
-      sed -i "/^\[security\]/a admin_password = $ADMIN_PASS" /etc/grafana/grafana.ini || \
+    if grep -q '^;admin_password' /etc/grafana/grafana.ini; then
+      sed -i "s|^;admin_password.*|admin_password = $ADMIN_PASS|" /etc/grafana/grafana.ini
+    elif grep -q '^\[security\]' /etc/grafana/grafana.ini; then
+      sed -i "/^\[security\]/a admin_password = $ADMIN_PASS" /etc/grafana/grafana.ini
+    else
       printf '\n[security]\nadmin_password = %s\n' "$ADMIN_PASS" >> /etc/grafana/grafana.ini
+    fi
     rm -f /root/grafana-admin.b64
 
   # ── Prometheus binary ─────────────────────────────────────────────────────
@@ -292,7 +298,7 @@ runcmd:
     rm -f /tmp/promtail.zip
 
   # ── Data directories ──────────────────────────────────────────────────────
-  - mkdir -p /var/lib/prometheus /var/lib/loki/{chunks,rules} /var/lib/promtail
+  - mkdir -p /var/lib/prometheus /var/lib/loki/{chunks,rules,compactor} /var/lib/promtail
   - chown -R prometheus:prometheus /var/lib/prometheus /etc/prometheus
   - chown -R loki:loki             /var/lib/loki       /etc/loki
   - chown -R promtail:promtail     /var/lib/promtail   /etc/promtail
@@ -300,8 +306,8 @@ runcmd:
   # ── Resolve hostname in Promtail config ───────────────────────────────────
   - sed -i "s|__HOST__|$(hostname)|g" /etc/promtail/promtail.yml
 
-  # ── Add promtail to adm group so it can read /var/log ────────────────────
-  - usermod -aG adm promtail
+  # ── Add promtail to adm + systemd-journal groups ─────────────────────────
+  - usermod -aG adm,systemd-journal promtail
 
   # ── Start all services ────────────────────────────────────────────────────
   - systemctl daemon-reload
