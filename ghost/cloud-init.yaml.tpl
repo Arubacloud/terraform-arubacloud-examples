@@ -83,7 +83,7 @@ runcmd:
   # ghost-cli must run as a non-root, non-ghost user (ubuntu). It creates the
   # ghost system user internally and refuses to run if already logged in as ghost.
   - |
-    set -euo pipefail
+    set -eu
     DB_PASS=$(base64 -d /root/ghost-db.b64)
     sudo -u ubuntu ghost install \
       --dir /var/www/ghost \

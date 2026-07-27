@@ -32,7 +32,8 @@ module "network" {
   }
 }
 
-# Restrict MySQL access to the VM's IP only
+# Allow MySQL from the VM elastic IP (cloud-init connects via the DBaaS elastic IP,
+# so the source appears as the VM's elastic IP to MySQL).
 resource "arubacloud_securityrule" "dbaas_mysql" {
   name              = "${local.name_prefix}-db-mysql"
   location          = var.location
