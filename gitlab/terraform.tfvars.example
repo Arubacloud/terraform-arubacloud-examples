@@ -8,7 +8,7 @@ ssh_public_key = "ssh-ed25519 AAAA... user@host"
 
 # ── GitLab ────────────────────────────────────────────────────────────────────
 # DNS must resolve to the VM public IP BEFORE deploying with an HTTPS external_url.
-gitlab_hostname      = "gitlab.example.com"
+gitlab_hostname      = "gitlab.yourdomain.com"   # required — set to a real domain or IP
 gitlab_root_password = "change-me-min-8-chars"
 # letsencrypt_email = "you@example.com"   # enables auto-TLS via Let's Encrypt
 

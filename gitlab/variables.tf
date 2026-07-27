@@ -103,14 +103,8 @@ variable "ssh_cidr" {
 # ── GitLab configuration ──────────────────────────────────────────────────────
 
 variable "gitlab_hostname" {
-  description = "Public hostname for GitLab (e.g. 'gitlab.example.com'). Used in the external_url and for Let's Encrypt TLS. Must resolve to the VM public IP via DNS."
+  description = "Public hostname or IP for GitLab (e.g. 'gitlab.example.com' or '1.2.3.4'). Used in the external_url and for Let's Encrypt TLS. Must resolve to the VM public IP via DNS."
   type        = string
-  default     = "gitlab.example.com"
-
-  validation {
-    condition     = var.gitlab_hostname != "gitlab.example.com"
-    error_message = "Set gitlab_hostname to a real domain or IP — the default placeholder will make GitLab unreachable."
-  }
 }
 
 variable "gitlab_root_password" {
