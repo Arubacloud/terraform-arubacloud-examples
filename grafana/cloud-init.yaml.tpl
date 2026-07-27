@@ -3,16 +3,7 @@
 # All services run as systemd units; Prometheus and Loki are localhost-only.
 # Rendered by Terraform templatefile() — do not use this file directly.
 
-package_update: true
-package_upgrade: true
-
-packages:
-  - curl
-  - gnupg
-  - nginx
-  - certbot
-  - python3-certbot-nginx
-  - unzip
+package_update: false
 
 write_files:
   # ── Grafana admin password (base64-encoded) ────────────────────────────────
@@ -229,6 +220,15 @@ write_files:
       }
 
 runcmd:
+  # ── Wait for apt lock, upgrade OS, install base packages ─────────────────
+  - |
+    systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+    dpkg --configure -a
+    apt-get -o DPkg::Lock::Timeout=120 -q update
+    DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y upgrade
+    DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y install \
+      curl gnupg nginx certbot python3-certbot-nginx unzip
+
   # ── System users ─────────────────────────────────────────────────────────
   - useradd --system --no-create-home --shell /bin/false prometheus
   - useradd --system --no-create-home --shell /bin/false loki
