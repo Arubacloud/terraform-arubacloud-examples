@@ -220,9 +220,10 @@ write_files:
       }
 
 runcmd:
-  # ── Wait for apt lock, upgrade OS, install base packages ─────────────────
+  # ── Fix dpkg state, upgrade OS, install base packages ───────────────────
   - |
     systemctl stop unattended-upgrades apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+    rm -f /var/lib/dpkg/updates/*
     dpkg --configure -a
     apt-get -o DPkg::Lock::Timeout=120 -q update
     DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y upgrade
@@ -237,12 +238,13 @@ runcmd:
 
   # ── Grafana APT repository ────────────────────────────────────────────────
   - |
-    curl -fsSL https://apt.grafana.com/gpg.key \
-      | gpg --dearmor -o /usr/share/keyrings/grafana.gpg
+    curl -fsSL https://apt.grafana.com/gpg.key -o /tmp/grafana.asc
+    gpg --batch --no-tty --dearmor < /tmp/grafana.asc > /usr/share/keyrings/grafana.gpg
+    rm -f /tmp/grafana.asc
     echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://apt.grafana.com stable main" \
       > /etc/apt/sources.list.d/grafana.list
-    apt-get update -q
-    apt-get install -y grafana
+    apt-get -o DPkg::Lock::Timeout=120 -q update
+    DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y install grafana
 
   # ── Grafana admin password ────────────────────────────────────────────────
   - |
