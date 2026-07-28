@@ -12,7 +12,6 @@ packages:
   - ca-certificates
   - curl
   - gnupg
-  - pwgen
 
 write_files:
   # Credentials stored base64-encoded
@@ -28,8 +27,8 @@ write_files:
   - path: /opt/graylog/docker-compose.yml
     content: |
       services:
-        mongodb:
-          image: mongo:6
+        mongo:
+          image: mongo:7
           container_name: graylog-mongodb
           restart: unless-stopped
           volumes:
@@ -43,8 +42,8 @@ write_files:
             - cluster.name=graylog
             - node.name=graylog-os-1
             - discovery.type=single-node
-            - OPENSEARCH_INITIAL_ADMIN_PASSWORD=$${OPENSEARCH_PASSWORD}
-            - DISABLE_INSTALL_DEMO_CONFIG=false
+            - DISABLE_INSTALL_DEMO_CONFIG=true
+            - DISABLE_SECURITY_PLUGIN=true
           ulimits:
             memlock:
               soft: -1
@@ -60,14 +59,13 @@ write_files:
           container_name: graylog
           restart: unless-stopped
           depends_on:
-            - mongodb
+            - mongo
             - opensearch
           environment:
             GRAYLOG_PASSWORD_SECRET: $${GRAYLOG_PASSWORD_SECRET}
             GRAYLOG_ROOT_PASSWORD_SHA2: $${GRAYLOG_ROOT_PASSWORD_SHA2}
             GRAYLOG_HTTP_EXTERNAL_URI: http://0.0.0.0:9000/
-            GRAYLOG_ELASTICSEARCH_HOSTS: https://admin:$${OPENSEARCH_PASSWORD}@opensearch:9200
-            GRAYLOG_ELASTICSEARCH_VERSION: 7
+            GRAYLOG_ELASTICSEARCH_HOSTS: http://opensearch:9200
           ports:
             - "9000:9000"
             - "1514:1514"
@@ -102,15 +100,11 @@ runcmd:
     GRAYLOG_SECRET=$(base64 -d /root/graylog-secret.b64)
     rm -f /root/graylog-admin.b64 /root/graylog-secret.b64
 
-    # SHA2 hash of the admin password (required by Graylog)
     ADMIN_PASS_SHA2=$(echo -n "$ADMIN_PASS" | sha256sum | awk '{print $1}')
 
-    # Generate a random OpenSearch password for internal use
-    OS_PASS=$(pwgen -s 16 1)
-
     printf \
-      "GRAYLOG_PASSWORD_SECRET=%s\nGRAYLOG_ROOT_PASSWORD_SHA2=%s\nOPENSEARCH_PASSWORD=%s\n" \
-      "$GRAYLOG_SECRET" "$ADMIN_PASS_SHA2" "$OS_PASS" \
+      "GRAYLOG_PASSWORD_SECRET=%s\nGRAYLOG_ROOT_PASSWORD_SHA2=%s\n" \
+      "$GRAYLOG_SECRET" "$ADMIN_PASS_SHA2" \
       > /opt/graylog/.env
     chmod 600 /opt/graylog/.env
 
