@@ -116,7 +116,7 @@ runcmd:
     chmod -R o-rwx /opt/keycloak/conf /etc/keycloak
 
     # ── Build Keycloak for production mode ────────────────────────────────────
-    sudo -u keycloak /opt/keycloak/bin/kc.sh build --db=postgres --http-enabled=true
+    sudo -u keycloak /opt/keycloak/bin/kc.sh build --db=postgres
 
   # ── Start Keycloak ────────────────────────────────────────────────────────────
   - systemctl daemon-reload

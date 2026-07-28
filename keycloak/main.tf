@@ -1,7 +1,7 @@
 locals {
   name_prefix = "${var.app_name}-${var.environment}"
   tags        = ["keycloak", var.environment, "identity"]
-  kc_hostname = var.domain != "" ? var.domain : module.network.vm_elastic_ip_address
+  kc_hostname = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
   base_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
   server_name = var.domain != "" ? var.domain : "_"
 }
