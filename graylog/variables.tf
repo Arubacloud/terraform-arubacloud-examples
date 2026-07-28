@@ -139,7 +139,7 @@ variable "graylog_secret" {
 }
 
 variable "graylog_version" {
-  description = "Graylog Docker image tag (e.g. '6', '6.1')."
+  description = "Graylog Docker image tag (e.g. '7.1', '7.1.6'). See https://hub.docker.com/r/graylog/graylog/tags for available tags."
   type        = string
-  default     = "6"
+  default     = "7.1"
 }
