@@ -121,7 +121,7 @@ variable "db_password" {
   description = "Password for the Ghost MySQL user. Must not contain newlines."
   type        = string
   sensitive   = true
-  default     = "K7m@P4z!L9"
+  default     = "Cloud#Init27"
 
   validation {
     condition     = length(var.db_password) >= 8
