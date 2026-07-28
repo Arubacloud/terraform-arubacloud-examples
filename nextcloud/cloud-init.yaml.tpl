@@ -82,12 +82,19 @@ runcmd:
   - systemctl enable --now apache2
 
   # Wait for DBaaS (up to 15 minutes)
+  # Use python3 socket instead of /dev/tcp — the latter is bash-only; cloud-init
+  # runcmd runs under /bin/sh (dash on Ubuntu).
   - |
     DB_HOST="${db_host}"
     echo "Waiting for MySQL at $DB_HOST:3306 ..."
-    for i in $(seq 1 90); do
-      (echo > /dev/tcp/$DB_HOST/3306) 2>/dev/null && { echo "MySQL ready"; break; }
-      [ "$i" = "90" ] && { echo "ERROR: MySQL timeout"; exit 1; }
+    i=0
+    while [ "$i" -lt 90 ]; do
+      i=$((i + 1))
+      python3 -c "import socket,sys; s=socket.create_connection(('$DB_HOST',3306),timeout=2); s.close()" 2>/dev/null && { echo "MySQL ready after $((i * 10))s"; break; }
+      if [ "$i" = "90" ]; then
+        echo "ERROR: MySQL did not become ready in 15 minutes"
+        exit 1
+      fi
       sleep 10
     done
 
