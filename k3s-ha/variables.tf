@@ -86,6 +86,23 @@ variable "vm_disk_size_gb" {
   }
 }
 
+variable "dbaas_flavor" {
+  description = "Managed MySQL DBaaS flavor (e.g. 'DBO2A8' = 2 vCPU / 8 GB)."
+  type        = string
+  default     = "DBO2A8"
+}
+
+variable "db_storage_gb" {
+  description = "Initial DBaaS storage in GB."
+  type        = number
+  default     = 20
+
+  validation {
+    condition     = var.db_storage_gb >= 10
+    error_message = "db_storage_gb must be at least 10 GB."
+  }
+}
+
 variable "ssh_public_key" {
   description = "SSH public key value (the content of your id_rsa.pub or id_ed25519.pub)."
   type        = string
@@ -128,18 +145,6 @@ variable "k3s_token" {
 
 # ── External MySQL datastore ──────────────────────────────────────────────────
 
-variable "db_host" {
-  description = "MySQL 8.0 database host (DBaaS endpoint or external server)."
-  type        = string
-  default     = "localhost"
-}
-
-variable "db_port" {
-  description = "MySQL database port."
-  type        = number
-  default     = 3306
-}
-
 variable "db_name" {
   description = "MySQL database name for k3s datastore."
   type        = string
@@ -147,9 +152,9 @@ variable "db_name" {
 }
 
 variable "db_user" {
-  description = "MySQL database username."
+  description = "MySQL database username. Must contain only letters (ArubaCloud DBaaS restriction)."
   type        = string
-  default     = "k3s"
+  default     = "kubedb"
 }
 
 variable "db_password" {

@@ -35,6 +35,7 @@ runcmd:
         K3S_DATASTORE_ENDPOINT="$DSN" \
         sh -s - server \
           --node-name="${node_name}" \
+          --tls-san="${node_public_ip}" \
           --disable=servicelb
     else
       curl -sfL https://get.k3s.io | \
@@ -43,6 +44,7 @@ runcmd:
         K3S_DATASTORE_ENDPOINT="$DSN" \
         sh -s - server \
           --node-name="${node_name}" \
+          --tls-san="${node_public_ip}" \
           --disable=servicelb
     fi
 
