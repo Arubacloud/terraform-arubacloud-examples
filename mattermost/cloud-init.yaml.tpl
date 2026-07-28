@@ -34,12 +34,12 @@ write_files:
           location ~ /api/v[0-9]+/(users/)?websocket$$ {
               proxy_pass              http://mattermost;
               proxy_http_version      1.1;
-              proxy_set_header        Upgrade $$http_upgrade;
+              proxy_set_header        Upgrade $${http_upgrade};
               proxy_set_header        Connection "Upgrade";
-              proxy_set_header        Host $$host;
-              proxy_set_header        X-Real-IP $$remote_addr;
-              proxy_set_header        X-Forwarded-For $$proxy_add_x_forwarded_for;
-              proxy_set_header        X-Forwarded-Proto $$scheme;
+              proxy_set_header        Host $${host};
+              proxy_set_header        X-Real-IP $${remote_addr};
+              proxy_set_header        X-Forwarded-For $${proxy_add_x_forwarded_for};
+              proxy_set_header        X-Forwarded-Proto $${scheme};
               proxy_set_header        X-Frame-Options SAMEORIGIN;
               proxy_read_timeout      90s;
           }
@@ -48,10 +48,10 @@ write_files:
               proxy_pass              http://mattermost;
               proxy_http_version      1.1;
               proxy_set_header        Connection "";
-              proxy_set_header        Host $$host;
-              proxy_set_header        X-Real-IP $$remote_addr;
-              proxy_set_header        X-Forwarded-For $$proxy_add_x_forwarded_for;
-              proxy_set_header        X-Forwarded-Proto $$scheme;
+              proxy_set_header        Host $${host};
+              proxy_set_header        X-Real-IP $${remote_addr};
+              proxy_set_header        X-Forwarded-For $${proxy_add_x_forwarded_for};
+              proxy_set_header        X-Forwarded-Proto $${scheme};
               proxy_set_header        X-Frame-Options SAMEORIGIN;
               proxy_read_timeout      90s;
               client_max_body_size    50m;

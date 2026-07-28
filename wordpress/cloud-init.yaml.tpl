@@ -64,7 +64,7 @@ write_files:
       define( 'SECURE_AUTH_SALT','${secure_auth_salt}' );
       define( 'LOGGED_IN_SALT',  '${logged_in_salt}' );
       define( 'NONCE_SALT',      '${nonce_salt}' );
-      $$table_prefix = 'wp_';
+      $${table_prefix} = 'wp_';
       define( 'WP_SITEURL', '${wp_url}' );
       define( 'WP_HOME',    '${wp_url}' );
       define( 'WP_DEBUG',   false );
