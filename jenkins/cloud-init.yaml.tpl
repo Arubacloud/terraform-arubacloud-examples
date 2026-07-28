@@ -41,9 +41,12 @@ write_files:
 runcmd:
   # ── Jenkins APT repository ────────────────────────────────────────────────────
   - |
-    set -e
+    #!/bin/bash
+    set -euo pipefail
     curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key \
-      | gpg --dearmor -o /usr/share/keyrings/jenkins-keyring.gpg
+      -o /tmp/jenkins.key
+    gpg --dearmor < /tmp/jenkins.key > /usr/share/keyrings/jenkins-keyring.gpg
+    rm -f /tmp/jenkins.key
     echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian-stable binary/" \
       > /etc/apt/sources.list.d/jenkins.list
     apt-get update -q
