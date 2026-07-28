@@ -41,8 +41,7 @@ write_files:
 runcmd:
   # ── Jenkins APT repository ────────────────────────────────────────────────────
   - |
-    #!/bin/bash
-    set -euo pipefail
+    set -e
     curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key \
       -o /tmp/jenkins.key
     gpg --dearmor < /tmp/jenkins.key > /usr/share/keyrings/jenkins-keyring.gpg
