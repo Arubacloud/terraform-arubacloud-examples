@@ -15,7 +15,7 @@ HAProxy is the de-facto standard open-source load balancer for high-availability
 - **Stats page** on port 8404 (restricted to `admin_cidr`) with password auth
 - Backend servers supplied via the `backends` Terraform variable — add or remove servers with `terraform apply`
 
-> **No backends?** Deploy without backends and HAProxy will return 503 on port 80. Add backend IPs later by updating `backends` and re-applying.
+> **No backends?** Deploy without backends and a local nginx demo server is installed automatically on `127.0.0.1:8080`. HAProxy proxies to it so port 80 returns a real response. Add your own backend IPs later by updating `backends` and re-applying — the demo nginx is not installed when real backends are configured.
 
 ---
 
@@ -207,6 +207,15 @@ Check connectivity:
 
 ```bash
 curl -sv http://<backend-ip>:<port>/
+```
+
+### Port 80 returns 503 after re-apply with real backends
+
+If you previously deployed without backends (demo nginx was installed) and then added real backends, the VM needs to be reprovisioned — `terraform apply` re-renders the cloud-init but the existing VM is not re-bootstrapped. Destroy and re-apply to get a clean build:
+
+```bash
+terraform destroy
+terraform apply
 ```
 
 ---

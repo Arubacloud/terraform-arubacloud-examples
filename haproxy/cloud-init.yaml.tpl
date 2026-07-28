@@ -2,6 +2,8 @@
 # HAProxy load balancer bootstrap for Aruba Cloud.
 # Installs HAProxy from Ubuntu packages with a preconfigured HTTP frontend,
 # round-robin backend, and stats page on port 8404.
+# When no backends are configured, a local nginx demo server on 127.0.0.1:8080
+# is installed so the proxy returns a real response instead of 503.
 # Rendered by Terraform templatefile() — do not use this file directly.
 
 package_update: true
@@ -9,8 +11,24 @@ package_upgrade: true
 
 packages:
   - haproxy
+%{ if length(backends) == 0 ~}
+  - nginx
+%{ endif ~}
 
 write_files:
+%{ if length(backends) == 0 ~}
+  - path: /etc/nginx/sites-available/haproxy-demo
+    content: |
+      server {
+          listen 127.0.0.1:8080;
+          server_name localhost;
+          location / {
+              return 200 'HAProxy demo backend\nThis response comes from a local nginx instance on 127.0.0.1:8080.\nAdd real backends via the backends Terraform variable.\n';
+              add_header Content-Type text/plain;
+          }
+      }
+
+%{ endif ~}
   - path: /etc/haproxy/haproxy.cfg
     content: |
       global
@@ -43,8 +61,7 @@ write_files:
           server web${i + 1} ${backend} check
 %{ endfor ~}
 %{ if length(backends) == 0 ~}
-          # No backends configured — HAProxy returns 503.
-          # Add servers above or set the backends variable in terraform.tfvars.
+          server demo-local 127.0.0.1:8080 check
 %{ endif ~}
 
       frontend stats
@@ -57,6 +74,13 @@ write_files:
           stats show-node
 
 runcmd:
+%{ if length(backends) == 0 ~}
+  - ln -sf /etc/nginx/sites-available/haproxy-demo /etc/nginx/sites-enabled/haproxy-demo
+  - rm -f /etc/nginx/sites-enabled/default
+  - nginx -t
+  - systemctl enable nginx
+  - systemctl restart nginx
+%{ endif ~}
   - haproxy -c -f /etc/haproxy/haproxy.cfg
   - systemctl enable haproxy
   - systemctl restart haproxy
