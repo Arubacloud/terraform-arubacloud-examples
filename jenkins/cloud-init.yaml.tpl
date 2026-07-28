@@ -45,11 +45,12 @@ write_files:
       #!/bin/bash
       set -euo pipefail
 
-      curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key \
-        | gpg --dearmor | tee /usr/share/keyrings/jenkins-keyring.gpg >/dev/null
-      chmod 644 /usr/share/keyrings/jenkins-keyring.gpg
+      mkdir -p /etc/apt/keyrings
+      curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key \
+        -o /etc/apt/keyrings/jenkins-keyring.asc
+      chmod 644 /etc/apt/keyrings/jenkins-keyring.asc
 
-      echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian-stable binary/" \
+      echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" \
         > /etc/apt/sources.list.d/jenkins.list
 
       apt-get update -q
