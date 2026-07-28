@@ -18,9 +18,10 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Crash logs
+# Crash and debug logs
 crash.log
 crash.*.log
+trace.log
 
 # Rendered cloud-init templates
 *.rendered.yaml
