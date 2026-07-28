@@ -15,9 +15,11 @@ packages:
   - sqlite3
 
 write_files:
-  # Gitea app.ini — pre-configured so the web installer is bypassed
+  # Gitea app.ini — pre-configured so the web installer is bypassed.
+  # Written as root:root here because the git user does not exist yet at
+  # write_files time; runcmd sets the correct git:git ownership after install.
   - path: /etc/gitea/app.ini
-    owner: "root:git"
+    owner: "root:root"
     permissions: "0640"
     content: |
       APP_NAME = Gitea
