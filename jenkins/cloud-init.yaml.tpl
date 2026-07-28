@@ -38,16 +38,26 @@ write_files:
           }
       }
 
+  # Dedicated bash script so the shebang is honoured (runcmd runs under /bin/sh)
+  - path: /usr/local/bin/install-jenkins.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+
+      curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key \
+        | gpg --dearmor | tee /usr/share/keyrings/jenkins-keyring.gpg >/dev/null
+      chmod 644 /usr/share/keyrings/jenkins-keyring.gpg
+
+      echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.gpg] https://pkg.jenkins.io/debian-stable binary/" \
+        > /etc/apt/sources.list.d/jenkins.list
+
+      apt-get update -q
+      apt-get install -y jenkins
+
 runcmd:
   # ── Jenkins APT repository ────────────────────────────────────────────────────
-  - |
-    set -e
-    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key \
-      -o /usr/share/keyrings/jenkins-keyring.asc
-    echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" \
-      > /etc/apt/sources.list.d/jenkins.list
-    apt-get update -q
-    apt-get install -y jenkins
+  - /usr/local/bin/install-jenkins.sh
 
   # ── Set JENKINS_URL so build links are correct ────────────────────────────────
   - |
