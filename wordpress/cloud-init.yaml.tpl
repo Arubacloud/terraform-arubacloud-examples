@@ -125,7 +125,7 @@ runcmd:
 
   # ── WordPress site installation ─────────────────────────────────────────────
   - |
-    set -euo pipefail
+    set -eu
     WP_ADMIN_PASS=$(base64 -d /root/wp-admin.b64)
     sudo -u www-data wp core install \
       --path=/var/www/html \
