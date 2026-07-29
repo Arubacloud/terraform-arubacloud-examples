@@ -70,16 +70,17 @@ runcmd:
     mv /opt/sonarqube-$SQ_VERSION /opt/sonarqube
     rm -f /tmp/sonarqube.zip
 
-    cat > /opt/sonarqube/conf/sonar.properties <<CONF
-sonar.jdbc.username=sonarqube
-sonar.jdbc.password=$DB_PASS
-sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
-sonar.web.host=0.0.0.0
-sonar.web.port=9000
-sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m
-sonar.web.javaOpts=-Xmx512m -Xms128m
-sonar.ce.javaOpts=-Xmx512m -Xms128m
-CONF
+    SONAR_CONF=/opt/sonarqube/conf/sonar.properties
+    {
+      printf 'sonar.jdbc.username=sonarqube\n'
+      printf 'sonar.jdbc.password=%s\n' "$DB_PASS"
+      printf 'sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube\n'
+      printf 'sonar.web.host=0.0.0.0\n'
+      printf 'sonar.web.port=9000\n'
+      printf 'sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m\n'
+      printf 'sonar.web.javaOpts=-Xmx512m -Xms128m\n'
+      printf 'sonar.ce.javaOpts=-Xmx512m -Xms128m\n'
+    } > "$SONAR_CONF"
 
   # ── System user and permissions ───────────────────────────────────────────────
   - useradd --system --no-create-home --shell /bin/false sonarqube 2>/dev/null || true
