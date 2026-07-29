@@ -78,11 +78,15 @@ write_files:
 
 runcmd:
   # Add ondrej/php PPA and install PHP 8.2.
-  # Done in runcmd (not via cloud-init apt: + packages:) to guarantee the PPA
-  # is present before apt resolves the php8.2-* package names.
+  # Done in runcmd to guarantee PPA is indexed before installation.
+  # The Aruba Cloud Ubuntu 22.04 image ships PHP 8.1 pre-installed, so we
+  # must explicitly disable the php8.1 Apache module and set the CLI alternative.
   - add-apt-repository -y ppa:ondrej/php
   - apt-get update -q
   - DEBIAN_FRONTEND=noninteractive apt-get install -y php8.2 libapache2-mod-php8.2 php8.2-mysql php8.2-xml php8.2-mbstring php8.2-curl php8.2-gd php8.2-zip php8.2-intl php8.2-bcmath php8.2-imagick php8.2-redis php8.2-apcu
+  - a2dismod php8.1 || true
+  - a2enmod php8.2
+  - update-alternatives --set php /usr/bin/php8.2
 
   # Enable PHP and Apache modules
   - a2enmod rewrite headers env dir mime setenvif
