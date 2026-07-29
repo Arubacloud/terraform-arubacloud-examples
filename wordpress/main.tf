@@ -3,8 +3,8 @@ locals {
   tags        = ["wordpress", var.environment]
   site_url    = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
 
-  # The ArubaCloud DBaaS API stores the base64 of the password as the MySQL password.
-  db_password_php = base64encode(var.db_password)
+  # Escape \ and ' for embedding in a PHP single-quoted string literal.
+  db_password_php = replace(replace(var.db_password, "\\", "\\\\"), "'", "\\'")
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────
