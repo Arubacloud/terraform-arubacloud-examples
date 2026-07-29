@@ -24,6 +24,7 @@ jobs:
       contents: write
       pages: write
       id-token: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
@@ -58,6 +59,17 @@ jobs:
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Deploying docs for version: $VERSION"
+
+      - name: Sync versions.json with existing versioned docs
+        working-directory: docs/website
+        run: |
+          echo "[]" > versions.json
+          if [ -d "versioned_docs" ]; then
+            VERSIONS=$(ls -d versioned_docs/version-* 2>/dev/null | \
+              sed 's|versioned_docs/version-||' | sort -V -r | jq -R . | jq -s .)
+            [ "$VERSIONS" != "[]" ] && echo "$VERSIONS" > versions.json
+          fi
+          echo "Existing versions: $(cat versions.json)"
 
       - name: Create versioned docs
         working-directory: docs/website
@@ -108,20 +120,75 @@ jobs:
         working-directory: docs/website
         run: npm run sync-version-translations
 
-      - name: Commit versioned docs to main
+      - name: Open PR with versioned docs
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
+
+          BRANCH="docs/version-${{ steps.extract_version.outputs.version }}"
+
+          # Reuse branch if it already exists remotely
+          if git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null 2>&1; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+          else
+            git checkout -b "$BRANCH"
+          fi
+
           git add docs/website/versioned_docs \
                   docs/website/versioned_sidebars \
                   docs/website/versions.json \
                   "docs/website/i18n/it/docusaurus-plugin-content-docs"
+
           if git diff --staged --quiet; then
             echo "No versioned doc changes to commit"
           else
-            git commit -m "docs: add versioned docs for v${{ steps.extract_version.outputs.version }} [skip ci]"
-            git push origin main
+            git commit -m "docs: add versioned docs for v${{ steps.extract_version.outputs.version }}"
+            git push origin "$BRANCH"
           fi
+
+      - name: Create Pull Request
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const branch = `docs/version-${{ steps.extract_version.outputs.version }}`;
+
+            // Skip if branch doesn't exist (nothing to commit)
+            try {
+              await github.rest.repos.getBranch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                branch,
+              });
+            } catch (e) {
+              if (e.status === 404) {
+                console.log('Branch does not exist — no changes to PR.');
+                return;
+              }
+              throw e;
+            }
+
+            // Skip if PR already open
+            const { data: existing } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${branch}`,
+              state: 'open',
+            });
+            if (existing.length > 0) {
+              console.log('PR already exists:', existing[0].html_url);
+              return;
+            }
+
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `docs: add versioned docs for v${{ steps.extract_version.outputs.version }}`,
+              body: `Versioned documentation snapshot for **v${{ steps.extract_version.outputs.version }}**.\n\nCreated automatically by the release workflow. Merge to make this version browsable in future deployments.`,
+              head: branch,
+              base: 'main',
+            });
+            console.log('Created PR:', pr.html_url);
 
       - name: Build documentation
         working-directory: docs/website
