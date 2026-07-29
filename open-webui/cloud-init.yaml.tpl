@@ -92,7 +92,8 @@ runcmd:
   - ln -sf /etc/nginx/sites-available/open-webui /etc/nginx/sites-enabled/open-webui
   - rm -f /etc/nginx/sites-enabled/default
   - nginx -t
-  - systemctl enable --now nginx
+  - systemctl enable nginx
+  - systemctl restart nginx
 
 final_message: |
   Open WebUI bootstrap complete.
