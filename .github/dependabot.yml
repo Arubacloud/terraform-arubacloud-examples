@@ -231,12 +231,6 @@ updates:
     labels:
       - dependencies
 
-  - package-ecosystem: terraform
-    directory: /open-webui
-    schedule:
-      interval: weekly
-    labels:
-      - dependencies
 
   - package-ecosystem: terraform
     directory: /openclaw

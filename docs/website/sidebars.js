@@ -115,7 +115,6 @@ const sidebars = {
           label: 'AI / ML',
           items: [
             'examples/ollama',
-            'examples/open-webui',
             'examples/litellm',
             'examples/openclaw',
           ],
