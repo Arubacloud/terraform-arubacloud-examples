@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to deploy (e.g., 0.5.0)'
+        description: 'Version to deploy (e.g., 0.5.4)'
         required: true
         type: string
 
@@ -31,6 +31,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Checkout main branch
+        run: |
+          git fetch origin
+          git checkout -B main origin/main
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -42,7 +47,7 @@ jobs:
         working-directory: docs/website
         run: npm ci
 
-      - name: Extract version from release
+      - name: Extract version
         id: extract_version
         run: |
           if [ "${{ github.event_name }}" == "release" ]; then
@@ -52,23 +57,71 @@ jobs:
             VERSION="${{ github.event.inputs.version }}"
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Deploying documentation for version: $VERSION"
-
-      - name: Clean up and prepare for versioning
-        working-directory: docs/website
-        run: |
-          echo "[]" > versions.json
-          rm -rf versioned_docs versioned_sidebars
-          find i18n -type d -name "version-*" -exec rm -rf {} + 2>/dev/null || true
-          find i18n -type f -name "version-*.json" -delete 2>/dev/null || true
+          echo "Deploying docs for version: $VERSION"
 
       - name: Create versioned docs
         working-directory: docs/website
-        run: npm run version ${{ steps.extract_version.outputs.version }}
+        run: |
+          VERSION="${{ steps.extract_version.outputs.version }}"
+          if [ -d "versioned_docs/version-${VERSION}" ]; then
+            echo "Version ${VERSION} already exists, skipping"
+          else
+            npm run version "$VERSION"
+            echo "✓ Created versioned docs for $VERSION"
+          fi
+
+      - name: Keep only last 5 versions
+        working-directory: docs/website
+        run: |
+          KEEP=5
+
+          # Fetch the last N releases from GitHub API, sorted by semver (newest first)
+          LATEST=$(curl -sf \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases?per_page=50" | \
+            jq -r '.[].tag_name' | sed 's/^v//' | sort -V -r | head -n $KEEP)
+
+          echo "Versions to keep (last $KEEP releases):"
+          echo "$LATEST" | while read -r v; do [ -n "$v" ] && echo "  - $v"; done
+
+          # Prune versioned_docs, versioned_sidebars, and i18n snapshots
+          for dir in versioned_docs/version-*; do
+            [ -d "$dir" ] || continue
+            v=$(basename "$dir" | sed 's/version-//')
+            if ! echo "$LATEST" | grep -qx "$v"; then
+              echo "  Removing old version: $v"
+              rm -rf "versioned_docs/version-${v}"
+              rm -f  "versioned_sidebars/version-${v}-sidebars.json"
+              rm -rf "i18n/it/docusaurus-plugin-content-docs/version-${v}"
+              rm -f  "i18n/it/docusaurus-plugin-content-docs/version-${v}.json"
+            fi
+          done
+
+          # Rebuild versions.json from what actually exists on disk
+          VERSIONS=$(ls -d versioned_docs/version-* 2>/dev/null | \
+            sed 's|versioned_docs/version-||' | sort -V -r | jq -R . | jq -s .)
+          echo "$VERSIONS" > versions.json
+          echo "versions.json: $(cat versions.json)"
 
       - name: Sync version translations
         working-directory: docs/website
         run: npm run sync-version-translations
+
+      - name: Commit versioned docs to main
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add docs/website/versioned_docs \
+                  docs/website/versioned_sidebars \
+                  docs/website/versions.json \
+                  "docs/website/i18n/it/docusaurus-plugin-content-docs"
+          if git diff --staged --quiet; then
+            echo "No versioned doc changes to commit"
+          else
+            git commit -m "docs: add versioned docs for v${{ steps.extract_version.outputs.version }} [skip ci]"
+            git push origin main
+          fi
 
       - name: Build documentation
         working-directory: docs/website

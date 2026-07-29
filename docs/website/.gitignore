@@ -1,10 +1,6 @@
 # Dependencies
 node_modules/
 
-# Docusaurus build output
+# Docusaurus build output and cache
 build/
 .docusaurus/
-
-# Generated versioned docs (created by docs-release workflow)
-versioned_docs/
-versioned_sidebars/
