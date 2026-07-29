@@ -119,10 +119,11 @@ variable "anthropic_api_key" {
 variable "openclaw_password" {
   description = "Password to protect the OpenClaw gateway UI (OPENCLAW_GATEWAY_PASSWORD)."
   type        = string
+  default     = ""
   sensitive   = true
 
   validation {
-    condition     = length(var.openclaw_password) >= 12
+    condition     = var.openclaw_password == "" || length(var.openclaw_password) >= 12
     error_message = "openclaw_password must be at least 12 characters."
   }
 }
