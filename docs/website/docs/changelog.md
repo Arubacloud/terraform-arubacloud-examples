@@ -12,6 +12,102 @@ each batch of new examples and PATCH on fixes.
 
 ## [Unreleased]
 
+### Fixed
+
+- **Wazuh** — retired `packages.wazuh.com/4.x` URL replaced with `wazuh_version`
+  variable (default `4.9`) and `curl -f` to surface HTTP errors.
+- **WordPress** — `table_prefix` in `wp-config.php`; `set -euo pipefail` replaced
+  with `set -eu` for dash compatibility; raw `db_password` used after provider v1.0.1
+  base64 fix.
+- **Rundeck** — apt repository switched from `packagecloud.io` to
+  `packages.rundeck.com` with `any/any` distro path.
+- **SonarQube** — heredoc replaced with `printf` to fix cloud-init YAML parse
+  failure.
+- **Rocket.Chat** — `rs.initiate()` uses Docker service name `mongo:27017` instead
+  of `localhost:27017`.
+- **OpenClaw** — gateway bootstrap sequence, authentication, and nginx proxy port
+  all fixed.
+- **Nextcloud** — migrated to PHP 8.2 (added Ondřej PPA, pinned packages, switched
+  Apache module from `php8.1` to `php8.2`).
+- **MinIO** — download retry with binary integrity check; IP detection fallback
+  fixed; schema validation error resolved.
+- **LiteLLM** — empty model list bootstrap fixed; `entrypoint` argument passing
+  corrected.
+- **Keycloak** — build option and hostname URL updated for Keycloak 26.x.
+- **k3s Single Node** — bash script moved to `write_files` to fix `pipefail` on
+  dash.
+
+### Removed
+
+- **Open WebUI** (`open-webui/`) — incomplete example removed until a working
+  version is ready.
+
+## [0.5.3] - 2026-07-28
+
+### Added
+
+- **HAProxy** (`haproxy/`) — demo nginx backend auto-deployed when no external
+  backends are configured; simplifies day-one testing without a real backend pool.
+- **k3s HA** (`k3s-ha/`) — optional Managed MySQL 8.0 DBaaS as external etcd
+  datastore; TLS SANs fixed.
+- **Discourse** (`discourse/`) — optional `dev_smtp` mode with Mailpit container
+  for local SMTP testing without an external mail server.
+
+### Fixed
+
+- **Jenkins** — APT keyring migrated to `/etc/apt/keyrings/` with the 2026 signing
+  key; GPG dearmoring corrected; `runcmd` shell switched to bash for `pipefail`
+  compatibility; repo setup moved to a `write_files` script.
+- **GitLab CE** — `gitlab_hostname` made a required variable; plan-time validation
+  added to reject placeholder values.
+- **Ghost** — Node.js upgraded to 22; nginx `${}` variable escaping fixed; MySQL
+  wait loop replaced with python3 socket; `ghost install` runs as the `ubuntu` user.
+- **Grafana / Prometheus / Loki** — Loki startup fixed; Promtail journal access
+  corrected; package install moved to `runcmd` to avoid dpkg races; nginx `${}`
+  variable escaping corrected.
+- **Discourse** — Docker MTU set to 1300 for Aruba Cloud network compatibility;
+  `app_name` default shortened to satisfy the 8-character API minimum.
+- **Elasticsearch** — `path.data` and `path.logs` added to config to prevent startup
+  failure; password reset switched from `-p` flag to REST API.
+- **Drupal** — cloud-init YAML parse error from multi-line Python block scalar fixed;
+  additional bootstrap failures resolved.
+- **CrowdSec** — full `cscli` path used to work around `sudo` `secure_path`.
+- **Caddy** — dpkg conffile prompt suppressed during install.
+- **AdGuard Home** — schema updated to `schema_version: 28`; `bind_host` field
+  name corrected.
+- **Forgejo** — `write_files` owner set to `root:root`; nginx `${}` variable
+  escaping fixed.
+- **Gitea** — `app.ini` written as `root:root` in `write_files`; ownership
+  corrected in `runcmd`.
+- **Graylog** — admin secret length, MongoDB service name and version, OpenSearch
+  TLS, and Elasticsearch version pin all fixed from live-deploy test.
+- **Adminer** — missing database and grant resources added; `db_password` correctly
+  base64-encoded when passed to the DBaaS user resource.
+- **Cloud-init (shared)** — nginx/PHP `${}` variable escaping corrected in
+  `write_files` blocks; Python heredocs moved to `write_files` to avoid YAML parse
+  failures; `/dev/tcp` MySQL wait-loops replaced with python3 socket calls; all
+  resource tag values shorter than 4 characters expanded to meet API minimum.
+
+## [0.5.2] - 2026-07-22
+
+### Fixed
+
+- **CI** — `github-pages` environment declaration added to the docs-release deploy
+  job; without it the Pages API returned 400 regardless of permissions.
+- **Default credentials** — `ssh_public_key` changed from an empty string to a
+  valid RSA key; placeholder passwords replaced with API-compliant values across
+  all 47 examples.
+
+## [0.5.1] - 2026-07-22
+
+### Fixed
+
+- **CI** — pages concurrency group added to the docs-release workflow to prevent
+  a race condition when a release event and a branch push trigger simultaneous
+  GitHub Pages uploads.
+
+## [0.5.0] - 2026-07-22
+
 ### Added
 
 - **Wiki.js** (`wikijs/`) — Node.js wiki with Managed MySQL 8.0 DBaaS backend,
@@ -19,18 +115,28 @@ each batch of new examples and PATCH on fixes.
 - **Nexus Repository OSS** (`nexus/`) — Universal artifact registry (Maven, npm,
   Docker, PyPI) via the official `sonatype/nexus3` Docker image, 100 GB persistent
   storage, optional Docker registry on port 8082 (closes #23).
-- **CONTRIBUTING.md** — Quick-start contributor guide at repo root, linking to
-  the full guide in `docs/contributing.md` (closes #4).
+- **Italian documentation** — full `it` locale for all 47 example pages and all
+  editorial docs in the Docusaurus site.
+- **Actalis ACME (EAB) support** — all SSL/HTTPS examples now expose optional
+  `actalis_eab_kid` / `actalis_eab_hmac` variables for Italian CA certificates
+  via Let's Encrypt EAB.
+- **Defaults for all variables** — every module ships with sensible defaults so
+  only `arubacloud_client_id` and `arubacloud_client_secret` are required to
+  plan/apply.
+- **Adminer** (`adminer/`) — now connects to a Managed MySQL DBaaS instead of a
+  local database.
+- **CONTRIBUTING.md** — quick-start contributor guide at repo root (closes #4).
 - **CODE_OF_CONDUCT.md** — Contributor Covenant 2.1 code of conduct (closes #4).
-- **`.github/PULL_REQUEST_TEMPLATE.md`** — PR checklist for new examples and
-  pre-submit checks (closes #4).
-- **`.github/ISSUE_TEMPLATE/new-example.yml`** — Structured GitHub form for
-  requesting new example additions (closes #4).
-- **`.github/ISSUE_TEMPLATE/bug-report.yml`** — Structured GitHub form for
-  reporting bugs in existing examples (closes #4).
-- **`.github/dependabot.yml`** — Weekly Terraform provider version monitoring
-  for all 48 directories (47 examples + `modules/network`) (closes #3).
-- **`CHANGELOG.md`** — This file, at repo root, following Keep a Changelog.
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — PR checklist for new examples (closes #4).
+- **`.github/ISSUE_TEMPLATE/new-example.yml`** and **`bug-report.yml`** —
+  structured GitHub forms (closes #4).
+- **`.github/dependabot.yml`** — weekly Terraform provider version monitoring for
+  all 48 directories (closes #3).
+- **`CHANGELOG.md`** — this file, following Keep a Changelog.
+
+### Changed
+
+- Provider version constraint bumped to `~> 1.0` across all examples (from `~> 0.5`).
 
 ## [0.4.0] - 2026-07-10
 
@@ -160,7 +266,11 @@ each batch of new examples and PATCH on fixes.
 - **Nextcloud** (`nextcloud/`) — File sync and collaboration with Managed MySQL
   8.0 DBaaS (closes #12).
 
-[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.2...v0.5.3
+[0.5.2]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.1...v0.5.2
+[0.5.1]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.1.0...v0.2.0

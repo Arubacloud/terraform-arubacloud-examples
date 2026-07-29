@@ -46,6 +46,7 @@ const sidebars = {
             'examples/gitlab',
             'examples/jenkins',
             'examples/sonarqube',
+            'examples/nexus',
             'examples/rundeck',
             'examples/drone-ci',
           ],
@@ -125,6 +126,7 @@ const sidebars = {
           items: [
             'examples/mattermost',
             'examples/mailcow',
+            'examples/wikijs',
             'examples/rocketchat',
             'examples/discourse',
           ],
