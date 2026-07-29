@@ -72,7 +72,7 @@
     "description": "The label for link Getting Started in sidebar mainSidebar"
   },
   "version.label": {
-    "message": "0.5.3",
+    "message": "0.5.4",
     "description": "The label for the current version in the version dropdown"
   }
 }
