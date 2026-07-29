@@ -28,8 +28,8 @@ runcmd:
   # ── Download Wazuh quick-install script and config ────────────────────────────
   - |
     cd /root
-    curl -sO https://packages.wazuh.com/4.x/wazuh-install.sh
-    curl -sO https://packages.wazuh.com/4.x/config.yml
+    curl -sfO https://packages.wazuh.com/${wazuh_version}/wazuh-install.sh
+    curl -sfO https://packages.wazuh.com/${wazuh_version}/config.yml
 
   # ── Patch config.yml with the local IP for single-node deployment ──────────────
   - |

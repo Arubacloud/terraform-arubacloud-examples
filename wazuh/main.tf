@@ -75,6 +75,7 @@ resource "arubacloud_cloudserver" "this" {
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
       admin_pass_b64 = base64encode(var.admin_password)
+      wazuh_version  = var.wazuh_version
     })
   }
 

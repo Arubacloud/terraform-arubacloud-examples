@@ -114,6 +114,17 @@ variable "agent_cidr" {
 
 # ── Wazuh configuration ───────────────────────────────────────────────────────
 
+variable "wazuh_version" {
+  description = "Wazuh minor version branch to install (e.g. '4.9'). Used as the path prefix on packages.wazuh.com."
+  type        = string
+  default     = "4.9"
+
+  validation {
+    condition     = can(regex("^[0-9]+\\.[0-9]+$", var.wazuh_version))
+    error_message = "wazuh_version must be in MAJOR.MINOR format (e.g. '4.9')."
+  }
+}
+
 variable "admin_password" {
   description = "Password for the Wazuh dashboard admin user (min 8 characters, must contain uppercase, lowercase, digit, and special character)."
   type        = string
