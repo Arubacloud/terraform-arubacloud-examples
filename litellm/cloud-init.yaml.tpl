@@ -40,59 +40,43 @@ runcmd:
   - apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
   - usermod -aG docker ubuntu
 
-  # ── Build LiteLLM config and start ───────────────────────────────────────────
+  # ── Build LiteLLM config and start container ─────────────────────────────────
   - |
+    set -e
     MASTER_KEY=$(base64 -d /root/litellm-master.b64)
-    OPENAI_KEY=$(base64 -d /root/litellm-openai.b64)
-    ANTHROPIC_KEY=$(base64 -d /root/litellm-anthropic.b64)
+    OPENAI_KEY=$(base64 -d /root/litellm-openai.b64 2>/dev/null || true)
+    ANTHROPIC_KEY=$(base64 -d /root/litellm-anthropic.b64 2>/dev/null || true)
     rm -f /root/litellm-master.b64 /root/litellm-openai.b64 /root/litellm-anthropic.b64
 
     mkdir -p /opt/litellm
 
-    # Build provider model list
-    cat > /opt/litellm/config.yaml << 'LITELLM_EOF'
-    model_list:
-    LITELLM_EOF
+    printf 'model_list: []\n' > /opt/litellm/config.yaml
 
     if [ -n "$OPENAI_KEY" ]; then
-      cat >> /opt/litellm/config.yaml << 'LITELLM_EOF'
-      - model_name: gpt-4o
-        litellm_params:
-          model: openai/gpt-4o
-          api_key: OPENAI_KEY_PLACEHOLDER
-      - model_name: gpt-4o-mini
-        litellm_params:
-          model: openai/gpt-4o-mini
-          api_key: OPENAI_KEY_PLACEHOLDER
-    LITELLM_EOF
-      sed -i "s/OPENAI_KEY_PLACEHOLDER/$OPENAI_KEY/g" /opt/litellm/config.yaml
+      printf '  - model_name: gpt-4o\n    litellm_params:\n      model: openai/gpt-4o\n      api_key: "%s"\n' "$OPENAI_KEY" >> /opt/litellm/config.yaml
+      printf '  - model_name: gpt-4o-mini\n    litellm_params:\n      model: openai/gpt-4o-mini\n      api_key: "%s"\n' "$OPENAI_KEY" >> /opt/litellm/config.yaml
     fi
 
     if [ -n "$ANTHROPIC_KEY" ]; then
-      cat >> /opt/litellm/config.yaml << 'LITELLM_EOF'
-      - model_name: claude-sonnet-4-6
-        litellm_params:
-          model: anthropic/claude-sonnet-4-6
-          api_key: ANTHROPIC_KEY_PLACEHOLDER
-    LITELLM_EOF
-      sed -i "s/ANTHROPIC_KEY_PLACEHOLDER/$ANTHROPIC_KEY/g" /opt/litellm/config.yaml
+      printf '  - model_name: claude-sonnet-4-6\n    litellm_params:\n      model: anthropic/claude-sonnet-4-6\n      api_key: "%s"\n' "$ANTHROPIC_KEY" >> /opt/litellm/config.yaml
     fi
 
     OLLAMA_BASE="${ollama_base_url}"
     if [ -n "$OLLAMA_BASE" ]; then
-      cat >> /opt/litellm/config.yaml << LITELLM_EOF
-      - model_name: ollama/llama3.2
-        litellm_params:
-          model: ollama/llama3.2
-          api_base: $OLLAMA_BASE
-    LITELLM_EOF
+      printf '  - model_name: ollama/llama3.2\n    litellm_params:\n      model: ollama/llama3.2\n      api_base: "%s"\n' "$OLLAMA_BASE" >> /opt/litellm/config.yaml
     fi
 
     chmod 600 /opt/litellm/config.yaml
+    echo "=== /opt/litellm/config.yaml (keys redacted) ==="
+    grep -v api_key /opt/litellm/config.yaml
+
+    docker rm -f litellm 2>/dev/null || true
+    sleep 2
 
     docker run -d \
       --name litellm \
       --restart unless-stopped \
+      --entrypoint litellm \
       --env LITELLM_MASTER_KEY="$MASTER_KEY" \
       -v /opt/litellm/config.yaml:/app/config.yaml:ro \
       -p 4000:4000 \
@@ -103,11 +87,13 @@ runcmd:
   # ── Wait for LiteLLM to be ready ─────────────────────────────────────────────
   - |
     echo "Waiting for LiteLLM..."
-    for i in $(seq 1 30); do
-      curl -sf http://localhost:4000/health >/dev/null 2>&1 \
+    for i in $(seq 1 36); do
+      curl -sf http://localhost:4000/health/liveliness >/dev/null 2>&1 \
         && { echo "LiteLLM ready after $((i * 5))s"; break; }
       sleep 5
     done
+    curl -sf http://localhost:4000/health/liveliness >/dev/null 2>&1 \
+      || { echo "LiteLLM did not become ready; last container logs:"; docker logs litellm --tail 50; }
 
 final_message: |
   LiteLLM bootstrap complete.
