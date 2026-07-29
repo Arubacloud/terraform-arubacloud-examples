@@ -69,6 +69,25 @@ write_files:
     permissions: '0600'
     content: "${nc_admin_password_b64}"
 
+  # Nextcloud CLI installer — written to write_files so it runs under bash,
+  # not dash (cloud-init runcmd uses /bin/sh which lacks set -o pipefail).
+  - path: /root/nc-install.sh
+    permissions: '0700'
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+      NC_ADMIN_PASS=$(base64 -d /root/nc-admin.b64)
+      sudo -u www-data php /var/www/nextcloud/occ maintenance:install \
+        --database mysql \
+        --database-host "${db_host}" \
+        --database-name "${db_name}" \
+        --database-user "${db_user}" \
+        --database-pass "'${db_password_php}'" \
+        --admin-user  "${nc_admin_user}" \
+        --admin-pass  "$NC_ADMIN_PASS" \
+        --data-dir /var/www/nextcloud/data
+      rm -f /root/nc-admin.b64
+
 runcmd:
   # Enable PHP and Apache modules
   - a2enmod rewrite headers env dir mime setenvif
@@ -109,20 +128,8 @@ runcmd:
   - chown www-data:www-data /var/www/nextcloud/config/config.php
   - chmod 640 /var/www/nextcloud/config/config.php
 
-  # Run Nextcloud CLI installer
-  - |
-    set -euo pipefail
-    NC_ADMIN_PASS=$(base64 -d /root/nc-admin.b64)
-    sudo -u www-data php /var/www/nextcloud/occ maintenance:install \
-      --database mysql \
-      --database-host "${db_host}" \
-      --database-name "${db_name}" \
-      --database-user "${db_user}" \
-      --database-pass "'${db_password_php}'" \
-      --admin-user  "${nc_admin_user}" \
-      --admin-pass  "$NC_ADMIN_PASS" \
-      --data-dir /var/www/nextcloud/data
-    rm -f /root/nc-admin.b64
+  # Run Nextcloud CLI installer (bash script written via write_files)
+  - bash /root/nc-install.sh
 
   # Add trusted domain if not already configured
   - sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 0 --value="${domain != "" ? domain : module_network_vm_elastic_ip}"
