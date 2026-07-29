@@ -76,6 +76,7 @@ resource "arubacloud_cloudserver" "this" {
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
       openai_key_b64    = local.openai_key_b64
       anthropic_key_b64 = local.anthropic_key_b64
+      openclaw_password = var.openclaw_password
     })
   }
 

@@ -32,7 +32,7 @@ write_files:
           client_max_body_size 32M;
 
           location / {
-              proxy_pass         http://127.0.0.1:3001;
+              proxy_pass         http://127.0.0.1:18789;
               proxy_http_version 1.1;
               proxy_set_header   Upgrade $http_upgrade;
               proxy_set_header   Connection "upgrade";
@@ -74,17 +74,21 @@ runcmd:
     docker run -d \
       --name openclaw \
       --restart unless-stopped \
+      --env OPENCLAW_GATEWAY_PASSWORD=${openclaw_password} \
       $OPENAI_ARG \
       $ANTHROPIC_ARG \
       -v /opt/openclaw/data:/app/data \
       -p 127.0.0.1:3001:3000 \
-      ghcr.io/openclaw/openclaw:latest
+      -p 127.0.0.1:18789:18789 \
+      ghcr.io/openclaw/openclaw:latest \
+      node openclaw.mjs gateway --allow-unconfigured
 
   # ── Configure nginx ───────────────────────────────────────────────────────────
   - ln -sf /etc/nginx/sites-available/openclaw /etc/nginx/sites-enabled/openclaw
   - rm -f /etc/nginx/sites-enabled/default
   - nginx -t
-  - systemctl enable --now nginx
+  - systemctl enable nginx
+  - systemctl restart nginx
 
 final_message: |
   OpenClaw bootstrap complete.
