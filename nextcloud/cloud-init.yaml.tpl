@@ -2,30 +2,11 @@
 # Nextcloud bootstrap for Aruba Cloud.
 # Apache 2.4 + PHP 8.2 + Redis + Managed MySQL DBaaS.
 
-# ondrej/php PPA provides PHP 8.2+ on Ubuntu 22.04 (jammy ships only 8.1).
-# cloud-init processes `apt` before `packages`, so meta-packages resolve to 8.2.
-apt:
-  sources:
-    ondrej-php:
-      source: "ppa:ondrej/php"
-
 package_update: true
 package_upgrade: true
 packages:
   - apache2
-  - libapache2-mod-php8.2
-  - php8.2
-  - php8.2-mysql
-  - php8.2-xml
-  - php8.2-mbstring
-  - php8.2-curl
-  - php8.2-gd
-  - php8.2-zip
-  - php8.2-intl
-  - php8.2-bcmath
-  - php8.2-imagick
-  - php8.2-redis
-  - php8.2-apcu
+  - software-properties-common
   - redis-server
   - mysql-client
   - curl
@@ -96,6 +77,13 @@ write_files:
       rm -f /root/nc-admin.b64
 
 runcmd:
+  # Add ondrej/php PPA and install PHP 8.2.
+  # Done in runcmd (not via cloud-init apt: + packages:) to guarantee the PPA
+  # is present before apt resolves the php8.2-* package names.
+  - add-apt-repository -y ppa:ondrej/php
+  - apt-get update -q
+  - DEBIAN_FRONTEND=noninteractive apt-get install -y php8.2 libapache2-mod-php8.2 php8.2-mysql php8.2-xml php8.2-mbstring php8.2-curl php8.2-gd php8.2-zip php8.2-intl php8.2-bcmath php8.2-imagick php8.2-redis php8.2-apcu
+
   # Enable PHP and Apache modules
   - a2enmod rewrite headers env dir mime setenvif
   - a2ensite nextcloud.conf
