@@ -22,7 +22,7 @@ Ollama makes running LLMs locally as simple as `ollama run llama3.2`. It provide
 
 ```mermaid
 graph TB
-    App((Application / Open WebUI)) -->|HTTP :11434 — api_cidr| EIP[Elastic IP]
+    App((Application)) -->|HTTP :11434 — api_cidr| EIP[Elastic IP]
     Admin((Admin)) -->|SSH :22 — ssh_cidr| EIP
 
     subgraph AC["Aruba Cloud — ITBG-Bergamo"]
@@ -134,7 +134,7 @@ cp terraform.tfvars.example terraform.tfvars
 Restrict API access and optionally pre-pull models:
 
 ```hcl
-api_cidr       = "10.0.0.0/8"            # your Open WebUI server CIDR
+api_cidr       = "10.0.0.0/8"            # your application server CIDR
 preload_models = ["llama3.2", "nomic-embed-text"]
 ```
 
@@ -184,13 +184,10 @@ ollama pull gemma2            # Google Gemma 2 9B
 
 1. **Always restrict `api_cidr`.** Ollama has no built-in authentication. An open port 11434 allows anyone to run models and exhaust your server resources.
 
-2. **Use Open WebUI for user-facing access.** Deploy [Open WebUI](../open-webui/README.md) as a frontend with authentication, and point it at this Ollama instance.
-
 ---
 
 ## References
 
 - [Ollama Documentation](https://ollama.ai/docs)
 - [Ollama Model Library](https://ollama.ai/library)
-- [Open WebUI Example](../open-webui/README.md)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

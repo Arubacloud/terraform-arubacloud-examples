@@ -142,7 +142,6 @@ nav:
           - Wazuh: examples/wazuh.md
       - AI / ML:
           - Ollama: examples/ollama.md
-          - Open WebUI: examples/open-webui.md
           - LiteLLM: examples/litellm.md
           - OpenClaw: examples/openclaw.md
       - Collaboration:

@@ -43,8 +43,6 @@ each batch of new examples and PATCH on fixes.
 - **CrowdSec** (`crowdsec/`) — Native APT packages from packagecloud.io,
   `nftables` firewall bouncer, optional console enrollment via enroll key
   (closes #33).
-- **Open WebUI** (`open-webui/`) — Docker + nginx reverse proxy on port 80,
-  auto-generated secret key, optional Ollama and OpenAI integration (closes #29).
 - **Ollama** (`ollama/`) — Official install script, systemd override to bind on
   all interfaces, optional model pre-pulling loop via template directive
   (closes #30).
@@ -64,8 +62,7 @@ each batch of new examples and PATCH on fixes.
 - **k3s HA Cluster** (`k3s-ha/`) — Three control-plane nodes with per-node
   Elastic IPs, external MySQL 8.0 datastore via kine, `for_each` over node
   names (closes #27).
-- New **AI/ML** nav section in `mkdocs.yml`: Ollama, Open WebUI, LiteLLM,
-  OpenClaw.
+- New **AI/ML** nav section in `mkdocs.yml`: Ollama, LiteLLM, OpenClaw.
 - New `docs/examples/` stubs for all 13 new examples.
 
 ## [0.3.0] - 2026-07-10
