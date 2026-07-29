@@ -54,7 +54,7 @@ runcmd:
 
   # ── Decode secret, set up PostgreSQL, install SonarQube, write config ─────────
   - |
-    set -euo pipefail
+    set -eu
     DB_PASS=$(base64 -d /root/sonar-db.b64)
     rm -f /root/sonar-db.b64
 

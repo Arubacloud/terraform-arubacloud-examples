@@ -19,9 +19,14 @@ write_files:
 
 runcmd:
   # ── Add Rundeck apt repository ────────────────────────────────────────────────
+  # packages.rundeck.com uses an 'any' distro slug that works on all Ubuntu
+  # versions; the old packagecloud.io script has no jammy packages.
   - |
-    curl -s https://packagecloud.io/install/repositories/pagerduty/rundeck/script.deb.sh \
-      | bash
+    curl -fsSL https://packages.rundeck.com/pagerduty/rundeck/gpgkey \
+      | gpg --dearmor -o /usr/share/keyrings/rundeck-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/rundeck-archive-keyring.gpg] https://packages.rundeck.com/pagerduty/rundeck/any/ any main" \
+      > /etc/apt/sources.list.d/rundeck.list
+    apt-get update
     apt-get install -y rundeck
 
   # ── Set admin password via realm.properties ────────────────────────────────────
