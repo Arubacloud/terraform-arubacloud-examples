@@ -12,6 +12,8 @@ each batch of new examples and PATCH on fixes.
 
 ## [Unreleased]
 
+## [0.5.4] - 2026-07-29
+
 ### Fixed
 
 - **Wazuh** — retired `packages.wazuh.com/4.x` URL replaced with `wazuh_version`
@@ -41,6 +43,15 @@ each batch of new examples and PATCH on fixes.
 
 - **Open WebUI** (`open-webui/`) — incomplete example removed until a working
   version is ready.
+
+### Documentation
+
+- **CHANGELOG** backfilled with accurate per-release entries for v0.5.0–v0.5.3,
+  including all compare links to GitHub tags.
+- **Docusaurus** — Wiki.js and Nexus Repository example pages added in English
+  and Italian; version 0.5.3 snapshot committed; version dropdown enabled.
+- **CI** — `docs-release` workflow updated to accumulate the last 5 versioned doc
+  snapshots and open a PR for each release (aligned with sdk-go).
 
 ## [0.5.3] - 2026-07-28
 
@@ -266,7 +277,8 @@ each batch of new examples and PATCH on fixes.
 - **Nextcloud** (`nextcloud/`) — File sync and collaboration with Managed MySQL
   8.0 DBaaS (closes #12).
 
-[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.4...HEAD
+[0.5.4]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.0...v0.5.1
