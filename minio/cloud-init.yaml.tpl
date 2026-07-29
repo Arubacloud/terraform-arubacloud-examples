@@ -42,9 +42,17 @@ write_files:
       WantedBy=multi-user.target
 
 runcmd:
-  # Download MinIO binary
-  - wget -q https://dl.min.io/server/minio/release/linux-amd64/minio -O /usr/local/bin/minio
-  - chmod +x /usr/local/bin/minio
+  # Download MinIO binary with retry; -f fails fast on HTTP errors (no silent HTML download)
+  - |
+    set -e
+    for attempt in 1 2 3; do
+      curl -fsSL https://dl.min.io/server/minio/release/linux-amd64/minio \
+        -o /usr/local/bin/minio && break
+      echo "MinIO download attempt $attempt failed, retrying in 10s..."
+      sleep 10
+    done
+    chmod +x /usr/local/bin/minio
+    /usr/local/bin/minio --version
 
   # Create dedicated service user and data directory
   - useradd -r -s /usr/sbin/nologin minio-user
@@ -59,7 +67,8 @@ runcmd:
   - systemctl daemon-reload
   - systemctl enable --now minio
 
-  - echo "MinIO S3 API: http://$(curl -s ifconfig.me):9000"
-  - echo "MinIO Console: http://$(curl -s ifconfig.me):9001"
+  - PUBLIC_IP=$(curl -sf --max-time 5 ifconfig.me || hostname -I | awk '{print $1}')
+  - echo "MinIO S3 API:  http://$PUBLIC_IP:9000"
+  - echo "MinIO Console: http://$PUBLIC_IP:9001"
 
 final_message: "MinIO is running. API: port 9000 | Console: port 9001"
