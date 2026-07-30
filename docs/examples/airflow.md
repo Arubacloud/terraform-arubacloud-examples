@@ -19,7 +19,7 @@ This example deploys:
 - **nginx** reverse proxy on port **80**
 - Pre-created admin user via `airflow users create`
 - DAGs loaded from `/opt/airflow/dags/` on the VM
-- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
+- Optional HTTPS via [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 ---
 

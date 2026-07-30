@@ -19,7 +19,7 @@ This example deploys:
 - **Managed MySQL 8.0** (Aruba Cloud DBaaS) for Superset metadata
 - **nginx** reverse proxy on port **80**
 - Pre-created admin user via `superset fab create-admin`
-- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
+- Optional HTTPS via [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 Bootstrap takes **20–30 minutes** due to Superset's many Python dependencies.
 

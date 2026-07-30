@@ -17,7 +17,7 @@ This example deploys:
 - **JupyterLab** (pip, native install) on a CSO2A4 VM
 - **nginx** reverse proxy with WebSocket support on port **80**
 - Password authentication via JupyterLab's built-in token/password system
-- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
+- Optional HTTPS via [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 No database is required — notebooks and data are stored on the VM disk.
 

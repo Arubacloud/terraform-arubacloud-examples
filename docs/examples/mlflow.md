@@ -18,7 +18,7 @@ This example deploys:
 - **Managed MySQL 8.0** (Aruba Cloud DBaaS) for experiment and run metadata
 - **nginx** reverse proxy with HTTP Basic Auth on port **80**
 - Artifact files (models, plots) stored locally on the VM disk
-- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
+- Optional HTTPS via [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 ---
 
