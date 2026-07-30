@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl *)",
+      "PowerShell(wsl -d Ubuntu-24.04 bash -c \"cd /home/amedeopalopoli/Software/terraform/terraform-arubacloud-examples && git diff cloud-init.yaml.tpl\")",
+      "PowerShell(wsl -d Ubuntu-24.04 bash -c \"cd /home/amedeopalopoli/Software/terraform/terraform-arubacloud-examples && git diff -- cloud-init.yaml.tpl\")",
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\" status)",
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\" log --oneline -5)"
+    ]
+  }
+}
