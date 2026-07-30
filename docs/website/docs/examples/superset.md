@@ -19,7 +19,7 @@ This example deploys:
 - **Managed MySQL 8.0** (Aruba Cloud DBaaS) for Superset metadata
 - **nginx** reverse proxy on port **80**
 - Pre-created admin user via `superset fab create-admin`
-- Optional HTTPS via Let's Encrypt or Actalis ACME
+- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
 
 Bootstrap takes **20–30 minutes** due to Superset's many Python dependencies.
 
@@ -78,9 +78,9 @@ graph TB
 | `admin_password` | pre-set default | Superset admin password (min 8 chars, no newlines) |
 | `admin_email` | `"admin@example.com"` | Superset admin email |
 | `superset_version` | `"4.1.1"` | Apache Superset version to install |
-| `domain` | `""` | Custom domain for HTTPS; leave empty for HTTP over Elastic IP |
-| `acme_eab_kid` | `""` | Actalis ACME EAB key ID (optional) |
-| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key (optional) |
+| `domain` | `""` | Custom domain for HTTPS (e.g. `bi.example.com`); leave empty for HTTP over Elastic IP |
+| `acme_eab_kid` | `""` | [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) ACME EAB key ID; leave empty to fall back to Let's Encrypt |
+| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key; required when `acme_eab_kid` is set |
 
 ---
 

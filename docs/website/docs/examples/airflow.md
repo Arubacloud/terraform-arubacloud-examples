@@ -19,7 +19,7 @@ This example deploys:
 - **nginx** reverse proxy on port **80**
 - Pre-created admin user via `airflow users create`
 - DAGs loaded from `/opt/airflow/dags/` on the VM
-- Optional HTTPS via Let's Encrypt or Actalis ACME
+- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
 
 ---
 
@@ -76,9 +76,9 @@ graph TB
 | `airflow_admin_password` | pre-set default | Airflow admin password (min 8 chars, no newlines) |
 | `airflow_admin_email` | `"admin@example.com"` | Airflow admin email |
 | `airflow_version` | `"2.10.4"` | Apache Airflow version to install |
-| `domain` | `""` | Custom domain for HTTPS; leave empty for HTTP over Elastic IP |
-| `acme_eab_kid` | `""` | Actalis ACME EAB key ID (optional) |
-| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key (optional) |
+| `domain` | `""` | Custom domain for HTTPS (e.g. `airflow.example.com`); leave empty for HTTP over Elastic IP |
+| `acme_eab_kid` | `""` | [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) ACME EAB key ID; leave empty to fall back to Let's Encrypt |
+| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key; required when `acme_eab_kid` is set |
 
 ---
 

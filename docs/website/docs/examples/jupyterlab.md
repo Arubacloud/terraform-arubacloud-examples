@@ -17,7 +17,7 @@ This example deploys:
 - **JupyterLab** (pip, native install) on a CSO2A4 VM
 - **nginx** reverse proxy with WebSocket support on port **80**
 - Password authentication via JupyterLab's built-in token/password system
-- Optional HTTPS via Let's Encrypt or Actalis ACME
+- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
 
 No database is required — notebooks and data are stored on the VM disk.
 
@@ -66,9 +66,9 @@ graph TB
 | `ssh_public_key` | project owner key | SSH public key content |
 | `ssh_cidr` | `"0.0.0.0/0"` | CIDR for SSH access |
 | `jupyter_password` | pre-set default | JupyterLab access password (min 8 chars, no newlines) |
-| `domain` | `""` | Custom domain for HTTPS; leave empty for HTTP over Elastic IP |
-| `acme_eab_kid` | `""` | Actalis ACME EAB key ID (optional) |
-| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key (optional) |
+| `domain` | `""` | Custom domain for HTTPS (e.g. `notebooks.example.com`); leave empty for HTTP over Elastic IP |
+| `acme_eab_kid` | `""` | [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) ACME EAB key ID; leave empty to fall back to Let's Encrypt |
+| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key; required when `acme_eab_kid` is set |
 
 ---
 

@@ -18,7 +18,7 @@ This example deploys:
 - **Managed MySQL 8.0** (Aruba Cloud DBaaS) for experiment and run metadata
 - **nginx** reverse proxy with HTTP Basic Auth on port **80**
 - Artifact files (models, plots) stored locally on the VM disk
-- Optional HTTPS via Let's Encrypt or Actalis ACME
+- Optional HTTPS via [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) (recommended for Italian deployments) or Let's Encrypt when a custom domain is provided
 
 ---
 
@@ -74,9 +74,9 @@ graph TB
 | `mlflow_admin_user` | `"admin"` | Username for HTTP Basic Auth |
 | `mlflow_admin_password` | pre-set default | Password for HTTP Basic Auth (min 8 chars) |
 | `mlflow_version` | `"2.16.0"` | MLflow version to install |
-| `domain` | `""` | Custom domain for HTTPS; leave empty for HTTP over Elastic IP |
-| `acme_eab_kid` | `""` | Actalis ACME EAB key ID (optional) |
-| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key (optional) |
+| `domain` | `""` | Custom domain for HTTPS (e.g. `mlflow.example.com`); leave empty for HTTP over Elastic IP |
+| `acme_eab_kid` | `""` | [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) ACME EAB key ID; leave empty to fall back to Let's Encrypt |
+| `acme_eab_hmac_key` | `""` | Actalis ACME EAB HMAC key; required when `acme_eab_kid` is set |
 
 ---
 
