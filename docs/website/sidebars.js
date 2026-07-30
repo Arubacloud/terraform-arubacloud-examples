@@ -122,6 +122,16 @@ const sidebars = {
         },
         {
           type: 'category',
+          label: 'Data Platform',
+          items: [
+            'examples/mlflow',
+            'examples/jupyterlab',
+            'examples/superset',
+            'examples/airflow',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Collaboration',
           items: [
             'examples/mattermost',
