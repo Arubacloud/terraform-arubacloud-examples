@@ -32,6 +32,8 @@ write_files:
           "c.ServerApp.root_dir = '/opt/notebooks'\n"
           "c.ServerApp.token = ''\n"
           "c.ServerApp.allow_password_change = False\n"
+          "c.ServerApp.allow_remote_access = True\n"
+          "c.ServerApp.allow_origin = '*'\n"
           f"c.ServerApp.password = '{hashed}'\n"
       )
       pathlib.Path('/etc/jupyterlab/jupyter_server_config.py').write_text(cfg)
@@ -39,6 +41,11 @@ write_files:
   # ── nginx reverse proxy ───────────────────────────────────────────────────
   - path: /etc/nginx/sites-available/jupyterlab.conf
     content: |
+      map $${http_upgrade} $${connection_upgrade} {
+          default upgrade;
+          ''      close;
+      }
+
       server {
           listen 80;
           server_name ${server_name};
@@ -47,7 +54,7 @@ write_files:
               proxy_pass         http://127.0.0.1:8888;
               proxy_http_version 1.1;
               proxy_set_header   Upgrade    $${http_upgrade};
-              proxy_set_header   Connection "upgrade";
+              proxy_set_header   Connection $${connection_upgrade};
               proxy_set_header   Host       $${host};
               proxy_set_header   X-Real-IP  $${remote_addr};
               proxy_set_header   X-Forwarded-For   $${proxy_add_x_forwarded_for};
