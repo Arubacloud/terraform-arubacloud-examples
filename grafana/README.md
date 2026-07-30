@@ -2,7 +2,7 @@
 
 Deploy a complete self-hosted observability stack — [Grafana](https://grafana.com), [Prometheus](https://prometheus.io), [Loki](https://grafana.com/oss/loki/), and [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/) — on Aruba Cloud using Terraform and cloud-init. Data sources are pre-provisioned; log in and start building dashboards immediately.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -93,7 +93,7 @@ Disk usage grows over time as Prometheus TSDB and Loki chunks accumulate. The de
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

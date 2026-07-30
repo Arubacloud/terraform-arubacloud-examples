@@ -2,7 +2,7 @@
 
 Esegui il deployment di [GitLab Community Edition](https://gitlab.com/oss/gitlab-ce) — una piattaforma DevOps completa con hosting Git, CI/CD, issue tracking e container registry — su Aruba Cloud tramite Terraform e cloud-init.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -73,7 +73,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - Un nome di dominio con controllo DNS (necessario per HTTPS / Let's Encrypt)

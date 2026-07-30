@@ -2,7 +2,7 @@
 
 Distribuisci [NGINX](https://nginx.org) come web server o reverse proxy su Aruba Cloud tramite Terraform e cloud-init. Questo esempio distribuisce un'istanza NGINX production-ready con un sito statico predefinito e HTTPS automatico opzionale tramite Let's Encrypt.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -73,7 +73,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - (Per HTTPS) Un nome di dominio con un record A che punta all'Elastic IP della VM

@@ -2,7 +2,7 @@
 
 Distribuisci [OpenSearch 2.x](https://opensearch.org/) — la suite open-source guidata dalla community per la ricerca e l'analisi — su Aruba Cloud tramite Terraform e cloud-init. Distribuito tramite l'immagine Docker ufficiale con API REST protetta da TLS e password superutente `admin` configurata al momento del bootstrap.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -71,7 +71,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

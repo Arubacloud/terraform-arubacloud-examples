@@ -2,7 +2,7 @@
 
 Deploy [Adminer](https://www.adminer.org) — a lightweight, single-file PHP database administration tool — on Aruba Cloud using Terraform and cloud-init. This example provisions both the Adminer web interface and a ready-to-use managed MySQL DBaaS instance, so you can connect and start exploring your database immediately after `terraform apply`.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -88,7 +88,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 
 All other inputs (SSH key, passwords) have working defaults for try-out purposes.

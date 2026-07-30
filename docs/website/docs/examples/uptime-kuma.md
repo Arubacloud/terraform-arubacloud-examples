@@ -6,7 +6,7 @@ title: Uptime Kuma
 
 Deploy [Uptime Kuma](https://github.com/louislam/uptime-kuma) — a self-hosted monitoring tool and status page — on a minimal Aruba Cloud VM.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

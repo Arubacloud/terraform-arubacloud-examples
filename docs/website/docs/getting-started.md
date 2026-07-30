@@ -5,14 +5,14 @@
 | Tool | Minimum version | Install |
 |------|-----------------|---------|
 | Terraform | 1.9 | [developer.hashicorp.com](https://developer.hashicorp.com/terraform/downloads) |
-| ArubaCloud Provider | 0.5 | Installed automatically by `terraform init` |
+| ArubaCloud Provider | 1.0 | Installed automatically by `terraform init` |
 | Git | any | [git-scm.com](https://git-scm.com) |
 
 You also need:
 
 - An **Aruba Cloud account** with a project and API credentials (OAuth2 client ID and secret)
 - An **SSH key pair** — the public key is uploaded to ArubaCloud; the private key stays on your machine
-- Optional: a domain name for HTTPS (Let's Encrypt/Certbot) — some examples support automatic TLS
+- Optional: a domain name for HTTPS (ACME/Certbot, e.g. [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt) — some examples support automatic TLS
 
 ## 1. Clone the repository
 

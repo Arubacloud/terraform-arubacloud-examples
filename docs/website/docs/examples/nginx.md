@@ -4,9 +4,9 @@ title: NGINX
 
 # NGINX on Aruba Cloud
 
-Deploy [NGINX](https://nginx.org) as a web server or reverse proxy on Aruba Cloud using Terraform and cloud-init. This example provisions a production-ready NGINX instance with a default static site and optional automatic HTTPS via Let's Encrypt.
+Deploy [NGINX](https://nginx.org) as a web server or reverse proxy on Aruba Cloud using Terraform and cloud-init. This example provisions a production-ready NGINX instance with a default static site and optional automatic HTTPS via Certbot and an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -17,7 +17,7 @@ NGINX is a high-performance HTTP server, reverse proxy, and load balancer. This 
 - NGINX installed from **Ubuntu 22.04 official packages**
 - A default **static HTML site** served from `/var/www/html`
 - Ports 80 (HTTP) and 443 (HTTPS) open to `web_cidr`
-- **Optional automatic HTTPS** via Let's Encrypt / Certbot when `domain` and `certbot_email` are set
+- **Optional automatic HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt / Certbot when `domain` and `certbot_email` are set
 
 After deployment, replace the default site with your own content or additional `server {}` blocks for virtual hosting or reverse proxying.
 
@@ -39,7 +39,7 @@ graph TB
         SG["Security Group\nIN: 22 · 80 · 443\nOUT: all"]
     end
 
-    VM -->|ACME challenge| LE[(Let's Encrypt)]
+    VM -->|ACME challenge| LE[(ACME CA\ne.g. Actalis\nor Let's Encrypt)]
     SG -.-> VM
 ```
 
@@ -77,7 +77,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - (For HTTPS) A domain name with an A record pointing to the VM's Elastic IP
@@ -108,8 +108,8 @@ graph TB
 | `vm_disk_size_gb` | `20` | Boot disk size in GB |
 | `ssh_cidr` | `"0.0.0.0/0"` | CIDR for SSH — restrict in production |
 | `web_cidr` | `"0.0.0.0/0"` | CIDR for HTTP/HTTPS — typically `0.0.0.0/0` for public sites |
-| `domain` | `""` | Domain name for Let's Encrypt HTTPS (DNS must point to VM first) |
-| `certbot_email` | `""` | Email for Let's Encrypt notifications (required with `domain`) |
+| `domain` | `""` | Domain name for ACME HTTPS (e.g. Actalis or Let's Encrypt) (DNS must point to VM first) |
+| `certbot_email` | `""` | Email for ACME/Certbot notifications (required with `domain`) |
 
 ---
 
@@ -156,7 +156,7 @@ terraform plan
 terraform apply
 ```
 
-Bootstrap takes approximately **1–2 minutes** (3–5 minutes with Let's Encrypt).
+Bootstrap takes approximately **1–2 minutes** (3–5 minutes with ACME/Certbot).
 
 ### 4. Access the site
 
@@ -214,7 +214,7 @@ location / {
 
 1. **Restrict `ssh_cidr` to your management IP.** SSH on `0.0.0.0/0` is acceptable for a quick start, but exposes the VM to brute-force attacks.
 
-2. **Enable HTTPS for any production site.** Set `domain` and `certbot_email` to get a free Let's Encrypt certificate. HTTP-only should only be used for internal or development sites.
+2. **Enable HTTPS for any production site.** Set `domain` and `certbot_email` to get a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP-only should only be used for internal or development sites.
 
 3. **Keep NGINX updated.** Ubuntu's unattended-upgrades handles security patches automatically if enabled. Check with `sudo unattended-upgrades --dry-run`.
 
@@ -230,7 +230,7 @@ sudo systemctl status nginx
 sudo journalctl -u nginx -n 30
 ```
 
-### Let's Encrypt certificate not issued
+### ACME certificate not issued
 
 ```bash
 # Check DNS propagation first:

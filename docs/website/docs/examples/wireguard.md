@@ -6,7 +6,7 @@ title: WireGuard
 
 Deploy a production-ready [WireGuard](https://www.wireguard.com/) VPN server on Aruba Cloud. All configuration is handled by cloud-init — no manual SSH required after deployment.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -89,7 +89,7 @@ WireGuard is extremely CPU-efficient — a `CSO2A4` VM comfortably handles 50+ c
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - ArubaCloud account with OAuth2 credentials
 - An SSH key pair
 

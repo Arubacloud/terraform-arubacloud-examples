@@ -2,7 +2,7 @@
 
 Esegui il deployment di [Keycloak](https://www.keycloak.org) — gestione delle identità e degli accessi enterprise — su Aruba Cloud tramite Terraform e cloud-init. Keycloak viene eseguito in modalità Quarkus di produzione con un database PostgreSQL locale.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -76,7 +76,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

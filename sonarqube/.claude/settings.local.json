@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\" status)",
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\" diff)",
+      "Bash(git -C \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\" log --oneline -5)"
+    ]
+  }
+}

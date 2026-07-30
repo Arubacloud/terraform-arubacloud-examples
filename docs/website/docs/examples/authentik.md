@@ -6,7 +6,7 @@ title: Authentik
 
 Deploy [Authentik](https://goauthentik.io/) — a modern, open-source identity provider supporting SSO, OIDC, OAuth2, SAML, LDAP, and SCIM — on Aruba Cloud using Terraform and cloud-init. Deployed via Docker Compose with PostgreSQL and Redis.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -76,7 +76,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

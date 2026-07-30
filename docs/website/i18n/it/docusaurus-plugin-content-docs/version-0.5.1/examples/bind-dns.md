@@ -2,7 +2,7 @@
 
 Esegui il deployment di [BIND9](https://www.isc.org/bind/) — il software per server DNS più diffuso al mondo — su Aruba Cloud tramite Terraform e cloud-init. BIND9 è configurato come resolver ricorsivo con caching, con forwarder upstream configurabili e controllo degli accessi integrato.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -73,7 +73,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

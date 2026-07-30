@@ -6,7 +6,7 @@ title: Mailcow
 
 Deploy [Mailcow](https://mailcow.email/) — a complete dockerized email server suite — on Aruba Cloud using Terraform and cloud-init. Mailcow bundles Postfix, Dovecot, Rspamd, ClamAV, SOGo, and a web admin panel in a single Docker Compose stack.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -82,7 +82,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - A domain name with DNS control (required for TLS)

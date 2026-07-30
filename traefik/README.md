@@ -1,14 +1,14 @@
 # Traefik on Aruba Cloud
 
-Deploy [Traefik v3](https://traefik.io/traefik/) — a cloud-native reverse proxy with automatic Let's Encrypt TLS — on Aruba Cloud. Use it as the HTTPS entry point for any other service running on the same VM or in the same Docker network.
+Deploy [Traefik v3](https://traefik.io/traefik/) — a cloud-native reverse proxy with automatic ACME TLS — on Aruba Cloud. Use it as the HTTPS entry point for any other service running on the same VM or in the same Docker network.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
 ## Introduction
 
-Traefik automatically discovers Docker containers and proxies HTTPS traffic to them using service labels. TLS certificates are issued and renewed by Let's Encrypt with zero manual intervention. Add any Docker container to the `traefik-public` network and label it — Traefik routes traffic automatically.
+Traefik automatically discovers Docker containers and proxies HTTPS traffic to them using service labels. TLS certificates are issued and renewed automatically via the ACME protocol using a provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt — configure the `certificatesResolvers` entry with the appropriate `caServer` URL. Add any Docker container to the `traefik-public` network and label it — Traefik routes traffic automatically.
 
 ---
 
@@ -148,4 +148,5 @@ docker logs traefik
 
 - [Traefik Documentation](https://doc.traefik.io/traefik/)
 - [Docker provider configuration](https://doc.traefik.io/traefik/providers/docker/)
-- [Let's Encrypt with Traefik](https://doc.traefik.io/traefik/https/acme/)
+- [ACME / TLS with Traefik](https://doc.traefik.io/traefik/https/acme/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)

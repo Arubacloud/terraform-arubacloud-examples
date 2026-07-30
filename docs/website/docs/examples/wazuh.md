@@ -6,7 +6,7 @@ title: Wazuh
 
 Deploy [Wazuh](https://wazuh.com) — an open-source SIEM, XDR, and CSPM platform — on Aruba Cloud using Terraform and cloud-init. This example provisions a **single-node all-in-one** deployment using the official Wazuh quick-install script.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -78,7 +78,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -195,7 +195,7 @@ systemctl enable wazuh-agent
 
 2. **Restrict `agent_cidr`** to the CIDR of your monitored infrastructure, not `0.0.0.0/0`. This prevents arbitrary agents from enrolling.
 
-3. **Replace the self-signed certificate.** The quick-install generates a self-signed cert. For production, use a proper certificate — either via Let's Encrypt (requires a domain) or your own CA.
+3. **Replace the self-signed certificate.** The quick-install generates a self-signed cert. For production, use a proper certificate — either via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt (requires a domain) or your own CA.
 
 ---
 

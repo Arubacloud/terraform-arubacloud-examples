@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(///wsl.localhost/Ubuntu-24.04/home/amedeopalopoli/Software/terraform/terraform-arubacloud-examples/forgejo/**)",
+      "Read(///wsl.localhost/Ubuntu-24.04/home/amedeopalopoli/Software/terraform/terraform-arubacloud-examples/mattermost/**)",
+      "Read(///wsl.localhost/Ubuntu-24.04/home/amedeopalopoli/Software/terraform/terraform-arubacloud-examples/nextcloud/**)"
+    ]
+  }
+}

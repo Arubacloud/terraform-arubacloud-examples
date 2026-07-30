@@ -2,7 +2,7 @@
 
 Esegui il deployment di [Graylog](https://graylog.org/) — gestione centralizzata dei log con ricerca e alerting — su Aruba Cloud tramite Terraform e cloud-init. Distribuito via Docker Compose con MongoDB e OpenSearch co-locati su un singolo nodo.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -73,7 +73,7 @@ Per volumi di log in produzione, aggiorna a CSO8A16 (8 vCPU / 16 GB, ~€95/mese
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

@@ -2,7 +2,7 @@
 
 Esegui il deployment di uno stack di osservabilità self-hosted completo — [Grafana](https://grafana.com), [Prometheus](https://prometheus.io), [Loki](https://grafana.com/oss/loki/) e [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail/) — su Aruba Cloud tramite Terraform e cloud-init. Le sorgenti dati sono preconfigurate; accedi e inizia subito a costruire dashboard.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -93,7 +93,7 @@ L'utilizzo del disco cresce nel tempo man mano che si accumulano il TSDB di Prom
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

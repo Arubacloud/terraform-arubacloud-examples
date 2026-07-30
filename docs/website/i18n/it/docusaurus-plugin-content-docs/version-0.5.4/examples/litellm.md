@@ -2,7 +2,7 @@
 
 Esegui il deployment di [LiteLLM](https://litellm.ai/) — un proxy API compatibile OpenAI che instrada le richieste a molteplici provider LLM — su Aruba Cloud tramite Terraform e cloud-init. Supporta OpenAI, Anthropic (Claude), Ollama, Azure OpenAI e oltre 100 altri provider tramite una singola API unificata.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -72,7 +72,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - Almeno una chiave API di un provider LLM o un server Ollama

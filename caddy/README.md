@@ -1,8 +1,8 @@
 # Caddy on Aruba Cloud
 
-Deploy [Caddy](https://caddyserver.com) — a modern, zero-config web server with automatic HTTPS — on Aruba Cloud using Terraform and cloud-init. Caddy obtains and renews Let's Encrypt certificates automatically when a domain name is provided, with no certbot or manual renewal needed.
+Deploy [Caddy](https://caddyserver.com) — a modern, zero-config web server with automatic HTTPS — on Aruba Cloud using Terraform and cloud-init. Caddy obtains and renews certificates automatically via ACME when a domain name is provided, with no certbot or manual renewal needed.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -13,7 +13,7 @@ Caddy v2 is a production-ready HTTP server that handles TLS lifecycle management
 - Caddy installed from the **official apt repository** (always up to date)
 - A default **static HTML site** served from `/var/www/html`
 - Ports 80 (HTTP) and 443 (HTTPS) open to `web_cidr`
-- **Automatic HTTPS** via Let's Encrypt when `domain` is set — HTTP redirects to HTTPS automatically
+- **Automatic HTTPS** via ACME when `domain` is set — use `acme_ca` in the Caddyfile to select an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP redirects to HTTPS automatically
 - Certificate renewal handled by Caddy in the background
 
 > **Note:** Without a `domain`, Caddy serves HTTP on port 80 only. Set `domain` to a DNS name pointing at the VM to enable automatic HTTPS — no other configuration needed.
@@ -36,7 +36,7 @@ graph TB
         SG["Security Group\nIN: 22 · 80 · 443\nOUT: all"]
     end
 
-    VM -->|ACME / Let's Encrypt| LE[(Let's Encrypt)]
+    VM -->|ACME| LE[(ACME CA\ne.g. Let's Encrypt\nor Actalis)]
     SG -.-> VM
 ```
 
@@ -74,7 +74,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - (For HTTPS) A domain name with an A record pointing to the VM's Elastic IP
@@ -105,7 +105,7 @@ graph TB
 | `vm_disk_size_gb` | `20` | Boot disk size in GB |
 | `ssh_cidr` | `"0.0.0.0/0"` | CIDR for SSH — restrict in production |
 | `web_cidr` | `"0.0.0.0/0"` | CIDR for HTTP/HTTPS |
-| `domain` | `""` | Domain for automatic Let's Encrypt HTTPS (DNS must point to VM first) |
+| `domain` | `""` | Domain for automatic ACME HTTPS via a provider such as Actalis or Let's Encrypt (DNS must point to VM first) |
 
 ---
 
@@ -231,4 +231,5 @@ Common causes: DNS A record not propagated, port 80 blocked by `web_cidr`, or `d
 - [Caddy Documentation](https://caddyserver.com/docs/)
 - [Caddyfile Quick-start](https://caddyserver.com/docs/quick-starts/caddyfile)
 - [Caddy GitHub Releases](https://github.com/caddyserver/caddy/releases)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

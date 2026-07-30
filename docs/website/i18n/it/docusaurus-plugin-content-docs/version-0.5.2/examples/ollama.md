@@ -2,7 +2,7 @@
 
 Distribuisci [Ollama](https://ollama.ai/) — una piattaforma di inferenza LLM locale — su Aruba Cloud tramite Terraform e cloud-init. Esegui modelli linguistici di grandi dimensioni (LLama, Mistral, Gemma, ecc.) direttamente su CPU senza richiedere una GPU.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -71,7 +71,7 @@ I modelli più grandi richiedono l'aggiornamento a una VM con più RAM (e un cos
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

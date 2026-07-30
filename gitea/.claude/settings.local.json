@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\\\\ghost\")",
+      "Bash(python3 -c ' *)",
+      "Bash(grep -i '\"ip_address\"\\\\|\"host\"\\\\|\"address\"\\\\|\"endpoint\"' \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\\\\ghost\\\\terraform.tfstate\")",
+      "Bash(grep -o '\"content\": \"[^\"]*\"' \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\\\\ghost\\\\terraform.tfstate.backup\")",
+      "Bash(grep -o 'ghost-db.b64.*content.*==[^\"]*' \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\\\\ghost\\\\terraform.tfstate\")",
+      "Bash(grep \"SzdtQFA0eiFMOQ\" \"\\\\\\\\wsl.localhost\\\\Ubuntu-24.04\\\\home\\\\amedeopalopoli\\\\Software\\\\terraform\\\\terraform-arubacloud-examples\\\\ghost\\\\terraform.tfstate.backup\")",
+      "Bash(grep *)"
+    ]
+  }
+}

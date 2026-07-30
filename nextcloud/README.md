@@ -2,7 +2,7 @@
 
 Deploy [Nextcloud](https://nextcloud.com/) — a self-hosted file sync and collaboration platform — on Aruba Cloud with Apache 2.4, PHP 8.x, Redis for caching, and a Managed MySQL 8.0 DBaaS backend.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -83,7 +83,7 @@ graph TB
 | `ssh_public_key` | SSH public key |
 | `db_password` | MySQL password (min 16 chars, no newlines) |
 | `nc_admin_password` | Nextcloud admin password (min 16 chars, no newlines) |
-| `nc_admin_email` | Admin email (also for Let's Encrypt) |
+| `nc_admin_email` | Admin email (also for ACME certificate registration) |
 
 ### Optional
 
@@ -182,3 +182,4 @@ sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 0 
 - [Nextcloud Administration Manual](https://docs.nextcloud.com/server/latest/admin_manual/)
 - [Nextcloud occ Commands](https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html)
 - [Nextcloud Performance Tuning](https://docs.nextcloud.com/server/latest/admin_manual/installation/server_tuning.html)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)

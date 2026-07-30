@@ -6,7 +6,7 @@ title: Traefik
 
 Deploy [Traefik v3](https://traefik.io/traefik/) — a cloud-native reverse proxy with automatic Let's Encrypt TLS — on Aruba Cloud. Use it as the HTTPS entry point for any other service running on the same VM or in the same Docker network.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

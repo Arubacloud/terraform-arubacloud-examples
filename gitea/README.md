@@ -2,7 +2,7 @@
 
 Deploy a production-ready [Gitea](https://gitea.com) self-hosted Git service on Aruba Cloud using Terraform and cloud-init. No manual server configuration required.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -14,7 +14,7 @@ Gitea is a lightweight, self-hosted Git service written in Go. It provides a Git
 - A choice of **SQLite** (default, zero extra cost) or **Managed MySQL 8.0 DBaaS** for larger teams
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IP** for the VM (and DBaaS when MySQL is enabled)
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 - **Git SSH access on port 2222** so Gitea's built-in SSH server does not conflict with the admin SSH on port 22
 
 The first user to register via the web interface automatically becomes the instance administrator — no credentials are pre-set during provisioning.
@@ -118,7 +118,7 @@ For SQLite deployments the repositories live on the boot disk — increase `vm_d
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - `db_password` (min 16 chars) — only when `enable_mysql = true`
@@ -247,7 +247,7 @@ terraform destroy
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip.address/32"` in `terraform.tfvars`.
 
-2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot provisions and auto-renews a Let's Encrypt certificate.
+2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot provisions and auto-renews a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
 
 3. **Disable public registration after setup.** Once your team has registered, go to Site Administration → Configuration and set `DISABLE_REGISTRATION = true`, or toggle it under Admin Panel → Configuration.
 
@@ -313,7 +313,7 @@ ssh -p 2222 git@$(terraform output -raw vm_public_ip)
 
 ### Certbot fails to issue a certificate
 
-DNS must resolve the domain to the VM's Elastic IP before `terraform apply`. Check `/var/log/letsencrypt/letsencrypt.log`.
+DNS must resolve the domain to the VM's Elastic IP before `terraform apply`. Check `/var/log/letsencrypt/letsencrypt.log` for details.
 
 ---
 
@@ -321,6 +321,7 @@ DNS must resolve the domain to the VM's Elastic IP before `terraform apply`. Che
 
 - [Gitea Documentation](https://docs.gitea.com)
 - [Gitea Downloads](https://dl.gitea.com/gitea/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)
 - [Certbot Documentation](https://certbot.eff.org/docs/)

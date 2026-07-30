@@ -15,7 +15,7 @@
 
 **Example:** `<name>`
 
-- [ ] `versions.tf` — provider constraints `~> 0.5`; `required_version = ">= 1.9"`
+- [ ] `versions.tf` — provider constraints `~> 1.0`; `required_version = ">= 1.9"`
 - [ ] `variables.tf` — every variable has `description` and `type`; sensitive inputs have `sensitive = true`; validation blocks where useful
 - [ ] `main.tf` — uses `modules/network`; no inline VPC/subnet/SG duplication
 - [ ] `outputs.tf` — URL, VM public IP, SSH command; every output has `description`

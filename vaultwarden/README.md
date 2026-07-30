@@ -2,7 +2,7 @@
 
 Deploy [Vaultwarden](https://github.com/dani-garcia/vaultwarden) — an unofficial Bitwarden-compatible server — for self-hosted password management on Aruba Cloud.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -71,7 +71,7 @@ graph TB
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `domain` | `""` | Domain for HTTPS — **required for mobile clients** |
-| `admin_email` | `""` | Email for Let's Encrypt (required when `domain` set) |
+| `admin_email` | `""` | Email for ACME certificate registration (required when `domain` set) |
 | `admin_token` | `""` | Token for `/admin` panel; leave empty to disable |
 | `vaultwarden_version` | `"latest"` | Docker image tag |
 | `ssh_cidr` | `"0.0.0.0/0"` | SSH source CIDR — restrict to your IP |
@@ -148,3 +148,4 @@ docker logs vaultwarden
 
 - [Vaultwarden Wiki](https://github.com/dani-garcia/vaultwarden/wiki)
 - [Bitwarden Clients](https://bitwarden.com/download/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)

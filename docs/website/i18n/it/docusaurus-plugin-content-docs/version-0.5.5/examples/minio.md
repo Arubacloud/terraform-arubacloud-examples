@@ -2,7 +2,7 @@
 
 Distribuisci [MinIO](https://min.io/) — un server di object storage compatibile S3 ad alte prestazioni — su Aruba Cloud. Usalo come backend S3 locale per Nextcloud, GitLab, Loki o qualsiasi applicazione compatibile S3.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

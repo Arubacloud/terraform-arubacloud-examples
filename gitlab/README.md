@@ -2,7 +2,7 @@
 
 Deploy [GitLab Community Edition](https://gitlab.com/oss/gitlab-ce) — a complete DevOps platform with Git hosting, CI/CD, issue tracking, and container registry — on Aruba Cloud using Terraform and cloud-init.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -11,11 +11,11 @@ Deploy [GitLab Community Edition](https://gitlab.com/oss/gitlab-ce) — a comple
 GitLab CE is a self-hosted alternative to GitHub and GitHub Actions. This example deploys:
 
 - **GitLab CE** via the official Omnibus package on a single VM
-- Automatic **Let's Encrypt TLS** when a `letsencrypt_email` is provided
+- Automatic **ACME TLS** via Let's Encrypt when a `letsencrypt_email` is provided (Omnibus also supports [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) via the `acme_staging_server`/`acme_production_server` config keys)
 - Separate SSH port **2222** for git operations (port 22 reserved for admin access)
 - Web UI, CI/CD runners (bring your own), and container registry ready
 
-> **DNS first:** With HTTPS, GitLab requests a Let's Encrypt certificate during install. Set your `A` record for `gitlab_hostname` → VM public IP before running `terraform apply`.
+> **DNS first:** With HTTPS, GitLab requests an ACME certificate during install. Set your `A` record for `gitlab_hostname` → VM public IP before running `terraform apply`.
 
 ---
 
@@ -73,7 +73,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - A domain name with DNS control (required for HTTPS / Let's Encrypt)
@@ -178,4 +178,5 @@ Then clone normally with `git clone git@gitlab.example.com:<user>/<project>.git`
 
 - [GitLab CE Documentation](https://docs.gitlab.com/ee/)
 - [GitLab Omnibus Install Guide](https://docs.gitlab.com/omnibus/installation/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

@@ -6,7 +6,7 @@ title: SonarQube
 
 Deploy [SonarQube](https://www.sonarsource.com/products/sonarqube/) Community Edition — continuous code quality and security analysis — on Aruba Cloud using Terraform and cloud-init. Local PostgreSQL database, Java 17, direct access on port 9000.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -81,7 +81,7 @@ For larger teams or monorepos, use `CSO8A16` (8 vCPU / 16 GB) — the Elasticsea
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -181,7 +181,7 @@ mvn sonar:sonar \
 
 3. **Create per-project tokens** for CI integration. Never use the admin account credentials in CI pipelines.
 
-4. **Enable HTTPS.** Add an nginx reverse proxy with a Let's Encrypt certificate in front of SonarQube for encrypted access.
+4. **Enable HTTPS.** Add an nginx reverse proxy with an ACME certificate (e.g. via Actalis or Let's Encrypt) in front of SonarQube for encrypted access.
 
 ---
 

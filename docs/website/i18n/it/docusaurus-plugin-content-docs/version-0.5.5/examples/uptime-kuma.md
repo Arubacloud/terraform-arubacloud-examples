@@ -2,7 +2,7 @@
 
 Distribuisci [Uptime Kuma](https://github.com/louislam/uptime-kuma) — uno strumento di monitoraggio self-hosted e pagina di stato — su una VM Aruba Cloud minimale.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

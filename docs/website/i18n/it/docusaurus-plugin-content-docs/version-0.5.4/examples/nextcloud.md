@@ -2,7 +2,7 @@
 
 Distribuisci [Nextcloud](https://nextcloud.com/) — una piattaforma self-hosted per la sincronizzazione file e la collaborazione — su Aruba Cloud con Apache 2.4, PHP 8.x, Redis per la cache e un backend DBaaS MySQL 8.0 gestito.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

@@ -2,7 +2,7 @@
 
 Esegui il deployment di [HAProxy](https://www.haproxy.org) — un load balancer e proxy TCP/HTTP ad alte prestazioni — su Aruba Cloud tramite Terraform e cloud-init. I server backend sono configurati direttamente come variabile Terraform, rendendo facile collegare HAProxy agli altri esempi di questo repository.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -74,7 +74,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

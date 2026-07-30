@@ -2,7 +2,7 @@
 
 Esegui il deployment di [Drupal 10](https://www.drupal.org) — un CMS open-source flessibile e di livello enterprise — su Aruba Cloud tramite Terraform e cloud-init. Drupal viene installato tramite Composer con un backend MySQL 8.0 DBaaS gestito, seguendo lo stesso pattern di produzione dell'esempio WordPress.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -84,7 +84,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

@@ -6,7 +6,7 @@ title: Keycloak
 
 Deploy [Keycloak](https://www.keycloak.org) — enterprise identity and access management — on Aruba Cloud using Terraform and cloud-init. Keycloak runs in production Quarkus mode backed by a local PostgreSQL database.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -18,7 +18,7 @@ Keycloak is a CNCF-graduated open-source IAM platform providing SSO, OIDC, OAuth
 - **Local PostgreSQL** — Keycloak officially supports PostgreSQL and MariaDB. Managed MySQL from the ArubaCloud DBaaS is **not** on the Keycloak support matrix and is not used here
 - **nginx reverse proxy** on ports 80/443 with correct forwarding headers (`X-Forwarded-*`), while Keycloak binds to `127.0.0.1:8080`
 - **Admin user created automatically** on first start via systemd environment file — log in immediately after bootstrap
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 ---
 
@@ -80,7 +80,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -177,7 +177,7 @@ sudo journalctl -u keycloak -f
 
 ## Security Recommendations
 
-1. **Use HTTPS.** Set `domain` to enable Let's Encrypt TLS. Keycloak tokens transmitted over HTTP can be intercepted.
+1. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Keycloak tokens transmitted over HTTP can be intercepted.
 
 2. **Restrict SSH.** Set `ssh_cidr = "your.ip/32"`.
 

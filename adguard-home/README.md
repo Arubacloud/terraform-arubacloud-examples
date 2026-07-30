@@ -2,7 +2,7 @@
 
 Deploy [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) — network-wide DNS ad-blocking and privacy protection — on Aruba Cloud using Terraform and cloud-init. AdGuard Home pairs naturally with the [WireGuard example](wireguard.md): point your VPN clients at the AdGuard Home DNS server for ad-free, tracker-free browsing everywhere your VPN is active.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -75,7 +75,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

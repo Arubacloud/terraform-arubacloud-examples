@@ -1,4 +1,4 @@
-{
+﻿{
   "sidebar.mainSidebar.category.Architecture & Best Practices": {
     "message": "Architettura e Best Practice",
     "description": "The label for category Architecture & Best Practices in sidebar mainSidebar"
@@ -32,11 +32,11 @@
     "description": "The label for category Storage in sidebar mainSidebar"
   },
   "sidebar.mainSidebar.category.Identity": {
-    "message": "Identità",
+    "message": "IdentitÃ ",
     "description": "The label for category Identity in sidebar mainSidebar"
   },
   "sidebar.mainSidebar.category.Observability": {
-    "message": "Osservabilità",
+    "message": "OsservabilitÃ ",
     "description": "The label for category Observability in sidebar mainSidebar"
   },
   "sidebar.mainSidebar.category.AI / ML": {
@@ -72,7 +72,7 @@
     "description": "The label for link Getting Started in sidebar mainSidebar"
   },
   "version.label": {
-    "message": "0.5.5",
+    "message": "0.5.0",
     "description": "The label for the current version in the version dropdown"
   }
 }
