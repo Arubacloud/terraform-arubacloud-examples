@@ -1,10 +1,10 @@
 locals {
-  name_prefix          = "${var.app_name}-${var.environment}"
-  tags                 = ["airflow", var.environment, "data-platform"]
-  base_url             = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
-  server_name          = var.domain != "" ? var.domain : "_"
-  db_password_b64      = base64encode(var.db_password)
-  admin_password_b64   = base64encode(var.airflow_admin_password)
+  name_prefix        = "${var.app_name}-${var.environment}"
+  tags               = ["airflow", var.environment, "data-platform"]
+  base_url           = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
+  server_name        = var.domain != "" ? var.domain : "_"
+  db_password_b64    = base64encode(var.db_password)
+  admin_password_b64 = base64encode(var.airflow_admin_password)
 }
 
 # ── Project ───────────────────────────────────────────────────────────────────
@@ -147,19 +147,19 @@ resource "arubacloud_cloudserver" "this" {
     flavor_name      = var.vm_flavor
     key_pair_uri_ref = arubacloud_keypair.this.uri
     user_data = templatefile("${path.module}/cloud-init.yaml.tpl", {
-      db_host              = module.network.dbaas_elastic_ip_address
-      db_name              = arubacloud_database.airflow.name
-      db_user              = arubacloud_dbaasuser.airflow.username
-      db_password_b64      = local.db_password_b64
-      admin_user           = var.airflow_admin_user
-      admin_email          = var.airflow_admin_email
-      admin_password_b64   = local.admin_password_b64
-      airflow_version      = var.airflow_version
-      base_url             = local.base_url
-      server_name          = local.server_name
-      domain               = var.domain
-      acme_eab_kid         = var.acme_eab_kid
-      acme_eab_hmac_key    = var.acme_eab_hmac_key
+      db_host            = module.network.dbaas_elastic_ip_address
+      db_name            = arubacloud_database.airflow.name
+      db_user            = arubacloud_dbaasuser.airflow.username
+      db_password_b64    = local.db_password_b64
+      admin_user         = var.airflow_admin_user
+      admin_email        = var.airflow_admin_email
+      admin_password_b64 = local.admin_password_b64
+      airflow_version    = var.airflow_version
+      base_url           = local.base_url
+      server_name        = local.server_name
+      domain             = var.domain
+      acme_eab_kid       = var.acme_eab_kid
+      acme_eab_hmac_key  = var.acme_eab_hmac_key
     })
   }
 
