@@ -1,9 +1,9 @@
 locals {
-  name_prefix              = "${var.app_name}-${var.environment}"
-  tags                     = ["mlflow", var.environment, "data-platform"]
-  base_url                 = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
-  server_name              = var.domain != "" ? var.domain : "_"
-  db_password_b64          = base64encode(var.db_password)
+  name_prefix               = "${var.app_name}-${var.environment}"
+  tags                      = ["mlflow", var.environment, "data-platform"]
+  base_url                  = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
+  server_name               = var.domain != "" ? var.domain : "_"
+  db_password_b64           = base64encode(var.db_password)
   mlflow_admin_password_b64 = base64encode(var.mlflow_admin_password)
 }
 
