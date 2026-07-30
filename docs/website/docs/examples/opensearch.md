@@ -6,7 +6,7 @@ title: OpenSearch
 
 Deploy [OpenSearch 2.x](https://opensearch.org/) — the community-driven open-source search and analytics suite — on Aruba Cloud using Terraform and cloud-init. Deployed via the official Docker image with TLS-secured REST API and the `admin` superuser password configured at bootstrap time.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -75,7 +75,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

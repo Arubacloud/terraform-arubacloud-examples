@@ -2,7 +2,7 @@
 
 Deploy [Ollama](https://ollama.ai/) — a local LLM inference platform — on Aruba Cloud using Terraform and cloud-init. Runs large language models (LLama, Mistral, Gemma, etc.) directly on CPU without requiring a GPU.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -71,7 +71,7 @@ Larger models require upgrading to a VM with more RAM (and correspondingly highe
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

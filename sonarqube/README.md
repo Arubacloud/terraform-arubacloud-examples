@@ -2,7 +2,7 @@
 
 Deploy [SonarQube](https://www.sonarsource.com/products/sonarqube/) Community Edition — continuous code quality and security analysis — on Aruba Cloud using Terraform and cloud-init. Local PostgreSQL database, Java 17, direct access on port 9000.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -77,7 +77,7 @@ For larger teams or monorepos, use `CSO8A16` (8 vCPU / 16 GB) — the Elasticsea
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -177,7 +177,7 @@ mvn sonar:sonar \
 
 3. **Create per-project tokens** for CI integration. Never use the admin account credentials in CI pipelines.
 
-4. **Enable HTTPS.** Add an nginx reverse proxy with a Let's Encrypt certificate in front of SonarQube for encrypted access.
+4. **Enable HTTPS.** Add an nginx reverse proxy with a certificate from an ACME CA — [Let's Encrypt](https://letsencrypt.org) or [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) — in front of SonarQube for encrypted access.
 
 ---
 
@@ -240,4 +240,5 @@ Upgrade to `CSO8A16` (8 vCPU / 16 GB) and adjust JVM heap sizes in `sonar.proper
 - [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/)
 - [SonarQube Requirements](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/)
 - [SonarQube Downloads](https://www.sonarsource.com/products/sonarqube/downloads/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

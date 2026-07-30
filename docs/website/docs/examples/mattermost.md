@@ -6,7 +6,7 @@ title: Mattermost
 
 Deploy [Mattermost](https://mattermost.com) Team Edition — open-source team messaging — on Aruba Cloud using Terraform and cloud-init. Mattermost binary service + Managed MySQL 8.0 + nginx reverse proxy.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -19,7 +19,7 @@ Mattermost is a self-hosted, Slack-compatible open-source messaging platform wri
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IPs** for the VM and DBaaS
 - Correct nginx **WebSocket proxying** for real-time messaging
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 The first user to register on the instance automatically becomes the System Administrator.
 
@@ -93,7 +93,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -192,7 +192,7 @@ sudo journalctl -u mattermost -f
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip/32"`.
 
-2. **Use HTTPS.** Set `domain` to enable Let's Encrypt TLS. Without TLS, session tokens and messages are transmitted in cleartext.
+2. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Without TLS, session tokens and messages are transmitted in cleartext.
 
 3. **Register the admin account first.** The first registered user becomes System Administrator. Register immediately after deployment before sharing the URL.
 

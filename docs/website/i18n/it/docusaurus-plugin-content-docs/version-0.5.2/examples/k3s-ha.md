@@ -2,7 +2,7 @@
 
 Esegui il deployment di un **cluster k3s HA con control-plane a 3 nodi** su Aruba Cloud tramite Terraform e cloud-init. Usa un database MySQL 8.0 esterno come datastore HA tramite lo shim [kine](https://github.com/k3s-io/kine) integrato.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -77,7 +77,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - Un database **MySQL 8.0** esterno raggiungibile dalle VM

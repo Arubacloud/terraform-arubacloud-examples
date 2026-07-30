@@ -2,7 +2,7 @@
 
 Deploy a production-ready [WordPress](https://wordpress.org) site on Aruba Cloud using Terraform and cloud-init. No manual server configuration required.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -14,7 +14,7 @@ WordPress is the world's most popular content management system, powering over 4
 - A **Managed MySQL 8.0 DBaaS** instance — no self-managed database server
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IPs** for the VM and DBaaS
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 ---
 
@@ -101,7 +101,7 @@ For the DBaaS: `DBO2A8` (2 vCPU / 8 GB) covers most WordPress sites. Add read re
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -118,7 +118,7 @@ For the DBaaS: `DBO2A8` (2 vCPU / 8 GB) covers most WordPress sites. Add read re
 | `ssh_public_key` | SSH public key content (e.g. contents of `~/.ssh/id_ed25519.pub`) |
 | `db_password` | MySQL password for the WordPress user (min 16 chars, no newlines) |
 | `wp_admin_password` | WordPress admin password (min 16 chars, no newlines) |
-| `wp_admin_email` | WordPress admin email (also used for Let's Encrypt registration) |
+| `wp_admin_email` | WordPress admin email (also used for ACME certificate registration) |
 
 ### Optional
 
@@ -215,7 +215,7 @@ terraform destroy
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip.address/32"` in `terraform.tfvars`. The default `0.0.0.0/0` is for getting-started convenience only.
 
-2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a Let's Encrypt certificate. WordPress stores the site URL in the database — changing from HTTP to HTTPS after deployment requires a database URL update.
+2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. WordPress stores the site URL in the database — changing from HTTP to HTTPS after deployment requires a database URL update.
 
 3. **Change the default admin username.** Set `wp_admin_user` to something other than `"admin"` to reduce brute-force exposure.
 
@@ -315,3 +315,4 @@ A previous `terraform destroy` may not have completed. Either finish destroying 
 - [ArubaCloud API Documentation](https://api.arubacloud.com/docs/)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)
 - [Certbot Documentation](https://certbot.eff.org/docs/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)

@@ -6,7 +6,7 @@ title: Elasticsearch
 
 Deploy [Elasticsearch 8.x](https://www.elastic.co/elasticsearch/) — the leading open-source distributed search and analytics engine — on Aruba Cloud using Terraform and cloud-init. Installed from the official Elastic apt repository with x-pack security enabled and the `elastic` superuser password configured at bootstrap time.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -78,7 +78,7 @@ For production workloads, upgrade to CSO8A16 (8 vCPU / 16 GB, ~€95/mo).
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

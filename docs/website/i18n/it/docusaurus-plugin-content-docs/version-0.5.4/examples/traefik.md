@@ -2,7 +2,7 @@
 
 Distribuisci [Traefik v3](https://traefik.io/traefik/) — un reverse proxy cloud-native con TLS Let's Encrypt automatico — su Aruba Cloud. Usalo come punto di ingresso HTTPS per qualsiasi altro servizio in esecuzione sulla stessa VM o nella stessa rete Docker.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

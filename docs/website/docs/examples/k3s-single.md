@@ -6,7 +6,7 @@ title: k3s Single Node
 
 Deploy a production-ready [k3s](https://k3s.io) single-node Kubernetes cluster on Aruba Cloud using Terraform and cloud-init. Includes the built-in Traefik ingress controller — no manual configuration required.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -92,7 +92,7 @@ A single-node cluster cannot reschedule pods on failure. For high availability, 
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - `kubectl` installed locally to interact with the cluster

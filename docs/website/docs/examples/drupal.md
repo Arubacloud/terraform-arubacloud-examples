@@ -6,7 +6,7 @@ title: Drupal
 
 Deploy [Drupal 10](https://www.drupal.org) — a flexible, enterprise-grade open-source CMS — on Aruba Cloud using Terraform and cloud-init. Drupal is installed via Composer with a managed MySQL 8.0 DBaaS backend, following the same production pattern as the WordPress example.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -18,7 +18,7 @@ Drupal 10 is built on the `drupal/recommended-project` Composer template, which 
 - **Drupal 10** installed via Composer + Drush in fully unattended mode
 - **Managed MySQL 8.0** via ArubaCloud DBaaS — Drupal never touches raw SQL
 - Ports 80 and 443 open to the internet
-- **Optional HTTPS** via Let's Encrypt when `domain` is set
+- **Optional HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when `domain` is set
 
 > **Bootstrap time:** Composer downloads ~80 MB of PHP packages. Expect **15–20 minutes** before the site is reachable.
 
@@ -42,7 +42,7 @@ graph TB
         SG["Security Group\nIN: 22 · 80 · 443\nOUT: all"]
     end
 
-    VM -->|ACME| LE[(Let's Encrypt)]
+    VM -->|ACME| LE[(ACME CA\ne.g. Actalis\nor Let's Encrypt)]
     SG -.-> VM
 ```
 
@@ -88,7 +88,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -124,7 +124,7 @@ graph TB
 | `db_storage_gb` | `20` | DBaaS initial storage size in GB |
 | `site_name` | `"My Drupal Site"` | Site display name |
 | `admin_user` | `"admin"` | Drupal admin username |
-| `domain` | `""` | Domain for automatic Let's Encrypt HTTPS |
+| `domain` | `""` | Domain for automatic ACME HTTPS (e.g. via Actalis or Let's Encrypt) |
 
 ---
 

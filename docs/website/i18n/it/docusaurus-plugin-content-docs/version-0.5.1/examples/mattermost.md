@@ -2,7 +2,7 @@
 
 Distribuisci [Mattermost](https://mattermost.com) Team Edition — messaggistica di squadra open-source — su Aruba Cloud tramite Terraform e cloud-init. Servizio binario Mattermost + MySQL 8.0 gestito + reverse proxy nginx.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -89,7 +89,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 

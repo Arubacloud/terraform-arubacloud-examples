@@ -8,6 +8,23 @@ each batch of new examples and PATCH on fixes.
 
 ## [Unreleased]
 
+## [0.5.5] - 2026-07-30
+
+### Changed
+
+- **All examples** — provider version constraint updated from `~> 0.5` to `~> 1.0`
+  in every `versions.tf`, `README.md`, and documentation page; minimum supported
+  provider is now `arubacloud/arubacloud >= 1.0.0`.
+
+### Documentation
+
+- **Getting Started** — prerequisites table updated to show minimum provider
+  version 1.0 (was 0.5).
+- **Best Practices** — pessimistic constraint example updated to `~> 1.0`.
+- **All example READMEs** — provider version badge updated to `~> 1.0`.
+- **Docusaurus website** — all current-version example and guide pages updated
+  to reflect the new constraint; versioned snapshots (0.5.x) left intact.
+
 ## [0.5.4] - 2026-07-29
 
 ### Fixed
@@ -143,7 +160,7 @@ each batch of new examples and PATCH on fixes.
 
 ### Changed
 
-- Provider version constraint bumped to `~> 1.0` across all examples (from `~> 0.5`).
+- Provider version constraint bumped to `~> 1.0` across all examples (from `~> 1.0`).
 
 ## [0.4.0] - 2026-07-10
 
@@ -255,7 +272,7 @@ each batch of new examples and PATCH on fixes.
 
 - **Initial infrastructure** — `modules/network` shared module (VPC + subnet +
   security group + Elastic IP, optional DBaaS network); provider constraints
-  `~> 0.5`; GitHub Actions CI (`terraform fmt`, `validate`, TFLint, markdownlint).
+  `~> 1.0`; GitHub Actions CI (`terraform fmt`, `validate`, TFLint, markdownlint).
 - **MkDocs Material** documentation site with nav, search, Mermaid diagram
   support, and `include-markdown` plugin.
 - **WordPress** (`wordpress/`) — LAMP stack with Managed MySQL 8.0 DBaaS;

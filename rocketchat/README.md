@@ -2,7 +2,7 @@
 
 Deploy [Rocket.Chat](https://rocket.chat) — an open-source team messaging and collaboration platform — on Aruba Cloud using Terraform and cloud-init. Rocket.Chat and MongoDB 7.0 run as Docker Compose services with the admin account pre-configured at bootstrap time.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -70,7 +70,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

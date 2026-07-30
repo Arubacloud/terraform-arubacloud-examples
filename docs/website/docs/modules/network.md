@@ -63,7 +63,7 @@ resource "arubacloud_securityrule" "dbaas_mysql" {
 | Name | Version |
 |------|---------|
 | terraform | >= 1.9 |
-| arubacloud/arubacloud | ~> 0.5 |
+| arubacloud/arubacloud | ~> 1.0 |
 
 ## Inputs
 

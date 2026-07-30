@@ -2,7 +2,7 @@
 
 Distribuisci [OpenClaw](https://openclaw.ai/) — un agente AI personale self-hosted con memoria persistente e oltre 29 integrazioni di canali di messaggistica — su Aruba Cloud tramite Terraform e cloud-init. Distribuito tramite Docker.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -70,7 +70,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - Almeno una chiave API LLM (OpenAI o Anthropic)

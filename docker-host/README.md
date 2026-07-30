@@ -2,7 +2,7 @@
 
 Provision a CloudServer VM with Docker CE and Docker Compose ready to use. This is the foundation for running any containerised workload on Aruba Cloud when a higher-level example doesn't fit your needs.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

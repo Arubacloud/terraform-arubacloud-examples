@@ -2,7 +2,7 @@
 
 Deploy a production-ready [Ghost](https://ghost.org) blog on Aruba Cloud using Terraform and cloud-init. No manual server configuration required.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -14,7 +14,7 @@ Ghost is a modern open-source publishing platform built with Node.js, designed f
 - A **Managed MySQL 8.0 DBaaS** instance — no self-managed database server
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IPs** for the VM and DBaaS
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 The Ghost admin account is created on first browser visit to `/ghost` — no passwords are set during provisioning.
 
@@ -101,7 +101,7 @@ For the DBaaS: `DBO2A8` (2 vCPU / 8 GB) covers most Ghost sites. Ghost is Node.j
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 
@@ -210,7 +210,7 @@ terraform destroy
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip.address/32"` in `terraform.tfvars`. The default `0.0.0.0/0` is for getting-started convenience only.
 
-2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a Let's Encrypt certificate.
+2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
 
 3. **Choose a strong admin password.** When registering the admin account on first visit, use a unique password of at least 16 characters.
 
@@ -323,3 +323,4 @@ A previous `terraform destroy` may not have completed. Either finish destroying 
 - [ArubaCloud API Documentation](https://api.arubacloud.com/docs/)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)
 - [Certbot Documentation](https://certbot.eff.org/docs/)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)

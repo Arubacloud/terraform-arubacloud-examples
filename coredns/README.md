@@ -2,7 +2,7 @@
 
 Deploy [CoreDNS](https://coredns.io) — a fast, flexible, cloud-native DNS server — on Aruba Cloud using Terraform and cloud-init. CoreDNS is configured as a caching DNS forwarder, ideal for use as a private resolver inside a VPN network.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -74,7 +74,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

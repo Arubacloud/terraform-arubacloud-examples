@@ -6,7 +6,7 @@ title: Pi-hole
 
 Deploy [Pi-hole](https://pi-hole.net) — network-wide DNS filtering and ad-blocking — on Aruba Cloud using Terraform and cloud-init. Pi-hole pairs naturally with the [WireGuard example](wireguard.md): point your VPN clients at the Pi-hole DNS server and get ad-free browsing everywhere your VPN is active.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -80,7 +80,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

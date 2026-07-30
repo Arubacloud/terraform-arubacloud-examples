@@ -2,7 +2,7 @@
 
 Deploy [Wiki.js](https://js.wiki/) — a modern, open-source wiki platform with Markdown support, full-text search, and pluggable authentication — on Aruba Cloud using Terraform and cloud-init. Uses Managed MySQL 8.0 as the database backend.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -81,7 +81,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

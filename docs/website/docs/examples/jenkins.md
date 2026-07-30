@@ -6,7 +6,7 @@ title: Jenkins
 
 Deploy a production-ready [Jenkins](https://www.jenkins.io) CI/CD automation server on Aruba Cloud using Terraform and cloud-init. Java 21 + Jenkins LTS installed from the official APT repository — no manual configuration required.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -19,7 +19,7 @@ Jenkins is the most widely used open-source automation server for building, test
 - A dedicated **VPC, subnet, and security group** via the shared network module
 - An **Elastic IP** for stable external access
 - Port **50000** open for remote build agents connecting via the JNLP protocol
-- Optional **Let's Encrypt HTTPS** when a custom domain is provided
+- Optional **ACME HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when a custom domain is provided
 
 The initial admin password is generated automatically and printed in the bootstrap log. The first login completes the Jenkins setup wizard.
 
@@ -94,7 +94,7 @@ Jenkins runs builds directly on the controller by default. For production, offlo
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 

@@ -24,7 +24,7 @@ The default `0.0.0.0/0` is intentional for getting-started convenience. Change i
 
 ## Application hardening
 
-**Enable HTTPS.** All examples that expose a web UI include optional Certbot/Let's Encrypt support. Set the `domain` variable to enable it. Do not run production applications over plain HTTP.
+**Enable HTTPS.** All examples that expose a web UI include optional HTTPS via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Set the `domain` variable to enable it. Do not run production applications over plain HTTP.
 
 **Keep software up to date.** cloud-init runs `package_upgrade: true` on first boot. Set up unattended-upgrades for ongoing patching:
 

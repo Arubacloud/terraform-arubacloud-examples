@@ -2,7 +2,7 @@
 
 Distribuisci [Vaultwarden](https://github.com/dani-garcia/vaultwarden) — un server non ufficiale compatibile con Bitwarden — per la gestione self-hosted delle password su Aruba Cloud.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

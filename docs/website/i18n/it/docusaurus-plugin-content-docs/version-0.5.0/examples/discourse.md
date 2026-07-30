@@ -2,7 +2,7 @@
 
 Esegui il deployment di [Discourse](https://www.discourse.org) — la piattaforma forum community open-source leader — su Aruba Cloud tramite Terraform e cloud-init. Discourse viene installato tramite il launcher ufficiale `discourse_docker`, che raggruppa PostgreSQL, Redis e NGINX all'interno di un singolo container gestito.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -77,7 +77,7 @@ graph TB
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - Un server SMTP per le email in uscita (Gmail App Password, Mailgun, ecc.)

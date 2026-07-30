@@ -2,19 +2,19 @@
 
 Deploy [Mailcow](https://mailcow.email/) — a complete dockerized email server suite — on Aruba Cloud using Terraform and cloud-init. Mailcow bundles Postfix, Dovecot, Rspamd, ClamAV, SOGo, and a web admin panel in a single Docker Compose stack.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
 ## Introduction
 
-Mailcow is the most widely-deployed self-hosted email solution with a polished web UI (SOGo), built-in anti-spam (Rspamd), anti-virus (ClamAV), and automatic TLS via Let's Encrypt. This example deploys:
+Mailcow is the most widely-deployed self-hosted email solution with a polished web UI (SOGo), built-in anti-spam (Rspamd), anti-virus (ClamAV), and automatic TLS via ACME. This example deploys:
 
 - **Mailcow dockerized** via the official install script on a single VM
 - All required ports open: SMTP (25), SMTPS (465), submission (587), IMAPS (993), POP3S (995), Sieve (4190), HTTP (80), HTTPS (443)
-- TLS certificates auto-provisioned by Let's Encrypt (DNS must resolve before apply)
+- TLS certificates auto-provisioned via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt (DNS must resolve before apply)
 
-> **DNS first:** Mailcow's Let's Encrypt integration runs at container start. Set your `A` record for `mail_hostname` → VM public IP before running `terraform apply`.
+> **DNS first:** Mailcow's ACME integration runs at container start. Set your `A` record for `mail_hostname` → VM public IP before running `terraform apply`.
 
 ---
 
@@ -78,7 +78,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - A domain name with DNS control (required for TLS)
@@ -178,4 +178,5 @@ Navigate to `https://mail.example.com` and log in with:
 
 - [Mailcow Documentation](https://docs.mailcow.email/)
 - [Mailcow GitHub](https://github.com/mailcow/mailcow-dockerized)
+- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

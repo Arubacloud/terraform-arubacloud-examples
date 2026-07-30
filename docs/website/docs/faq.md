@@ -36,7 +36,7 @@ terraform output -raw admin_password
 
 **Q: Can I use a custom domain with HTTPS?**
 
-Yes — set the `domain` variable to your domain name (e.g. `blog.example.com`) and point an A record to the VM's Elastic IP before running `terraform apply`. Certbot will issue a Let's Encrypt certificate automatically during cloud-init.
+Yes — set the `domain` variable to your domain name (e.g. `blog.example.com`) and point an A record to the VM's Elastic IP before running `terraform apply`. Certbot will automatically issue a certificate from an ACME provider (such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt) during cloud-init.
 
 **Q: MySQL says "Error establishing a database connection".**
 

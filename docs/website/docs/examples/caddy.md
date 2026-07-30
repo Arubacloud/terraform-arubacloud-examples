@@ -6,7 +6,7 @@ title: Caddy
 
 Deploy [Caddy](https://caddyserver.com) — a modern, zero-config web server with automatic HTTPS — on Aruba Cloud using Terraform and cloud-init. Caddy obtains and renews Let's Encrypt certificates automatically when a domain name is provided, with no certbot or manual renewal needed.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -78,7 +78,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - (For HTTPS) A domain name with an A record pointing to the VM's Elastic IP

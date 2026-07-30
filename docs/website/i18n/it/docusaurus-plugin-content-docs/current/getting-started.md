@@ -5,7 +5,7 @@
 | Strumento | Versione minima | Installazione |
 |-----------|-----------------|---------------|
 | Terraform | 1.9 | [developer.hashicorp.com](https://developer.hashicorp.com/terraform/downloads) |
-| ArubaCloud Provider | 0.5 | Installato automaticamente da `terraform init` |
+| ArubaCloud Provider | 1.0 | Installato automaticamente da `terraform init` |
 | Git | qualsiasi | [git-scm.com](https://git-scm.com) |
 
 Hai anche bisogno di:

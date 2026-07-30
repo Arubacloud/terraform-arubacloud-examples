@@ -2,7 +2,7 @@
 
 Esegui il provisioning di una VM CloudServer con Docker CE e Docker Compose pronti all'uso. È la base per eseguire qualsiasi workload containerizzato su Aruba Cloud quando un esempio più specifico non soddisfa le tue esigenze.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 

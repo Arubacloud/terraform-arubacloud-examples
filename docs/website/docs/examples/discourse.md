@@ -6,7 +6,7 @@ title: Discourse
 
 Deploy [Discourse](https://www.discourse.org) — the leading open-source community forum platform — on Aruba Cloud using Terraform and cloud-init. Discourse is installed via the official `discourse_docker` launcher, which bundles PostgreSQL, Redis, and NGINX inside a single managed container.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -18,7 +18,7 @@ Discourse is a modern, mobile-friendly discussion platform used by thousands of 
 - **PostgreSQL, Redis, NGINX, and Sidekiq** bundled inside the Discourse container
 - SMTP configuration for outbound email (required for user registration)
 - Ports 80 and 443 open to the internet
-- Optional domain with SSL via Let's Encrypt (automatic inside the container when `hostname` is a real domain)
+- Optional domain with SSL via ACME (automatic inside the container when `hostname` is a real domain; use an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 > **Bootstrap time:** The launcher builds a Docker image from source the first time. Expect **20–30 minutes** before the forum is accessible.
 >
@@ -43,7 +43,7 @@ graph TB
     end
 
     VM -->|SMTP| Mail[(Mail server)]
-    VM -->|ACME| LE[(Let's Encrypt)]
+    VM -->|ACME| LE[(ACME CA\ne.g. Actalis\nor Let's Encrypt)]
     SG -.-> VM
 ```
 
@@ -81,7 +81,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - An SMTP server for outbound email (Gmail App Password, Mailgun, etc.)
@@ -206,13 +206,13 @@ http://<vm_public_ip>:8025
 
 ---
 
-## Enabling HTTPS (Let's Encrypt)
+## Enabling HTTPS (ACME)
 
 When `hostname` is set to a real domain:
 
 1. Create a DNS A record: `forum.example.com → <vm_public_ip>`
 2. Set `hostname = "forum.example.com"` in `terraform.tfvars`
-3. Re-apply — Discourse auto-obtains a Let's Encrypt certificate on bootstrap
+3. Re-apply — Discourse auto-obtains a certificate via ACME on bootstrap (configure `DISCOURSE_ACME_SERVER` in the container template to select an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 No additional configuration is needed; the discourse_docker launcher handles ACME automatically.
 

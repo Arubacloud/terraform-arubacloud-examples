@@ -2,7 +2,7 @@
 
 Esegui il deployment di un servizio Git self-hosted [Gitea](https://gitea.com) pronto per la produzione su Aruba Cloud tramite Terraform e cloud-init. Nessuna configurazione manuale del server richiesta.
 
-> **Versione provider:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Versione provider:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -118,7 +118,7 @@ Per i deployment SQLite, i repository risiedono sul disco di boot — aumenta `v
 ## Requisiti
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - Un account ArubaCloud con credenziali API OAuth2
 - Una coppia di chiavi SSH
 - `db_password` (min 16 caratteri) — solo quando `enable_mysql = true`

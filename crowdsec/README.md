@@ -2,7 +2,7 @@
 
 Deploy [CrowdSec](https://www.crowdsec.net/) — collaborative threat intelligence and intrusion prevention — on Aruba Cloud using Terraform and cloud-init. Installs the CrowdSec agent and firewall bouncer from the official repository with configurable collections and optional CrowdSec Console enrollment.
 
-> **Provider version:** arubacloud/arubacloud `~> 0.5` | **Terraform:** ≥ 1.9
+> **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
 ---
 
@@ -70,7 +70,7 @@ graph TB
 ## Requirements
 
 - Terraform ≥ 1.9
-- ArubaCloud Terraform Provider `~> 0.5`
+- ArubaCloud Terraform Provider `~> 1.0`
 - An ArubaCloud account with OAuth2 API credentials
 - An SSH key pair
 - (Optional) A [CrowdSec Console](https://app.crowdsec.net/) account for enrollment
