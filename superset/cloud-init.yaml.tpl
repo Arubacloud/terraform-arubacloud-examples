@@ -32,6 +32,7 @@ write_files:
           "from flask_appbuilder.security.manager import AUTH_DB\n"
           f"SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://superset:{db_pass_url}@${db_host}:3306/${db_name}'\n"
           f"SECRET_KEY = '{secret_key}'\n"
+          "DATA_DIR = '/var/lib/superset'\n"
           "ENABLE_PROXY_FIX = True\n"
           "WTF_CSRF_ENABLED = True\n"
           "SESSION_COOKIE_HTTPONLY = True\n"
@@ -47,7 +48,6 @@ write_files:
       ]
       pathlib.Path('/etc/superset/superset.env').write_text('\n'.join(env_lines) + '\n')
 
-      pathlib.Path('/root/db-pass.b64').unlink()
       pathlib.Path('/root/setup-superset.py').unlink()
 
   # ── nginx reverse proxy ───────────────────────────────────────────────────
@@ -108,20 +108,29 @@ runcmd:
       mysql-client
 
   # ── Create superset system user ───────────────────────────────────────────
-  - useradd --system --no-create-home --shell /bin/false superset
+  - useradd --system --create-home --home-dir /home/superset --shell /bin/false superset
 
   # ── Python venv + Superset ────────────────────────────────────────────────
+  # Pin breaking transitive deps in the same resolver pass so pip cannot pick incompatible majors.
   - python3 -m venv /opt/superset
-  - /opt/superset/bin/pip install --quiet --upgrade pip setuptools wheel
-  - /opt/superset/bin/pip install --quiet "apache-superset==${superset_version}" mysqlclient gevent gunicorn
+  - /opt/superset/bin/pip install --quiet --upgrade pip wheel
+  - /opt/superset/bin/pip install --quiet \
+      "apache-superset==${superset_version}" \
+      "marshmallow>=3.18.0,<4.0.0" \
+      "flask<3.0.0" \
+      "Werkzeug<3.0.0" \
+      "setuptools>=68,<70" \
+      mysqlclient gevent gunicorn
 
   # ── Generate config files ─────────────────────────────────────────────────
   - /opt/superset/bin/python3 /root/setup-superset.py
 
   # ── Wait for MySQL and initialise Superset ────────────────────────────────
   - |
+    DB_PASS=$(base64 -d /root/db-pass.b64)
+    rm -f /root/db-pass.b64
     for i in $(seq 1 60); do
-      mysql -h "${db_host}" -u "${db_user}" \
+      mysql -h "${db_host}" -u "${db_user}" -p"$DB_PASS" \
         "${db_name}" -e "SELECT 1" >/dev/null 2>&1 && break || true
       echo "Waiting for MySQL ($i/60)..."; sleep 5
     done
@@ -138,7 +147,8 @@ runcmd:
     rm -f /root/admin-pass.b64
 
   # ── Fix ownership ─────────────────────────────────────────────────────────
-  - chown -R superset:superset /etc/superset /opt/superset
+  - mkdir -p /var/lib/superset
+  - chown -R superset:superset /etc/superset /opt/superset /var/lib/superset
 
   # ── Start Superset ────────────────────────────────────────────────────────
   - systemctl daemon-reload
