@@ -1,6 +1,6 @@
 output "airflow_url" {
   description = "Apache Airflow web interface URL."
-  value       = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}:8080"
+  value       = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
 }
 
 output "vm_public_ip" {

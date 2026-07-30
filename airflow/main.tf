@@ -1,7 +1,7 @@
 locals {
   name_prefix          = "${var.app_name}-${var.environment}"
   tags                 = ["airflow", var.environment, "data-platform"]
-  base_url             = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}:8080"
+  base_url             = var.domain != "" ? "https://${var.domain}" : "http://${module.network.vm_elastic_ip_address}"
   server_name          = var.domain != "" ? var.domain : "_"
   db_password_b64      = base64encode(var.db_password)
   admin_password_b64   = base64encode(var.airflow_admin_password)
