@@ -12,6 +12,32 @@ each batch of new examples and PATCH on fixes.
 
 ## [Unreleased]
 
+## [0.5.6] - 2026-07-30
+
+### Fixed
+
+- **Superset** — four bootstrap bugs fixed after live-deploy validation:
+  - `marshmallow>=3.18.0,<4.0.0` and `setuptools>=68,<70` pinned in the same
+    pip resolver pass as `apache-superset` so pip cannot resolve incompatible
+    major versions (`marshmallow 4.x` removed the `minLength` kwarg used by
+    Superset schemas; `setuptools ≥ 70` no longer ships `pkg_resources` as a
+    top-level module, breaking `superset/config.py` import at startup).
+  - `DATA_DIR = '/var/lib/superset'` added to `superset_config.py` so Superset
+    does not attempt to create `~/.superset` under a home-less system user.
+  - MySQL readiness loop now authenticates with `-p"$DB_PASS"` (password was
+    missing, causing all 60 iterations to fail and a 5-minute blind wait before
+    `superset db upgrade` ran).
+  - `db-pass.b64` deletion moved from `setup-superset.py` to the runcmd block
+    so the password is still available when the MySQL wait loop runs.
+- **MLflow** — three bootstrap bugs fixed after live-deploy validation:
+  - `htpasswd` file ownership changed to `root:www-data` with mode `640` so
+    nginx can read it (missing chown caused 500 on every authenticated request).
+  - `mysql-client` added to apt installs so the DBaaS wait loop can
+    authenticate; `db-pass.b64` deletion moved out of the setup script for the
+    same reason as Superset above.
+  - `mlflow db upgrade` now runs explicitly after MySQL is confirmed ready,
+    eliminating a race condition on first startup.
+
 ## [0.5.5] - 2026-07-30
 
 ### Changed
@@ -294,7 +320,9 @@ each batch of new examples and PATCH on fixes.
 - **Nextcloud** (`nextcloud/`) — File sync and collaboration with Managed MySQL
   8.0 DBaaS (closes #12).
 
-[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.6...HEAD
+[0.5.6]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.5...v0.5.6
+[0.5.5]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.1...v0.5.2
