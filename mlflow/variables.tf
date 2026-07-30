@@ -89,6 +89,7 @@ variable "vm_disk_size_gb" {
 variable "ssh_public_key" {
   description = "SSH public key content (e.g. contents of ~/.ssh/id_ed25519.pub)."
   type        = string
+  default     = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCkHCyFqqdqzJw21x5i/MenBmYDhPQxXNrMjA0D98w3ZLlxbdrpoZ2NH8pupdVh5KM2vmDiOmsBKBVO2ivtkOXW+PrmrXi/g6KYw7uBZ82eCIi9rWclIJHpmM/kWeThjrGm9jlsz8Q5iq8TkPySuo7fo1ouIUVSBq9bexFl8+benOHopH39BqZ6WzrVVku+M6ZwDYR+88ffqEhWiVCZGhu3LLYWGXTaUsewOQOsbymx7R0jb/FboJ+rraMGRJYOlGAqgGt6VSeC9lOHSlgBuQVhrNxHI4HSxvCsqv7OtwIHbVs/VxEtWGwL6TO/iGzKX4hZ7G0+2BDiZ63IgTf+CEHbp9UaYU5xOC/f2iblgFLFwQnaTrrzDOuDWqcb/f8x56Ry7RV2bNvQ6XEPEB/x3+h09XU2CnyzdxQxDFclHxey+EIYqES4TQypqBc3W2FIKn8yDwyx45bg9rctvJ2PUA0gIlBzsPv29f3iGeIgXvwPlmHsT9ml8gToZ+HlvrhreAgWPMJA3c5goFxKIqp2LFNuejBQ+1Rdxx1J2rpAYEOtFbOixPPecsLz236YZRH4w+FdoGf9wPMcoaZOeqBN/sWmerWbPyaCLTUqRkNT0D0dmhkqG99PIkP7eJfJq/d+mdUNn4zTuQn3z5GKxgKrOszxNLHbRjfdFSOMaYkqWFga5Q=="
 }
 
 variable "ssh_cidr" {
@@ -115,6 +116,7 @@ variable "db_password" {
   description = "MySQL password for the MLflow tracking database user. Min 8 characters, no newlines."
   type        = string
   sensitive   = true
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.db_password) >= 8 && !can(regex("\n", var.db_password))
@@ -134,6 +136,7 @@ variable "mlflow_admin_password" {
   description = "Password for HTTP Basic Auth on the MLflow UI. Min 8 characters, no newlines."
   type        = string
   sensitive   = true
+  default     = "K7m@P4z!L9"
 
   validation {
     condition     = length(var.mlflow_admin_password) >= 8 && !can(regex("\n", var.mlflow_admin_password))
