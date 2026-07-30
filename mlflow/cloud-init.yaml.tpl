@@ -33,7 +33,6 @@ write_files:
           "MLFLOW_PORT=5000",
       ]
       pathlib.Path('/etc/mlflow/mlflow.env').write_text('\n'.join(lines) + '\n')
-      pathlib.Path('/root/db-pass.b64').unlink()
       pathlib.Path('/root/setup-mlflow-env.py').unlink()
 
   # ── nginx reverse proxy with HTTP Basic Auth ──────────────────────────────
@@ -90,7 +89,7 @@ runcmd:
     DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y upgrade
     DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=120 -y install \
       curl nginx certbot python3-certbot-nginx \
-      python3-pip python3-venv apache2-utils
+      python3-pip python3-venv apache2-utils mysql-client
 
   # ── Create mlflow system user ─────────────────────────────────────────────
   - useradd --system --no-create-home --shell /bin/false mlflow
@@ -111,16 +110,20 @@ runcmd:
     UI_PASS=$(base64 -d /root/ui-pass.b64)
     htpasswd -c -b /etc/nginx/mlflow.htpasswd "${mlflow_admin_user}" "$UI_PASS"
     rm -f /root/ui-pass.b64
+    chown root:www-data /etc/nginx/mlflow.htpasswd
     chmod 640 /etc/nginx/mlflow.htpasswd
 
-  # ── Wait for MySQL ────────────────────────────────────────────────────────
+  # ── Wait for MySQL, then run DB migrations ───────────────────────────────
   - |
+    DB_PASS=$(base64 -d /root/db-pass.b64)
+    rm -f /root/db-pass.b64
     for i in $(seq 1 60); do
-      /opt/mlflow-env/bin/python3 -c \
-        "import pymysql; pymysql.connect(host='${db_host}', user='${db_user}', db='${db_name}')" \
-        >/dev/null 2>&1 && break || true
+      mysql -h "${db_host}" -u "${db_user}" -p"$DB_PASS" \
+        "${db_name}" -e "SELECT 1" >/dev/null 2>&1 && break || true
       echo "Waiting for MySQL ($i/60)..."; sleep 5
     done
+    set -a; . /etc/mlflow/mlflow.env; set +a
+    /opt/mlflow-env/bin/mlflow db upgrade "$MLFLOW_BACKEND_STORE_URI"
 
   # ── Fix ownership ─────────────────────────────────────────────────────────
   - chown -R mlflow:mlflow /opt/mlflow /opt/mlflow-env /etc/mlflow
