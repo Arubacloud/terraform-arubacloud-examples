@@ -12,7 +12,7 @@ Mailcow is the most widely-deployed self-hosted email solution with a polished w
 
 - **Mailcow dockerized** via the official install script on a single VM
 - All required ports open: SMTP (25), SMTPS (465), submission (587), IMAPS (993), POP3S (995), Sieve (4190), HTTP (80), HTTPS (443)
-- TLS certificates auto-provisioned via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt (DNS must resolve before apply)
+- TLS certificates auto-provisioned via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt (DNS must resolve before apply)
 
 > **DNS first:** Mailcow's ACME integration runs at container start. Set your `A` record for `mail_hostname` → VM public IP before running `terraform apply`.
 
@@ -178,5 +178,5 @@ Navigate to `https://mail.example.com` and log in with:
 
 - [Mailcow Documentation](https://docs.mailcow.email/)
 - [Mailcow GitHub](https://github.com/mailcow/mailcow-dockerized)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

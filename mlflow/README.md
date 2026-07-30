@@ -213,7 +213,7 @@ When `domain` is set to a real domain:
 
 1. Create a DNS A record: `mlflow.example.com → <vm_public_ip>`
 2. Set `domain = "mlflow.example.com"` in `terraform.tfvars`
-3. Re-apply — Certbot provisions a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt
+3. Re-apply — Certbot provisions a certificate via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt
 
 With HTTPS, update your client to use the secure URI and set `MLFLOW_TRACKING_INSECURE_TLS=false`.
 

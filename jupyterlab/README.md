@@ -164,7 +164,7 @@ When `domain` is set to a real domain:
 
 1. Create a DNS A record: `notebooks.example.com → <vm_public_ip>`
 2. Set `domain = "notebooks.example.com"` in `terraform.tfvars`
-3. Re-apply — Certbot provisions a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt
+3. Re-apply — Certbot provisions a certificate via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt
 
 ---
 

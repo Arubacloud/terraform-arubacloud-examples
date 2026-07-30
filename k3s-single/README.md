@@ -237,7 +237,7 @@ All cloud resources are deleted. Any data stored in PersistentVolumes on the boo
 
 4. **Use RBAC for workloads.** k3s ships with RBAC enabled. Create service accounts with least-privilege roles for each application.
 
-5. **Enable TLS for Ingress.** Use cert-manager with an ACME CA (Let's Encrypt or [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme)) to provision certificates for your Ingress resources, or configure Traefik's built-in ACME support.
+5. **Enable TLS for Ingress.** Use cert-manager with an ACME CA (Let's Encrypt or [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)) to provision certificates for your Ingress resources, or configure Traefik's built-in ACME support.
 
 ---
 
@@ -293,6 +293,6 @@ Single-node clusters run both control-plane and workloads on the same VM — ens
 - [k3s Documentation](https://docs.k3s.io/)
 - [k3s Releases](https://github.com/k3s-io/k3s/releases)
 - [Traefik on k3s](https://docs.k3s.io/networking/traefik-ingress)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)

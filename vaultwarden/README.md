@@ -148,4 +148,4 @@ docker logs vaultwarden
 
 - [Vaultwarden Wiki](https://github.com/dani-garcia/vaultwarden/wiki)
 - [Bitwarden Clients](https://bitwarden.com/download/)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)

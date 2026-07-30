@@ -13,7 +13,7 @@ Caddy v2 is a production-ready HTTP server that handles TLS lifecycle management
 - Caddy installed from the **official apt repository** (always up to date)
 - A default **static HTML site** served from `/var/www/html`
 - Ports 80 (HTTP) and 443 (HTTPS) open to `web_cidr`
-- **Automatic HTTPS** via ACME when `domain` is set — use `acme_ca` in the Caddyfile to select an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP redirects to HTTPS automatically
+- **Automatic HTTPS** via ACME when `domain` is set — use `acme_ca` in the Caddyfile to select an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP redirects to HTTPS automatically
 - Certificate renewal handled by Caddy in the background
 
 > **Note:** Without a `domain`, Caddy serves HTTP on port 80 only. Set `domain` to a DNS name pointing at the VM to enable automatic HTTPS — no other configuration needed.
@@ -231,5 +231,5 @@ Common causes: DNS A record not propagated, port 80 blocked by `web_cidr`, or `d
 - [Caddy Documentation](https://caddyserver.com/docs/)
 - [Caddyfile Quick-start](https://caddyserver.com/docs/quick-starts/caddyfile)
 - [Caddy GitHub Releases](https://github.com/caddyserver/caddy/releases)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

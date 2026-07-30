@@ -14,7 +14,7 @@ Keycloak is a CNCF-graduated open-source IAM platform providing SSO, OIDC, OAuth
 - **Local PostgreSQL** — Keycloak officially supports PostgreSQL and MariaDB. Managed MySQL from the ArubaCloud DBaaS is **not** on the Keycloak support matrix and is not used here
 - **nginx reverse proxy** on ports 80/443 with correct forwarding headers (`X-Forwarded-*`), while Keycloak binds to `127.0.0.1:8080`
 - **Admin user created automatically** on first start via systemd environment file — log in immediately after bootstrap
-- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 ---
 
@@ -173,7 +173,7 @@ sudo journalctl -u keycloak -f
 
 ## Security Recommendations
 
-1. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Keycloak tokens transmitted over HTTP can be intercepted.
+1. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Keycloak tokens transmitted over HTTP can be intercepted.
 
 2. **Restrict SSH.** Set `ssh_cidr = "your.ip/32"`.
 
@@ -245,5 +245,5 @@ sudo -u postgres psql -c "\du"  # list users
 - [Keycloak Server Configuration](https://www.keycloak.org/server/all-config)
 - [Keycloak Production Deployment](https://www.keycloak.org/server/configuration-production)
 - [Keycloak Releases](https://github.com/keycloak/keycloak/releases)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

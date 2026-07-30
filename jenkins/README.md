@@ -15,7 +15,7 @@ Jenkins is the most widely used open-source automation server for building, test
 - A dedicated **VPC, subnet, and security group** via the shared network module
 - An **Elastic IP** for stable external access
 - Port **50000** open for remote build agents connecting via the JNLP protocol
-- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 The initial admin password is generated automatically and printed in the bootstrap log. The first login completes the Jenkins setup wizard.
 
@@ -275,6 +275,6 @@ Verify the security group rule and the configured TCP port in Jenkins → Manage
 - [Jenkins Documentation](https://www.jenkins.io/doc/)
 - [Jenkins LTS Releases](https://www.jenkins.io/changelog-stable/)
 - [Jenkins on Ubuntu/Debian](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)

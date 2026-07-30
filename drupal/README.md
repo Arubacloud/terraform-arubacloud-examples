@@ -14,7 +14,7 @@ Drupal 10 is built on the `drupal/recommended-project` Composer template, which 
 - **Drupal 10** installed via Composer + Drush in fully unattended mode
 - **Managed MySQL 8.0** via ArubaCloud DBaaS — Drupal never touches raw SQL
 - Ports 80 and 443 open to the internet
-- **Optional HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when `domain` is set
+- **Optional HTTPS** via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when `domain` is set
 
 > **Bootstrap time:** Composer downloads ~80 MB of PHP packages. Expect **15–20 minutes** before the site is reachable.
 
@@ -206,5 +206,5 @@ sudo cat /var/log/cloud-init-output.log | grep -A5 "ERROR\|Waiting"
 
 - [Drupal Documentation](https://www.drupal.org/docs)
 - [Drush Documentation](https://www.drush.org)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

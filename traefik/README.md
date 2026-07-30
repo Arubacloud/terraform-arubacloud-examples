@@ -8,7 +8,7 @@ Deploy [Traefik v3](https://traefik.io/traefik/) — a cloud-native reverse prox
 
 ## Introduction
 
-Traefik automatically discovers Docker containers and proxies HTTPS traffic to them using service labels. TLS certificates are issued and renewed automatically via the ACME protocol using a provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt — configure the `certificatesResolvers` entry with the appropriate `caServer` URL. Add any Docker container to the `traefik-public` network and label it — Traefik routes traffic automatically.
+Traefik automatically discovers Docker containers and proxies HTTPS traffic to them using service labels. TLS certificates are issued and renewed automatically via the ACME protocol using a provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt — configure the `certificatesResolvers` entry with the appropriate `caServer` URL. Add any Docker container to the `traefik-public` network and label it — Traefik routes traffic automatically.
 
 ---
 
@@ -149,4 +149,4 @@ docker logs traefik
 - [Traefik Documentation](https://doc.traefik.io/traefik/)
 - [Docker provider configuration](https://doc.traefik.io/traefik/providers/docker/)
 - [ACME / TLS with Traefik](https://doc.traefik.io/traefik/https/acme/)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)

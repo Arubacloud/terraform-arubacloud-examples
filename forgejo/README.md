@@ -14,7 +14,7 @@ Forgejo is a community-maintained, self-hosted Git service — the most active f
 - A choice of **SQLite** (default, zero extra cost) or **Managed MySQL 8.0 DBaaS** for larger teams
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IP** for the VM (and DBaaS when MySQL is enabled)
-- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 - **Git SSH access on port 2222** so Forgejo's built-in SSH server does not conflict with the admin SSH on port 22
 
 The first user to register via the web interface automatically becomes the instance administrator — no credentials are pre-set during provisioning.
@@ -247,7 +247,7 @@ terraform destroy
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip.address/32"` in `terraform.tfvars`. The default `0.0.0.0/0` is for getting-started convenience only.
 
-2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
+2. **Use a custom domain with HTTPS.** Set the `domain` variable. Certbot will automatically provision and renew a certificate via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
 
 3. **Disable public registration after setup.** Once your team has registered, set `DISABLE_REGISTRATION = true` in Forgejo's admin panel (Site Administration → Configuration) or via the API.
 
@@ -334,7 +334,7 @@ ssh -p 2222 git@$(terraform output -raw vm_public_ip)
 
 - [Forgejo Documentation](https://forgejo.org/docs/)
 - [Forgejo Releases](https://codeberg.org/forgejo/forgejo/releases)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
 - [cloud-init Reference](https://cloudinit.readthedocs.io/)
 - [Certbot Documentation](https://certbot.eff.org/docs/)

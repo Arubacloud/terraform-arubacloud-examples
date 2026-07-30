@@ -14,7 +14,7 @@ Discourse is a modern, mobile-friendly discussion platform used by thousands of 
 - **PostgreSQL, Redis, NGINX, and Sidekiq** bundled inside the Discourse container
 - SMTP configuration for outbound email (required for user registration)
 - Ports 80 and 443 open to the internet
-- Optional domain with SSL via ACME (automatic inside the container when `hostname` is a real domain; use an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- Optional domain with SSL via ACME (automatic inside the container when `hostname` is a real domain; use an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 > **Bootstrap time:** The launcher builds a Docker image from source the first time. Expect **20–30 minutes** before the forum is accessible.
 >
@@ -208,7 +208,7 @@ When `hostname` is set to a real domain:
 
 1. Create a DNS A record: `forum.example.com → <vm_public_ip>`
 2. Set `hostname = "forum.example.com"` in `terraform.tfvars`
-3. Re-apply — Discourse auto-obtains a certificate via ACME on bootstrap (configure `DISCOURSE_ACME_SERVER` in the container template to select an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+3. Re-apply — Discourse auto-obtains a certificate via ACME on bootstrap (configure `DISCOURSE_ACME_SERVER` in the container template to select an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 No additional configuration is needed; the discourse_docker launcher handles ACME automatically.
 
@@ -256,5 +256,5 @@ Then from the Discourse admin panel: **Admin → Email → Test Email**.
 - [Discourse Official Install Guide](https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md)
 - [discourse_docker Repository](https://github.com/discourse/discourse_docker)
 - [Discourse Documentation](https://meta.discourse.org)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

@@ -14,7 +14,7 @@ Joomla 5 is a feature-rich CMS suitable for websites, intranets, and web applica
 - **Joomla** downloaded from the official GitHub release and installed via the built-in CLI installer in fully unattended mode
 - **Managed MySQL 8.0** via ArubaCloud DBaaS
 - Ports 80 and 443 open to the internet
-- **Optional HTTPS** via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when `domain` is set
+- **Optional HTTPS** via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt when `domain` is set
 - Installation directory removed automatically after setup (Joomla security requirement)
 
 ---
@@ -177,5 +177,5 @@ Log in to `/administrator` with `admin_user` and `admin_password`.
 
 - [Joomla Documentation](https://docs.joomla.org)
 - [Joomla CLI Installer](https://docs.joomla.org/J4.x:CLI_Installation)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

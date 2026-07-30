@@ -1,6 +1,6 @@
 # NGINX on Aruba Cloud
 
-Deploy [NGINX](https://nginx.org) as a web server or reverse proxy on Aruba Cloud using Terraform and cloud-init. This example provisions a production-ready NGINX instance with a default static site and optional automatic HTTPS via Certbot and an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
+Deploy [NGINX](https://nginx.org) as a web server or reverse proxy on Aruba Cloud using Terraform and cloud-init. This example provisions a production-ready NGINX instance with a default static site and optional automatic HTTPS via Certbot and an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt.
 
 > **Provider version:** arubacloud/arubacloud `~> 1.0` | **Terraform:** ≥ 1.9
 
@@ -13,7 +13,7 @@ NGINX is a high-performance HTTP server, reverse proxy, and load balancer. This 
 - NGINX installed from **Ubuntu 22.04 official packages**
 - A default **static HTML site** served from `/var/www/html`
 - Ports 80 (HTTP) and 443 (HTTPS) open to `web_cidr`
-- **Optional automatic HTTPS** via Certbot when `domain` and `certbot_email` are set (use `--server` to select an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- **Optional automatic HTTPS** via Certbot when `domain` and `certbot_email` are set (use `--server` to select an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 After deployment, replace the default site with your own content or additional `server {}` blocks for virtual hosting or reverse proxying.
 
@@ -210,7 +210,7 @@ location / {
 
 1. **Restrict `ssh_cidr` to your management IP.** SSH on `0.0.0.0/0` is acceptable for a quick start, but exposes the VM to brute-force attacks.
 
-2. **Enable HTTPS for any production site.** Set `domain` and `certbot_email` to get a free certificate via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP-only should only be used for internal or development sites.
+2. **Enable HTTPS for any production site.** Set `domain` and `certbot_email` to get a free certificate via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. HTTP-only should only be used for internal or development sites.
 
 3. **Keep NGINX updated.** Ubuntu's unattended-upgrades handles security patches automatically if enabled. Check with `sudo unattended-upgrades --dry-run`.
 
@@ -245,5 +245,5 @@ Common causes: DNS A record not yet propagated, port 80 blocked by `web_cidr`, o
 - [NGINX Documentation](https://nginx.org/en/docs/)
 - [NGINX Beginner's Guide](https://nginx.org/en/docs/beginners_guide.html)
 - [Certbot Documentation](https://certbot.eff.org/instructions)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

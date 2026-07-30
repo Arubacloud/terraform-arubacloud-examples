@@ -15,7 +15,7 @@ Mattermost is a self-hosted, Slack-compatible open-source messaging platform wri
 - A dedicated **VPC, subnet, and security groups** via the shared network module
 - **Elastic IPs** for the VM and DBaaS
 - Correct nginx **WebSocket proxying** for real-time messaging
-- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
+- Optional **ACME HTTPS** when a custom domain is provided (via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt)
 
 The first user to register on the instance automatically becomes the System Administrator.
 
@@ -188,7 +188,7 @@ sudo journalctl -u mattermost -f
 
 1. **Restrict SSH to your IP.** Set `ssh_cidr = "your.ip/32"`.
 
-2. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Without TLS, session tokens and messages are transmitted in cleartext.
+2. **Use HTTPS.** Set `domain` to enable TLS via an ACME provider such as [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt. Without TLS, session tokens and messages are transmitted in cleartext.
 
 3. **Register the admin account first.** The first registered user becomes System Administrator. Register immediately after deployment before sharing the URL.
 
@@ -253,5 +253,5 @@ mysql -u mattermost -p -h $(terraform output -raw dbaas_host) mattermost
 - [Mattermost Installation Guide](https://docs.mattermost.com/install/install-ubuntu.html)
 - [Mattermost Releases](https://github.com/mattermost/mattermost/releases)
 - [Mattermost Environment Variables](https://docs.mattermost.com/configure/environment-variables.html)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

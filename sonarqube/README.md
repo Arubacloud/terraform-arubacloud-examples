@@ -177,7 +177,7 @@ mvn sonar:sonar \
 
 3. **Create per-project tokens** for CI integration. Never use the admin account credentials in CI pipelines.
 
-4. **Enable HTTPS.** Add an nginx reverse proxy with a certificate from an ACME CA — [Let's Encrypt](https://letsencrypt.org) or [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) — in front of SonarQube for encrypted access.
+4. **Enable HTTPS.** Add an nginx reverse proxy with a certificate from an ACME CA — [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) or Let's Encrypt — in front of SonarQube for encrypted access.
 
 ---
 
@@ -240,5 +240,5 @@ Upgrade to `CSO8A16` (8 vCPU / 16 GB) and adjust JVM heap sizes in `sonar.proper
 - [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/)
 - [SonarQube Requirements](https://docs.sonarsource.com/sonarqube/latest/setup-and-upgrade/install-the-server/introduction/)
 - [SonarQube Downloads](https://www.sonarsource.com/products/sonarqube/downloads/)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)

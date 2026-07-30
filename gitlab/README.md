@@ -11,7 +11,7 @@ Deploy [GitLab Community Edition](https://gitlab.com/oss/gitlab-ce) — a comple
 GitLab CE is a self-hosted alternative to GitHub and GitHub Actions. This example deploys:
 
 - **GitLab CE** via the official Omnibus package on a single VM
-- Automatic **ACME TLS** via Let's Encrypt when a `letsencrypt_email` is provided (Omnibus also supports [Actalis](https://guide.actalis.com/it/ssl/attivazione/acme) via the `acme_staging_server`/`acme_production_server` config keys)
+- Automatic **ACME TLS** via Let's Encrypt when a `letsencrypt_email` is provided (Omnibus also supports [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme) via the `acme_staging_server`/`acme_production_server` config keys)
 - Separate SSH port **2222** for git operations (port 22 reserved for admin access)
 - Web UI, CI/CD runners (bring your own), and container registry ready
 
@@ -178,5 +178,5 @@ Then clone normally with `git clone git@gitlab.example.com:<user>/<project>.git`
 
 - [GitLab CE Documentation](https://docs.gitlab.com/ee/)
 - [GitLab Omnibus Install Guide](https://docs.gitlab.com/omnibus/installation/)
-- [Actalis SSL via ACME](https://guide.actalis.com/it/ssl/attivazione/acme)
+- [Actalis ACME Certificates](https://guide.actalis.com/it/ssl/attivazione/acme)
 - [ArubaCloud Terraform Provider](https://registry.terraform.io/providers/arubacloud/arubacloud/latest/docs)
