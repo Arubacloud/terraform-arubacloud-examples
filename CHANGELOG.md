@@ -8,6 +8,45 @@ each batch of new examples and PATCH on fixes.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-08-04
+
+### Added
+
+- **Apache Airflow** (`airflow/`) — Workflow orchestration platform via Docker Compose
+  with Managed MySQL 8.0 DBaaS backend; nginx reverse proxy on port 80.
+- **JupyterLab** (`jupyterlab/`) — Interactive notebook server via Docker with nginx
+  reverse proxy; WebSocket-safe nginx configuration for real-time kernel communication.
+- **MLflow** (`mlflow/`) — ML experiment tracking via Docker with nginx and htpasswd
+  authentication; Managed MySQL 8.0 DBaaS as artifact and metadata backend.
+- **Apache Superset** (`superset/`) — Business intelligence and data visualization
+  platform via Docker with nginx and Managed MySQL 8.0 DBaaS.
+- **Data Platform** documentation category — Docusaurus pages for all four data
+  platform examples (Airflow, JupyterLab, MLflow, Superset) in English and Italian.
+
+### Fixed
+
+- **Airflow** — `base_url` set to the nginx public URL on port 80 instead of the
+  internal Airflow port 8080.
+- **JupyterLab** — nginx `Connection` header hardcoded to avoid `unknown variable`
+  error on nginx 1.18; `allow_origin=*` added to the notebook server to fix 403
+  responses on WebSocket upgrades.
+- **Data Platform (shared)** — all four examples default every variable so only
+  `arubacloud_client_id` and `arubacloud_client_secret` are required to plan/apply;
+  `terraform fmt` alignment corrected.
+
+### Documentation
+
+- **Actalis ACME Certificates** — link text standardised to "Actalis ACME Certificates"
+  across all example READMEs and data platform pages; Actalis listed before Let's
+  Encrypt in all HTTPS sections.
+- **Data platform source files** — moved from `docs/website/docs/` to `docs/examples/`
+  so the MkDocs preprocessor includes them in the generated output correctly.
+
+### CI
+
+- Preprocessor now runs before cutting each versioned docs snapshot so generated
+  data platform pages are included in the archive.
+
 ## [0.5.6] - 2026-07-30
 
 ### Fixed
@@ -316,7 +355,10 @@ each batch of new examples and PATCH on fixes.
 - **Nextcloud** (`nextcloud/`) — File sync and collaboration with Managed MySQL
   8.0 DBaaS (closes #12).
 
-[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.6...v1.0.0
+[0.5.6]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.5...v0.5.6
+[0.5.5]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/Arubacloud/terraform-arubacloud-examples/compare/v0.5.1...v0.5.2
